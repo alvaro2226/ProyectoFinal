@@ -100,7 +100,11 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
         jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
 
+        backgroundPanel.setBackground(new java.awt.Color(0, 0, 0));
+
+        foregroundPanel.setBackground(new java.awt.Color(255, 255, 255));
         foregroundPanel.setLayout(new java.awt.CardLayout());
 
         panelEmpresa1.setBackground(new java.awt.Color(255, 255, 255));
@@ -179,7 +183,7 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
         panelEmpresa1Layout.setHorizontalGroup(
             panelEmpresa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEmpresa1Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelEmpresa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelEmpresa1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -269,7 +273,7 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         foregroundPanel.add(panelEmpresa1, "card2");
@@ -334,7 +338,7 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
         panelEmpresa2Layout.setHorizontalGroup(
             panelEmpresa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEmpresa2Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelEmpresa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10)
                     .addGroup(panelEmpresa2Layout.createSequentialGroup()
@@ -402,7 +406,7 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
                 .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         foregroundPanel.add(panelEmpresa2, "card3");
@@ -411,11 +415,17 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
         backgroundPanel.setLayout(backgroundPanelLayout);
         backgroundPanelLayout.setHorizontalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(foregroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(backgroundPanelLayout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addComponent(foregroundPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(foregroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(backgroundPanelLayout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addComponent(foregroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(3, 3, 3))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
