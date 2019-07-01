@@ -95,6 +95,28 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
+        panelBaseDatos1 = new javax.swing.JPanel();
+        panelSuperior2 = new javax.swing.JPanel();
+        botonMinimizar2 = new ui.beans.Boton_MaterialDesing();
+        botonCerrar2 = new ui.beans.Boton_MaterialDesing();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        botonSiguiente2 = new ui.beans.Boton_MaterialDesing();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jSeparator18 = new javax.swing.JSeparator();
+        jTextField17 = new javax.swing.JTextField();
+        jSeparator19 = new javax.swing.JSeparator();
+        jLabel40 = new javax.swing.JLabel();
+        jPasswordField2 = new javax.swing.JPasswordField();
+        jLabel41 = new javax.swing.JLabel();
+        jSeparator20 = new javax.swing.JSeparator();
+        jLabel42 = new javax.swing.JLabel();
+        jPasswordField3 = new javax.swing.JPasswordField();
         panelEmpresa1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -473,6 +495,226 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
 
         foregroundPanel.add(panelBaseDatos, "card4");
 
+        panelBaseDatos1.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelSuperior2.setBackground(new java.awt.Color(79, 134, 198));
+
+        botonMinimizar2.setImagenPrincipal(new java.io.File("D:\\Dropbox\\DAM\\Proyecto Final\\Proyecto\\src\\ui\\images\\botones\\icons8_minimize_window_45px_1.png"));
+        botonMinimizar2.setImagenSombreada(new java.io.File("D:\\Dropbox\\DAM\\Proyecto Final\\Proyecto\\src\\ui\\images\\botones\\icons8_minimize_window_45px_2.png"));
+        botonMinimizar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonMinimizar2MousePressed(evt);
+            }
+        });
+
+        botonCerrar2.setImagenPrincipal(new java.io.File("D:\\Dropbox\\DAM\\Proyecto Final\\Proyecto\\src\\ui\\images\\botones\\icons8_close_window_45px.png"));
+        botonCerrar2.setImagenSombreada(new java.io.File("D:\\Dropbox\\DAM\\Proyecto Final\\Proyecto\\src\\ui\\images\\botones\\icons8_close_window_45px_1.png"));
+        botonCerrar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonCerrar2MousePressed(evt);
+            }
+        });
+
+        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel22.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Crear una base de datos");
+
+        javax.swing.GroupLayout panelSuperior2Layout = new javax.swing.GroupLayout(panelSuperior2);
+        panelSuperior2.setLayout(panelSuperior2Layout);
+        panelSuperior2Layout.setHorizontalGroup(
+            panelSuperior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperior2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addComponent(botonMinimizar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonCerrar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelSuperior2Layout.setVerticalGroup(
+            panelSuperior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSuperior2Layout.createSequentialGroup()
+                .addGroup(panelSuperior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonCerrar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonMinimizar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 28, Short.MAX_VALUE))
+            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel28.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel28.setText("3/4");
+
+        botonSiguiente2.setColorSombreado(new java.awt.Color(0, 102, 102));
+        botonSiguiente2.setImagenPrincipal(new java.io.File("D:\\Dropbox\\DAM\\Proyecto Final\\Proyecto\\src\\ui\\images\\botones\\icons8_right_arrow_45px.png"));
+        botonSiguiente2.setImagenSombreada(new java.io.File("D:\\Dropbox\\DAM\\Proyecto Final\\Proyecto\\src\\ui\\images\\botones\\icons8_right_arrow_45px_2.png"));
+
+        jLabel30.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel30.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel30.setText("Ahora tendrás que crear un usuario administrador. Con este usuario,");
+
+        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel34.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel34.setText("podrás, consultar y modificar datos, así como crear otros ");
+
+        jLabel35.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel35.setText("Contraseña:");
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel36.setText("Confirma contraseña:");
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel37.setText("Nombre de usuario:");
+
+        jLabel38.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+
+        jSeparator18.setBackground(new java.awt.Color(55, 147, 114));
+        jSeparator18.setForeground(new java.awt.Color(55, 147, 114));
+
+        jTextField17.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
+        jTextField17.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField17.setBorder(null);
+
+        jSeparator19.setBackground(new java.awt.Color(55, 147, 114));
+        jSeparator19.setForeground(new java.awt.Color(55, 147, 114));
+
+        jLabel40.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+
+        jPasswordField2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jPasswordField2.setBorder(null);
+        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField2ActionPerformed(evt);
+            }
+        });
+
+        jLabel41.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel41.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel41.setText("usuarios de más bajo nivel que el tuyo, como empleados.");
+
+        jSeparator20.setBackground(new java.awt.Color(55, 147, 114));
+        jSeparator20.setForeground(new java.awt.Color(55, 147, 114));
+
+        jLabel42.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+
+        jPasswordField3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jPasswordField3.setBorder(null);
+        jPasswordField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBaseDatos1Layout = new javax.swing.GroupLayout(panelBaseDatos1);
+        panelBaseDatos1.setLayout(panelBaseDatos1Layout);
+        panelBaseDatos1Layout.setHorizontalGroup(
+            panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelSuperior2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatos1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonSiguiente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatos1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                        .addComponent(jLabel36)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatos1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                                .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSeparator20)
+                                    .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel42))
+                            .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                                .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel35))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSeparator18, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                                    .addComponent(jPasswordField2)
+                                    .addComponent(jTextField17)
+                                    .addComponent(jSeparator19))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel38)
+                                    .addComponent(jLabel40))))
+                        .addGap(107, 107, 107))
+                    .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                        .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(15, 15, 15))
+                    .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                        .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel34)
+                            .addComponent(jLabel41))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        panelBaseDatos1Layout.setVerticalGroup(
+            panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                .addComponent(panelSuperior2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel30)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel34)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel41)
+                .addGap(23, 23, 23)
+                .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                        .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel37)
+                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel38))
+                .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel35)
+                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))
+                    .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                        .addComponent(jLabel36)
+                        .addGap(22, 22, 22))
+                    .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel42))
+                    .addGroup(panelBaseDatos1Layout.createSequentialGroup()
+                        .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(48, 48, 48)
+                .addGroup(panelBaseDatos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonSiguiente2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
+        );
+
+        foregroundPanel.add(panelBaseDatos1, "card4");
+
         panelEmpresa1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -833,6 +1075,22 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
+    private void botonMinimizar2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizar2MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonMinimizar2MousePressed
+
+    private void botonCerrar2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCerrar2MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonCerrar2MousePressed
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
+
+    private void jPasswordField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -879,10 +1137,13 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private javax.swing.JPanel backgroundPanel;
     private ui.beans.Boton_MaterialDesing botonCerrar;
     private ui.beans.Boton_MaterialDesing botonCerrar1;
+    private ui.beans.Boton_MaterialDesing botonCerrar2;
     private ui.beans.Boton_MaterialDesing botonMinimizar;
     private ui.beans.Boton_MaterialDesing botonMinimizar1;
+    private ui.beans.Boton_MaterialDesing botonMinimizar2;
     private ui.beans.Boton_MaterialDesing botonSiguiente;
     private ui.beans.Boton_MaterialDesing botonSiguiente1;
+    private ui.beans.Boton_MaterialDesing botonSiguiente2;
     private javax.swing.JPanel foregroundPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -898,23 +1159,36 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField jPasswordField3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -922,7 +1196,10 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator18;
+    private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
@@ -935,6 +1212,7 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -944,10 +1222,12 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField9;
     private java.awt.Label label1;
     private javax.swing.JPanel panelBaseDatos;
+    private javax.swing.JPanel panelBaseDatos1;
     private javax.swing.JPanel panelBienvenida;
     private javax.swing.JPanel panelEmpresa1;
     private javax.swing.JPanel panelEmpresa2;
     private javax.swing.JPanel panelSuperior;
     private javax.swing.JPanel panelSuperior1;
+    private javax.swing.JPanel panelSuperior2;
     // End of variables declaration//GEN-END:variables
 }
