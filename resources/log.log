@@ -1,60 +1,53 @@
-jul 02, 2019 3:29:06 AM log.MyLogger init
+jul 02, 2019 3:34:52 AM log.MyLogger init
 INFORMACIÓN: OrderTracker iniciado...
-jul 02, 2019 3:29:07 AM Main.Main main
+jul 02, 2019 3:34:53 AM Main.Main main
 INFORMACIÓN: Se ha cerrado la aplicación.
-jul 02, 2019 3:29:08 AM util.OperacionesBDD comprobarConexion
+jul 02, 2019 3:34:59 AM util.OperacionesBDD comprobarConexion
 INFORMACIÓN: Comprobando conexión:
  	 URL:
  	 USER:
  	 PASSWORD:
-jul 02, 2019 3:29:09 AM util.OperacionesBDD comprobarConexion
+jul 02, 2019 3:34:59 AM util.OperacionesBDD comprobarConexion
 INFORMACIÓN: Conexion fallida
-jul 02, 2019 3:29:10 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Comprobando conexión:
- 	 URL:sds
- 	 USER:
- 	 PASSWORD:
-jul 02, 2019 3:29:10 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Conexion fallida
-jul 02, 2019 3:29:12 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Comprobando conexión:
- 	 URL:sds
- 	 USER:sdsd
- 	 PASSWORD:
-jul 02, 2019 3:29:12 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Conexion fallida
-jul 02, 2019 3:29:13 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Comprobando conexión:
- 	 URL:sds
- 	 USER:sdsd
- 	 PASSWORD:sds
-jul 02, 2019 3:29:13 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Conexion fallida
-jul 02, 2019 3:29:21 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Comprobando conexión:
- 	 URL:sds
- 	 USER:sdsd
- 	 PASSWORD:
-jul 02, 2019 3:29:21 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Conexion fallida
-jul 02, 2019 3:29:22 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Comprobando conexión:
- 	 URL:sds
- 	 USER:
- 	 PASSWORD:
-jul 02, 2019 3:29:22 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Conexion fallida
-jul 02, 2019 3:29:25 AM util.OperacionesBDD comprobarConexion
+jul 02, 2019 3:35:06 AM util.OperacionesBDD comprobarConexion
 INFORMACIÓN: Comprobando conexión:
  	 URL:
  	 USER:
- 	 PASSWORD:
-jul 02, 2019 3:29:25 AM util.OperacionesBDD comprobarConexion
+ 	 PASSWORD:jjj
+jul 02, 2019 3:35:06 AM util.OperacionesBDD comprobarConexion
 INFORMACIÓN: Conexion fallida
-jul 02, 2019 3:29:53 AM util.OperacionesBDD comprobarConexion
+jul 02, 2019 3:35:08 AM util.OperacionesBDD comprobarConexion
 INFORMACIÓN: Comprobando conexión:
- 	 URL:jdbc:mysql://localhost:3306/mydb
- 	 USER:root
- 	 PASSWORD:root
-jul 02, 2019 3:29:54 AM util.OperacionesBDD comprobarConexion
-INFORMACIÓN: Conexion existosa
+ 	 URL:
+ 	 USER:jjj
+ 	 PASSWORD:jjj
+jul 02, 2019 3:35:08 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:35:10 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:jjjj
+ 	 USER:jjj
+ 	 PASSWORD:jjj
+jul 02, 2019 3:35:10 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:35:51 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:jjjj
+ 	 USER:jjj
+ 	 PASSWORD:jjj
+jul 02, 2019 3:35:51 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:35:53 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:jjjj
+ 	 USER:jjj
+ 	 PASSWORD:
+jul 02, 2019 3:35:53 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:35:55 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:jjjj
+ 	 USER:
+ 	 PASSWORD:
+jul 02, 2019 3:35:55 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
