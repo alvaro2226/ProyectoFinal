@@ -33,8 +33,6 @@ public class PropertiesUtil {
         try {
             propertiesFile = new Properties();
             output = new FileOutputStream(PROPERTIES_PATH);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(PropertiesUtil.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(PropertiesUtil.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -6,11 +6,13 @@
 package Main;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import log.MyLogger;
-import ui.Dialog_IntroducirEmpresa;
+import ui.Frame_Bienvenida;
+import util.OperacionesBDD;
 import util.PropertiesUtil;
 
 /**
@@ -18,7 +20,9 @@ import util.PropertiesUtil;
  * @author Álvaro Morcillo Barbero
  */
 public class Main {
-
+    
+    private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
+    
     public static void main(String[] args) {
 
         //--------------------------
@@ -38,12 +42,13 @@ public class Main {
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-         //--------------------------
-         //Inicia la app
-         new Dialog_IntroducirEmpresa(null,true).setVisible(true);
 
-        
+            //--------------------------
+            //Inicia la app
+            new Frame_Bienvenida().setVisible(true);
+            
+            logger.info("Se ha cerrado la aplicación.");
+            
         
     }
 

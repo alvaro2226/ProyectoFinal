@@ -12,33 +12,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import log.MyLogger;
 
 /**
  * Contiene datos del servidor de base de datos, asi como métodos para
- * conectar,desconectar y realizar transacciones.
+ * conectar,desconectar y realizar transacciones. Se tiene que instanciar un
+ * objeto de esta clase, iniciar la conexion mediante "iniciarConexion()" y
+ * cerrarla desde "cerrarConexion()". Una vez abierta la conexion, podemos
+ * utilizar los metodos de esta clase para interactuar con la bdd
  *
  * @author Álvaro Morcillo Barbero
  */
 public class OperacionesBDD {
 
-    public static String URL = "jdbc:mysql://localhost:3306/mydb?zeroDateTimeBehavior=convertToNull";
+    public static String URL = "jdbc:mysql://localhost:3306/mydb";
     public static String USER = "root";
     public static String PASSWORD = "root";
     private Connection conexion;
     private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
     private Properties properties;
-    
+
     public OperacionesBDD(String URL, String USER, String PASSWORD) {
         this.URL = URL;
         this.USER = USER;
         this.PASSWORD = PASSWORD;
 
     }
-    
+
     public OperacionesBDD(){
-        
+
     }
 
     public void iniciarConexion() throws ClassNotFoundException, SQLException {
@@ -46,29 +50,67 @@ public class OperacionesBDD {
         properties = PropertiesUtil.getProperties();
         if (conexion == null) {
             Class.forName("com.mysql.jdbc.Driver");
-            
+
             //Recibe los parametros del fichero de configuracion
-            conexion = (Connection) DriverManager.getConnection(properties.getProperty("database.URL"), 
-                    properties.getProperty("database.USER"), 
+            conexion = (Connection) DriverManager.getConnection(properties.getProperty("database.URL"),
+                    properties.getProperty("database.USER"),
                     properties.getProperty("database.PASSWORD"));
-            
+
             conexion.setAutoCommit(false);
-            
+
             logger.info("Conexion con la base de datos establecida correctamente.");
-        }else{
+        } else {
             logger.warning("Se ha intentado establecer una conexion con la base de"
                     + "datos cuando ya se estaba conectado");
         }
 
     }
 
+    /**
+     * Metodo estático que comprueba se realiza una conexion exitosa a la base
+     * de datos segun los parámetros introducidos.
+     *
+     * @param URL
+     * @param USER
+     * @param PASSWORD
+     * @return true si la conexion se realiza correctamente
+     */
+    public static boolean comprobarConexion(String URL, String USER, String PASSWORD) {
+
+        boolean conexionEstablecida = false;
+        logger.info("Comprobando conexión:"
+                + "\n \t URL:" + URL
+                + "\n \t USER:" + USER
+                + "\n \t PASSWORD:" + PASSWORD);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conexionPrueba;
+
+            conexionPrueba = (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
+
+            conexionEstablecida = true;
+            conexionPrueba.close();
+            logger.info("Conexion existosa");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            
+            conexionEstablecida = false;
+        }
+
+        if(!conexionEstablecida){
+            logger.info("Conexion fallida");
+        }
+        return conexionEstablecida;
+    }
+
     public void cerrarConexion() throws SQLException {
 
         if (conexion != null) {
             conexion.close();
-            
+
             logger.info("Se ha finalizado la conexion con la base de datos correctamente");
-        }else{
+        } else {
             logger.warning("La conexion con la base de datos ya estaba cerrada");
         }
 
@@ -94,7 +136,7 @@ public class OperacionesBDD {
             String provincia, String codigoPostal, String pais) throws SQLException {
 
         boolean transaccionCompletada = false;
-        
+
         //Comprueba que no exista otra empresa
         Statement st = conexion.createStatement();
         ResultSet rs = st.executeQuery("SELECT * FROM datos_empresa");
@@ -133,10 +175,10 @@ public class OperacionesBDD {
                 psEmpresa.executeUpdate();
                 conexion.commit();
                 transaccionCompletada = true;
-                
+
             } else {
                 logger.info("Email introducido no válido");
-                
+
             }
 
             if (transaccionCompletada) {

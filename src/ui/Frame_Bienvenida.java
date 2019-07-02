@@ -6,6 +6,7 @@
 package ui;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Image;
 import java.sql.SQLException;
@@ -13,29 +14,38 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import util.OperacionesBDD;
 
 /**
  *
  * @author Álvaro Morcillo Barbero
  */
-public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
+public class Frame_Bienvenida extends JFrame {
 
     private CardLayout cardLayout;
-    private final static Logger logger = Logger.getLogger(Dialog_IntroducirEmpresa.class.getName());
+    private final static Logger logger = Logger.getLogger(Frame_Bienvenida.class.getName());
+    private OperacionesBDD operacionesBDD;
+    private boolean conexionEstablecida = false;
 
     /**
      * Creates new form Dialog_IntroducirEmpresa
      */
-    public Dialog_IntroducirEmpresa(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public Frame_Bienvenida() {
+
         initComponents();
 
         cardLayout = (CardLayout) foregroundPanel.getLayout();
         setLocationRelativeTo(null);
-
+        lblConsola.setVisible(false);
+        botonSiguiente1.setEnabled(false);
+        operacionesBDD = new OperacionesBDD();
+        
+        cancelarURL.setVisible(false);
+        cancelarUsuario.setVisible(false);
+        cancelarContraseña.setVisible(false);
         /*
-        OperacionesBDD operacionesBDD = new OperacionesBDD();
         try {
             
             operacionesBDD.iniciarConexion();
@@ -45,11 +55,32 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
             operacionesBDD.cerrarConexion();
             
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Dialog_IntroducirEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Frame_Bienvenida.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Dialog_IntroducirEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Frame_Bienvenida.class.getName()).log(Level.SEVERE, null, ex);
         }
          */
+    }
+
+    /**
+     * Este método recibe un label, el cual cambiará el color y el texto según
+     * los parámetros introducidos. ATENCION Lo hace visible
+     *
+     * @param label
+     * @param bool
+     * @param mensaje
+     */
+    private void mensajeConsola(JLabel label, String mensaje, boolean bool) {
+        label.setText(mensaje);
+        if (bool) {
+            label.setForeground(Color.GREEN.darker());
+        } else {
+            label.setForeground(Color.RED);
+        }
+
+        if (!label.isVisible()) {
+            label.setVisible(true);
+        }
     }
 
     /**
@@ -84,17 +115,20 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        lblUser = new javax.swing.JTextField();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel27 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
+        cancelarURL = new javax.swing.JLabel();
         jSeparator15 = new javax.swing.JSeparator();
-        jTextField16 = new javax.swing.JTextField();
+        lblURL = new javax.swing.JTextField();
         jSeparator16 = new javax.swing.JSeparator();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        cancelarUsuario = new javax.swing.JLabel();
+        cancelarContraseña = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JPasswordField();
+        jLabel48 = new javax.swing.JLabel();
+        botonComprobarConexion = new java.awt.Button();
+        lblConsola = new javax.swing.JLabel();
         panelBaseDatos1 = new javax.swing.JPanel();
         panelSuperior2 = new javax.swing.JPanel();
         botonMinimizar2 = new ui.beans.Boton_MaterialDesing();
@@ -381,9 +415,9 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
         jLabel23.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel23.setText("Usuario:");
 
-        jTextField14.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
-        jTextField14.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField14.setBorder(null);
+        lblUser.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
+        lblUser.setForeground(new java.awt.Color(51, 51, 51));
+        lblUser.setBorder(null);
 
         jSeparator14.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator14.setForeground(new java.awt.Color(55, 147, 114));
@@ -394,44 +428,57 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
         jLabel29.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel29.setText("URL:");
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        cancelarURL.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelarURL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
 
         jSeparator15.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator15.setForeground(new java.awt.Color(55, 147, 114));
 
-        jTextField16.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
-        jTextField16.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField16.setBorder(null);
+        lblURL.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
+        lblURL.setForeground(new java.awt.Color(51, 51, 51));
+        lblURL.setBorder(null);
 
         jSeparator16.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator16.setForeground(new java.awt.Color(55, 147, 114));
 
-        jLabel32.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        cancelarUsuario.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        cancelarContraseña.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelarContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
 
-        jPasswordField1.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jPasswordField1.setBorder(null);
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        lblPassword.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        lblPassword.setBorder(null);
+        lblPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                lblPasswordActionPerformed(evt);
             }
         });
+
+        jLabel48.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel48.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel48.setText("Comprobar conexión");
+
+        botonComprobarConexion.setBackground(new java.awt.Color(0, 204, 102));
+        botonComprobarConexion.setForeground(new java.awt.Color(51, 51, 0));
+        botonComprobarConexion.setLabel("OK");
+        botonComprobarConexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonComprobarConexionActionPerformed(evt);
+            }
+        });
+
+        lblConsola.setBackground(new java.awt.Color(255, 255, 255));
+        lblConsola.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        lblConsola.setForeground(new java.awt.Color(0, 204, 0));
+        lblConsola.setText("Conexión establecida correctamente");
 
         javax.swing.GroupLayout panelBaseDatosLayout = new javax.swing.GroupLayout(panelBaseDatos);
         panelBaseDatos.setLayout(panelBaseDatosLayout);
         panelBaseDatosLayout.setHorizontalGroup(
             panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelSuperior1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatosLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonSiguiente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatosLayout.createSequentialGroup()
                 .addGap(2, 41, Short.MAX_VALUE)
                 .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,18 +487,7 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
                             .addComponent(jLabel26)
                             .addComponent(jLabel25))
                         .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelBaseDatosLayout.createSequentialGroup()
-                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatosLayout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel33)
-                            .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatosLayout.createSequentialGroup()
                             .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(panelBaseDatosLayout.createSequentialGroup()
@@ -464,16 +500,39 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
                                 .addGroup(panelBaseDatosLayout.createSequentialGroup()
                                     .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jSeparator16)
-                                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblURL, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel31))
+                                    .addComponent(cancelarURL))
                                 .addGroup(panelBaseDatosLayout.createSequentialGroup()
                                     .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jSeparator14)
-                                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel32)))
-                            .addGap(53, 53, 53)))))
+                                    .addComponent(cancelarUsuario)))
+                            .addGap(53, 53, 53))
+                        .addGroup(panelBaseDatosLayout.createSequentialGroup()
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatosLayout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cancelarContraseña)
+                            .addContainerGap())
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatosLayout.createSequentialGroup()
+                            .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelBaseDatosLayout.createSequentialGroup()
+                                    .addComponent(jLabel48)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(botonComprobarConexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblConsola, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel24)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(botonSiguiente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap()))))
         );
         panelBaseDatosLayout.setVerticalGroup(
             panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -490,17 +549,17 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel29)
                                 .addGroup(panelBaseDatosLayout.createSequentialGroup()
-                                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblURL, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(1, 1, 1)
                                     .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(cancelarURL, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(27, 27, 27)
                         .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel32)
+                            .addComponent(cancelarUsuario)
                             .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel23)
                                 .addGroup(panelBaseDatosLayout.createSequentialGroup()
-                                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(1, 1, 1)
                                     .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(34, 34, 34)
@@ -509,14 +568,23 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
                                 .addGap(1, 1, 1)
                                 .addComponent(jLabel27))
                             .addGroup(panelBaseDatosLayout.createSequentialGroup()
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(1, 1, 1)
                                 .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel33))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonSiguiente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cancelarContraseña))
+                .addGap(18, 18, 18)
+                .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBaseDatosLayout.createSequentialGroup()
+                        .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botonComprobarConexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel48))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addComponent(botonSiguiente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelBaseDatosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelBaseDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblConsola))))
                 .addGap(14, 14, 14))
         );
 
@@ -1202,9 +1270,7 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEmpresa2Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(panelEmpresa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelEmpresa2Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(201, 201, 201))
+                    .addComponent(jLabel12)
                     .addGroup(panelEmpresa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1359,13 +1425,14 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     }//GEN-LAST:event_botonCerrar1MousePressed
 
     private void botonSiguienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSiguienteMousePressed
-        // TODO add your handling code here:
+
         cardLayout.next(foregroundPanel);
+
     }//GEN-LAST:event_botonSiguienteMousePressed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void lblPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_lblPasswordActionPerformed
 
     private void botonMinimizar2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizar2MousePressed
         // TODO add your handling code here:
@@ -1400,32 +1467,75 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     }//GEN-LAST:event_botonCerrar4MousePressed
 
     private void botonSiguiente1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSiguiente1MousePressed
-     cardLayout.next(foregroundPanel);
+        if (conexionEstablecida) {
+            cardLayout.next(foregroundPanel);
+        }
     }//GEN-LAST:event_botonSiguiente1MousePressed
 
     private void botonSiguiente2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSiguiente2MousePressed
-     cardLayout.next(foregroundPanel);
+        cardLayout.next(foregroundPanel);
     }//GEN-LAST:event_botonSiguiente2MousePressed
 
     private void botonSiguiente3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSiguiente3MousePressed
-     cardLayout.next(foregroundPanel);
+        cardLayout.next(foregroundPanel);
     }//GEN-LAST:event_botonSiguiente3MousePressed
 
     private void botonSiguiente4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSiguiente4MousePressed
-     cardLayout.next(foregroundPanel);
+        cardLayout.next(foregroundPanel);
     }//GEN-LAST:event_botonSiguiente4MousePressed
 
     private void boton_MaterialDesing3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_MaterialDesing3MousePressed
-     cardLayout.previous(foregroundPanel);
+        cardLayout.previous(foregroundPanel);
     }//GEN-LAST:event_boton_MaterialDesing3MousePressed
 
     private void boton_MaterialDesing4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_MaterialDesing4MousePressed
-     cardLayout.previous(foregroundPanel);
+        cardLayout.previous(foregroundPanel);
     }//GEN-LAST:event_boton_MaterialDesing4MousePressed
 
     private void boton_MaterialDesing5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_MaterialDesing5MousePressed
-     cardLayout.previous(foregroundPanel);
+        cardLayout.previous(foregroundPanel);
     }//GEN-LAST:event_boton_MaterialDesing5MousePressed
+
+    private void botonComprobarConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComprobarConexionActionPerformed
+
+        //*****************************
+        //Comprueba que los campos de texto no estén vacios
+        //Activa/Desactiva los iconos de cancelar
+        if (lblURL.getText().equals("")) {
+            cancelarURL.setVisible(true);
+        } else {
+            cancelarURL.setVisible(false);
+        }
+        if (lblUser.getText().equals("")) {
+            cancelarUsuario.setVisible(true);
+        } else {
+            cancelarUsuario.setVisible(false);
+        }
+        if (String.valueOf(lblPassword.getPassword()).equals("")) {
+            cancelarContraseña.setVisible(true);
+        } else {
+            cancelarContraseña.setVisible(false);
+        }
+        
+        //****************************
+        
+        //***************************
+        //Comprueba la conexion
+        conexionEstablecida = OperacionesBDD.comprobarConexion(this.lblURL.getText(),
+                this.lblUser.getText(),
+                String.valueOf(this.lblPassword.getPassword()));
+
+        //Muestra el mensaje en la consola
+        if (conexionEstablecida) {
+            mensajeConsola(lblConsola, "Conexion establecida correctamente", true);
+            botonSiguiente1.setEnabled(true);
+        } else {
+            mensajeConsola(lblConsola, "No se ha podido establecer la conexion", false);
+            botonSiguiente1.setEnabled(false);
+        }
+        //***************************
+
+    }//GEN-LAST:event_botonComprobarConexionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1444,20 +1554,21 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dialog_IntroducirEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Bienvenida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dialog_IntroducirEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Bienvenida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dialog_IntroducirEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Bienvenida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dialog_IntroducirEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Bienvenida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Dialog_IntroducirEmpresa dialog = new Dialog_IntroducirEmpresa(new javax.swing.JFrame(), true);
+                Frame_Bienvenida dialog = new Frame_Bienvenida();
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -1476,6 +1587,7 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private ui.beans.Boton_MaterialDesing botonCerrar2;
     private ui.beans.Boton_MaterialDesing botonCerrar3;
     private ui.beans.Boton_MaterialDesing botonCerrar4;
+    private java.awt.Button botonComprobarConexion;
     private ui.beans.Boton_MaterialDesing botonMinimizar;
     private ui.beans.Boton_MaterialDesing botonMinimizar1;
     private ui.beans.Boton_MaterialDesing botonMinimizar2;
@@ -1490,6 +1602,9 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private ui.beans.Boton_MaterialDesing boton_MaterialDesing3;
     private ui.beans.Boton_MaterialDesing boton_MaterialDesing4;
     private ui.beans.Boton_MaterialDesing boton_MaterialDesing5;
+    private javax.swing.JLabel cancelarContraseña;
+    private javax.swing.JLabel cancelarURL;
+    private javax.swing.JLabel cancelarUsuario;
     private javax.swing.JPanel foregroundPanel;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1511,9 +1626,6 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -1529,6 +1641,7 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
@@ -1544,7 +1657,6 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JPasswordField jPasswordField3;
     private javax.swing.JSeparator jSeparator1;
@@ -1568,8 +1680,6 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -1579,6 +1689,10 @@ public class Dialog_IntroducirEmpresa extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private java.awt.Label label1;
+    private javax.swing.JLabel lblConsola;
+    private javax.swing.JPasswordField lblPassword;
+    private javax.swing.JTextField lblURL;
+    private javax.swing.JTextField lblUser;
     private javax.swing.JPanel panelBaseDatos;
     private javax.swing.JPanel panelBaseDatos1;
     private javax.swing.JPanel panelBienvenida;

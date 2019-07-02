@@ -1,2 +1,60 @@
-jul 01, 2019 12:37:59 AM log.MyLogger init
-INFORMACIÓN: Track your Order iniciado...
+jul 02, 2019 3:29:06 AM log.MyLogger init
+INFORMACIÓN: OrderTracker iniciado...
+jul 02, 2019 3:29:07 AM Main.Main main
+INFORMACIÓN: Se ha cerrado la aplicación.
+jul 02, 2019 3:29:08 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:
+ 	 USER:
+ 	 PASSWORD:
+jul 02, 2019 3:29:09 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:29:10 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:sds
+ 	 USER:
+ 	 PASSWORD:
+jul 02, 2019 3:29:10 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:29:12 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:sds
+ 	 USER:sdsd
+ 	 PASSWORD:
+jul 02, 2019 3:29:12 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:29:13 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:sds
+ 	 USER:sdsd
+ 	 PASSWORD:sds
+jul 02, 2019 3:29:13 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:29:21 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:sds
+ 	 USER:sdsd
+ 	 PASSWORD:
+jul 02, 2019 3:29:21 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:29:22 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:sds
+ 	 USER:
+ 	 PASSWORD:
+jul 02, 2019 3:29:22 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:29:25 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:
+ 	 USER:
+ 	 PASSWORD:
+jul 02, 2019 3:29:25 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion fallida
+jul 02, 2019 3:29:53 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Comprobando conexión:
+ 	 URL:jdbc:mysql://localhost:3306/mydb
+ 	 USER:root
+ 	 PASSWORD:root
+jul 02, 2019 3:29:54 AM util.OperacionesBDD comprobarConexion
+INFORMACIÓN: Conexion existosa

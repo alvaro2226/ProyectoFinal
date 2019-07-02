@@ -36,7 +36,7 @@ public class MyLogger {
         l.addHandler(fh);
         l.setLevel(Level.CONFIG);
         
-        logger.info("Track your Order iniciado...");
+        logger.info("OrderTracker iniciado...");
     }
 
     /**
