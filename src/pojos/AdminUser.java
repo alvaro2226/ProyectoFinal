@@ -46,5 +46,10 @@ public class AdminUser {
 
     public AdminUser() {
     }
+
+    @Override
+    public String toString() {
+        return "AdminUser{" + "username=" + username + ", password=" + password + '}';
+    }
     
 }

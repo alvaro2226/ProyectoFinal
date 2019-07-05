@@ -128,5 +128,10 @@ public class Empresa {
     public void setPaypal(String paypal) {
         this.paypal = paypal;
     }
+
+    @Override
+    public String toString() {
+        return "Empresa{" + "calle=" + calle + ", localidad=" + localidad + ", provincia=" + provincia + ", codigoPostal=" + codigoPostal + ", pais=" + pais + ", nombre=" + nombre + ", formaJuridica=" + formaJuridica + ", CIF=" + CIF + ", telefono=" + telefono + ", email=" + email + ", paypal=" + paypal + '}';
+    }
     
 }

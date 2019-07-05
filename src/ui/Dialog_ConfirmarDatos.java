@@ -45,6 +45,11 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     AdminUser adminUser;
     /**
      * Creates new form NewOkCancelDialog
+     * @param parent
+     * @param modal
+     * @param empresa
+     * @param database
+     * @param adminUser
      */
     public Dialog_ConfirmarDatos(java.awt.Frame parent, boolean modal,
             Empresa empresa,Database database,AdminUser adminUser) {
@@ -55,6 +60,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         this.empresa = empresa;
         
         initComponents();
+        setLocationRelativeTo(parent);
 
         // Close the dialog when Esc is pressed
         String cancelName = "cancel";

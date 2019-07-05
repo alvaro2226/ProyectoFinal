@@ -31,6 +31,11 @@ public class Database {
         this.URL = URL;
     }
 
+    @Override
+    public String toString() {
+        return "Database{" + "URL=" + URL + ", User=" + User + ", Password=" + Password + '}';
+    }
+
     public String getUser() {
         return User;
     }

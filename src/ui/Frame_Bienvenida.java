@@ -49,6 +49,7 @@ public class Frame_Bienvenida extends JFrame {
     private AdminUser adminUser;
     private Database database;
     private Empresa empresa;
+    private boolean omitirComprobaciones = true; //TRUE para omitir todos las comprobaciones 
 
     /**
      * Creates new form Dialog_IntroducirEmpresa
@@ -60,13 +61,12 @@ public class Frame_Bienvenida extends JFrame {
         cardLayout = (CardLayout) panelSlider.getLayout();
         setLocationRelativeTo(null);
         operacionesBDD = new OperacionesBDD();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        
         adminUser = new AdminUser();
         database = new Database();
         empresa = new Empresa();
-        
-        
+
         ocultarIconos();
         /*
         try {
@@ -91,7 +91,7 @@ public class Frame_Bienvenida extends JFrame {
     private void ocultarIconos() {
 
         progressCircle.setVisible(false);
-        
+
         //Mensajes de consola
         lblConsola.setVisible(false);
         lblConsola2.setVisible(false);
@@ -1012,8 +1012,8 @@ public class Frame_Bienvenida extends JFrame {
             Util.mensajeConsola(lblConsola, "No se ha podido establecer la conexion", false);
         }
         //***************************
-        
-         progressCircle.setVisible(false);
+
+        progressCircle.setVisible(false);
     }//GEN-LAST:event_botonComprobarConexionActionPerformed
 
     private void lblPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblPasswordActionPerformed
@@ -1035,23 +1035,23 @@ public class Frame_Bienvenida extends JFrame {
     private void botonSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente2ActionPerformed
 
         boolean todoCorrecto = false;
-        
+
         ArrayList<JTextComponent> componentes = new ArrayList<JTextComponent>();
         componentes.add(lblURL);
         componentes.add(lblUser);
         componentes.add(lblPassword);
 
         //Se comprueba si los campos están vacíos
-        if(Util.comprobarCamposVacíos(componentes)){
+        if (Util.comprobarCamposVacíos(componentes)) {
             Util.mensajeConsola(lblConsola, "Hay algún campo vacío", false);
-        }else{
+        } else {
             todoCorrecto = true;
         }
-        
+
         //DESCOMENTAR LO SIGUIENTE PARA QUE PUEDA FUNCIONAR CORRECTAMENTE
-        if (todoCorrecto /*&& conexionEstablecida*/){
+        if (todoCorrecto || omitirComprobaciones  /*&& conexionEstablecida*/) {
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
-            
+
             database.setURL(lblURL.getText());
             database.setUser(lblURL.getText());
             database.setPassword(lblURL.getText());
@@ -1083,9 +1083,9 @@ public class Frame_Bienvenida extends JFrame {
             }
         }
 
-        if (todoCorrecto) {
+        if (todoCorrecto || omitirComprobaciones) {
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
-            
+
             adminUser.setUsername(textField_NombreAdmin.getText());
             adminUser.setPassword(String.valueOf(jPasswordField_contraAdmin.getPassword()));
         }
@@ -1093,64 +1093,65 @@ public class Frame_Bienvenida extends JFrame {
     }//GEN-LAST:event_botonSiguiente3ActionPerformed
 
     private void botonSiguiente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente4ActionPerformed
-        
+
         boolean todoCorrecto = false;
-        
+
         ArrayList<JTextComponent> componentes = new ArrayList<JTextComponent>();
         componentes.add(this.textField_NombreEmpresa);
         componentes.add(this.textField_CIF);
         componentes.add(this.textField_FM);
         componentes.add(this.textField_paypal);
         componentes.add(this.textField_telefono);
-        
-        if(Util.comprobarCamposVacíos(componentes)){
+
+        if (Util.comprobarCamposVacíos(componentes)) {
             todoCorrecto = false;
             Util.mensajeConsola(lblConsola3, "Hay algún campo vacío", false);
-        }else{
+        } else {
             todoCorrecto = true;
         }
-        
-        if(todoCorrecto){
+
+        if (todoCorrecto || omitirComprobaciones ) {
+
+            empresa.setNombre(this.textField_NombreEmpresa.getText());
+            empresa.setFormaJuridica(this.textField_FM.getText());
+            empresa.setCIF(this.textField_CIF.getText());
+            empresa.setTelefono(this.textField_telefono.getText());
+            empresa.setEmail(this.textField_Email.getText());
+
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
-            
-            empresa.setCalle(this.textField_calle.getText());
-            empresa.setLocalidad(this.textField_localidad.getText());
-            empresa.setProvincia(this.textField_provincia.getText());
-            empresa.setPais(this.textField_pais.getText());
-            empresa.setCodigoPostal(this.textField_CP.getText());
-   
+
         }
     }//GEN-LAST:event_botonSiguiente4ActionPerformed
 
     private void botonSiguiente5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente5ActionPerformed
-        
+
         boolean todoCorrecto = false;
-        
+
         ArrayList<JTextComponent> componentes = new ArrayList<JTextComponent>();
         componentes.add(this.textField_calle);
         componentes.add(this.textField_localidad);
         componentes.add(this.textField_provincia);
         componentes.add(this.textField_pais);
         componentes.add(this.textField_CP);
-        
-               
-        if(Util.comprobarCamposVacíos(componentes)){
+
+        if (Util.comprobarCamposVacíos(componentes)) {
             todoCorrecto = false;
             Util.mensajeConsola(lblConsola4, "Hay algún campo vacío", false);
-        }else{
+        } else {
             todoCorrecto = true;
-            
-            empresa.setNombre(this.textField_NombreEmpresa.getText());
-            empresa.setFormaJuridica(this.textField_FM.getText());
-            empresa.setCIF(this.textField_CIF.getText());
-            empresa.setTelefono(this.textField_telefono.getText());
-            empresa.setEmail(this.textField_Email.getText());
+
         }
-        
-        if(todoCorrecto){
-            new Dialog_ConfirmarDatos(this,true,empresa,database,adminUser).setVisible(true);
+
+        if (todoCorrecto || omitirComprobaciones ) {
+            empresa.setCalle(this.textField_calle.getText());
+            empresa.setLocalidad(this.textField_localidad.getText());
+            empresa.setProvincia(this.textField_provincia.getText());
+            empresa.setPais(this.textField_pais.getText());
+            empresa.setCodigoPostal(this.textField_CP.getText());
+            System.out.println(empresa.toString());
+            new Dialog_ConfirmarDatos(this, true, empresa, database, adminUser).setVisible(true);
         }
-        
+
     }//GEN-LAST:event_botonSiguiente5ActionPerformed
 
     /**
