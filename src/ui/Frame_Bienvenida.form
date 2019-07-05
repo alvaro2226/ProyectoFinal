@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="java.awt.Label" name="label1">
       <Properties>
@@ -92,57 +92,8 @@
                 </Constraint>
               </Constraints>
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="panelSuperior" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace pref="27" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel20" min="-2" pref="260" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="25" max="32767" attributes="0"/>
-                                  <Component id="jLabel16" min="-2" pref="273" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="botonSiguiente" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="panelSuperior" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="botonSiguiente" max="32767" attributes="0"/>
-                              <Component id="jLabel15" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="panelSuperior">
@@ -151,60 +102,36 @@
                       <Color blue="c6" green="86" red="4f" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="0" y="0" width="640" height="80"/>
+                    </Constraint>
+                  </Constraints>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabel19" min="-2" pref="192" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                              <Component id="botonMinimizar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="botonCerrar" min="-2" max="-2" attributes="0"/>
+                              <Component id="rSPanelImage2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="120" max="32767" attributes="0"/>
+                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="botonCerrar" min="-2" max="-2" attributes="0"/>
-                                  <Component id="botonMinimizar" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jLabel19" alignment="0" pref="80" max="32767" attributes="0"/>
+                                  <Component id="rSPanelImage2" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jLabel19" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="ui.beans.Boton_MaterialDesing" name="botonMinimizar">
-                      <Properties>
-                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonMinimizarMousePressed"/>
-                      </Events>
-                    </Component>
-                    <Component class="ui.beans.Boton_MaterialDesing" name="botonCerrar">
-                      <Properties>
-                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,89,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,91,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonCerrarMousePressed"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel19">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -219,6 +146,26 @@
                         <Property name="text" type="java.lang.String" value="&#xa1;Bienvenido!"/>
                       </Properties>
                     </Component>
+                    <Container class="rojerusan.RSPanelImage" name="rSPanelImage2">
+                      <Properties>
+                        <Property name="imagen" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/ui/images/logo/logo_transparent.png"/>
+                        </Property>
+                      </Properties>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                    </Container>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JLabel" name="jLabel11">
@@ -227,13 +174,15 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Light" size="24" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
+                      <Font name="Segoe UI Light" size="22" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="&lt;html&gt;No te preocupes, solo tendr&#xe1;s&lt;br/&gt;que configurar algunos &lt;br/&gt;par&#xe1;metros y podr&#xe1;s empezar&lt;br&gt;a utilizar la aplicaci&#xf3;n&lt;/br&gt;&lt;/html&gt;"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="20" y="270" width="340" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel16">
                   <Properties>
@@ -241,6 +190,11 @@
                       <Image iconType="3" name="/ui/images/logo/logo_transparent_1.png"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="350" y="120" width="270" height="230"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
                   <Properties>
@@ -250,27 +204,13 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="24" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="1/5"/>
                   </Properties>
-                </Component>
-                <Component class="ui.beans.Boton_MaterialDesing" name="botonSiguiente">
-                  <Properties>
-                    <Property name="colorSombreado" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="66" green="66" red="0" type="rgb"/>
-                    </Property>
-                    <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,88,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,114,105,103,104,116,95,97,114,114,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                    <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,90,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,114,105,103,104,116,95,97,114,114,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonSiguienteMousePressed"/>
-                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="460" y="430" width="40" height="40"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
                   <Properties>
@@ -280,11 +220,29 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="24" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa1;Vaya! , parece que es la&lt;br/&gt;primera vez que utilizas &lt;br/&gt;&lt;b&gt;OrderTracker&lt;/b&gt;.&lt;/html&gt;"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="20" y="130" width="350" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="rojerusan.RSButtonMetro" name="botonSiguiente">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="c6" green="86" red="4f" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Siguiente"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSiguienteActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="510" y="430" width="120" height="40"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
               </SubComponents>
             </Container>
@@ -300,278 +258,25 @@
                 </Constraint>
               </Constraints>
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="panelSuperior1" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="2" pref="41" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jSeparator16" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="lblURL" alignment="0" min="-2" pref="368" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="cancelarURL" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jSeparator14" max="32767" attributes="0"/>
-                                                  <Component id="lblUser" min="-2" pref="368" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="cancelarUsuario" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel27" min="-2" pref="101" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblPassword" alignment="0" min="-2" pref="370" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                              <Component id="jSeparator15" min="-2" pref="368" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="cancelarContraseña" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="botonComprobarConexion" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="lblConsola" min="-2" pref="425" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="botonSiguiente1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="panelSuperior1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblURL" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                              <Component id="jSeparator16" min="-2" pref="10" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="cancelarURL" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="cancelarUsuario" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblUser" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                              <Component id="jSeparator14" min="-2" pref="10" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                          <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblPassword" min="-2" pref="28" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                          <Component id="jSeparator15" min="-2" pref="10" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Component id="cancelarContraseña" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="botonComprobarConexion" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="11" max="32767" attributes="0"/>
-                                  <Component id="botonSiguiente1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel24" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                                      <Component id="lblConsola" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="panelSuperior1">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c6" green="86" red="4f" type="rgb"/>
-                    </Property>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="jLabel21" min="-2" pref="398" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="botonMinimizar1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="botonCerrar1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="botonCerrar1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="botonMinimizar1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel21" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="ui.beans.Boton_MaterialDesing" name="botonMinimizar1">
-                      <Properties>
-                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonMinimizar1MousePressed"/>
-                      </Events>
-                    </Component>
-                    <Component class="ui.beans.Boton_MaterialDesing" name="botonCerrar1">
-                      <Properties>
-                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,89,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,91,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonCerrar1MousePressed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel21">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="36" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Crear una base de datos"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JLabel" name="jLabel24">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Light" size="24" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="2/5"/>
-                  </Properties>
-                </Component>
-                <Component class="ui.beans.Boton_MaterialDesing" name="botonSiguiente1">
-                  <Properties>
-                    <Property name="colorSombreado" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="66" green="66" red="0" type="rgb"/>
-                    </Property>
-                    <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,88,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,114,105,103,104,116,95,97,114,114,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                    <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,90,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,114,105,103,104,116,95,97,114,114,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonSiguiente1MousePressed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel25">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Light" size="24" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
+                      <Font name="Segoe UI Light" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Necesitamos una base de datos para que puedas utilizar"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="30" y="100" width="520" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel26">
                   <Properties>
@@ -581,58 +286,52 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="24" style="1"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="OrderTracker"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="30" y="120" width="180" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel23">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Light" size="18" style="1"/>
+                      <Font name="Segoe UI Light" size="16" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Usuario:"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="lblUser">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Courier New" size="15" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JSeparator" name="jSeparator14">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="72" green="93" red="37" type="rgb"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="72" green="93" red="37" type="rgb"/>
-                    </Property>
-                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="40" y="250" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel27">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Light" size="18" style="1"/>
+                      <Font name="Segoe UI Light" size="16" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="40" y="320" width="130" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel29">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Light" size="18" style="1"/>
+                      <Font name="Segoe UI Light" size="16" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="URL:"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="40" y="190" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="cancelarURL">
                   <Properties>
@@ -643,6 +342,11 @@
                       <Image iconType="3" name="/ui/images/icons8_cancel_26px_1.png"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="570" y="190" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator15">
                   <Properties>
@@ -653,19 +357,26 @@
                       <Color blue="72" green="93" red="37" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="180" y="350" width="370" height="10"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="lblURL">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Courier New" size="15" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="180" y="180" width="368" height="25"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator16">
                   <Properties>
@@ -676,6 +387,11 @@
                       <Color blue="72" green="93" red="37" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="180" y="210" width="368" height="10"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="cancelarUsuario">
                   <Properties>
@@ -686,6 +402,11 @@
                       <Image iconType="3" name="/ui/images/icons8_cancel_26px_1.png"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="570" y="260" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="cancelarContrase&#xf1;a">
                   <Properties>
@@ -696,6 +417,11 @@
                       <Image iconType="3" name="/ui/images/icons8_cancel_26px_1.png"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="570" y="330" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JPasswordField" name="lblPassword">
                   <Properties>
@@ -709,6 +435,11 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblPasswordActionPerformed"/>
                   </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="180" y="320" width="370" height="28"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel48">
                   <Properties>
@@ -718,11 +449,13 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="18" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Comprobar conexi&#xf3;n"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="40" y="380" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="java.awt.Button" name="botonComprobarConexion">
                   <Properties>
@@ -737,6 +470,11 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonComprobarConexionActionPerformed"/>
                   </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="240" y="380" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblConsola">
                   <Properties>
@@ -751,6 +489,173 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Conexi&#xf3;n establecida correctamente"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="40" y="440" width="425" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="lblUser">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Courier New" size="15" style="0"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="180" y="250" width="368" height="25"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="jSeparator17">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="72" green="93" red="37" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="72" green="93" red="37" type="rgb"/>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="180" y="280" width="368" height="10"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Container class="javax.swing.JPanel" name="panelSuperior1">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="c6" green="86" red="4f" type="rgb"/>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="0" y="0" width="640" height="80"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="rSPanelImage3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
+                              <Component id="botonMinimizar1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="botonCerrar1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jLabel21" alignment="0" pref="80" max="32767" attributes="0"/>
+                                  <Component id="botonCerrar1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="botonMinimizar1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rSPanelImage3" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="ui.beans.Boton_MaterialDesing" name="botonMinimizar1">
+                      <Properties>
+                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
+                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,47,68,114,111,112,98,111,120,47,68,65,77,47,80,114,111,121,101,99,116,111,32,70,105,110,97,108,47,80,114,111,121,101,99,116,111,47,115,114,99,47,117,105,47,105,109,97,103,101,115,47,98,111,116,111,110,101,115,47,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,47,120"/>
+                        </Property>
+                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
+                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,47,68,114,111,112,98,111,120,47,68,65,77,47,80,114,111,121,101,99,116,111,32,70,105,110,97,108,47,80,114,111,121,101,99,116,111,47,115,114,99,47,117,105,47,105,109,97,103,101,115,47,98,111,116,111,110,101,115,47,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,47,120"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonMinimizar1MousePressed"/>
+                      </Events>
+                    </Component>
+                    <Component class="ui.beans.Boton_MaterialDesing" name="botonCerrar1">
+                      <Properties>
+                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
+                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,89,68,58,47,68,114,111,112,98,111,120,47,68,65,77,47,80,114,111,121,101,99,116,111,32,70,105,110,97,108,47,80,114,111,121,101,99,116,111,47,115,114,99,47,117,105,47,105,109,97,103,101,115,47,98,111,116,111,110,101,115,47,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,46,112,110,103,119,2,0,47,120"/>
+                        </Property>
+                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
+                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,91,68,58,47,68,114,111,112,98,111,120,47,68,65,77,47,80,114,111,121,101,99,116,111,32,70,105,110,97,108,47,80,114,111,121,101,99,116,111,47,115,114,99,47,117,105,47,105,109,97,103,101,115,47,98,111,116,111,110,101,115,47,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,47,120"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonCerrar1MousePressed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel21">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Light" size="24" style="0"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Creaci&#xf3;n de la base de datos"/>
+                      </Properties>
+                    </Component>
+                    <Container class="rojerusan.RSPanelImage" name="rSPanelImage3">
+                      <Properties>
+                        <Property name="imagen" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/ui/images/logo/logo_transparent.png"/>
+                        </Property>
+                      </Properties>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Component class="rojerusan.RSButtonMetro" name="rSButtonMetro2">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="c6" green="86" red="4f" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Siguiente"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="510" y="430" width="120" height="40"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel22">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Light" size="24" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="2/5"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="460" y="430" width="40" height="40"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
               </SubComponents>
             </Container>
@@ -769,23 +674,14 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="panelSuperior2" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
-                          <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel37" alignment="0" min="-2" pref="208" max="-2" attributes="0"/>
-                                              <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel37" min="-2" pref="208" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jSeparator18" pref="265" max="32767" attributes="0"/>
                                               <Component id="jPasswordField2" max="32767" attributes="0"/>
@@ -800,20 +696,19 @@
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="jSeparator20" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="jPasswordField3" alignment="0" min="-2" pref="265" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="boton_MaterialDesing3" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace pref="154" max="32767" attributes="0"/>
                                                   <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                                  <Component id="boton_MaterialDesing1" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="jSeparator20" alignment="0" min="-2" pref="265" max="-2" attributes="0"/>
+                                                          <Component id="jPasswordField3" alignment="0" min="-2" pref="265" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="jLabel43" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -822,15 +717,13 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                   <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="botonSiguiente2" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel30" max="32767" attributes="0"/>
                                   <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
@@ -839,6 +732,7 @@
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
@@ -853,49 +747,52 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="panelSuperior2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                           <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel28" max="32767" attributes="0"/>
-                                      <Component id="botonSiguiente2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                   <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jTextField17" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="jLabel38" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jTextField17" min="-2" pref="25" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                           <Component id="jSeparator19" min="-2" pref="10" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace pref="21" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jPasswordField2" min="-2" pref="28" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                          <Component id="jSeparator18" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                           <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace pref="36" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jPasswordField2" min="-2" pref="28" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                                  <Component id="jSeparator18" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -910,22 +807,11 @@
                                           <Component id="jSeparator20" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="23" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="boton_MaterialDesing1" min="-2" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                                  <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="boton_MaterialDesing3" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                                  <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -934,83 +820,6 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="panelSuperior2">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c6" green="86" red="4f" type="rgb"/>
-                    </Property>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="jLabel22" min="-2" pref="398" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="botonMinimizar2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="botonCerrar2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="botonCerrar2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="botonMinimizar2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel22" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="ui.beans.Boton_MaterialDesing" name="botonMinimizar2">
-                      <Properties>
-                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonMinimizar2MousePressed"/>
-                      </Events>
-                    </Component>
-                    <Component class="ui.beans.Boton_MaterialDesing" name="botonCerrar2">
-                      <Properties>
-                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,89,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,91,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonCerrar2MousePressed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel22">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="36" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Crear una base de datos"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
                 <Component class="javax.swing.JLabel" name="jLabel28">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1019,27 +828,8 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="24" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="3/5"/>
                   </Properties>
-                </Component>
-                <Component class="ui.beans.Boton_MaterialDesing" name="botonSiguiente2">
-                  <Properties>
-                    <Property name="colorSombreado" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="66" green="66" red="0" type="rgb"/>
-                    </Property>
-                    <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,88,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,114,105,103,104,116,95,97,114,114,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                    <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,90,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,114,105,103,104,116,95,97,114,114,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonSiguiente2MousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel30">
                   <Properties>
@@ -1048,9 +838,6 @@
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="18" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Ahora tendr&#xe1;s que crear un usuario administrador. Con este usuario,"/>
                   </Properties>
@@ -1062,9 +849,6 @@
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="18" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="podr&#xe1;s, consultar y modificar datos, as&#xed; como crear otros "/>
                   </Properties>
@@ -1118,9 +902,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Courier New" size="15" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1167,9 +948,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="18" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="usuarios de m&#xe1;s bajo nivel que el tuyo, como empleados."/>
                   </Properties>
                 </Component>
@@ -1214,9 +992,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="18" style="1"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Pincha aqu&#xed;"/>
                   </Properties>
                 </Component>
@@ -1228,31 +1003,8 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="18" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Si ya tienes un usuario en esta base de datos"/>
                   </Properties>
-                </Component>
-                <Component class="ui.beans.Boton_MaterialDesing" name="boton_MaterialDesing1">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/ui/images/botones/icons8_ok_48px.png"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="ui.beans.Boton_MaterialDesing" name="boton_MaterialDesing3">
-                  <Properties>
-                    <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,89,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,108,101,102,116,95,97,114,114,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                    <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,87,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,108,101,102,116,95,97,114,114,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="boton_MaterialDesing3MousePressed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1302,7 +1054,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="28" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jSeparator4" alignment="0" max="32767" attributes="0"/>
@@ -1321,25 +1073,19 @@
                           </Group>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="panelSuperior3" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="boton_MaterialDesing4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="botonSiguiente3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="189" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="panelSuperior3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="101" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
@@ -1376,8 +1122,7 @@
                                       <Component id="jLabel54" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
@@ -1403,13 +1148,7 @@
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="botonSiguiente3" max="32767" attributes="0"/>
-                                  <Component id="jLabel45" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="boton_MaterialDesing4" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1420,9 +1159,6 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -1452,9 +1188,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1482,9 +1215,6 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -1514,9 +1244,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1544,9 +1271,6 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -1576,9 +1300,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1602,82 +1323,6 @@
                     <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;b&gt; Paypal &lt;/b&gt; (opcional) &lt;html&gt;"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JPanel" name="panelSuperior3">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c6" green="86" red="4f" type="rgb"/>
-                    </Property>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="jLabel44" min="-2" pref="398" max="-2" attributes="0"/>
-                              <EmptySpace pref="104" max="32767" attributes="0"/>
-                              <Component id="botonMinimizar3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="botonCerrar3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="botonCerrar3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="botonMinimizar3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel44" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="ui.beans.Boton_MaterialDesing" name="botonMinimizar3">
-                      <Properties>
-                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonMinimizar3MousePressed"/>
-                      </Events>
-                    </Component>
-                    <Component class="ui.beans.Boton_MaterialDesing" name="botonCerrar3">
-                      <Properties>
-                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,89,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,91,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonCerrar3MousePressed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel44">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="36" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Datos de tu empresa"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
                 <Component class="javax.swing.JLabel" name="jLabel45">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1686,40 +1331,8 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="24" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="4/5"/>
                   </Properties>
-                </Component>
-                <Component class="ui.beans.Boton_MaterialDesing" name="botonSiguiente3">
-                  <Properties>
-                    <Property name="colorSombreado" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="66" green="66" red="0" type="rgb"/>
-                    </Property>
-                    <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,88,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,114,105,103,104,116,95,97,114,114,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                    <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,90,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,114,105,103,104,116,95,97,114,114,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonSiguiente3MousePressed"/>
-                  </Events>
-                </Component>
-                <Component class="ui.beans.Boton_MaterialDesing" name="boton_MaterialDesing4">
-                  <Properties>
-                    <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,89,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,108,101,102,116,95,97,114,114,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                    <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,87,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,108,101,102,116,95,97,114,114,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="boton_MaterialDesing4MousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel50">
                   <Properties>
@@ -1788,7 +1401,6 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="panelSuperior4" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1819,7 +1431,7 @@
                                       <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="31" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jSeparator9" alignment="0" max="32767" attributes="0"/>
@@ -1842,21 +1454,16 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="boton_MaterialDesing5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="botonSiguiente4" min="-2" pref="45" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="panelSuperior4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
@@ -1917,14 +1524,8 @@
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel47" max="32767" attributes="0"/>
-                                  <Component id="botonSiguiente4" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="boton_MaterialDesing5" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="63" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1934,9 +1535,6 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -1957,9 +1555,6 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -1988,9 +1583,6 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -2028,9 +1620,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2050,9 +1639,6 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -2085,82 +1671,6 @@
                     <Property name="text" type="java.lang.String" value="Codigo Postal"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JPanel" name="panelSuperior4">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c6" green="86" red="4f" type="rgb"/>
-                    </Property>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="jLabel46" min="-2" pref="398" max="-2" attributes="0"/>
-                              <EmptySpace pref="104" max="32767" attributes="0"/>
-                              <Component id="botonMinimizar4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="botonCerrar4" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="botonCerrar4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="botonMinimizar4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel46" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="ui.beans.Boton_MaterialDesing" name="botonMinimizar4">
-                      <Properties>
-                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,109,105,110,105,109,105,122,101,95,119,105,110,100,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonMinimizar4MousePressed"/>
-                      </Events>
-                    </Component>
-                    <Component class="ui.beans.Boton_MaterialDesing" name="botonCerrar4">
-                      <Properties>
-                        <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,89,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                        <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,91,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,99,108,111,115,101,95,119,105,110,100,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonCerrar4MousePressed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel46">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="36" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Datos de tu empresa"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
                 <Component class="javax.swing.JLabel" name="jLabel47">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -2169,40 +1679,8 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Light" size="24" style="0"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="5/5"/>
                   </Properties>
-                </Component>
-                <Component class="ui.beans.Boton_MaterialDesing" name="botonSiguiente4">
-                  <Properties>
-                    <Property name="colorSombreado" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="66" green="66" red="0" type="rgb"/>
-                    </Property>
-                    <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,88,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,114,105,103,104,116,95,97,114,114,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                    <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,90,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,114,105,103,104,116,95,97,114,114,111,119,95,52,53,112,120,95,50,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonSiguiente4MousePressed"/>
-                  </Events>
-                </Component>
-                <Component class="ui.beans.Boton_MaterialDesing" name="boton_MaterialDesing5">
-                  <Properties>
-                    <Property name="imagenPrincipal" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,89,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,108,101,102,116,95,97,114,114,111,119,95,52,53,112,120,95,49,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                    <Property name="imagenSombreada" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
-                      <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,87,68,58,92,68,114,111,112,98,111,120,92,68,65,77,92,80,114,111,121,101,99,116,111,32,70,105,110,97,108,92,80,114,111,121,101,99,116,111,92,115,114,99,92,117,105,92,105,109,97,103,101,115,92,98,111,116,111,110,101,115,92,105,99,111,110,115,56,95,108,101,102,116,95,97,114,114,111,119,95,52,53,112,120,46,112,110,103,119,2,0,92,120"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="boton_MaterialDesing5MousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel55">
                   <Properties>
