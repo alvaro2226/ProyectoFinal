@@ -31,6 +31,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
+import pojos.*;
 import rojeru_san.RSPanelsSlider;
 import util.OperacionesBDD;
 import util.Util;
@@ -45,6 +46,9 @@ public class Frame_Bienvenida extends JFrame {
     private final static Logger logger = Logger.getLogger(Frame_Bienvenida.class.getName());
     private OperacionesBDD operacionesBDD;
     private boolean conexionEstablecida = false;
+    private AdminUser adminUser;
+    private Database database;
+    private Empresa empresa;
 
     /**
      * Creates new form Dialog_IntroducirEmpresa
@@ -57,6 +61,12 @@ public class Frame_Bienvenida extends JFrame {
         setLocationRelativeTo(null);
         operacionesBDD = new OperacionesBDD();
 
+        
+        adminUser = new AdminUser();
+        database = new Database();
+        empresa = new Empresa();
+        
+        
         ocultarIconos();
         /*
         try {
@@ -1041,6 +1051,10 @@ public class Frame_Bienvenida extends JFrame {
         //DESCOMENTAR LO SIGUIENTE PARA QUE PUEDA FUNCIONAR CORRECTAMENTE
         if (todoCorrecto /*&& conexionEstablecida*/){
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
+            
+            database.setURL(lblURL.getText());
+            database.setUser(lblURL.getText());
+            database.setPassword(lblURL.getText());
         }
     }//GEN-LAST:event_botonSiguiente2ActionPerformed
 
@@ -1071,6 +1085,9 @@ public class Frame_Bienvenida extends JFrame {
 
         if (todoCorrecto) {
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
+            
+            adminUser.setUsername(textField_NombreAdmin.getText());
+            adminUser.setPassword(String.valueOf(jPasswordField_contraAdmin.getPassword()));
         }
 
     }//GEN-LAST:event_botonSiguiente3ActionPerformed
@@ -1095,6 +1112,13 @@ public class Frame_Bienvenida extends JFrame {
         
         if(todoCorrecto){
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
+            
+            empresa.setCalle(this.textField_calle.getText());
+            empresa.setLocalidad(this.textField_localidad.getText());
+            empresa.setProvincia(this.textField_provincia.getText());
+            empresa.setPais(this.textField_pais.getText());
+            empresa.setCodigoPostal(this.textField_CP.getText());
+   
         }
     }//GEN-LAST:event_botonSiguiente4ActionPerformed
 
@@ -1115,6 +1139,16 @@ public class Frame_Bienvenida extends JFrame {
             Util.mensajeConsola(lblConsola4, "Hay algún campo vacío", false);
         }else{
             todoCorrecto = true;
+            
+            empresa.setNombre(this.textField_NombreEmpresa.getText());
+            empresa.setFormaJuridica(this.textField_FM.getText());
+            empresa.setCIF(this.textField_CIF.getText());
+            empresa.setTelefono(this.textField_telefono.getText());
+            empresa.setEmail(this.textField_Email.getText());
+        }
+        
+        if(todoCorrecto){
+            new Dialog_ConfirmarDatos(this,true,empresa,database,adminUser).setVisible(true);
         }
         
     }//GEN-LAST:event_botonSiguiente5ActionPerformed

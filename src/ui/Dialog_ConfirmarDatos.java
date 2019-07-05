@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 alvaro2226
+ * Copyright (C) 2019 Álvaro Morcillo Barbero
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@ import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
+import pojos.*;
 
 /**
  *
@@ -39,11 +40,20 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
      */
     public static final int RET_OK = 1;
 
+    Empresa empresa;
+    Database database;
+    AdminUser adminUser;
     /**
      * Creates new form NewOkCancelDialog
      */
-    public Dialog_ConfirmarDatos(java.awt.Frame parent, boolean modal) {
+    public Dialog_ConfirmarDatos(java.awt.Frame parent, boolean modal,
+            Empresa empresa,Database database,AdminUser adminUser) {
         super(parent, modal);
+        
+        this.adminUser = adminUser;
+        this.database = database;
+        this.empresa = empresa;
+        
         initComponents();
 
         // Close the dialog when Esc is pressed
@@ -98,6 +108,8 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         jLabel20 = new javax.swing.JLabel();
         lblTelefono = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        lblPais = new javax.swing.JLabel();
         panelSuperior1 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         rSPanelImage3 = new rojerusan.RSPanelImage();
@@ -195,6 +207,13 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         jLabel23.setText("Teléfono");
         jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 90, -1));
 
+        jLabel24.setText("País");
+        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 90, -1));
+
+        lblPais.setForeground(new java.awt.Color(102, 102, 102));
+        lblPais.setText("¿Son correctos estos datos?");
+        jPanel4.add(lblPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
+
         tabbedPane.addTab("Datos de tu empresa", jPanel4);
 
         panelSuperior1.setBackground(new java.awt.Color(79, 134, 198));
@@ -270,8 +289,8 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(panelSuperior1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(tabbedPane)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -302,48 +321,20 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         setVisible(false);
         dispose();
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Dialog_ConfirmarDatos dialog = new Dialog_ConfirmarDatos(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+    
+    private void cargarDatos(){
+        this.lblCP.setText(empresa.getCodigoPostal());
+        this.lblPais.setText(empresa.getPais());
+        this.lblProvincia.setText(empresa.getProvincia());
+        this.lblCalle.setText(empresa.getCalle());
+        this.lblTelefono.setText(empresa.getTelefono());
+        
+        this.lblContraAdmin.setText(adminUser.getPassword());
+        this.lblNombre.setText(adminUser.getUsername());
+        
+        this.lblURL.setText(database.getURL());
+        this.lblContra.setText(database.getUser());
+        this.lblUsuario.setText(database.getPassword());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -356,6 +347,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -369,6 +361,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     private javax.swing.JLabel lblContraAdmin;
     private javax.swing.JLabel lblLocalidad;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPais;
     private javax.swing.JLabel lblProvincia;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblURL;
