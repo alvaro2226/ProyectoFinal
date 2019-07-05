@@ -27,6 +27,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import rojeru_san.RSPanelsSlider;
 import util.OperacionesBDD;
 
 /**
@@ -47,7 +48,7 @@ public class Frame_Bienvenida extends JFrame {
 
         initComponents();
 
-        cardLayout = (CardLayout) foregroundPanel.getLayout();
+        cardLayout = (CardLayout) panelSlider.getLayout();
         setLocationRelativeTo(null);
         lblConsola.setVisible(false);
         operacionesBDD = new OperacionesBDD();
@@ -104,6 +105,7 @@ public class Frame_Bienvenida extends JFrame {
 
         backgroundPanel = new javax.swing.JPanel();
         foregroundPanel = new javax.swing.JPanel();
+        panelSlider = new rojeru_san.RSPanelsSlider();
         panelBienvenida = new javax.swing.JPanel();
         panelSuperior = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -222,7 +224,6 @@ public class Frame_Bienvenida extends JFrame {
         backgroundPanel.setBackground(new java.awt.Color(0, 0, 0));
 
         foregroundPanel.setBackground(new java.awt.Color(255, 255, 255));
-        foregroundPanel.setLayout(new java.awt.CardLayout());
 
         panelBienvenida.setBackground(new java.awt.Color(255, 255, 255));
         panelBienvenida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -295,7 +296,7 @@ public class Frame_Bienvenida extends JFrame {
         });
         panelBienvenida.add(botonSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 120, 40));
 
-        foregroundPanel.add(panelBienvenida, "card4");
+        panelSlider.add(panelBienvenida, "card4");
 
         panelBaseDatos.setBackground(new java.awt.Color(255, 255, 255));
         panelBaseDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -439,7 +440,7 @@ public class Frame_Bienvenida extends JFrame {
         jLabel22.setText("2/5");
         panelBaseDatos.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 40, 40));
 
-        foregroundPanel.add(panelBaseDatos, "card4");
+        panelSlider.add(panelBaseDatos, "card4");
 
         panelBaseDatos1.setBackground(new java.awt.Color(255, 255, 255));
         panelBaseDatos1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -585,7 +586,7 @@ public class Frame_Bienvenida extends JFrame {
         rSButton1.setText("...");
         panelBaseDatos1.add(rSButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 60, 40));
 
-        foregroundPanel.add(panelBaseDatos1, "card4");
+        panelSlider.add(panelBaseDatos1, "card4");
 
         panelEmpresa1.setBackground(new java.awt.Color(255, 255, 255));
         panelEmpresa1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -737,7 +738,7 @@ public class Frame_Bienvenida extends JFrame {
 
         panelEmpresa1.add(panelSuperior3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 80));
 
-        foregroundPanel.add(panelEmpresa1, "card2");
+        panelSlider.add(panelEmpresa1, "card2");
 
         panelEmpresa2.setBackground(new java.awt.Color(255, 255, 255));
         panelEmpresa2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -877,7 +878,18 @@ public class Frame_Bienvenida extends JFrame {
 
         panelEmpresa2.add(panelSuperior4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 80));
 
-        foregroundPanel.add(panelEmpresa2, "card3");
+        panelSlider.add(panelEmpresa2, "card3");
+
+        javax.swing.GroupLayout foregroundPanelLayout = new javax.swing.GroupLayout(foregroundPanel);
+        foregroundPanel.setLayout(foregroundPanelLayout);
+        foregroundPanelLayout.setHorizontalGroup(
+            foregroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        foregroundPanelLayout.setVerticalGroup(
+            foregroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
@@ -885,14 +897,14 @@ public class Frame_Bienvenida extends JFrame {
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundPanelLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(foregroundPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(foregroundPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundPanelLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(foregroundPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(foregroundPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1))
         );
 
@@ -951,11 +963,11 @@ public class Frame_Bienvenida extends JFrame {
     }//GEN-LAST:event_botonComprobarConexionActionPerformed
 
     private void lblPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblPasswordActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_lblPasswordActionPerformed
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
-        this.cardLayout.next(foregroundPanel);
+        panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
     private void jPasswordField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField3ActionPerformed
@@ -967,15 +979,15 @@ public class Frame_Bienvenida extends JFrame {
     }//GEN-LAST:event_jPasswordField2ActionPerformed
 
     private void botonSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente2ActionPerformed
-        this.cardLayout.next(foregroundPanel);
+        panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
     }//GEN-LAST:event_botonSiguiente2ActionPerformed
 
     private void botonSiguiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente3ActionPerformed
-        this.cardLayout.next(foregroundPanel);
+        panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
     }//GEN-LAST:event_botonSiguiente3ActionPerformed
 
     private void botonSiguiente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente4ActionPerformed
-        this.cardLayout.next(foregroundPanel);
+        panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
     }//GEN-LAST:event_botonSiguiente4ActionPerformed
 
     private void botonSiguiente5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente5ActionPerformed
@@ -1128,6 +1140,7 @@ public class Frame_Bienvenida extends JFrame {
     private javax.swing.JPanel panelBienvenida;
     private javax.swing.JPanel panelEmpresa1;
     private javax.swing.JPanel panelEmpresa2;
+    private rojeru_san.RSPanelsSlider panelSlider;
     private javax.swing.JPanel panelSuperior;
     private javax.swing.JPanel panelSuperior1;
     private javax.swing.JPanel panelSuperior2;
