@@ -21,14 +21,19 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Image;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
 import rojeru_san.RSPanelsSlider;
 import util.OperacionesBDD;
+import util.Util;
 
 /**
  *
@@ -50,12 +55,9 @@ public class Frame_Bienvenida extends JFrame {
 
         cardLayout = (CardLayout) panelSlider.getLayout();
         setLocationRelativeTo(null);
-        lblConsola.setVisible(false);
         operacionesBDD = new OperacionesBDD();
-        
-        cancelarURL.setVisible(false);
-        cancelarUsuario.setVisible(false);
-        cancelarContraseña.setVisible(false);
+
+        ocultarIconos();
         /*
         try {
             
@@ -74,24 +76,36 @@ public class Frame_Bienvenida extends JFrame {
     }
 
     /**
-     * Este método recibe un label, el cual cambiará el color y el texto según
-     * los parámetros introducidos. ATENCION Lo hace visible
-     *
-     * @param label
-     * @param bool
-     * @param mensaje
+     * Se encarga de hacer invisibles los iconos de cancelar
      */
-    private void mensajeConsola(JLabel label, String mensaje, boolean bool) {
-        label.setText(mensaje);
-        if (bool) {
-            label.setForeground(Color.GREEN.darker());
-        } else {
-            label.setForeground(Color.RED);
-        }
+    private void ocultarIconos() {
 
-        if (!label.isVisible()) {
-            label.setVisible(true);
-        }
+        //Mensajes de consola
+        lblConsola.setVisible(false);
+        lblConsola2.setVisible(false);
+
+        //Primer panel
+        cancelarURL.setVisible(false);
+        cancelarUsuario.setVisible(false);
+        cancelarContraseña.setVisible(false);
+
+        //2o panel
+        this.cancelar_NombreUsuario.setVisible(false);
+        this.cancelar_ContraseñaUsuario.setVisible(false);
+
+        //Tercer panel
+        this.cancelar_NombreEmpresa.setVisible(false);
+        this.cancelar_FormaJuridica.setVisible(false);
+        this.cancelar_CIF.setVisible(false);
+        this.cancelar_Email.setVisible(false);
+        this.cancelar_Telefono.setVisible(false);
+
+        //4o panel
+        this.cancelar_Calle.setVisible(false);
+        this.cancelar_CP.setVisible(false);
+        this.cancelar_Pais.setVisible(false);
+        this.cancelar_Provincia.setVisible(false);
+        this.cancelar_Localidad.setVisible(false);
     }
 
     /**
@@ -145,16 +159,16 @@ public class Frame_Bienvenida extends JFrame {
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
+        cancelar_NombreUsuario = new javax.swing.JLabel();
         jSeparator18 = new javax.swing.JSeparator();
-        jTextField17 = new javax.swing.JTextField();
+        textField_NombreAdmin = new javax.swing.JTextField();
         jSeparator19 = new javax.swing.JSeparator();
         jLabel40 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        jPasswordField_contraAdmin = new javax.swing.JPasswordField();
         jLabel41 = new javax.swing.JLabel();
         jSeparator20 = new javax.swing.JSeparator();
-        jLabel42 = new javax.swing.JLabel();
-        jPasswordField3 = new javax.swing.JPasswordField();
+        cancelar_ContraseñaUsuario = new javax.swing.JLabel();
+        jPasswordField_contraAdmin2 = new javax.swing.JPasswordField();
         jLabel39 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         botonSiguiente3 = new rojerusan.RSButtonMetro();
@@ -162,6 +176,7 @@ public class Frame_Bienvenida extends JFrame {
         jLabel24 = new javax.swing.JLabel();
         rSPanelImage4 = new rojerusan.RSPanelImage();
         rSButton1 = new rojeru_san.RSButton();
+        lblConsola2 = new javax.swing.JLabel();
         panelEmpresa1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -182,11 +197,11 @@ public class Frame_Bienvenida extends JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
+        cancelar_NombreEmpresa = new javax.swing.JLabel();
+        cancelar_FormaJuridica = new javax.swing.JLabel();
+        cancelar_CIF = new javax.swing.JLabel();
+        cancelar_Telefono = new javax.swing.JLabel();
+        cancelar_Email = new javax.swing.JLabel();
         botonSiguiente4 = new rojerusan.RSButtonMetro();
         panelSuperior3 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
@@ -208,11 +223,11 @@ public class Frame_Bienvenida extends JFrame {
         jSeparator12 = new javax.swing.JSeparator();
         jLabel18 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        jLabel55 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
+        cancelar_Calle = new javax.swing.JLabel();
+        cancelar_Provincia = new javax.swing.JLabel();
+        cancelar_Pais = new javax.swing.JLabel();
+        cancelar_Localidad = new javax.swing.JLabel();
+        cancelar_CP = new javax.swing.JLabel();
         botonSiguiente5 = new rojerusan.RSButtonMetro();
         panelSuperior4 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
@@ -375,7 +390,7 @@ public class Frame_Bienvenida extends JFrame {
         lblConsola.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         lblConsola.setForeground(new java.awt.Color(0, 204, 0));
         lblConsola.setText("Conexión establecida correctamente");
-        panelBaseDatos.add(lblConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 425, -1));
+        panelBaseDatos.add(lblConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 410, -1));
 
         lblUser.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         lblUser.setBorder(null);
@@ -472,17 +487,17 @@ public class Frame_Bienvenida extends JFrame {
         jLabel37.setText("Nombre de usuario:");
         panelBaseDatos1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 200, 20));
 
-        jLabel38.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelBaseDatos1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 30));
+        cancelar_NombreUsuario.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_NombreUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelBaseDatos1.add(cancelar_NombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 30));
 
         jSeparator18.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator18.setForeground(new java.awt.Color(55, 147, 114));
         panelBaseDatos1.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 320, 10));
 
-        jTextField17.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
-        jTextField17.setBorder(null);
-        panelBaseDatos1.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 320, 30));
+        textField_NombreAdmin.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
+        textField_NombreAdmin.setBorder(null);
+        panelBaseDatos1.add(textField_NombreAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 320, 30));
 
         jSeparator19.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator19.setForeground(new java.awt.Color(55, 147, 114));
@@ -492,14 +507,14 @@ public class Frame_Bienvenida extends JFrame {
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
         panelBaseDatos1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 0));
 
-        jPasswordField2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jPasswordField2.setBorder(null);
-        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+        jPasswordField_contraAdmin.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jPasswordField_contraAdmin.setBorder(null);
+        jPasswordField_contraAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField2ActionPerformed(evt);
+                jPasswordField_contraAdminActionPerformed(evt);
             }
         });
-        panelBaseDatos1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 320, 30));
+        panelBaseDatos1.add(jPasswordField_contraAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 320, 30));
 
         jLabel41.setBackground(new java.awt.Color(255, 255, 255));
         jLabel41.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
@@ -510,28 +525,28 @@ public class Frame_Bienvenida extends JFrame {
         jSeparator20.setForeground(new java.awt.Color(55, 147, 114));
         panelBaseDatos1.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 320, 20));
 
-        jLabel42.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelBaseDatos1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 30, 30));
+        cancelar_ContraseñaUsuario.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_ContraseñaUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelBaseDatos1.add(cancelar_ContraseñaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 30, 30));
 
-        jPasswordField3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jPasswordField3.setBorder(null);
-        jPasswordField3.addActionListener(new java.awt.event.ActionListener() {
+        jPasswordField_contraAdmin2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jPasswordField_contraAdmin2.setBorder(null);
+        jPasswordField_contraAdmin2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField3ActionPerformed(evt);
+                jPasswordField_contraAdmin2ActionPerformed(evt);
             }
         });
-        panelBaseDatos1.add(jPasswordField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 320, 30));
+        panelBaseDatos1.add(jPasswordField_contraAdmin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 320, 30));
 
         jLabel39.setBackground(new java.awt.Color(255, 255, 255));
         jLabel39.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel39.setText("Pincha aquí");
-        panelBaseDatos1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 120, -1));
+        panelBaseDatos1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 120, -1));
 
         jLabel43.setBackground(new java.awt.Color(255, 255, 255));
         jLabel43.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel43.setText("Si ya tienes un usuario en esta base de datos");
-        panelBaseDatos1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 430, 20));
+        panelBaseDatos1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 430, 20));
 
         botonSiguiente3.setBackground(new java.awt.Color(79, 134, 198));
         botonSiguiente3.setText("Siguiente");
@@ -584,7 +599,13 @@ public class Frame_Bienvenida extends JFrame {
         panelBaseDatos1.add(panelSuperior2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 80));
 
         rSButton1.setText("...");
-        panelBaseDatos1.add(rSButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 60, 40));
+        panelBaseDatos1.add(rSButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 60, 40));
+
+        lblConsola2.setBackground(new java.awt.Color(255, 255, 255));
+        lblConsola2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        lblConsola2.setForeground(new java.awt.Color(0, 204, 0));
+        lblConsola2.setText("Conexión establecida correctamente");
+        panelBaseDatos1.add(lblConsola2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 410, -1));
 
         panelSlider.add(panelBaseDatos1, "card4");
 
@@ -668,25 +689,25 @@ public class Frame_Bienvenida extends JFrame {
         jLabel45.setText("4/5");
         panelEmpresa1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 40, 40));
 
-        jLabel50.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 215, -1, -1));
+        cancelar_NombreEmpresa.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_NombreEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa1.add(cancelar_NombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 215, -1, -1));
 
-        jLabel51.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 215, -1, -1));
+        cancelar_FormaJuridica.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_FormaJuridica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa1.add(cancelar_FormaJuridica, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 215, -1, -1));
 
-        jLabel52.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 284, -1, -1));
+        cancelar_CIF.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_CIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa1.add(cancelar_CIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 284, -1, -1));
 
-        jLabel53.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 284, -1, -1));
+        cancelar_Telefono.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_Telefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa1.add(cancelar_Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 284, -1, -1));
 
-        jLabel54.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 348, -1, -1));
+        cancelar_Email.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_Email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa1.add(cancelar_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 348, -1, -1));
 
         botonSiguiente4.setBackground(new java.awt.Color(79, 134, 198));
         botonSiguiente4.setText("Siguiente");
@@ -808,25 +829,25 @@ public class Frame_Bienvenida extends JFrame {
         jLabel47.setText("5/5");
         panelEmpresa2.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, -1, 40));
 
-        jLabel55.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa2.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 164, -1, -1));
+        cancelar_Calle.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_Calle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa2.add(cancelar_Calle, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 164, -1, -1));
 
-        jLabel56.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa2.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 227, -1, -1));
+        cancelar_Provincia.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_Provincia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa2.add(cancelar_Provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 227, -1, -1));
 
-        jLabel57.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa2.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 296, -1, -1));
+        cancelar_Pais.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_Pais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa2.add(cancelar_Pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 296, -1, -1));
 
-        jLabel58.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa2.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 164, -1, -1));
+        cancelar_Localidad.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_Localidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa2.add(cancelar_Localidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 164, -1, -1));
 
-        jLabel59.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa2.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 233, -1, -1));
+        cancelar_CP.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_CP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa2.add(cancelar_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 233, -1, -1));
 
         botonSiguiente5.setBackground(new java.awt.Color(79, 134, 198));
         botonSiguiente5.setText("Siguiente");
@@ -944,46 +965,84 @@ public class Frame_Bienvenida extends JFrame {
         }
 
         //****************************
-
         //***************************
         //Comprueba la conexion
         conexionEstablecida = OperacionesBDD.comprobarConexion(this.lblURL.getText(),
-            this.lblUser.getText(),
-            String.valueOf(this.lblPassword.getPassword()));
+                this.lblUser.getText(),
+                String.valueOf(this.lblPassword.getPassword()));
 
         //Muestra el mensaje en la consola
         if (conexionEstablecida) {
-            mensajeConsola(lblConsola, "Conexion establecida correctamente", true);
-            //botonSiguiente1.setEnabled(true);
+            Util.mensajeConsola(lblConsola, "Conexion establecida correctamente", true);
         } else {
-            mensajeConsola(lblConsola, "No se ha podido establecer la conexion", false);
-            //botonSiguiente1.setEnabled(false);
+            Util.mensajeConsola(lblConsola, "No se ha podido establecer la conexion", false);
         }
         //***************************
     }//GEN-LAST:event_botonComprobarConexionActionPerformed
 
     private void lblPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblPasswordActionPerformed
-        
+
     }//GEN-LAST:event_lblPasswordActionPerformed
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
         panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
-    private void jPasswordField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField3ActionPerformed
+    private void jPasswordField_contraAdmin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField_contraAdmin2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField3ActionPerformed
+    }//GEN-LAST:event_jPasswordField_contraAdmin2ActionPerformed
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+    private void jPasswordField_contraAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField_contraAdminActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
+    }//GEN-LAST:event_jPasswordField_contraAdminActionPerformed
 
     private void botonSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente2ActionPerformed
-        panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
+
+        boolean todoCorrecto = false;
+        
+        ArrayList<JTextComponent> componentes = new ArrayList<JTextComponent>();
+        componentes.add(lblURL);
+        componentes.add(lblUser);
+        componentes.add(lblPassword);
+
+        //Se comprueba si los campos están vacíos
+        if(Util.comprobarCamposVacíos(componentes)){
+            Util.mensajeConsola(lblConsola, "Hay algún campo vacío", false);
+        }
+        if (todoCorrecto && conexionEstablecida){
+            panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
+        }
     }//GEN-LAST:event_botonSiguiente2ActionPerformed
 
     private void botonSiguiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente3ActionPerformed
-        panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
+
+        boolean todoCorrecto = true;
+        ArrayList<JTextComponent> componentes = new ArrayList<JTextComponent>();
+        componentes.add(this.textField_NombreAdmin);
+        componentes.add(this.jPasswordField_contraAdmin);
+        componentes.add(this.jPasswordField_contraAdmin2);
+
+        //Si los textField estan vacios 
+        if (Util.comprobarCamposVacíos(componentes)) {
+            Util.mensajeConsola(lblConsola2, "Hay algún campo vacío", false);
+            todoCorrecto = false;
+        } else {
+            this.cancelar_ContraseñaUsuario.setVisible(false);
+            //Se comprueba si las contraseñas coinciden
+            if (Util.comprobarContraseñas(this.jPasswordField_contraAdmin, this.jPasswordField_contraAdmin2)) {
+                this.cancelar_ContraseñaUsuario.setVisible(false);
+            } else {
+                this.cancelar_ContraseñaUsuario.setVisible(true);
+
+                Util.mensajeConsola(lblConsola2, "Las contraseñas no coinciden", false);
+                todoCorrecto = false;
+            }
+        }
+
+        if (todoCorrecto) {
+            panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
+        }
+
     }//GEN-LAST:event_botonSiguiente3ActionPerformed
 
     private void botonSiguiente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente4ActionPerformed
@@ -1048,6 +1107,18 @@ public class Frame_Bienvenida extends JFrame {
     private javax.swing.JLabel cancelarContraseña;
     private javax.swing.JLabel cancelarURL;
     private javax.swing.JLabel cancelarUsuario;
+    private javax.swing.JLabel cancelar_CIF;
+    private javax.swing.JLabel cancelar_CP;
+    private javax.swing.JLabel cancelar_Calle;
+    private javax.swing.JLabel cancelar_ContraseñaUsuario;
+    private javax.swing.JLabel cancelar_Email;
+    private javax.swing.JLabel cancelar_FormaJuridica;
+    private javax.swing.JLabel cancelar_Localidad;
+    private javax.swing.JLabel cancelar_NombreEmpresa;
+    private javax.swing.JLabel cancelar_NombreUsuario;
+    private javax.swing.JLabel cancelar_Pais;
+    private javax.swing.JLabel cancelar_Provincia;
+    private javax.swing.JLabel cancelar_Telefono;
     private javax.swing.JPanel foregroundPanel;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1075,33 +1146,21 @@ public class Frame_Bienvenida extends JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JPasswordField jPasswordField3;
+    private javax.swing.JPasswordField jPasswordField_contraAdmin;
+    private javax.swing.JPasswordField jPasswordField_contraAdmin2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -1123,7 +1182,6 @@ public class Frame_Bienvenida extends JFrame {
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -1132,6 +1190,7 @@ public class Frame_Bienvenida extends JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lblConsola;
+    private javax.swing.JLabel lblConsola2;
     private javax.swing.JPasswordField lblPassword;
     private javax.swing.JTextField lblURL;
     private javax.swing.JTextField lblUser;
@@ -1152,5 +1211,6 @@ public class Frame_Bienvenida extends JFrame {
     private rojerusan.RSPanelImage rSPanelImage4;
     private rojerusan.RSPanelImage rSPanelImage5;
     private rojerusan.RSPanelImage rSPanelImage6;
+    private javax.swing.JTextField textField_NombreAdmin;
     // End of variables declaration//GEN-END:variables
 }

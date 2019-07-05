@@ -7,6 +7,7 @@ Errores detectados sin corregir:
      se puede visualizar el botón. </del> Corregido, he eliminado estos botones y he utilizado las librerias de rojeru san
   - <del>Ajustar el layout del frame de bienvenida porque los componentes se mueven a sus anchas dependiendo del SO. </del>
       Corregido usando un Absolute Layout.
+
 Funcionalidades aun sin implementar en orden de prioridad:
   - Añadir el campo teléfono a datos_empresa
   - Crear el script de la base de datos.
