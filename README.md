@@ -3,10 +3,10 @@
 Errores detectados sin corregir:
   - La URL de la base de datos en configuracion.properties es localhost (debería ser la IP del servidor).
   - Las carpetas dist/build no hacen commit/push a GitHub. Por tanto no se suben las librerías externas.
-  - En el componente botón, la ruta a las imágenes es absoluta (debería ser relativa al proyecto). Por tanto, no 
-     se puede visualizar el botón.
-  - Ajustar el layout del frame de bienvenida porque los componentes se mueven a sus anchas dependiendo del SO.
-
+  - <del>En el componente botón, la ruta a las imágenes es absoluta (debería ser relativa al proyecto). Por tanto, no 
+     se puede visualizar el botón. </del> Corregido, he eliminado estos botones y he utilizado las librerias de rojeru san
+  - <del>Ajustar el layout del frame de bienvenida porque los componentes se mueven a sus anchas dependiendo del SO. </del>
+      Corregido usando un Absolute Layout.
 Funcionalidades aun sin implementar en orden de prioridad:
   - Añadir el campo teléfono a datos_empresa
   - Crear el script de la base de datos.
