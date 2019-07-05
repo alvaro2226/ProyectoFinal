@@ -49,7 +49,7 @@ public class Frame_Bienvenida extends JFrame {
     private AdminUser adminUser;
     private Database database;
     private Empresa empresa;
-    private boolean omitirComprobaciones = true; //TRUE para omitir todos las comprobaciones 
+    private boolean omitirComprobaciones = false; //TRUE para omitir todos las comprobaciones 
 
     /**
      * Creates new form Dialog_IntroducirEmpresa
@@ -194,22 +194,16 @@ public class Frame_Bienvenida extends JFrame {
         lblConsola2 = new javax.swing.JLabel();
         panelEmpresa1 = new javax.swing.JPanel();
         textField_NombreEmpresa = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         textField_CIF = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         textField_Email = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         textField_FM = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         textField_telefono = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         textField_paypal = new javax.swing.JTextField();
-        jSeparator6 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         cancelar_NombreEmpresa = new javax.swing.JLabel();
@@ -222,6 +216,12 @@ public class Frame_Bienvenida extends JFrame {
         jLabel31 = new javax.swing.JLabel();
         rSPanelImage5 = new rojerusan.RSPanelImage();
         lblConsola3 = new javax.swing.JLabel();
+        jSeparator13 = new javax.swing.JSeparator();
+        jSeparator14 = new javax.swing.JSeparator();
+        jSeparator21 = new javax.swing.JSeparator();
+        jSeparator22 = new javax.swing.JSeparator();
+        jSeparator23 = new javax.swing.JSeparator();
+        jSeparator24 = new javax.swing.JSeparator();
         panelEmpresa2 = new javax.swing.JPanel();
         textField_calle = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
@@ -489,12 +489,12 @@ public class Frame_Bienvenida extends JFrame {
         jLabel30.setBackground(new java.awt.Color(255, 255, 255));
         jLabel30.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel30.setText("Ahora tendrás que crear un usuario administrador. Con este usuario,");
-        panelBaseDatos1.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 610, 20));
+        panelBaseDatos1.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 530, 20));
 
         jLabel34.setBackground(new java.awt.Color(255, 255, 255));
         jLabel34.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel34.setText("podrás, consultar y modificar datos, así como crear otros ");
-        panelBaseDatos1.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 570, 20));
+        panelBaseDatos1.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 440, 20));
 
         jLabel35.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel35.setText("Contraseña:");
@@ -540,7 +540,7 @@ public class Frame_Bienvenida extends JFrame {
         jLabel41.setBackground(new java.awt.Color(255, 255, 255));
         jLabel41.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel41.setText("usuarios de más bajo nivel que el tuyo, como empleados.");
-        panelBaseDatos1.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 550, 20));
+        panelBaseDatos1.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 440, 20));
 
         jSeparator20.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator20.setForeground(new java.awt.Color(55, 147, 114));
@@ -637,21 +637,13 @@ public class Frame_Bienvenida extends JFrame {
         textField_NombreEmpresa.setBorder(null);
         panelEmpresa1.add(textField_NombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 218, 234, -1));
 
-        jSeparator1.setBackground(new java.awt.Color(55, 147, 114));
-        jSeparator1.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 236, 234, 10));
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Nombre");
         panelEmpresa1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 195, -1, -1));
 
         textField_CIF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textField_CIF.setBorder(null);
-        panelEmpresa1.add(textField_CIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 282, 234, -1));
-
-        jSeparator2.setBackground(new java.awt.Color(55, 147, 114));
-        jSeparator2.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 300, 234, 10));
+        panelEmpresa1.add(textField_CIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 234, 20));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("CIF");
@@ -661,21 +653,13 @@ public class Frame_Bienvenida extends JFrame {
         textField_Email.setBorder(null);
         panelEmpresa1.add(textField_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 346, 234, -1));
 
-        jSeparator3.setBackground(new java.awt.Color(55, 147, 114));
-        jSeparator3.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 364, 234, 10));
-
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Email");
         panelEmpresa1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 322, -1, -1));
 
         textField_FM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textField_FM.setBorder(null);
-        panelEmpresa1.add(textField_FM, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 213, 234, -1));
-
-        jSeparator4.setBackground(new java.awt.Color(55, 147, 114));
-        jSeparator4.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 231, 234, 10));
+        panelEmpresa1.add(textField_FM, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 234, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Forma Jurídica");
@@ -683,11 +667,12 @@ public class Frame_Bienvenida extends JFrame {
 
         textField_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textField_telefono.setBorder(null);
-        panelEmpresa1.add(textField_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 282, 234, -1));
-
-        jSeparator5.setBackground(new java.awt.Color(55, 147, 114));
-        jSeparator5.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 300, 234, 10));
+        textField_telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField_telefonoActionPerformed(evt);
+            }
+        });
+        panelEmpresa1.add(textField_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 234, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Teléfono");
@@ -696,10 +681,6 @@ public class Frame_Bienvenida extends JFrame {
         textField_paypal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textField_paypal.setBorder(null);
         panelEmpresa1.add(textField_paypal, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 346, 234, -1));
-
-        jSeparator6.setBackground(new java.awt.Color(55, 147, 114));
-        jSeparator6.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 364, 234, 10));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("<html> <b> Paypal </b> (opcional) <html>");
@@ -785,6 +766,30 @@ public class Frame_Bienvenida extends JFrame {
         lblConsola3.setForeground(new java.awt.Color(0, 204, 0));
         lblConsola3.setText("Conexión establecida correctamente");
         panelEmpresa1.add(lblConsola3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 410, -1));
+
+        jSeparator13.setBackground(new java.awt.Color(55, 147, 114));
+        jSeparator13.setForeground(new java.awt.Color(55, 147, 114));
+        panelEmpresa1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 234, 10));
+
+        jSeparator14.setBackground(new java.awt.Color(55, 147, 114));
+        jSeparator14.setForeground(new java.awt.Color(55, 147, 114));
+        panelEmpresa1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 234, 10));
+
+        jSeparator21.setBackground(new java.awt.Color(55, 147, 114));
+        jSeparator21.setForeground(new java.awt.Color(55, 147, 114));
+        panelEmpresa1.add(jSeparator21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 234, 10));
+
+        jSeparator22.setBackground(new java.awt.Color(55, 147, 114));
+        jSeparator22.setForeground(new java.awt.Color(55, 147, 114));
+        panelEmpresa1.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 234, 10));
+
+        jSeparator23.setBackground(new java.awt.Color(55, 147, 114));
+        jSeparator23.setForeground(new java.awt.Color(55, 147, 114));
+        panelEmpresa1.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 234, 10));
+
+        jSeparator24.setBackground(new java.awt.Color(55, 147, 114));
+        jSeparator24.setForeground(new java.awt.Color(55, 147, 114));
+        panelEmpresa1.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 234, 10));
 
         panelSlider.add(panelEmpresa1, "card2");
 
@@ -1049,12 +1054,12 @@ public class Frame_Bienvenida extends JFrame {
         }
 
         //DESCOMENTAR LO SIGUIENTE PARA QUE PUEDA FUNCIONAR CORRECTAMENTE
-        if (todoCorrecto || omitirComprobaciones  /*&& conexionEstablecida*/) {
+        if (todoCorrecto  && conexionEstablecida || omitirComprobaciones ) {
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
 
             database.setURL(lblURL.getText());
-            database.setUser(lblURL.getText());
-            database.setPassword(lblURL.getText());
+            database.setUser(lblUser.getText());
+            database.setPassword(lblPassword.getText());
         }
     }//GEN-LAST:event_botonSiguiente2ActionPerformed
 
@@ -1148,11 +1153,14 @@ public class Frame_Bienvenida extends JFrame {
             empresa.setProvincia(this.textField_provincia.getText());
             empresa.setPais(this.textField_pais.getText());
             empresa.setCodigoPostal(this.textField_CP.getText());
-            System.out.println(empresa.toString());
             new Dialog_ConfirmarDatos(this, true, empresa, database, adminUser).setVisible(true);
         }
 
     }//GEN-LAST:event_botonSiguiente5ActionPerformed
+
+    private void textField_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_telefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField_telefonoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1262,21 +1270,21 @@ public class Frame_Bienvenida extends JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField_contraAdmin;
     private javax.swing.JPasswordField jPasswordField_contraAdmin2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator20;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator21;
+    private javax.swing.JSeparator jSeparator22;
+    private javax.swing.JSeparator jSeparator23;
+    private javax.swing.JSeparator jSeparator24;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblConsola;

@@ -43,8 +43,10 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     Empresa empresa;
     Database database;
     AdminUser adminUser;
+
     /**
      * Creates new form NewOkCancelDialog
+     *
      * @param parent
      * @param modal
      * @param empresa
@@ -52,16 +54,17 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
      * @param adminUser
      */
     public Dialog_ConfirmarDatos(java.awt.Frame parent, boolean modal,
-            Empresa empresa,Database database,AdminUser adminUser) {
+            Empresa empresa, Database database, AdminUser adminUser) {
         super(parent, modal);
-        
+
         this.adminUser = adminUser;
         this.database = database;
         this.empresa = empresa;
-        
+
         initComponents();
         setLocationRelativeTo(parent);
 
+        cargarDatos();
         // Close the dialog when Esc is pressed
         String cancelName = "cancel";
         InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
@@ -295,12 +298,12 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(panelSuperior1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedPane)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -315,29 +318,29 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         doClose(RET_OK);
-        
+
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         doClose(RET_CANCEL);
     }//GEN-LAST:event_botonCancelarActionPerformed
-    
+
     private void doClose(int retStatus) {
         returnStatus = retStatus;
         setVisible(false);
         dispose();
     }
-    
-    private void cargarDatos(){
+
+    private void cargarDatos() {
         this.lblCP.setText(empresa.getCodigoPostal());
         this.lblPais.setText(empresa.getPais());
         this.lblProvincia.setText(empresa.getProvincia());
         this.lblCalle.setText(empresa.getCalle());
         this.lblTelefono.setText(empresa.getTelefono());
-        
+
         this.lblContraAdmin.setText(adminUser.getPassword());
         this.lblNombre.setText(adminUser.getUsername());
-        
+
         this.lblURL.setText(database.getURL());
         this.lblContra.setText(database.getUser());
         this.lblUsuario.setText(database.getPassword());
