@@ -80,6 +80,8 @@ public class Frame_Bienvenida extends JFrame {
      */
     private void ocultarIconos() {
 
+        progressCircle.setVisible(false);
+        
         //Mensajes de consola
         lblConsola.setVisible(false);
         lblConsola2.setVisible(false);
@@ -154,6 +156,7 @@ public class Frame_Bienvenida extends JFrame {
         rSPanelImage3 = new rojerusan.RSPanelImage();
         botonSiguiente2 = new rojerusan.RSButtonMetro();
         jLabel22 = new javax.swing.JLabel();
+        progressCircle = new rojerusan.RSProgressCircleAnimated();
         panelBaseDatos1 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -458,6 +461,10 @@ public class Frame_Bienvenida extends JFrame {
         jLabel22.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel22.setText("2/5");
         panelBaseDatos.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 40, 40));
+
+        progressCircle.setString("");
+        progressCircle.setVelocidad(5);
+        panelBaseDatos.add(progressCircle, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 30, 30));
 
         panelSlider.add(panelBaseDatos, "card4");
 
@@ -961,6 +968,7 @@ public class Frame_Bienvenida extends JFrame {
 
     private void botonComprobarConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComprobarConexionActionPerformed
 
+        progressCircle.setVisible(true);
         //*****************************
         //Comprueba que los campos de texto no estén vacios
         //Activa/Desactiva los iconos de cancelar
@@ -994,6 +1002,8 @@ public class Frame_Bienvenida extends JFrame {
             Util.mensajeConsola(lblConsola, "No se ha podido establecer la conexion", false);
         }
         //***************************
+        
+         progressCircle.setVisible(false);
     }//GEN-LAST:event_botonComprobarConexionActionPerformed
 
     private void lblPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblPasswordActionPerformed
@@ -1252,6 +1262,7 @@ public class Frame_Bienvenida extends JFrame {
     private javax.swing.JPanel panelSuperior2;
     private javax.swing.JPanel panelSuperior3;
     private javax.swing.JPanel panelSuperior4;
+    private rojerusan.RSProgressCircleAnimated progressCircle;
     private rojeru_san.RSButton rSButton1;
     private rojerusan.RSPanelImage rSPanelImage2;
     private rojerusan.RSPanelImage rSPanelImage3;
