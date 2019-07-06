@@ -108,4 +108,17 @@ public class PropertiesUtil {
             return null;
         }
     }
+    
+    public static void añadirBDD(String URL, String USER, String PASSWORD) throws IOException{
+        
+        if (existe() && propertiesFile != null) {
+            propertiesFile.setProperty("app.firstStart", "false");
+            propertiesFile.setProperty("database.URL", URL);
+            propertiesFile.setProperty("database.USER", USER);
+            propertiesFile.setProperty("database.PASSWORD", PASSWORD);
+            propertiesFile.store(output, PROPERTIES_PATH);
+        } else {
+            logger.severe("Error los datos de la base de datos al fichero de configuracion");
+        }
+    }
 }
