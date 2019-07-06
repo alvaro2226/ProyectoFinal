@@ -10,8 +10,8 @@ Errores detectados sin corregir:
   - <del>El dialogo de confirmacion y el frame de bienvenida no comparten bien los datos.</del>
 
 Funcionalidades aun sin implementar en orden de prioridad:
-  - Añadir el campo teléfono a datos_empresa
-  - Crear el script de la base de datos.
+  - <del>Añadir el campo teléfono a datos_empresa </del>
+  - <del>Crear el script de la base de datos. </del> No hay script, los comandos se ejecutan desde código
   - Si al añadir el servidor de bdd, la bdd no existe, hay que crearla mediante el script anterior.
   - Si las 2 funcionales anteriores funcionan, se debe omitir la creación del admin/datos_empresa
   - Almacenar imágenes en un servidor (mirar 000host) o en su defecto almacenarlas en la bdd en forma de blobs.
