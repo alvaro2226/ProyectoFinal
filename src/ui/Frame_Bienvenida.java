@@ -17,19 +17,9 @@
 package ui;
 
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Image;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 import pojos.*;
 import rojeru_san.RSPanelsSlider;
@@ -42,14 +32,19 @@ import util.Util;
  */
 public class Frame_Bienvenida extends JFrame {
 
-    private CardLayout cardLayout;
+        
+    //-------------------------------------------
+    //TRUE para omitir todos las comprobaciones
+    private final boolean omitirComprobaciones = false;  
+    //-------------------------------------------
+    
+    private final CardLayout cardLayout;
     private final static Logger logger = Logger.getLogger(Frame_Bienvenida.class.getName());
-    private OperacionesBDD operacionesBDD;
+    private final OperacionesBDD operacionesBDD;
     private boolean conexionEstablecida = false;
-    private AdminUser adminUser;
-    private Database database;
-    private Empresa empresa;
-    private boolean omitirComprobaciones = false; //TRUE para omitir todos las comprobaciones 
+    private final AdminUser adminUser;
+    private final Database database;
+    private final Empresa empresa;
 
     /**
      * Creates new form Dialog_IntroducirEmpresa
@@ -112,6 +107,7 @@ public class Frame_Bienvenida extends JFrame {
         this.cancelar_FormaJuridica.setVisible(false);
         this.cancelar_CIF.setVisible(false);
         this.cancelar_Email.setVisible(false);
+        this.cancelar_Email1.setVisible(false);
         this.cancelar_Telefono.setVisible(false);
 
         //4o panel
@@ -222,6 +218,7 @@ public class Frame_Bienvenida extends JFrame {
         jSeparator22 = new javax.swing.JSeparator();
         jSeparator23 = new javax.swing.JSeparator();
         jSeparator24 = new javax.swing.JSeparator();
+        cancelar_Email1 = new javax.swing.JLabel();
         panelEmpresa2 = new javax.swing.JPanel();
         textField_calle = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
@@ -252,6 +249,7 @@ public class Frame_Bienvenida extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
+        setResizable(false);
 
         backgroundPanel.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -364,6 +362,7 @@ public class Frame_Bienvenida extends JFrame {
         panelBaseDatos.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 380, 10));
 
         lblURL.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
+        lblURL.setText("jdbc:mysql://localhost:3306");
         lblURL.setBorder(null);
         panelBaseDatos.add(lblURL, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 368, 25));
 
@@ -709,7 +708,7 @@ public class Frame_Bienvenida extends JFrame {
 
         cancelar_Email.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         cancelar_Email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(cancelar_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 348, -1, -1));
+        panelEmpresa1.add(cancelar_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, -1, -1));
 
         botonSiguiente4.setBackground(new java.awt.Color(79, 134, 198));
         botonSiguiente4.setText("Siguiente");
@@ -790,6 +789,10 @@ public class Frame_Bienvenida extends JFrame {
         jSeparator24.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator24.setForeground(new java.awt.Color(55, 147, 114));
         panelEmpresa1.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 234, 10));
+
+        cancelar_Email1.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        cancelar_Email1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
+        panelEmpresa1.add(cancelar_Email1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 348, -1, -1));
 
         panelSlider.add(panelEmpresa1, "card2");
 
@@ -1040,8 +1043,9 @@ public class Frame_Bienvenida extends JFrame {
     private void botonSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente2ActionPerformed
 
         boolean todoCorrecto = false;
+        boolean camposVacios = false;
 
-        ArrayList<JTextComponent> componentes = new ArrayList<JTextComponent>();
+        ArrayList<JTextComponent> componentes = new ArrayList<>();
         componentes.add(lblURL);
         componentes.add(lblUser);
         componentes.add(lblPassword);
@@ -1049,24 +1053,28 @@ public class Frame_Bienvenida extends JFrame {
         //Se comprueba si los campos están vacíos
         if (Util.comprobarCamposVacíos(componentes)) {
             Util.mensajeConsola(lblConsola, "Hay algún campo vacío", false);
+            camposVacios = true;
         } else {
             todoCorrecto = true;
         }
 
-        //DESCOMENTAR LO SIGUIENTE PARA QUE PUEDA FUNCIONAR CORRECTAMENTE
+        if(conexionEstablecida != true && camposVacios == false){
+            Util.mensajeConsola(lblConsola, "Tienes que comprobar la conexión primero", false);
+        }
+
         if (todoCorrecto  && conexionEstablecida || omitirComprobaciones ) {
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
 
-            database.setURL(lblURL.getText());
-            database.setUser(lblUser.getText());
-            database.setPassword(lblPassword.getText());
+            database.setURL(lblURL.getText().trim());
+            database.setUser(lblUser.getText().trim());
+            database.setPassword(lblPassword.getText().trim());
         }
     }//GEN-LAST:event_botonSiguiente2ActionPerformed
 
     private void botonSiguiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguiente3ActionPerformed
 
         boolean todoCorrecto = true;
-        ArrayList<JTextComponent> componentes = new ArrayList<JTextComponent>();
+        ArrayList<JTextComponent> componentes = new ArrayList<>();
         componentes.add(this.textField_NombreAdmin);
         componentes.add(this.jPasswordField_contraAdmin);
         componentes.add(this.jPasswordField_contraAdmin2);
@@ -1091,8 +1099,8 @@ public class Frame_Bienvenida extends JFrame {
         if (todoCorrecto || omitirComprobaciones) {
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
 
-            adminUser.setUsername(textField_NombreAdmin.getText());
-            adminUser.setPassword(String.valueOf(jPasswordField_contraAdmin.getPassword()));
+            adminUser.setUsername(textField_NombreAdmin.getText().trim());
+            adminUser.setPassword(String.valueOf(jPasswordField_contraAdmin.getPassword()).trim());
         }
 
     }//GEN-LAST:event_botonSiguiente3ActionPerformed
@@ -1101,7 +1109,7 @@ public class Frame_Bienvenida extends JFrame {
 
         boolean todoCorrecto = false;
 
-        ArrayList<JTextComponent> componentes = new ArrayList<JTextComponent>();
+        ArrayList<JTextComponent> componentes = new ArrayList<>();
         componentes.add(this.textField_NombreEmpresa);
         componentes.add(this.textField_CIF);
         componentes.add(this.textField_FM);
@@ -1112,16 +1120,39 @@ public class Frame_Bienvenida extends JFrame {
             todoCorrecto = false;
             Util.mensajeConsola(lblConsola3, "Hay algún campo vacío", false);
         } else {
+            
+            //Comprueba que los emails son válidos
             todoCorrecto = true;
+            
+            //EMAIL
+            if(!Util.validarEmail(this.textField_Email.getText().trim())){
+                Util.mensajeConsola(lblConsola3, "Campo incorrecto", false);
+                this.cancelar_Email1.setVisible(true);
+                todoCorrecto = false;
+            }else{
+                this.cancelar_Email1.setVisible(false);
+            }
+            
+            //PAYPAL
+            if(!Util.validarEmail(this.textField_paypal.getText().trim())){
+                Util.mensajeConsola(lblConsola3, "Campo incorrecto", false);
+                this.cancelar_Email.setVisible(true);
+                todoCorrecto = false;
+            }else{
+                this.cancelar_Email.setVisible(false);
+            }
+            
+            
         }
 
         if (todoCorrecto || omitirComprobaciones ) {
 
-            empresa.setNombre(this.textField_NombreEmpresa.getText());
-            empresa.setFormaJuridica(this.textField_FM.getText());
-            empresa.setCIF(this.textField_CIF.getText());
-            empresa.setTelefono(this.textField_telefono.getText());
-            empresa.setEmail(this.textField_Email.getText());
+            empresa.setNombre(this.textField_NombreEmpresa.getText().trim());
+            empresa.setFormaJuridica(this.textField_FM.getText().trim());
+            empresa.setCIF(this.textField_CIF.getText().trim());
+            empresa.setTelefono(this.textField_telefono.getText().trim());
+            empresa.setEmail(this.textField_Email.getText().trim());
+            empresa.setPaypal(this.textField_paypal.getText().trim());
 
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
 
@@ -1132,7 +1163,7 @@ public class Frame_Bienvenida extends JFrame {
 
         boolean todoCorrecto = false;
 
-        ArrayList<JTextComponent> componentes = new ArrayList<JTextComponent>();
+        ArrayList<JTextComponent> componentes = new ArrayList<>();
         componentes.add(this.textField_calle);
         componentes.add(this.textField_localidad);
         componentes.add(this.textField_provincia);
@@ -1148,11 +1179,11 @@ public class Frame_Bienvenida extends JFrame {
         }
 
         if (todoCorrecto || omitirComprobaciones ) {
-            empresa.setCalle(this.textField_calle.getText());
-            empresa.setLocalidad(this.textField_localidad.getText());
-            empresa.setProvincia(this.textField_provincia.getText());
-            empresa.setPais(this.textField_pais.getText());
-            empresa.setCodigoPostal(this.textField_CP.getText());
+            empresa.setCalle(this.textField_calle.getText().trim());
+            empresa.setLocalidad(this.textField_localidad.getText().trim());
+            empresa.setProvincia(this.textField_provincia.getText().trim());
+            empresa.setPais(this.textField_pais.getText().trim());
+            empresa.setCodigoPostal(this.textField_CP.getText().trim());
             new Dialog_ConfirmarDatos(this, true, empresa, database, adminUser).setVisible(true);
         }
 
@@ -1191,17 +1222,15 @@ public class Frame_Bienvenida extends JFrame {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Frame_Bienvenida dialog = new Frame_Bienvenida();
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            Frame_Bienvenida dialog = new Frame_Bienvenida();
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
@@ -1221,6 +1250,7 @@ public class Frame_Bienvenida extends JFrame {
     private javax.swing.JLabel cancelar_Calle;
     private javax.swing.JLabel cancelar_ContraseñaUsuario;
     private javax.swing.JLabel cancelar_Email;
+    private javax.swing.JLabel cancelar_Email1;
     private javax.swing.JLabel cancelar_FormaJuridica;
     private javax.swing.JLabel cancelar_Localidad;
     private javax.swing.JLabel cancelar_NombreEmpresa;

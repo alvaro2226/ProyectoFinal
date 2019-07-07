@@ -134,7 +134,8 @@ public class OperacionesBDD {
 
     /**
      * Inserta en la base de datos un nuevo registro con los datos de la empresa
-     * que se introducen mediante parametros.
+     * que se introducen mediante parametros. Primero comprueba que no exista 
+     * otra empresa.
      *
      * @param nombre
      * @param formaJuridica
@@ -271,6 +272,7 @@ public class OperacionesBDD {
                     + "  `producto_nombre` VARCHAR(45) NOT NULL,\n"
                     + "  `producto_descripcion` VARCHAR(255) NULL,\n"
                     + "  `producto_precio` FLOAT NOT NULL,\n"
+                    + "  `producto_imagen` BLOB,\n"
                     + "  `producto_stock` INT NOT NULL,\n"
                     + "  PRIMARY KEY (`producto_id`))\n"
                     + "ENGINE = InnoDB;");

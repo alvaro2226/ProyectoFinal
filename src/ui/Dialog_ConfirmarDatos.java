@@ -18,12 +18,16 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 import pojos.*;
+import util.OperacionesBDD;
 
 /**
  *
@@ -43,6 +47,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     Empresa empresa;
     Database database;
     AdminUser adminUser;
+    OperacionesBDD operacionesBDD = new OperacionesBDD();
 
     /**
      * Creates new form NewOkCancelDialog
@@ -106,6 +111,19 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         lblNombre = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         lblContraAdmin = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        ll21 = new javax.swing.JLabel();
+        lblNombreEmpresa = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        lblFM = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        lblCIF = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        lblPaypal = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         lblProvincia = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -115,8 +133,6 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         lblLocalidad = new javax.swing.JLabel();
         lblCP = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        lblTelefono = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         lblPais = new javax.swing.JLabel();
         panelSuperior1 = new javax.swing.JPanel();
@@ -178,6 +194,53 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
 
         tabbedPane.addTab("Usuario Admin", jPanel3);
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ll21.setText("Nombre:");
+        jPanel5.add(ll21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        lblNombreEmpresa.setForeground(new java.awt.Color(102, 102, 102));
+        lblNombreEmpresa.setText("¿Son correctos estos datos?");
+        jPanel5.add(lblNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
+
+        jLabel12.setText("Forma Jurídica");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 160, -1));
+
+        lblFM.setForeground(new java.awt.Color(102, 102, 102));
+        lblFM.setText("¿Son correctos estos datos?");
+        jPanel5.add(lblFM, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
+
+        jLabel13.setText("CIF");
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 90, -1));
+
+        lblCIF.setForeground(new java.awt.Color(102, 102, 102));
+        lblCIF.setText("¿Son correctos estos datos?");
+        jPanel5.add(lblCIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, -1, -1));
+
+        jLabel16.setText("Teléfono");
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 90, -1));
+
+        lblTelefono.setForeground(new java.awt.Color(102, 102, 102));
+        lblTelefono.setText("¿Son correctos estos datos?");
+        jPanel5.add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
+
+        jLabel18.setText("Correo eletrónico");
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 160, -1));
+
+        lblEmail.setForeground(new java.awt.Color(102, 102, 102));
+        lblEmail.setText("¿Son correctos estos datos?");
+        jPanel5.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
+
+        jLabel19.setText("Correo paypal");
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 170, -1));
+
+        lblPaypal.setForeground(new java.awt.Color(102, 102, 102));
+        lblPaypal.setText("¿Son correctos estos datos?");
+        jPanel5.add(lblPaypal, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
+
+        tabbedPane.addTab("Datos de tu empresa", jPanel5);
+
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -209,21 +272,14 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         jLabel20.setText("Código Postal");
         jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 100, -1));
 
-        lblTelefono.setForeground(new java.awt.Color(102, 102, 102));
-        lblTelefono.setText("¿Son correctos estos datos?");
-        jPanel4.add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
-
-        jLabel23.setText("Teléfono");
-        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 90, -1));
-
         jLabel24.setText("País");
-        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 90, -1));
+        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 90, -1));
 
         lblPais.setForeground(new java.awt.Color(102, 102, 102));
         lblPais.setText("¿Son correctos estos datos?");
-        jPanel4.add(lblPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
+        jPanel4.add(lblPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
 
-        tabbedPane.addTab("Datos de tu empresa", jPanel4);
+        tabbedPane.addTab("Dirección de tu empresa", jPanel4);
 
         panelSuperior1.setBackground(new java.awt.Color(79, 134, 198));
 
@@ -264,14 +320,18 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        botonCancelar.setBackground(new java.awt.Color(79, 134, 198));
         botonCancelar.setText("Cancelar");
+        botonCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
             }
         });
 
+        botonConfirmar.setBackground(new java.awt.Color(79, 134, 198));
         botonConfirmar.setText("Confirmar datos");
+        botonConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConfirmarActionPerformed(evt);
@@ -298,12 +358,12 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(panelSuperior1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -318,6 +378,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         doClose(RET_OK);
+        //persistirDatos();
 
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
@@ -332,15 +393,26 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     }
 
     private void cargarDatos() {
+
+        //----------------Datos empresa--------------------
         this.lblCP.setText(empresa.getCodigoPostal());
         this.lblPais.setText(empresa.getPais());
         this.lblProvincia.setText(empresa.getProvincia());
         this.lblCalle.setText(empresa.getCalle());
-        this.lblTelefono.setText(empresa.getTelefono());
+        this.lblLocalidad.setText(empresa.getLocalidad());
 
+        this.lblTelefono.setText(empresa.getTelefono());
+        this.lblNombreEmpresa.setText(empresa.getNombre());
+        this.lblCIF.setText(empresa.getCIF());
+        this.lblFM.setText(empresa.getFormaJuridica());
+        this.lblEmail.setText(empresa.getEmail());
+        this.lblPaypal.setText(empresa.getPaypal());
+
+        //---------------Datos Admin--------------------
         this.lblContraAdmin.setText(adminUser.getPassword());
         this.lblNombre.setText(adminUser.getUsername());
 
+        //--------------Datos base de datos----------------------
         this.lblURL.setText(database.getURL());
         this.lblContra.setText(database.getUser());
         this.lblUsuario.setText(database.getPassword());
@@ -350,12 +422,16 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     private rojerusan.RSButtonRound botonCancelar;
     private rojerusan.RSButtonRound botonConfirmar;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -364,21 +440,51 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lblCIF;
     private javax.swing.JLabel lblCP;
     private javax.swing.JLabel lblCalle;
     private javax.swing.JLabel lblContra;
     private javax.swing.JLabel lblContraAdmin;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFM;
     private javax.swing.JLabel lblLocalidad;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombreEmpresa;
     private javax.swing.JLabel lblPais;
+    private javax.swing.JLabel lblPaypal;
     private javax.swing.JLabel lblProvincia;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblURL;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel ll21;
     private javax.swing.JPanel panelSuperior1;
     private rojerusan.RSPanelImage rSPanelImage3;
     private javax.swing.JTabbedPane tabbedPane;
     // End of variables declaration//GEN-END:variables
 
     private int returnStatus = RET_CANCEL;
+
+    /*
+    private void persistirDatos() {
+        try {
+            //INSERTAR EMPRESA
+            operacionesBDD.iniciarConexion();
+            operacionesBDD.introducirEmpresa(,
+                    formaJuridica,
+                    CIF,
+                    email,
+                    emailPaypal,
+                    calle,
+                    localidad,
+                    provincia,
+                    codigoPostal,
+                    pais);
+            //INSERTAR ADMIN
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     */
 }

@@ -31,9 +31,9 @@ import util.PropertiesUtil;
  * @author Álvaro Morcillo Barbero
  */
 public class Main {
-    
+
     private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
-    
+
     public static void main(String[] args) {
 
         //--------------------------
@@ -60,7 +60,7 @@ public class Main {
             
             logger.info("Se ha cerrado la aplicación.");
             
-        
+
     }
 
 }
