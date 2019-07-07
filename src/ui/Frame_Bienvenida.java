@@ -35,7 +35,7 @@ public class Frame_Bienvenida extends JFrame {
         
     //-------------------------------------------
     //TRUE para omitir todos las comprobaciones
-    private final boolean omitirComprobaciones = false;  
+    private final boolean omitirComprobaciones = true;  
     //-------------------------------------------
     
     private final CardLayout cardLayout;
@@ -1189,6 +1189,9 @@ public class Frame_Bienvenida extends JFrame {
 
     }//GEN-LAST:event_botonSiguiente5ActionPerformed
 
+    public void cerrarFrame(){
+        System.exit(0);
+    }
     private void textField_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_telefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textField_telefonoActionPerformed
@@ -1227,7 +1230,9 @@ public class Frame_Bienvenida extends JFrame {
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
+                    logger.info("Se ha cerrado la el frame de bienvenida.");
                     System.exit(0);
+                    
                 }
             });
             dialog.setVisible(true);

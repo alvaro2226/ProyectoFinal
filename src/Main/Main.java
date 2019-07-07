@@ -33,14 +33,15 @@ import util.PropertiesUtil;
 public class Main {
 
     private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
+    private static Properties properties = null;
 
     public static void main(String[] args) {
 
         //--------------------------
         //Inicia el logger
         MyLogger.init();
-        
-         //--------------------------
+
+        //--------------------------
         //Comprubea que el archivo de configuracion existe, si no existe lo crea
         //y lo carga con la configuracion predeterminada
         try {
@@ -49,19 +50,22 @@ public class Main {
                 PropertiesUtil.crearProperties();
                 PropertiesUtil.añadirPropiedades();
             }
-            
+
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-            //--------------------------
-            //Inicia la app
+        properties = PropertiesUtil.getProperties();;
+        //Comprueba si es la primera vez que se inicia la aplicación
+        if (properties.getProperty("app.firstTime").equals("true")) {
+            //Es la primera vez, por tanto se tiene que mostrar el frame
+            // de bienvenida
             new Frame_Bienvenida().setVisible(true);
-            
-            logger.info("Se ha cerrado la aplicación.");
-            
+
+        }else{
+            //Se tiene que mostrar el frame de iniciar sesión
+        }
 
     }
 
 }
-

@@ -18,16 +18,20 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 import pojos.*;
 import util.OperacionesBDD;
+import util.PropertiesUtil;
 
 /**
  *
@@ -43,11 +47,14 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
      * A return status code - returned if OK button has been pressed
      */
     public static final int RET_OK = 1;
-
-    Empresa empresa;
-    Database database;
-    AdminUser adminUser;
-    OperacionesBDD operacionesBDD = new OperacionesBDD();
+    
+    private Empresa empresa;
+    private Database database;
+    private AdminUser adminUser;
+    private OperacionesBDD operacionesBDD = new OperacionesBDD();
+    private final static Logger logger = Logger.getLogger(Frame_Bienvenida.class.getName());
+    private Properties properties = PropertiesUtil.getProperties();
+    private Frame_Bienvenida frameBienvenida;
 
     /**
      * Creates new form NewOkCancelDialog
@@ -61,14 +68,15 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     public Dialog_ConfirmarDatos(java.awt.Frame parent, boolean modal,
             Empresa empresa, Database database, AdminUser adminUser) {
         super(parent, modal);
-
+        
         this.adminUser = adminUser;
         this.database = database;
         this.empresa = empresa;
-
+        this.frameBienvenida = (Frame_Bienvenida) parent;
+        
         initComponents();
         setLocationRelativeTo(parent);
-
+        
         cargarDatos();
         // Close the dialog when Esc is pressed
         String cancelName = "cancel";
@@ -379,19 +387,29 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         doClose(RET_OK);
         //persistirDatos();
+        try {
+            //Si los datos se guardan correctamente, se debe cambiar el valor a la
+            //variable "app.firstTime" a "false" indicando de esta manera que ya
+            //no es la primera vez que ejecutamos la aplicación
+            PropertiesUtil.setFirstTime(false);
+        } catch (IOException ex) {
+            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        frameBienvenida.cerrarFrame();
 
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         doClose(RET_CANCEL);
+        logger.log(Level.INFO, "Se ha cancelado la confirmación");
     }//GEN-LAST:event_botonCancelarActionPerformed
-
+    
     private void doClose(int retStatus) {
         returnStatus = retStatus;
         setVisible(false);
         dispose();
     }
-
+    
     private void cargarDatos() {
 
         //----------------Datos empresa--------------------
@@ -400,7 +418,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         this.lblProvincia.setText(empresa.getProvincia());
         this.lblCalle.setText(empresa.getCalle());
         this.lblLocalidad.setText(empresa.getLocalidad());
-
+        
         this.lblTelefono.setText(empresa.getTelefono());
         this.lblNombreEmpresa.setText(empresa.getNombre());
         this.lblCIF.setText(empresa.getCIF());

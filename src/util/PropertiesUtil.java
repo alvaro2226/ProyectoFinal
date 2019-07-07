@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import log.MyLogger;
@@ -37,6 +38,7 @@ public class PropertiesUtil {
     private static final Logger logger = Logger.getLogger(MyLogger.class.getName());
     private static Properties propertiesFile;
     private static OutputStream output;
+    private static InputStream ip;
 
     private final static String PROPERTIES_PATH = "resources/configuracion.properties";
 
@@ -77,7 +79,7 @@ public class PropertiesUtil {
     public static void añadirPropiedades() throws IOException {
 
         if (existe() && propertiesFile != null) {
-            propertiesFile.setProperty("app.firstStart", "false");
+            propertiesFile.setProperty("app.firstTime", "true");
             propertiesFile.setProperty("database.URL", OperacionesBDD.URL);
             propertiesFile.setProperty("database.USER", OperacionesBDD.USER);
             propertiesFile.setProperty("database.PASSWORD", OperacionesBDD.PASSWORD);
@@ -93,7 +95,7 @@ public class PropertiesUtil {
         if (existe()) {
 
             Properties p = new Properties();
-            InputStream ip = null;
+            ip = null;
             try {
                 ip = new FileInputStream(PROPERTIES_PATH);
                 p.load(ip);
@@ -112,7 +114,8 @@ public class PropertiesUtil {
     public static void añadirBDD(String URL, String USER, String PASSWORD) throws IOException{
         
         if (existe() && propertiesFile != null) {
-            propertiesFile.setProperty("app.firstStart", "false");
+
+            propertiesFile.setProperty("app.firstTime", "true");
             propertiesFile.setProperty("database.URL", URL);
             propertiesFile.setProperty("database.USER", USER);
             propertiesFile.setProperty("database.PASSWORD", PASSWORD);
@@ -120,5 +123,17 @@ public class PropertiesUtil {
         } else {
             logger.severe("Error los datos de la base de datos al fichero de configuracion");
         }
+    }
+    
+    
+    public static void setFirstTime(boolean bool) throws IOException{
+        propertiesFile = new Properties();
+        propertiesFile.load(ip);
+        if(bool){
+            propertiesFile.setProperty("app.firstTime", "true");
+        }else{
+            propertiesFile.setProperty("app.firstTime", "false");
+        }
+        propertiesFile.store(output, PROPERTIES_PATH);
     }
 }
