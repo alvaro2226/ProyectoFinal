@@ -14,4 +14,4 @@ Funcionalidades aun sin implementar en orden de prioridad:
   - <del>Crear el script de la base de datos. </del> No hay script, los comandos se ejecutan desde código
   - Si al añadir el servidor de bdd, la bdd no existe, hay que crearla mediante el script anterior.
   - Si las 2 funcionales anteriores funcionan, se debe omitir la creación del admin/datos_empresa
-  - Almacenar imágenes en un servidor (mirar 000host) o en su defecto almacenarlas en la bdd en forma de blobs.
+  - <del>Almacenar imágenes en un servidor (mirar 000host) o en su defecto almacenarlas en la bdd en forma de blobs.</del> En forma de          blobs temporalmente.
