@@ -47,7 +47,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
      * A return status code - returned if OK button has been pressed
      */
     public static final int RET_OK = 1;
-    
+
     private Empresa empresa;
     private Database database;
     private AdminUser adminUser;
@@ -68,15 +68,15 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     public Dialog_ConfirmarDatos(java.awt.Frame parent, boolean modal,
             Empresa empresa, Database database, AdminUser adminUser) {
         super(parent, modal);
-        
+
         this.adminUser = adminUser;
         this.database = database;
         this.empresa = empresa;
         this.frameBienvenida = (Frame_Bienvenida) parent;
-        
+
         initComponents();
         setLocationRelativeTo(parent);
-        
+
         cargarDatos();
         // Close the dialog when Esc is pressed
         String cancelName = "cancel";
@@ -385,16 +385,20 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     }//GEN-LAST:event_closeDialog
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
-        doClose(RET_OK);
-        //persistirDatos();
+        
+        persistirDatos();
+        /*
         try {
             //Si los datos se guardan correctamente, se debe cambiar el valor a la
             //variable "app.firstTime" a "false" indicando de esta manera que ya
             //no es la primera vez que ejecutamos la aplicación
-            PropertiesUtil.setFirstTime(false);
+            //PropertiesUtil.init();
+            //PropertiesUtil.setFirstTime(false);
         } catch (IOException ex) {
             Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
+         */
+        doClose(RET_OK);
         frameBienvenida.cerrarFrame();
 
     }//GEN-LAST:event_botonConfirmarActionPerformed
@@ -403,13 +407,13 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         doClose(RET_CANCEL);
         logger.log(Level.INFO, "Se ha cancelado la confirmación");
     }//GEN-LAST:event_botonCancelarActionPerformed
-    
+
     private void doClose(int retStatus) {
         returnStatus = retStatus;
         setVisible(false);
         dispose();
     }
-    
+
     private void cargarDatos() {
 
         //----------------Datos empresa--------------------
@@ -418,7 +422,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         this.lblProvincia.setText(empresa.getProvincia());
         this.lblCalle.setText(empresa.getCalle());
         this.lblLocalidad.setText(empresa.getLocalidad());
-        
+
         this.lblTelefono.setText(empresa.getTelefono());
         this.lblNombreEmpresa.setText(empresa.getNombre());
         this.lblCIF.setText(empresa.getCIF());
@@ -435,7 +439,20 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         this.lblContra.setText(database.getUser());
         this.lblUsuario.setText(database.getPassword());
     }
+    
+    private void persistirDatos() {
+        try {
+            //INSERTAR ADMIN
+            operacionesBDD.iniciarConexion();
+            operacionesBDD.añadirAdmin(adminUser.getUsername(), adminUser.getPassword());
+            //INSERTAR EMPRESA
+        } catch (SQLException ex) {
+            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojerusan.RSButtonRound botonCancelar;
     private rojerusan.RSButtonRound botonConfirmar;
@@ -483,26 +500,4 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
 
     private int returnStatus = RET_CANCEL;
 
-    /*
-    private void persistirDatos() {
-        try {
-            //INSERTAR EMPRESA
-            operacionesBDD.iniciarConexion();
-            operacionesBDD.introducirEmpresa(,
-                    formaJuridica,
-                    CIF,
-                    email,
-                    emailPaypal,
-                    calle,
-                    localidad,
-                    provincia,
-                    codigoPostal,
-                    pais);
-            //INSERTAR ADMIN
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-     */
 }

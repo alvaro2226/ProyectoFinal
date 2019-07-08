@@ -110,9 +110,9 @@ public class PropertiesUtil {
             return null;
         }
     }
-    
-    public static void añadirBDD(String URL, String USER, String PASSWORD) throws IOException{
-        
+
+    public static void añadirBDD(String URL, String USER, String PASSWORD) throws IOException {
+
         if (existe() && propertiesFile != null) {
 
             propertiesFile.setProperty("app.firstTime", "true");
@@ -124,11 +124,10 @@ public class PropertiesUtil {
             logger.severe("Error los datos de la base de datos al fichero de configuracion");
         }
     }
-    
-    
+
+    /*
     public static void setFirstTime(boolean bool) throws IOException{
-        propertiesFile = new Properties();
-        propertiesFile.load(ip);
+
         if(bool){
             propertiesFile.setProperty("app.firstTime", "true");
         }else{
@@ -136,4 +135,5 @@ public class PropertiesUtil {
         }
         propertiesFile.store(output, PROPERTIES_PATH);
     }
+     */
 }

@@ -40,30 +40,30 @@ import log.MyLogger;
  * @author Álvaro Morcillo Barbero
  */
 public class OperacionesBDD {
-    
+
     public static String URL = "jdbc:mysql://localhost:3306";
     public static String USER = "root";
     public static String PASSWORD = "root";
     private Connection conexion;
     private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
     private Properties properties = PropertiesUtil.getProperties();
-    
+
     public OperacionesBDD(String URL, String USER, String PASSWORD) {
-        
+
         try {
             PropertiesUtil.añadirBDD(URL, USER, PASSWORD);
         } catch (IOException ex) {
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
+
     public OperacionesBDD() {
-        
+
     }
-    
+
     public void iniciarConexion() throws ClassNotFoundException, SQLException {
-        
+
         if (conexion == null) {
             Class.forName("com.mysql.jdbc.Driver");
 
@@ -71,15 +71,15 @@ public class OperacionesBDD {
             conexion = (Connection) DriverManager.getConnection(properties.getProperty("database.URL"),
                     properties.getProperty("database.USER"),
                     properties.getProperty("database.PASSWORD"));
-            
+
             conexion.setAutoCommit(false);
-            
+
             logger.info("Conexion con la base de datos establecida correctamente.");
         } else {
             logger.warning("Se ha intentado establecer una conexion con la base de"
                     + "datos cuando ya se estaba conectado");
         }
-        
+
     }
 
     /**
@@ -92,7 +92,7 @@ public class OperacionesBDD {
      * @return true si la conexion se realiza correctamente
      */
     public static boolean comprobarConexion(String URL, String USER, String PASSWORD) {
-        
+
         boolean conexionEstablecida = false;
         logger.info("Comprobando conexión:"
                 + "\n \t URL:" + URL
@@ -101,40 +101,40 @@ public class OperacionesBDD {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conexionPrueba;
-            
+
             conexionPrueba = (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
-            
+
             conexionEstablecida = true;
             conexionPrueba.close();
             logger.info("Conexion existosa");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            
+
             conexionEstablecida = false;
         }
-        
-        if(!conexionEstablecida){
+
+        if (!conexionEstablecida) {
             logger.info("Conexion fallida");
         }
         return conexionEstablecida;
     }
-    
+
     public void cerrarConexion() throws SQLException {
-        
+
         if (conexion != null) {
             conexion.close();
-            
+
             logger.info("Se ha finalizado la conexion con la base de datos correctamente");
         } else {
             logger.warning("La conexion con la base de datos ya estaba cerrada");
         }
-        
+
     }
 
     /**
      * Inserta en la base de datos un nuevo registro con los datos de la empresa
-     * que se introducen mediante parametros. Primero comprueba que no exista 
+     * que se introducen mediante parametros. Primero comprueba que no exista
      * otra empresa.
      *
      * @param nombre
@@ -151,13 +151,13 @@ public class OperacionesBDD {
     public void introducirEmpresa(String nombre, String formaJuridica, String CIF,
             String email, String emailPaypal, String calle, String localidad,
             String provincia, String codigoPostal, String pais) throws SQLException {
-        
+
         boolean transaccionCompletada = false;
 
         //Comprueba que no exista otra empresa
         Statement st = conexion.createStatement();
         ResultSet rs = st.executeQuery("SELECT * FROM OrderTracker.datos_empresa");
-        
+
         if (rs.next()) {
             //Ya existe una empresa, por tanto no se hace nada
             logger.info("Ya existe una empresa.");
@@ -167,13 +167,13 @@ public class OperacionesBDD {
             //Solo hay una empresa, por tanto la primary key es "1" para ambos registros
             String queryDireccion = "INSERT INTO OrderTracker.direccion VALUES (1,?, ?, ?, ?, ?);";
             PreparedStatement psDireccion = conexion.clientPrepareStatement(queryDireccion);
-            
+
             psDireccion.setString(1, calle);
             psDireccion.setString(2, localidad);
             psDireccion.setString(3, provincia);
             psDireccion.setString(4, codigoPostal);
             psDireccion.setString(5, pais);
-            
+
             psDireccion.executeUpdate();
 
             //Si el email es válido ->
@@ -182,48 +182,82 @@ public class OperacionesBDD {
                 //Solo hay una empresa, por tanto la primary key es "1" para ambos registros
                 String queryEmpresa = "INSERT INTO OrderTracker.datos_empresa VALUES (1, ?, ?, ?, 1, ?, ?);";
                 PreparedStatement psEmpresa = conexion.clientPrepareStatement(queryEmpresa);
-                
+
                 psEmpresa.setString(1, nombre);
                 psEmpresa.setString(2, formaJuridica);
                 psEmpresa.setString(3, CIF);
                 psEmpresa.setString(4, email);
                 psEmpresa.setString(5, emailPaypal);
-                
+
                 psEmpresa.executeUpdate();
                 conexion.commit();
                 transaccionCompletada = true;
-                
+
             } else {
                 logger.info("Email introducido no válido");
-                
+
             }
-            
+
             if (transaccionCompletada) {
-                
+
                 logger.info("Transaccion completada. Se ha añadido una empresa"
                         + "a la base de datos");
             } else {
                 logger.info("No se ha completado la transaccion. No se ha "
                         + "podido añadir la empresa a la base de datos");
             }
-            
+
         }
     }
 
+    public void añadirAdmin(String user, String password) throws SQLException {
+        /*
+                   + "  `usuario_id` INT AUTO_INCREMENT,\n"
+                    + "  `usuario_nombreUsuario` VARCHAR(15) NOT NULL,\n"
+                    + "  `usuario_email` VARCHAR(100) NULL,\n"
+                    + "  `usuario_contraseña` VARCHAR(25) NOT NULL,\n"
+                    + "  `usuario_nombre` VARCHAR(45) NULL,\n"
+                    + "  `usuario_Apellidos` VARCHAR(200) NULL,\n"
+                    + "  `usuario_telefono` VARCHAR(12) NULL,\n"
+                    + "  `usuario_fechaCreacion` TIMESTAMP NULL,\n"
+                    + "  `usuario_tipoUsuario_id` INT NULL,\n"
+                    + "  `usuario_direccion_id` INT NULL,\n"
+                    + "  `usuario_dni` VARCHAR(9) NULL,\n"
+         */
+        String query = "INSERT INTO `OrderTracker`.`USUARIO`"
+                + "(usuario_nombreUsuario,usuario_contraseña) "
+                + "VALUES(?,?);";
+        PreparedStatement pst = conexion.prepareStatement(query);
+
+        pst.setString(1, user);
+        pst.setString(2, password);
+
+        pst.executeUpdate();
+        
+        conexion.commit();
+
+    }
+
     /**
-     * Crea el esquema de la bdd en el servidor. Añade todas las tablas.
+     * Crea el esquema de la bdd en el servidor. Añade todas las tablas. Tambien
+     * inserta los tipos de usuario,los métodos de pago Y el estado de pedido.
      */
     public void crearBDD() {
-        
+
+        boolean transaccionCompletada = true;
         try {
             Statement st = conexion.createStatement();
+
+            st.execute("DROP SCHEMA `OrderTracker` ;");
+
             st.execute("CREATE SCHEMA IF NOT EXISTS `OrderTracker` DEFAULT CHARACTER SET utf8 ;");
+
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`TIPO_USUARIO` (\n"
                     + "  `tipoUsuario_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `tipoUsuario_tipo` VARCHAR(45) NOT NULL,\n"
                     + "  PRIMARY KEY (`tipoUsuario_id`))\n"
                     + "ENGINE = InnoDB;");
-            
+
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`DIRECCION` (\n"
                     + "  `direccion_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `direccion_calle` VARCHAR(45) NOT NULL,\n"
@@ -233,24 +267,31 @@ public class OperacionesBDD {
                     + "  `direccion_pais` VARCHAR(45) NOT NULL,\n"
                     + "  PRIMARY KEY (`direccion_id`))\n"
                     + "ENGINE = InnoDB;");
-            
+
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`TIPO_USUARIO` (\n"
-                    + "  `tipoUsuario_id` INT NOT NULL AUTO_INCREMENT,\n"
+                    + "  `tipoUsuario_id` INT AUTO_INCREMENT,\n"
                     + "  `tipoUsuario_tipo` VARCHAR(45) NOT NULL,\n"
                     + "  PRIMARY KEY (`tipoUsuario_id`))\n"
                     + "ENGINE = InnoDB;");
-            
+
+            st.executeUpdate("INSERT INTO `OrderTracker`.`TIPO_USUARIO`"
+                    + "VALUES (null,'ADMIN')");
+            st.executeUpdate("INSERT INTO `OrderTracker`.`TIPO_USUARIO`"
+                    + "VALUES (null,'EMPLEADO')");
+            st.executeUpdate("INSERT INTO `OrderTracker`.`TIPO_USUARIO`"
+                    + "VALUES (null,'CLIENTE')");
+
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`USUARIO` (\n"
                     + "  `usuario_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `usuario_nombreUsuario` VARCHAR(15) NOT NULL,\n"
-                    + "  `usuario_email` VARCHAR(100) NOT NULL,\n"
+                    + "  `usuario_email` VARCHAR(100) NULL,\n"
                     + "  `usuario_contraseña` VARCHAR(25) NOT NULL,\n"
-                    + "  `usuario_nombre` VARCHAR(45) NOT NULL,\n"
-                    + "  `usuario_Apellidos` VARCHAR(200) NOT NULL,\n"
+                    + "  `usuario_nombre` VARCHAR(45) NULL,\n"
+                    + "  `usuario_Apellidos` VARCHAR(200) NULL,\n"
                     + "  `usuario_telefono` VARCHAR(12) NULL,\n"
                     + "  `usuario_fechaCreacion` TIMESTAMP NULL,\n"
-                    + "  `usuario_tipoUsuario_id` INT NOT NULL,\n"
-                    + "  `usuario_direccion_id` INT NOT NULL,\n"
+                    + "  `usuario_tipoUsuario_id` INT NULL,\n"
+                    + "  `usuario_direccion_id` INT NULL,\n"
                     + "  `usuario_dni` VARCHAR(9) NULL,\n"
                     + "  PRIMARY KEY (`usuario_id`),\n"
                     + "  INDEX `fk_usuario_TipoUsuario_idx` (`usuario_tipoUsuario_id` ASC) VISIBLE,\n"
@@ -266,7 +307,7 @@ public class OperacionesBDD {
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION)\n"
                     + "ENGINE = InnoDB;");
-            
+
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`PRODUCTO` (\n"
                     + "  `producto_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `producto_nombre` VARCHAR(45) NOT NULL,\n"
@@ -276,19 +317,31 @@ public class OperacionesBDD {
                     + "  `producto_stock` INT NOT NULL,\n"
                     + "  PRIMARY KEY (`producto_id`))\n"
                     + "ENGINE = InnoDB;");
-            
+
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`ESTADO_PEDIDO` (\n"
                     + "  `estado_pedido_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `estado_pedido_estado` VARCHAR(45) NOT NULL,\n"
                     + "  PRIMARY KEY (`estado_pedido_id`))\n"
                     + "ENGINE = InnoDB;");
-            
+
+            st.executeUpdate("INSERT INTO `OrderTracker`.`ESTADO_PEDIDO`"
+                    + "VALUES (null,'NO_PAGADO')");
+            st.executeUpdate("INSERT INTO `OrderTracker`.`ESTADO_PEDIDO`"
+                    + "VALUES (null,'PAGADO')");
+
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`METODO_PAGO` (\n"
                     + "  `metodo_pago_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `metodo_pago_nombre` VARCHAR(45) NOT NULL,\n"
                     + "  PRIMARY KEY (`metodo_pago_id`))\n"
                     + "ENGINE = InnoDB;");
-            
+
+            st.executeUpdate("INSERT INTO `OrderTracker`.`METODO_PAGO`"
+                    + "VALUES (null,'ONLINE')");
+            st.executeUpdate("INSERT INTO `OrderTracker`.`METODO_PAGO`"
+                    + "VALUES (null,'CONTRAREEMBOLSO')");
+            st.executeUpdate("INSERT INTO `OrderTracker`.`METODO_PAGO`"
+                    + "VALUES (null,'TIENDA')");
+
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`PEDIDO` (\n"
                     + "  `pedido_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `pedido_fechaCreacion` TIMESTAMP NOT NULL,\n"
@@ -326,7 +379,7 @@ public class OperacionesBDD {
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION)\n"
                     + "ENGINE = InnoDB;");
-            
+
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`LINEA_PEDIDO` (\n"
                     + "  `linea_pedido_id` INT NOT NULL,\n"
                     + "  `linea_pedido_producto_id` INT NOT NULL,\n"
@@ -364,13 +417,21 @@ public class OperacionesBDD {
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION)\n"
                     + "ENGINE = InnoDB;");
-            
-            conexion.commit();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
-            
+            transaccionCompletada = false;
+
         }
+
+        if (transaccionCompletada) {
+            try {
+                conexion.commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
-    
+
 }
