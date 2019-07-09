@@ -154,9 +154,9 @@ public class OperacionesBDD {
      * @param codigoPostal
      * @param pais
      */
-    public static void introducirEmpresa(String nombre, String formaJuridica, String CIF,
+    public static void añadirEmpresa(String nombre, String formaJuridica, String CIF,
             String email, String emailPaypal, String calle, String localidad,
-            String provincia, String codigoPostal, String pais) {
+            String provincia, String codigoPostal, String pais, String telefono) {
 
         Statement st = null;
         ResultSet rs = null;
@@ -175,27 +175,34 @@ public class OperacionesBDD {
                 //No existe ninguna empresa, por tanto se procede a introducir una
                 logger.info("Se procede a introducir los datos de la nueva empresa");
                 //Solo hay una empresa, por tanto la primary key es "1" para ambos registros
-                String queryDireccion = "INSERT INTO OrderTracker.direccion VALUES (1,?, ?, ?, ?, ?);";
-                PreparedStatement psDireccion = conexion.clientPrepareStatement(queryDireccion);
+                String queryDireccion = "INSERT INTO OrderTracker.direccion VALUES (null,?, ?, ?, ?, ?);";
+                PreparedStatement psDireccion = conexion.prepareStatement(queryDireccion);
 
+                
                 psDireccion.setString(1, calle);
                 psDireccion.setString(2, localidad);
                 psDireccion.setString(3, provincia);
                 psDireccion.setString(4, codigoPostal);
                 psDireccion.setString(5, pais);
 
-                psDireccion.executeUpdate();
-
-                //Solo hay una empresa, por tanto la primary key es "1" para ambos registros
-                String queryEmpresa = "INSERT INTO OrderTracker.datos_empresa VALUES (1, ?, ?, ?, 1, ?, ?);";
+                
+                psDireccion.execute();
+                
+                conexion.commit();
+                
+                String queryEmpresa = "INSERT INTO OrderTracker.datos_empresa VALUES (null, ?, ?, ?,"
+                        + " (SELECT direccion_id FROM OrderTracker.direccion WHERE direccion_calle = ? AND direccion_codigoPostal = ? )"
+                        + ", ?, ?, ?);";
                 PreparedStatement psEmpresa = conexion.clientPrepareStatement(queryEmpresa);
 
                 psEmpresa.setString(1, nombre);
                 psEmpresa.setString(2, formaJuridica);
                 psEmpresa.setString(3, CIF);
-                psEmpresa.setString(4, email);
-                psEmpresa.setString(5, emailPaypal);
-
+                psEmpresa.setString(4, calle);
+                psEmpresa.setString(5, codigoPostal);
+                psEmpresa.setString(6, email);
+                psEmpresa.setString(7, emailPaypal);
+                psEmpresa.setString(8, telefono);
                 psEmpresa.executeUpdate();
 
                 conexion.commit();
@@ -280,7 +287,7 @@ public class OperacionesBDD {
         }
 
     }
-
+    
     /**
      * Crea el esquema de la bdd en el servidor. Añade todas las tablas. Tambien
      * inserta los tipos de usuario,los métodos de pago Y el estado de pedido.
@@ -426,7 +433,7 @@ public class OperacionesBDD {
                     + "ENGINE = InnoDB;");
 
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`LINEA_PEDIDO` (\n"
-                    + "  `linea_pedido_id` INT NOT NULL,\n"
+                    + "  `linea_pedido_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `linea_pedido_producto_id` INT NOT NULL,\n"
                     + "  `linea_pedido_cantidad` INT NOT NULL,\n"
                     + "  `linea_pedido_pedido_id` INT NOT NULL,\n"
@@ -446,7 +453,7 @@ public class OperacionesBDD {
                     + "    ON UPDATE NO ACTION)\n"
                     + "ENGINE = InnoDB;");
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`DATOS_EMPRESA` (\n"
-                    + "  `datos_empresa_id` INT NOT NULL,\n"
+                    + "  `datos_empresa_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `datos_empresa_nombre` VARCHAR(25) NOT NULL,\n"
                     + "  `datos_empresa_formaJuridica` VARCHAR(5) NOT NULL,\n"
                     + "  `datos_empresa_cif` VARCHAR(15) NOT NULL,\n"

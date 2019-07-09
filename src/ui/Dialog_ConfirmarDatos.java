@@ -381,7 +381,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     }//GEN-LAST:event_closeDialog
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
-        
+
         persistirDatos();
         /*
         try {
@@ -435,10 +435,24 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         this.lblContra.setText(database.getUser());
         this.lblUsuario.setText(database.getPassword());
     }
-    
+
     private void persistirDatos() {
-            OperacionesBDD.añadirAdmin(adminUser.getUsername(), adminUser.getPassword());
-            //INSERTAR EMPRESA
+
+        // CAMBIAR EN EL FICHERO DE CONFIGURACION LA BDD SI HICIESE FALTA
+        OperacionesBDD.crearBDD();
+        OperacionesBDD.añadirAdmin(adminUser.getUsername(), adminUser.getPassword());
+        OperacionesBDD.añadirEmpresa(
+                empresa.getNombre(),
+                empresa.getFormaJuridica(),
+                empresa.getCIF(),
+                empresa.getEmail(),
+                empresa.getPaypal(),
+                empresa.getCalle(),
+                empresa.getLocalidad(),
+                empresa.getProvincia(),
+                empresa.getCodigoPostal(),
+                empresa.getPais(),
+                empresa.getTelefono());
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
