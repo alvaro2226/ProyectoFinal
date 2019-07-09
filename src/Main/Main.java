@@ -17,7 +17,6 @@
 package Main;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,20 +60,9 @@ public class Main {
             //Es la primera vez, por tanto se tiene que mostrar el frame
             // de bienvenida
             //
-            /*
-            OperacionesBDD op = new OperacionesBDD();
-            try {
-                op.iniciarConexion();
-                op.crearBDD();
-                op.añadirAdmin("admin", "admin");
-                op.cerrarConexion();
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            }
-             */
-            new Frame_Bienvenida().setVisible(true);
+            OperacionesBDD.crearBDD();
+            OperacionesBDD.añadirAdmin("askmk", "asdsddddddd");
+            //new Frame_Bienvenida().setVisible(true);
         } else {
             //Se tiene que mostrar el frame de iniciar sesión
         }

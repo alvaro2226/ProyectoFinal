@@ -1,8 +1,8 @@
 # ProyectoFinal del curso DAM - √Ålvaro M.B
 
 Errores detectados sin corregir:
-  - Se tiene que modificar la clase operacionesBDD, no deben hacer throw los mÈtodos,
-     ya que si no, el commit se hace igualmente.
+  - <del>Se tiene que modificar la clase operacionesBDD, no deben hacer throw los mÈtodos,
+     ya que si no, el commit se hace igualmente.</del> Se ha refactorizado correctamente.
   - El fichero de consiguracion se sobreescribe cada vez que se intenta aÒadir una propiedad nueva.
      No es capaz de detectar si es la primera vez que se inicia el programa, porque la propiedad
      se sobreescribe.

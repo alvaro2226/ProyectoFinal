@@ -18,8 +18,6 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +25,6 @@ import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 import pojos.*;
 import util.OperacionesBDD;
@@ -51,7 +48,6 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     private Empresa empresa;
     private Database database;
     private AdminUser adminUser;
-    private OperacionesBDD operacionesBDD = new OperacionesBDD();
     private final static Logger logger = Logger.getLogger(Frame_Bienvenida.class.getName());
     private Properties properties = PropertiesUtil.getProperties();
     private Frame_Bienvenida frameBienvenida;
@@ -405,7 +401,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         doClose(RET_CANCEL);
-        logger.log(Level.INFO, "Se ha cancelado la confirmación");
+        logger.log(Level.INFO, "No se han confirmado los datos");
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void doClose(int retStatus) {
@@ -441,16 +437,8 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     }
     
     private void persistirDatos() {
-        try {
-            //INSERTAR ADMIN
-            operacionesBDD.iniciarConexion();
-            operacionesBDD.añadirAdmin(adminUser.getUsername(), adminUser.getPassword());
+            OperacionesBDD.añadirAdmin(adminUser.getUsername(), adminUser.getPassword());
             //INSERTAR EMPRESA
-        } catch (SQLException ex) {
-            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
