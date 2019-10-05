@@ -1,12 +1,13 @@
 # ProyectoFinal del curso DAM - Álvaro M.B
 
 Errores detectados sin corregir:
+  - Faltan los botones para retroceder en el frame de bienvenida
   - <del>Se tiene que modificar la clase operacionesBDD, no deben hacer throw los m�todos,
      ya que si no, el commit se hace igualmente.</del> Se ha refactorizado correctamente.
-  - El fichero de consiguracion se sobreescribe cada vez que se intenta a�adir una propiedad nueva.
+  - <del>El fichero de consiguracion se sobreescribe cada vez que se intenta a�adir una propiedad nueva.
      No es capaz de detectar si es la primera vez que se inicia el programa, porque la propiedad
-     se sobreescribe.
-  - La URL de la base de datos en configuracion.properties es localhost (debería ser la IP del servidor).
+     se sobreescribe.</del>
+  - <del>La URL de la base de datos en configuracion.properties es localhost (debería ser la IP del servidor).<del>
   - Las carpetas dist/build no hacen commit/push a GitHub. Por tanto no se suben las librerías externas.
   - <del>En el componente botón, la ruta a las imágenes es absoluta (debería ser relativa al proyecto). Por tanto, no 
      se puede visualizar el botón. </del> Corregido, he eliminado estos botones y he utilizado las librerias de rojeru san

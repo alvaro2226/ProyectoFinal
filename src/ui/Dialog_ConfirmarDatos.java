@@ -18,6 +18,7 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -383,17 +384,19 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
 
         persistirDatos();
-        /*
+        //Si los datos se guardan correctamente, se debe cambiar el valor a la
+        //variable "app.firstTime" a "false" indicando de esta manera que ya
+        //no es la primera vez que ejecutamos la aplicación
+        PropertiesUtil.init();
         try {
-            //Si los datos se guardan correctamente, se debe cambiar el valor a la
-            //variable "app.firstTime" a "false" indicando de esta manera que ya
-            //no es la primera vez que ejecutamos la aplicación
-            //PropertiesUtil.init();
-            //PropertiesUtil.setFirstTime(false);
+            PropertiesUtil.añadirBDD(database.getURL(),
+                    database.getUser(),
+                    database.getPassword(),
+                    "false");
         } catch (IOException ex) {
             Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-         */
+
         doClose(RET_OK);
         frameBienvenida.cerrarFrame();
 

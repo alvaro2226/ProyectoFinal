@@ -61,7 +61,7 @@ public class OperacionesBDD {
     public static void cambiarBDD(String URL, String USER, String PASSWORD) {
 
         try {
-            PropertiesUtil.añadirBDD(URL, USER, PASSWORD);
+            PropertiesUtil.añadirBDD(URL, USER, PASSWORD,"true");
         } catch (IOException ex) {
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -70,13 +70,15 @@ public class OperacionesBDD {
 
     private static void iniciarConexion() throws ClassNotFoundException, SQLException {
 
+        Properties p = PropertiesUtil.getProperties();
+        
         if ( conexion == null || conexion.isClosed()) {
             Class.forName("com.mysql.jdbc.Driver");
 
             //Recibe los parametros del fichero de configuracion
-            conexion = (Connection) DriverManager.getConnection(properties.getProperty("database.URL"),
-                    properties.getProperty("database.USER"),
-                    properties.getProperty("database.PASSWORD"));
+            conexion = (Connection) DriverManager.getConnection(p.getProperty("database.URL"),
+                    p.getProperty("database.USER"),
+                    p.getProperty("database.PASSWORD"));
 
             conexion.setAutoCommit(false);
 
@@ -300,7 +302,7 @@ public class OperacionesBDD {
             iniciarConexion();
             st = conexion.createStatement();
 
-            st.execute("DROP SCHEMA `OrderTracker` ;");
+            //st.execute("DROP SCHEMA `OrderTracker` ;");
 
             st.execute("CREATE SCHEMA IF NOT EXISTS `OrderTracker` DEFAULT CHARACTER SET utf8 ;");
 
@@ -477,7 +479,11 @@ public class OperacionesBDD {
             logger.severe("No se ha podido crear la base de datos");
 
             try {
-                conexion.rollback();
+                
+                if(conexion!=null){
+                    conexion.rollback();
+                }
+                
             } catch (SQLException ex1) {
                 Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex1);
             }

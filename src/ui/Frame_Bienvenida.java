@@ -35,7 +35,7 @@ public class Frame_Bienvenida extends JFrame {
         
     //-------------------------------------------
     //TRUE para omitir todos las comprobaciones
-    private final boolean omitirComprobaciones = true;  
+    private final boolean omitirComprobaciones = false;  
     //-------------------------------------------
     
     private final CardLayout cardLayout;
