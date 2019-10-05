@@ -35,7 +35,7 @@ public class Frame_Bienvenida extends JFrame {
         
     //-------------------------------------------
     //TRUE para omitir todos las comprobaciones
-    private final boolean omitirComprobaciones = true;  
+    private final boolean omitirComprobaciones = false;  
     //-------------------------------------------
     
     private final CardLayout cardLayout;
@@ -63,21 +63,6 @@ public class Frame_Bienvenida extends JFrame {
         empresa = new Empresa();
 
         ocultarIconos();
-        /*
-        try {
-            
-            operacionesBDD.iniciarConexion();
-            operacionesBDD.introducirEmpresa("Empresa TEST", "S.L", "001232323SL",
-                    "alvaro.morcillo@hotmail.com", "alvaro.morcillo@hotmail.com",
-                    "Cuenca 5", "Tobarra", "Albacete", "02500", "España");     
-            operacionesBDD.cerrarConexion();
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Frame_Bienvenida.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Frame_Bienvenida.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         */
     }
 
     /**

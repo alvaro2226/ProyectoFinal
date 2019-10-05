@@ -17,7 +17,6 @@
 package Main;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,9 +59,12 @@ public class Main {
         if (properties.getProperty("app.firstTime").equals("true")) {
             //Es la primera vez, por tanto se tiene que mostrar el frame
             // de bienvenida
+            //
+            //OperacionesBDD.crearBDD();
+            //OperacionesBDD.añadirEmpresa("nombre", "fm", "cif", "email", "paypal", "calle", "localidad", "prov", "cp", "pais", "tele");
+            //OperacionesBDD.añadirAdmin("askmk", "asdsddddddd");
             new Frame_Bienvenida().setVisible(true);
-
-        }else{
+        } else {
             //Se tiene que mostrar el frame de iniciar sesión
         }
 
