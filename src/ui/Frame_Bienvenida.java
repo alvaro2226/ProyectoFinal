@@ -1175,7 +1175,7 @@ public class Frame_Bienvenida extends JFrame {
     }//GEN-LAST:event_botonSiguiente5ActionPerformed
 
     public void cerrarFrame(){
-        System.exit(0);
+        dispose();
     }
     private void textField_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_telefonoActionPerformed
         // TODO add your handling code here:
@@ -1217,6 +1217,7 @@ public class Frame_Bienvenida extends JFrame {
                 public void windowClosing(java.awt.event.WindowEvent e) {
                     logger.info("Se ha cerrado la el frame de bienvenida.");
                     System.exit(0);
+                    
                     
                 }
             });

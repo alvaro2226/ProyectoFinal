@@ -396,9 +396,12 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         } catch (IOException ex) {
             Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        frameBienvenida.dispose();
+        new FrameLogin().setVisible(true);
 
         doClose(RET_OK);
-        frameBienvenida.cerrarFrame();
+
 
     }//GEN-LAST:event_botonConfirmarActionPerformed
 

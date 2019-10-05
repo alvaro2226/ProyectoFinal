@@ -61,7 +61,7 @@ public class OperacionesBDD {
     public static void cambiarBDD(String URL, String USER, String PASSWORD) {
 
         try {
-            PropertiesUtil.añadirBDD(URL, USER, PASSWORD,"true");
+            PropertiesUtil.añadirBDD(URL, USER, PASSWORD, "true");
         } catch (IOException ex) {
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -71,8 +71,8 @@ public class OperacionesBDD {
     private static void iniciarConexion() throws ClassNotFoundException, SQLException {
 
         Properties p = PropertiesUtil.getProperties();
-        
-        if ( conexion == null || conexion.isClosed()) {
+
+        if (conexion == null || conexion.isClosed()) {
             Class.forName("com.mysql.jdbc.Driver");
 
             //Recibe los parametros del fichero de configuracion
@@ -100,6 +100,35 @@ public class OperacionesBDD {
             logger.warning("La conexion con la base de datos ya estaba cerrada");
         }
 
+    }
+
+    /**
+     * Devuelve true si el usuario y la contraseña coinciden en la base de datos
+     *
+     * @param user
+     * @param password
+     * @return
+     */
+    public static boolean iniciarSesion(String user, String password) throws ClassNotFoundException, SQLException {
+
+        iniciarConexion();
+        boolean inicioCorrecto = true;
+        String query = "SELECT * FROM ordertracker.usuario WHERE usuario_contraseña=? AND usuario_nombreUsuario=?";
+        logger.info("Intento de inicio de sesión: \n "
+                + "Usuario: " + user + "\n" + " Contraseña: " + password);
+        
+            PreparedStatement pst = conexion.clientPrepareStatement(query);
+            pst.setString(1, password);
+            pst.setString(2, user);
+            ResultSet rs = pst.executeQuery();
+            
+            if(!rs.first()){
+                inicioCorrecto = false;
+            }
+
+        
+        cerrarConexion();
+        return inicioCorrecto;
     }
 
     /**
@@ -180,18 +209,16 @@ public class OperacionesBDD {
                 String queryDireccion = "INSERT INTO OrderTracker.direccion VALUES (null,?, ?, ?, ?, ?);";
                 PreparedStatement psDireccion = conexion.prepareStatement(queryDireccion);
 
-                
                 psDireccion.setString(1, calle);
                 psDireccion.setString(2, localidad);
                 psDireccion.setString(3, provincia);
                 psDireccion.setString(4, codigoPostal);
                 psDireccion.setString(5, pais);
 
-                
                 psDireccion.execute();
-                
+
                 conexion.commit();
-                
+
                 String queryEmpresa = "INSERT INTO OrderTracker.datos_empresa VALUES (null, ?, ?, ?,"
                         + " (SELECT direccion_id FROM OrderTracker.direccion WHERE direccion_calle = ? AND direccion_codigoPostal = ? )"
                         + ", ?, ?, ?);";
@@ -289,7 +316,7 @@ public class OperacionesBDD {
         }
 
     }
-    
+
     /**
      * Crea el esquema de la bdd en el servidor. Añade todas las tablas. Tambien
      * inserta los tipos de usuario,los métodos de pago Y el estado de pedido.
@@ -303,7 +330,6 @@ public class OperacionesBDD {
             st = conexion.createStatement();
 
             //st.execute("DROP SCHEMA `OrderTracker` ;");
-
             st.execute("CREATE SCHEMA IF NOT EXISTS `OrderTracker` DEFAULT CHARACTER SET utf8 ;");
 
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`TIPO_USUARIO` (\n"
@@ -337,7 +363,7 @@ public class OperacionesBDD {
 
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`USUARIO` (\n"
                     + "  `usuario_id` INT NOT NULL AUTO_INCREMENT,\n"
-                    + "  `usuario_nombreUsuario` VARCHAR(15) NOT NULL,\n"
+                    + "  `usuario_nombreUsuario` VARCHAR(15) NOT NULL UNIQUE,\n"
                     + "  `usuario_email` VARCHAR(100) NULL,\n"
                     + "  `usuario_contraseña` VARCHAR(25) NOT NULL,\n"
                     + "  `usuario_nombre` VARCHAR(45) NULL,\n"
@@ -479,11 +505,11 @@ public class OperacionesBDD {
             logger.severe("No se ha podido crear la base de datos");
 
             try {
-                
-                if(conexion!=null){
+
+                if (conexion != null) {
                     conexion.rollback();
                 }
-                
+
             } catch (SQLException ex1) {
                 Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex1);
             }

@@ -21,6 +21,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import log.MyLogger;
+import ui.FrameLogin;
 import ui.Frame_Bienvenida;
 import util.OperacionesBDD;
 import util.PropertiesUtil;
@@ -66,6 +67,7 @@ public class Main {
             new Frame_Bienvenida().setVisible(true);
         } else {
             //Se tiene que mostrar el frame de iniciar sesión
+            new FrameLogin().setVisible(true);
         }
 
     }
