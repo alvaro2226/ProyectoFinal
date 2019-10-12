@@ -398,7 +398,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         }
         
         frameBienvenida.dispose();
-        new FrameLogin().setVisible(true);
+        new Frame_Login().setVisible(true);
 
         doClose(RET_OK);
 

@@ -994,8 +994,8 @@ public class Frame_Bienvenida extends JFrame {
         //****************************
         //***************************
         //Comprueba la conexion
-        conexionEstablecida = OperacionesBDD.comprobarConexion(this.lblURL.getText(),
-                this.lblUser.getText(),
+        conexionEstablecida = OperacionesBDD.comprobarConexion(this.lblURL.getText().trim(),
+                this.lblUser.getText().trim(),
                 String.valueOf(this.lblPassword.getPassword()));
 
         //Muestra el mensaje en la consola

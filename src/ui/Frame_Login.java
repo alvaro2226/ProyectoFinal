@@ -16,26 +16,33 @@
  */
 package ui;
 
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import log.MyLogger;
+import threads.InicioSesionThread;
 import util.OperacionesBDD;
 
 /**
  *
  * @author Álvaro Morcillo Barbero
  */
-public class FrameLogin extends javax.swing.JFrame {
+public class Frame_Login extends javax.swing.JFrame {
     
 private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
     /**
      * Creates new form FrameLogin
      */
-    public FrameLogin() {
+    public Frame_Login() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.lblConsola.setVisible(false);
+        this.rSProgressCircleAnimated1.setVisible(false);
+        
+        this.lblUsuario.setNextFocusableComponent(lblContra);
+        this.rSButtonHover1.setMnemonic(KeyEvent.VK_ACCEPT);
+        this.getRootPane().setDefaultButton(rSButtonHover1);
     }
 
     /**
@@ -57,11 +64,14 @@ private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
         lblContra = new rojeru_san.RSMPassView();
         rSButtonHover1 = new rojerusan.RSButtonHover();
         lblConsola = new javax.swing.JLabel();
+        rSProgressCircleAnimated1 = new rojerusan.RSProgressCircleAnimated();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         backgroundPanel.setBackground(new java.awt.Color(255, 255, 255));
+        backgroundPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelSuperior.setBackground(new java.awt.Color(79, 134, 198));
 
@@ -99,14 +109,20 @@ private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
             .addComponent(rSPanelImage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        backgroundPanel.add(panelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, -1));
+
         rSLabelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/user_40px.png"))); // NOI18N
+        backgroundPanel.add(rSLabelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 166, 40, 40));
 
         lblUsuario.setPlaceholder("Nombre de usuario");
+        backgroundPanel.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 156, 262, 50));
 
         rSLabelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/lock_40px.png"))); // NOI18N
         rSLabelImage2.setPreferredSize(new java.awt.Dimension(40, 40));
+        backgroundPanel.add(rSLabelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 263, -1, -1));
 
         lblContra.setPlaceholder("Contraseña");
+        backgroundPanel.add(lblContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 263, 262, -1));
 
         rSButtonHover1.setText("Iniciar sesión");
         rSButtonHover1.addActionListener(new java.awt.event.ActionListener() {
@@ -114,85 +130,50 @@ private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
                 rSButtonHover1ActionPerformed(evt);
             }
         });
+        backgroundPanel.add(rSButtonHover1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
 
         lblConsola.setBackground(new java.awt.Color(255, 255, 255));
         lblConsola.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         lblConsola.setForeground(new java.awt.Color(255, 0, 0));
         lblConsola.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblConsola.setText("Compruebe de nuevo el usuario y la contraseña");
+        backgroundPanel.add(lblConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 364, -1));
 
-        javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
-        backgroundPanel.setLayout(backgroundPanelLayout);
-        backgroundPanelLayout.setHorizontalGroup(
-            backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(backgroundPanelLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(rSButtonHover1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addComponent(rSLabelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addComponent(rSLabelImage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(lblContra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(37, 37, 37))
-            .addGroup(backgroundPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblConsola, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        backgroundPanelLayout.setVerticalGroup(
-            backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgroundPanelLayout.createSequentialGroup()
-                .addComponent(panelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSLabelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
-                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rSLabelImage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                .addComponent(lblConsola)
-                .addGap(18, 18, 18)
-                .addComponent(rSButtonHover1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-        );
+        rSProgressCircleAnimated1.setString("");
+        rSProgressCircleAnimated1.setVelocidad(20);
+        backgroundPanel.add(rSProgressCircleAnimated1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 50, 50));
 
-        getContentPane().add(backgroundPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 520));
+        getContentPane().add(backgroundPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSButtonHover1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonHover1ActionPerformed
 
+        //this.rSProgressCircleAnimated1.setVisible(true);
+        new InicioSesionThread(rSProgressCircleAnimated1, lblConsola).start();
         boolean inicioCorrecto = false;
         try {
             inicioCorrecto = OperacionesBDD.iniciarSesion(lblUsuario.getText(), this.lblContra.getText());
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(FrameLogin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Frame_Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         if(inicioCorrecto){
-            this.lblConsola.setVisible(false);
+            //this.lblConsola.setVisible(false);
             logger.info("Se ha iniciado sesión");
-            
+            dispose();
+            new Frame_Principal().setVisible(true);
             //MOSTRAR UN PROGRESS CIRCLE MIENTRAS CARGA EL FRAME PRINCIPAL
             //---------
             //ABRIR AQUI EL FRAME PRINCIPAL
             //---------
             
         }else{
-            this.lblConsola.setVisible(true);
+            //this.lblConsola.setVisible(true);
              logger.info("No se ha podido iniciar sesión");
         }
+        //this.rSProgressCircleAnimated1.setVisible(false);
     }//GEN-LAST:event_rSButtonHover1ActionPerformed
 
     /**
@@ -212,20 +193,21 @@ private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameLogin().setVisible(true);
+                new Frame_Login().setVisible(true);
             }
         });
     }
@@ -241,5 +223,6 @@ private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
     private rojerusan.RSLabelImage rSLabelImage1;
     private rojerusan.RSLabelImage rSLabelImage2;
     private rojerusan.RSPanelImage rSPanelImage2;
+    private rojerusan.RSProgressCircleAnimated rSProgressCircleAnimated1;
     // End of variables declaration//GEN-END:variables
 }
