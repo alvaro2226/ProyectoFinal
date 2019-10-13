@@ -68,7 +68,7 @@ public class OperacionesBDD {
 
     }
 
-    private static void iniciarConexion() throws ClassNotFoundException, SQLException {
+    public static void iniciarConexion() throws ClassNotFoundException, SQLException {
 
         Properties p = PropertiesUtil.getProperties();
 
@@ -76,7 +76,7 @@ public class OperacionesBDD {
             Class.forName("com.mysql.jdbc.Driver");
 
             //Recibe los parametros del fichero de configuracion
-            conexion = (Connection) DriverManager.getConnection(p.getProperty("database.URL"),
+            conexion = (Connection) DriverManager.getConnection(p.getProperty("database.URL") + "?zeroDateTimeBehavior=convertToNull",
                     p.getProperty("database.USER"),
                     p.getProperty("database.PASSWORD"));
 
@@ -90,7 +90,7 @@ public class OperacionesBDD {
 
     }
 
-    private static void cerrarConexion() throws SQLException {
+    public static void cerrarConexion() throws SQLException {
 
         if (conexion != null) {
             conexion.close();
@@ -116,17 +116,16 @@ public class OperacionesBDD {
         String query = "SELECT * FROM ordertracker.usuario WHERE usuario_contraseña=? AND usuario_nombreUsuario=?";
         logger.info("Intento de inicio de sesión: \n "
                 + "Usuario: " + user + "\n" + " Contraseña: " + password);
-        
-            PreparedStatement pst = conexion.clientPrepareStatement(query);
-            pst.setString(1, password);
-            pst.setString(2, user);
-            ResultSet rs = pst.executeQuery();
-            
-            if(!rs.first()){
-                inicioCorrecto = false;
-            }
 
-        
+        PreparedStatement pst = conexion.clientPrepareStatement(query);
+        pst.setString(1, password);
+        pst.setString(2, user);
+        ResultSet rs = pst.executeQuery();
+
+        if (!rs.first()) {
+            inicioCorrecto = false;
+        }
+
         cerrarConexion();
         return inicioCorrecto;
     }
@@ -406,9 +405,13 @@ public class OperacionesBDD {
                     + "ENGINE = InnoDB;");
 
             st.executeUpdate("INSERT INTO `OrderTracker`.`ESTADO_PEDIDO`"
-                    + "VALUES (null,'NO_PAGADO')");
+                    + "VALUES (null,'DE_CAMINO')");
             st.executeUpdate("INSERT INTO `OrderTracker`.`ESTADO_PEDIDO`"
-                    + "VALUES (null,'PAGADO')");
+                    + "VALUES (null,'PREPARADO')");
+            st.executeUpdate("INSERT INTO `OrderTracker`.`ESTADO_PEDIDO`"
+                    + "VALUES (null,'FINALIZADO')");
+            st.executeUpdate("INSERT INTO `OrderTracker`.`ESTADO_PEDIDO`"
+                    + "VALUES (null,'CANCELADO')");
 
             st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`METODO_PAGO` (\n"
                     + "  `metodo_pago_id` INT NOT NULL AUTO_INCREMENT,\n"
@@ -529,4 +532,117 @@ public class OperacionesBDD {
         }
 
     }
+
+    public static ResultSet getPedidos() {
+        ResultSet pedidos = null;
+        String query = "SELECT pedido_id AS ID ,\n"
+                + "                	pedido_usuario_id AS ID_USUARIO,\n"
+                + "			pedido_costesEnvio AS COSTE_ENVIO,\n"
+                + "                	pedido_fechaEnvioEstimada AS LLEGADA_EST,\n"
+                + "                	pedido_fechaEnvioRealizado AS LLEGADA,\n"
+                + "                	estado_pedido_estado AS ESTADO,\n"
+                + "                	metodo_pago_nombre AS METODO_PAGO, \n"
+                + "                	pedido_pagado AS PAGADO,\n"
+                + "                    usuario_nombre + usuario_Apellidos REPARTIDOR\n"
+                + "                FROM ordertracker.pedido,ordertracker.estado_pedido,ordertracker.metodo_pago,ordertracker.usuario\n"
+                + "                WHERE pedido_estadoPedido = estado_pedido_id AND\n"
+                + "					  pedido_metodoPago = metodo_pago_id AND\n"
+                + "                      pedido_empleadoAsignado = usuario_id AND\n"
+                + "                      pedido_usuario_id = usuario_id\n"
+                + "                ORDER BY pedido_fechaCreacion";
+        Statement st;
+        try {
+
+            st = conexion.createStatement();
+            pedidos = st.executeQuery(query);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return pedidos;
+    }
+
+    public static ResultSet getProductos() {
+        ResultSet pedidos = null;
+        String query = "SELECT * FROM OrderTracker.producto";
+        Statement st;
+        try {
+
+            st = conexion.createStatement();
+            pedidos = st.executeQuery(query);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return pedidos;
+    }
+
+    public static ResultSet getUsuarios() {
+        ResultSet pedidos = null;
+        String query = "SELECT usuario_nombreUsuario AS USUARIO,\n"
+                + "usuario_email AS EMAIL,\n"
+                + "usuario_nombre + usuario_Apellidos AS NOMBRE,\n"
+                + "usuario_telefono AS TELEFONO,\n"
+                + "tipoUsuario_tipo AS TIPO_USUARIO,\n"
+                + "direccion_calle AS DIRECCION,\n"
+                + "usuario_dni AS DNI\n"
+                + " FROM ordertracker.usuario, ordertracker.tipo_usuario, ordertracker.direccion\n"
+                + " WHERE usuario_tipoUsuario_id = tipoUsuario_id";
+        Statement st;
+        try {
+
+            st = conexion.createStatement();
+            pedidos = st.executeQuery(query);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return pedidos;
+    }
+
+    public static ResultSet getLineas(int idPedido) {
+        ResultSet pedidos = null;
+        String query = "SELECT producto_nombre AS PRODUCTO,\n"
+                + "linea_pedido_cantidad AS CANTIDAD,\n"
+                + "linea_pedido_total AS TOTAL\n"
+                + " FROM ordertracker.linea_pedido,ordertracker.producto, ordertracker.pedido\n"
+                + " WHERE linea_pedido_pedido_id = pedido_id AND linea_pedido_producto_id = producto_id AND pedido_id=" + idPedido;
+        
+        
+        try {
+            Statement statement = conexion.createStatement();
+            pedidos = statement.executeQuery(query);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return pedidos;
+    }
+
+    /**
+     * Lineas para insertar datos de prueba ********************************
+     *
+     * Inserta varios productos INSERT INTO ordertracker.producto VALUES
+     * (null,"producto","producto",12.2,null,1);
+     *
+     * Inserta el pedido
+     *
+     * INSERT INTO `ordertracker`.`pedido` (`pedido_id`, `pedido_fechaCreacion`,
+     * `pedido_usuario_id`, `pedido_costesEnvio`, `pedido_fechaEnvioEstimada`,
+     * `pedido_fechaEnvioRealizado`, `pedido_estadoPedido`, `pedido_metodoPago`,
+     * `pedido_pagado`, `pedido_empleadoAsignado`) VALUES (null,now(),1, 15,
+     * 12/15/2018, 12/15/2018, 1, 1, 1, 1);
+     *
+     * Inserta varias lineas para el pedido INSERT INTO
+     * `ordertracker`.`linea_pedido` (`linea_pedido_id`,
+     * `linea_pedido_producto_id`, `linea_pedido_cantidad`,
+     * `linea_pedido_pedido_id`, `linea_pedido_total`) VALUES (null, 1, 10, 1,
+     * 2);
+     *
+     *
+     */
 }

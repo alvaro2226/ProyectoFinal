@@ -14,14 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package ui;
+package ui.bienvenida;
 
 import java.awt.event.KeyEvent;
+import static java.lang.Thread.sleep;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import log.MyLogger;
 import threads.InicioSesionThread;
+import ui.principal.Frame_Principal;
 import util.OperacionesBDD;
 
 /**
@@ -29,8 +31,9 @@ import util.OperacionesBDD;
  * @author Álvaro Morcillo Barbero
  */
 public class Frame_Login extends javax.swing.JFrame {
-    
-private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
+
+    private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
+
     /**
      * Creates new form FrameLogin
      */
@@ -39,7 +42,7 @@ private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
         this.setLocationRelativeTo(null);
         this.lblConsola.setVisible(false);
         this.rSProgressCircleAnimated1.setVisible(false);
-        
+
         this.lblUsuario.setNextFocusableComponent(lblContra);
         this.rSButtonHover1.setMnemonic(KeyEvent.VK_ACCEPT);
         this.getRootPane().setDefaultButton(rSButtonHover1);
@@ -158,20 +161,22 @@ private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Frame_Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        if(inicioCorrecto){
+
+        if (inicioCorrecto) {
             //this.lblConsola.setVisible(false);
             logger.info("Se ha iniciado sesión");
             dispose();
+            try {
+                sleep(2000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Frame_Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             new Frame_Principal().setVisible(true);
-            //MOSTRAR UN PROGRESS CIRCLE MIENTRAS CARGA EL FRAME PRINCIPAL
-            //---------
-            //ABRIR AQUI EL FRAME PRINCIPAL
-            //---------
-            
-        }else{
+
+
+        } else {
             //this.lblConsola.setVisible(true);
-             logger.info("No se ha podido iniciar sesión");
+            logger.info("No se ha podido iniciar sesión");
         }
         //this.rSProgressCircleAnimated1.setVisible(false);
     }//GEN-LAST:event_rSButtonHover1ActionPerformed
