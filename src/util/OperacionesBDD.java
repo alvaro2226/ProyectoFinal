@@ -17,6 +17,9 @@
 package util;
 
 import com.mysql.jdbc.Connection;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -565,7 +568,10 @@ public class OperacionesBDD {
 
     public static ResultSet getProductos() {
         ResultSet pedidos = null;
-        String query = "SELECT * FROM OrderTracker.producto";
+        String query = "SELECT producto_id AS ID,producto_nombre AS NOMBRE,"
+                + "producto_descripcion AS DESCRIPCION,"
+                + "producto_precio AS PRECIO,"
+                + "producto_stock AS STOCK FROM OrderTracker.producto";
         Statement st;
         try {
 
@@ -610,8 +616,7 @@ public class OperacionesBDD {
                 + "linea_pedido_total AS TOTAL\n"
                 + " FROM ordertracker.linea_pedido,ordertracker.producto, ordertracker.pedido\n"
                 + " WHERE linea_pedido_pedido_id = pedido_id AND linea_pedido_producto_id = producto_id AND pedido_id=" + idPedido;
-        
-        
+
         try {
             Statement statement = conexion.createStatement();
             pedidos = statement.executeQuery(query);
@@ -621,6 +626,69 @@ public class OperacionesBDD {
         }
 
         return pedidos;
+    }
+
+    public static void añadirProducto(String nombre, String desc, float precio, File imagen, int stock) {
+        try {
+            PreparedStatement preparedStatement;
+            String query = "INSERT INTO ordertracker.producto VALUES (null,?,?,?,?,?);";
+
+            preparedStatement = conexion.clientPrepareStatement(query);
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, desc);
+            preparedStatement.setFloat(3, precio);
+
+            if (imagen == null) {
+                preparedStatement.setBinaryStream(4, null);
+            } else {
+                FileInputStream input = new FileInputStream(imagen);
+                preparedStatement.setBinaryStream(4, input);
+            }
+            preparedStatement.setString(5, nombre);
+
+            preparedStatement.executeUpdate();
+            conexion.commit();
+
+        } catch (SQLException | FileNotFoundException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * 
+     * @param id
+     * @param nombre
+     * @param desc
+     * @param precio
+     * @param imagen
+     * @param stock 
+     */
+    public static void modificarProducto(int id, String nombre, String desc, float precio, File imagen, int stock) {
+        try {
+            PreparedStatement preparedStatement;
+            String query = "UPDATE ordertracker.producto SET (null,?,?,?,?,?) WHERE producto_id = ?";
+
+            preparedStatement = conexion.clientPrepareStatement(query);
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, desc);
+            preparedStatement.setFloat(3, precio);
+
+            if (imagen == null) {
+                preparedStatement.setBinaryStream(4, null);
+            } else {
+                FileInputStream input = new FileInputStream(imagen);
+                preparedStatement.setBinaryStream(4, input);
+            }
+            preparedStatement.setString(5, nombre);
+            preparedStatement.setInt(5, stock);
+            preparedStatement.setInt(6, id);
+
+            preparedStatement.executeUpdate();
+            conexion.commit();
+
+        } catch (SQLException | FileNotFoundException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -16,15 +16,28 @@
  */
 package ui.principal;
 
+import java.awt.CardLayout;
+import java.io.File;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFormattedTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.NumberFormatter;
+import necesario.RSFileChooser;
 import net.proteanit.sql.DbUtils;
+import pojos.Producto;
 import threads.Reloj;
 import util.OperacionesBDD;
-
 
 /**
  *
@@ -32,7 +45,7 @@ import util.OperacionesBDD;
  */
 public class Frame_Principal extends javax.swing.JFrame {
 
-    private int idPedido = 0;
+    private int idPedido = 1;
     private String tablaSeleccionada = "";
 
     /**
@@ -40,43 +53,59 @@ public class Frame_Principal extends javax.swing.JFrame {
      */
     public Frame_Principal() {
         initComponents();
+        iniciarComponentes();
+
+    }
+
+    private void iniciarComponentes() {
+        setLocationRelativeTo(null);
         tablaInfo.setDefaultEditor(Object.class, null);
         tablaLineas2.setDefaultEditor(Object.class, null);
         new Reloj(labelReloj).start();
 
         try {
             OperacionesBDD.iniciarConexion();
+
+            //MUESTRA LA TABLA PEDIDOS Y LINEAS 
             tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getPedidos()));
+            tablaLineas2.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getLineas(idPedido)));
             tablaSeleccionada = "pedidos";
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);
 
+        //AL PULSAR UN PEDIDO EN LA TABLA SE MUESTRA SUS LINEAS EN LA OTRA TABLA
         this.tablaInfo.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
-                // do some actions here, for example
-                // print first column value from selected row
-
                 if (tablaSeleccionada.equals("pedidos")) {
 
                     idPedido = Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString());
-                    System.out.println(idPedido);
                     tablaLineas2.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getLineas(idPedido)));
                 }
-
-                //System.out.println("Linea seleccionada" +i +i++ )                        
             }
-
         });
 
+        this.tablaInfo.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                if (tablaSeleccionada.equals("productos")) {
+
+                    producto.setId(Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString()));
+                    producto.setNombre((tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 1).toString()));
+                    producto.setPrecio(Float.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 3).toString()));
+                    producto.setDescripcion((tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 2).toString()));
+                    producto.setStock(Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 4).toString()));
+                    
+                    fieldNombre.setText(producto.getNombre());
+                    fieldDesc.setText(producto.getDescripcion());
+                    fieldPrecio.setText(producto.getPrecio()+"");
+                    fieldStock.setText(producto.getStock()+"");
+                }
+            }
+        });
     }
 
-    static int i = 0;
+    Producto producto = new Producto();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -105,6 +134,23 @@ public class Frame_Principal extends javax.swing.JFrame {
         tablaLineas2 = new rojerusan.RSTableMetro();
         panelLineas_der = new javax.swing.JPanel();
         panelProductos = new javax.swing.JPanel();
+        labelNombreProducto = new javax.swing.JLabel();
+        fieldNombre = new rojerusan.RSMetroTextFullPlaceHolder();
+        fieldDesc = new rojerusan.RSMetroTextFullPlaceHolder();
+        labelNombreProducto1 = new javax.swing.JLabel();
+        fieldPrecio = new rojerusan.RSMetroTextFullPlaceHolder();
+        labelNombreProducto2 = new javax.swing.JLabel();
+        labelNombreProducto3 = new javax.swing.JLabel();
+        imagenProducto = new rojerusan.RSLabelImage();
+        rSMaterialButtonRound1 = new rojerusan.RSMaterialButtonRound();
+        rSButtonMetro1 = new rojerusan.RSButtonMetro();
+        rSButtonMetro2 = new rojerusan.RSButtonMetro();
+        rSButtonMetro3 = new rojerusan.RSButtonMetro();
+        rSButtonMetro4 = new rojerusan.RSButtonMetro();
+        fieldStock = new javax.swing.JTextField();
+        rSButtonHover1 = new rojerusan.RSButtonHover();
+        rSButtonHover2 = new rojerusan.RSButtonHover();
+        botonAplicarCambios = new rojerusan.RSButtonHover();
         panelUsuarios = new javax.swing.JPanel();
         labelReloj = new javax.swing.JLabel();
 
@@ -122,6 +168,7 @@ public class Frame_Principal extends javax.swing.JFrame {
         botonVerProductos.setBackground(new java.awt.Color(79, 134, 198));
         botonVerProductos.setBorder(null);
         botonVerProductos.setText("Ver productos");
+        botonVerProductos.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
         botonVerProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerProductosActionPerformed(evt);
@@ -131,6 +178,7 @@ public class Frame_Principal extends javax.swing.JFrame {
         botonVerUsuarios.setBackground(new java.awt.Color(79, 134, 198));
         botonVerUsuarios.setBorder(null);
         botonVerUsuarios.setText("Ver usuarios");
+        botonVerUsuarios.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
         botonVerUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerUsuariosActionPerformed(evt);
@@ -140,6 +188,7 @@ public class Frame_Principal extends javax.swing.JFrame {
         botonVerPedidos.setBackground(new java.awt.Color(79, 134, 198));
         botonVerPedidos.setBorder(null);
         botonVerPedidos.setText("Ver pedidos");
+        botonVerPedidos.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
         botonVerPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerPedidosActionPerformed(evt);
@@ -270,16 +319,176 @@ public class Frame_Principal extends javax.swing.JFrame {
         panelInferior.add(panelPedidos4, "card2");
 
         panelProductos.setBackground(new java.awt.Color(255, 255, 255));
+        panelProductos.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+
+        labelNombreProducto.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto.setText("<html>Nombre:</html>");
+
+        fieldNombre.setPlaceholder("");
+
+        fieldDesc.setPlaceholder("");
+
+        labelNombreProducto1.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto1.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto1.setText("Descripcion:");
+
+        fieldPrecio.setPlaceholder("");
+
+        labelNombreProducto2.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto2.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto2.setText("Precio:");
+
+        labelNombreProducto3.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto3.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto3.setText("Stock:");
+
+        imagenProducto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        imagenProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/logo/logo_transparent.png"))); // NOI18N
+
+        rSMaterialButtonRound1.setText("...");
+        rSMaterialButtonRound1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSMaterialButtonRound1ActionPerformed(evt);
+            }
+        });
+
+        rSButtonMetro1.setBackground(new java.awt.Color(55, 147, 114));
+        rSButtonMetro1.setText("++");
+        rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro1ActionPerformed(evt);
+            }
+        });
+
+        rSButtonMetro2.setBackground(new java.awt.Color(55, 147, 114));
+        rSButtonMetro2.setText("+");
+        rSButtonMetro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro2ActionPerformed(evt);
+            }
+        });
+
+        rSButtonMetro3.setBackground(new java.awt.Color(235, 86, 64));
+        rSButtonMetro3.setText("-");
+        rSButtonMetro3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro3ActionPerformed(evt);
+            }
+        });
+
+        rSButtonMetro4.setBackground(new java.awt.Color(235, 86, 64));
+        rSButtonMetro4.setText("--");
+        rSButtonMetro4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro4ActionPerformed(evt);
+            }
+        });
+
+        fieldStock.setEditable(false);
+        fieldStock.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldStock.setText("0");
+        fieldStock.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 112, 192), 1, true));
+
+        rSButtonHover1.setText("Añadir");
+
+        rSButtonHover2.setBackground(new java.awt.Color(235, 86, 64));
+        rSButtonHover2.setText("Eliminar");
+
+        botonAplicarCambios.setBackground(new java.awt.Color(55, 147, 114));
+        botonAplicarCambios.setText("Aplicar cambios");
+        botonAplicarCambios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAplicarCambiosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelProductosLayout = new javax.swing.GroupLayout(panelProductos);
         panelProductos.setLayout(panelProductosLayout);
         panelProductosLayout.setHorizontalGroup(
             panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1176, Short.MAX_VALUE)
+            .addGroup(panelProductosLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelProductosLayout.createSequentialGroup()
+                        .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelNombreProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelNombreProducto1, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(55, 55, 55)
+                        .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldDesc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNombreProducto2)
+                            .addComponent(labelNombreProducto3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelProductosLayout.createSequentialGroup()
+                                .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldStock, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rSButtonMetro2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
+                        .addComponent(rSMaterialButtonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imagenProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54))
+                    .addGroup(panelProductosLayout.createSequentialGroup()
+                        .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelProductosLayout.createSequentialGroup()
+                                .addGap(231, 231, 231)
+                                .addComponent(rSButtonHover1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelProductosLayout.createSequentialGroup()
+                                .addComponent(botonAplicarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rSButtonHover2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))))
         );
         panelProductosLayout.setVerticalGroup(
             panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 298, Short.MAX_VALUE)
+            .addGroup(panelProductosLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelProductosLayout.createSequentialGroup()
+                            .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelNombreProducto2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(fieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labelNombreProducto3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rSButtonMetro2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fieldStock, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(panelProductosLayout.createSequentialGroup()
+                            .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelNombreProducto)
+                                .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelNombreProducto1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(fieldDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(imagenProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelProductosLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(rSMaterialButtonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonAplicarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rSButtonHover1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rSButtonHover2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
 
         panelInferior.add(panelProductos, "card3");
@@ -299,7 +508,7 @@ public class Frame_Principal extends javax.swing.JFrame {
 
         panelInferior.add(panelUsuarios, "card4");
 
-        labelReloj.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        labelReloj.setFont(new java.awt.Font("Trebuchet MS", 1, 22)); // NOI18N
         labelReloj.setForeground(new java.awt.Color(255, 255, 255));
         labelReloj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelReloj.setText("XX:XX:XX");
@@ -311,7 +520,7 @@ public class Frame_Principal extends javax.swing.JFrame {
             .addGroup(panelInformacionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelInferior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelInferior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(panelSuperior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelReloj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -349,6 +558,8 @@ public class Frame_Principal extends javax.swing.JFrame {
         this.tablaInfo.setVisible(true);
         tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getPedidos()));
         tablaSeleccionada = "pedidos";
+        CardLayout cl = (CardLayout) (panelInferior.getLayout());
+        cl.show(panelInferior, "card2");
     }//GEN-LAST:event_botonVerPedidosActionPerformed
 
     private void botonVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerProductosActionPerformed
@@ -356,15 +567,57 @@ public class Frame_Principal extends javax.swing.JFrame {
         this.tablaInfo.setVisible(true);
         tablaSeleccionada = "productos";
         tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getProductos()));
-        
+        CardLayout cl = (CardLayout) (panelInferior.getLayout());
+        cl.show(panelInferior, "card3");
+
     }//GEN-LAST:event_botonVerProductosActionPerformed
 
     private void botonVerUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerUsuariosActionPerformed
         this.tablaInfo.setVisible(true);
         tablaSeleccionada = "usuarios";
         tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getUsuarios()));
-        
+        CardLayout cl = (CardLayout) (panelInferior.getLayout());
+        cl.show(panelInferior, "card4");
+
     }//GEN-LAST:event_botonVerUsuariosActionPerformed
+
+    private void rSButtonMetro4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro4ActionPerformed
+        // TODO add your handling code here:
+        fieldStock.setText(Integer.valueOf(fieldStock.getText()) - 10 + "");
+    }//GEN-LAST:event_rSButtonMetro4ActionPerformed
+
+    private void rSButtonMetro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro2ActionPerformed
+        fieldStock.setText(Integer.valueOf(fieldStock.getText()) + 1 + "");
+    }//GEN-LAST:event_rSButtonMetro2ActionPerformed
+
+    private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
+        // TODO add your handling code here:
+        fieldStock.setText(Integer.valueOf(fieldStock.getText()) + 10 + "");
+    }//GEN-LAST:event_rSButtonMetro1ActionPerformed
+
+    private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
+        // TODO add your handling code here:
+        fieldStock.setText(Integer.valueOf(fieldStock.getText()) - 1 + "");
+    }//GEN-LAST:event_rSButtonMetro3ActionPerformed
+
+    private void rSMaterialButtonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRound1ActionPerformed
+        // TODO add your handling code here:
+        RSFileChooser fileChooser = new RSFileChooser();
+
+        FileFilter imageFilter = new FileNameExtensionFilter(
+                "Image files", ImageIO.getReaderFileSuffixes());
+
+        fileChooser.setFileFilter(imageFilter);
+        fileChooser.showOpenDialog(this);
+        File imagenSeleccionada = fileChooser.getSelectedFile();
+        this.imagenProducto.setIcon(new ImageIcon(imagenSeleccionada.getAbsolutePath()));
+    }//GEN-LAST:event_rSMaterialButtonRound1ActionPerformed
+
+    private void botonAplicarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarCambiosActionPerformed
+        // TODO add your handling code here:
+        File imagen = null;
+        OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), imagen , Integer.valueOf(fieldStock.getText()));
+    }//GEN-LAST:event_botonAplicarCambiosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,32 +656,41 @@ public class Frame_Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPanel;
+    private rojerusan.RSButtonHover botonAplicarCambios;
     private rojeru_san.RSButtonRiple botonVerPedidos;
     private rojeru_san.RSButtonRiple botonVerProductos;
     private rojeru_san.RSButtonRiple botonVerUsuarios;
+    private rojerusan.RSMetroTextFullPlaceHolder fieldDesc;
+    private rojerusan.RSMetroTextFullPlaceHolder fieldNombre;
+    private rojerusan.RSMetroTextFullPlaceHolder fieldPrecio;
+    private javax.swing.JTextField fieldStock;
+    private rojerusan.RSLabelImage imagenProducto;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel labelNombreProducto;
+    private javax.swing.JLabel labelNombreProducto1;
+    private javax.swing.JLabel labelNombreProducto2;
+    private javax.swing.JLabel labelNombreProducto3;
     private javax.swing.JLabel labelReloj;
     private javax.swing.JPanel panelBotones;
     private rojerusan.RSPanelsSlider panelInferior;
     private javax.swing.JPanel panelInformacion;
     private javax.swing.JPanel panelLineas_der;
-    private javax.swing.JPanel panelLineas_izq;
-    private javax.swing.JPanel panelLineas_izq1;
     private javax.swing.JPanel panelLineas_izq2;
     private javax.swing.JPanel panelPedidos;
-    private javax.swing.JPanel panelPedidos2;
-    private javax.swing.JPanel panelPedidos3;
     private javax.swing.JPanel panelPedidos4;
     private javax.swing.JPanel panelProductos;
     private rojerusan.RSPanelsSlider panelSuperior;
     private javax.swing.JPanel panelUsuarios;
+    private rojerusan.RSButtonHover rSButtonHover1;
+    private rojerusan.RSButtonHover rSButtonHover2;
+    private rojerusan.RSButtonMetro rSButtonMetro1;
+    private rojerusan.RSButtonMetro rSButtonMetro2;
+    private rojerusan.RSButtonMetro rSButtonMetro3;
+    private rojerusan.RSButtonMetro rSButtonMetro4;
     private rojerusan.RSLabelImage rSLabelImage1;
+    private rojerusan.RSMaterialButtonRound rSMaterialButtonRound1;
     private rojerusan.RSTableMetro tablaInfo;
-    private rojerusan.RSTableMetro tablaLineas;
-    private rojerusan.RSTableMetro tablaLineas1;
     private rojerusan.RSTableMetro tablaLineas2;
     // End of variables declaration//GEN-END:variables
 }

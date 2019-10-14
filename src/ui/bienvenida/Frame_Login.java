@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import log.MyLogger;
-import threads.InicioSesionThread;
+import threads.ProgressDialogLogin;
 import ui.principal.Frame_Principal;
 import util.OperacionesBDD;
 
@@ -154,7 +154,7 @@ public class Frame_Login extends javax.swing.JFrame {
     private void rSButtonHover1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonHover1ActionPerformed
 
         //this.rSProgressCircleAnimated1.setVisible(true);
-        new InicioSesionThread(rSProgressCircleAnimated1, lblConsola).start();
+        new ProgressDialogLogin(rSProgressCircleAnimated1, lblConsola).start();
         boolean inicioCorrecto = false;
         try {
             inicioCorrecto = OperacionesBDD.iniciarSesion(lblUsuario.getText(), this.lblContra.getText());

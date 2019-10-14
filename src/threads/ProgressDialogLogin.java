@@ -25,12 +25,12 @@ import rojerusan.RSProgressCircleAnimated;
  *
  * @author Álvaro Morcillo Barbero
  */
-public class InicioSesionThread extends Thread{
+public class ProgressDialogLogin extends Thread{
     
     RSProgressCircleAnimated progressCircle;
     JLabel lblConsola;
     
-    public InicioSesionThread (RSProgressCircleAnimated progressCircle, JLabel lblConsola){
+    public ProgressDialogLogin (RSProgressCircleAnimated progressCircle, JLabel lblConsola){
         this.progressCircle = progressCircle;
         this.lblConsola = lblConsola;
         this.progressCircle.setVelocidad(20);
@@ -44,7 +44,7 @@ public class InicioSesionThread extends Thread{
         try {
            this.sleep(2000);//
         } catch (InterruptedException ex) {
-            Logger.getLogger(InicioSesionThread.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProgressDialogLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
         
        this.progressCircle.setVisible(false);
