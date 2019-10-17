@@ -133,6 +133,18 @@ public class Frame_Principal extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaLineas2 = new rojerusan.RSTableMetro();
         panelLineas_der = new javax.swing.JPanel();
+        labelNombreProducto12 = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
+        labelNombreProducto14 = new javax.swing.JLabel();
+        labelNombreProducto17 = new javax.swing.JLabel();
+        labelNombreProducto18 = new javax.swing.JLabel();
+        botonAplicarCambios2 = new rojerusan.RSButtonHover();
+        rSButtonHover5 = new rojerusan.RSButtonHover();
+        lblPago = new javax.swing.JLabel();
+        labelNombreProducto15 = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
+        lblRepartidor = new javax.swing.JLabel();
+        lblPrecio = new javax.swing.JLabel();
         panelProductos = new javax.swing.JPanel();
         labelNombreProducto = new javax.swing.JLabel();
         fieldNombre = new rojerusan.RSMetroTextFullPlaceHolder();
@@ -152,6 +164,23 @@ public class Frame_Principal extends javax.swing.JFrame {
         rSButtonHover2 = new rojerusan.RSButtonHover();
         botonAplicarCambios = new rojerusan.RSButtonHover();
         panelUsuarios = new javax.swing.JPanel();
+        labelNombreProducto4 = new javax.swing.JLabel();
+        fieldNomUsuario = new rojerusan.RSMetroTextFullPlaceHolder();
+        labelNombreProducto5 = new javax.swing.JLabel();
+        fieldEmail = new rojerusan.RSMetroTextFullPlaceHolder();
+        labelNombreProducto6 = new javax.swing.JLabel();
+        fieldEmail1 = new rojerusan.RSMetroTextFullPlaceHolder();
+        labelNombreProducto7 = new javax.swing.JLabel();
+        fieldEmail2 = new rojerusan.RSMetroTextFullPlaceHolder();
+        labelNombreProducto8 = new javax.swing.JLabel();
+        labelNombreProducto9 = new javax.swing.JLabel();
+        labelNombreProducto10 = new javax.swing.JLabel();
+        lblContra = new rojeru_san.RSMPassView();
+        labelNombreProducto11 = new javax.swing.JLabel();
+        lblDNI = new rojeru_san.RSMPassView();
+        rSButtonHover3 = new rojerusan.RSButtonHover();
+        rSButtonHover4 = new rojerusan.RSButtonHover();
+        botonAplicarCambios1 = new rojerusan.RSButtonHover();
         labelReloj = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -240,6 +269,7 @@ public class Frame_Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaInfo.setColorFilasBackgound2(new java.awt.Color(231, 229, 229));
         jScrollPane1.setViewportView(tablaInfo);
 
         javax.swing.GroupLayout panelPedidosLayout = new javax.swing.GroupLayout(panelPedidos);
@@ -273,6 +303,7 @@ public class Frame_Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaLineas2.setColorFilasBackgound2(new java.awt.Color(231, 229, 229));
         jScrollPane4.setViewportView(tablaLineas2);
 
         javax.swing.GroupLayout panelLineas_izq2Layout = new javax.swing.GroupLayout(panelLineas_izq2);
@@ -290,15 +321,115 @@ public class Frame_Principal extends javax.swing.JFrame {
 
         panelLineas_der.setBackground(new java.awt.Color(255, 255, 255));
 
+        labelNombreProducto12.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto12.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
+        labelNombreProducto12.setText("Precio total");
+
+        lblEstado.setBackground(new java.awt.Color(255, 255, 255));
+        lblEstado.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblEstado.setText("estado");
+
+        labelNombreProducto14.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto14.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
+        labelNombreProducto14.setText("Repartidor");
+
+        labelNombreProducto17.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto17.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
+        labelNombreProducto17.setText("Usuario");
+
+        labelNombreProducto18.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto18.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
+        labelNombreProducto18.setText("Pagado:");
+
+        botonAplicarCambios2.setBackground(new java.awt.Color(55, 147, 114));
+        botonAplicarCambios2.setText("Ver factura");
+        botonAplicarCambios2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAplicarCambios2ActionPerformed(evt);
+            }
+        });
+
+        rSButtonHover5.setBackground(new java.awt.Color(235, 86, 64));
+        rSButtonHover5.setText("Cancelar pedido");
+
+        lblPago.setBackground(new java.awt.Color(255, 255, 255));
+        lblPago.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblPago.setForeground(new java.awt.Color(235, 86, 64));
+        lblPago.setText("No");
+
+        labelNombreProducto15.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto15.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
+        labelNombreProducto15.setText("Estado del pedido");
+
+        lblUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        lblUsuario.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblUsuario.setText("estado");
+
+        lblRepartidor.setBackground(new java.awt.Color(255, 255, 255));
+        lblRepartidor.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblRepartidor.setText("estado");
+
+        lblPrecio.setBackground(new java.awt.Color(255, 255, 255));
+        lblPrecio.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblPrecio.setText("estado");
+
         javax.swing.GroupLayout panelLineas_derLayout = new javax.swing.GroupLayout(panelLineas_der);
         panelLineas_der.setLayout(panelLineas_derLayout);
         panelLineas_derLayout.setHorizontalGroup(
             panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLineas_derLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rSButtonHover5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelLineas_derLayout.createSequentialGroup()
+                        .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNombreProducto15)
+                            .addComponent(labelNombreProducto14)
+                            .addComponent(labelNombreProducto17)
+                            .addComponent(labelNombreProducto12))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEstado)
+                            .addComponent(lblUsuario)
+                            .addComponent(lblRepartidor)
+                            .addComponent(lblPrecio))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLineas_derLayout.createSequentialGroup()
+                        .addComponent(labelNombreProducto18)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPago)
+                        .addGap(74, 74, 74))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLineas_derLayout.createSequentialGroup()
+                        .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))))
         );
         panelLineas_derLayout.setVerticalGroup(
             panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelLineas_derLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreProducto18, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPago, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNombreProducto15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreProducto12, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreProducto17, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreProducto14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRepartidor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rSButtonHover5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelPedidos4Layout = new javax.swing.GroupLayout(panelPedidos4);
@@ -445,9 +576,7 @@ public class Frame_Principal extends javax.swing.JFrame {
                             .addGroup(panelProductosLayout.createSequentialGroup()
                                 .addGap(231, 231, 231)
                                 .addComponent(rSButtonHover1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelProductosLayout.createSequentialGroup()
-                                .addComponent(botonAplicarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(botonAplicarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rSButtonHover2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))))
@@ -495,15 +624,151 @@ public class Frame_Principal extends javax.swing.JFrame {
 
         panelUsuarios.setBackground(new java.awt.Color(255, 255, 255));
 
+        labelNombreProducto4.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto4.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto4.setText("DNI");
+
+        fieldNomUsuario.setPlaceholder("");
+
+        labelNombreProducto5.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto5.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto5.setText("Email");
+
+        fieldEmail.setPlaceholder("");
+
+        labelNombreProducto6.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto6.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto6.setText("Nombre");
+
+        fieldEmail1.setPlaceholder("");
+
+        labelNombreProducto7.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto7.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto7.setText("Telefono");
+
+        fieldEmail2.setPlaceholder("");
+
+        labelNombreProducto8.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto8.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto8.setForeground(new java.awt.Color(255, 51, 51));
+        labelNombreProducto8.setText("admin");
+
+        labelNombreProducto9.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto9.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto9.setText("Tipo de usuario");
+
+        labelNombreProducto10.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto10.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto10.setText("Usuario");
+
+        lblContra.setEditable(false);
+        lblContra.setPlaceholder("");
+
+        labelNombreProducto11.setBackground(new java.awt.Color(255, 255, 255));
+        labelNombreProducto11.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        labelNombreProducto11.setText("Contraseña");
+
+        lblDNI.setEditable(false);
+        lblDNI.setPlaceholder("");
+
+        rSButtonHover3.setBackground(new java.awt.Color(235, 86, 64));
+        rSButtonHover3.setText("Eliminar");
+
+        rSButtonHover4.setText("Añadir");
+
+        botonAplicarCambios1.setBackground(new java.awt.Color(55, 147, 114));
+        botonAplicarCambios1.setText("Aplicar cambios");
+        botonAplicarCambios1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAplicarCambios1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelUsuariosLayout = new javax.swing.GroupLayout(panelUsuarios);
         panelUsuarios.setLayout(panelUsuariosLayout);
         panelUsuariosLayout.setHorizontalGroup(
             panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1176, Short.MAX_VALUE)
+            .addGroup(panelUsuariosLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(labelNombreProducto9)
+                .addGap(18, 18, 18)
+                .addComponent(labelNombreProducto8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelUsuariosLayout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelNombreProducto7)
+                    .addComponent(labelNombreProducto10)
+                    .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(labelNombreProducto5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelNombreProducto6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(43, 43, 43)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldNomUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                    .addComponent(fieldEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fieldEmail1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fieldEmail2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelUsuariosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(rSButtonHover3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rSButtonHover4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUsuariosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonAplicarCambios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(143, 143, 143))
+                    .addGroup(panelUsuariosLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelNombreProducto11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelNombreProducto4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblContra, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(114, Short.MAX_VALUE))))
         );
         panelUsuariosLayout.setVerticalGroup(
             panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 298, Short.MAX_VALUE)
+            .addGroup(panelUsuariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreProducto9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNombreProducto8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelUsuariosLayout.createSequentialGroup()
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelNombreProducto10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldNomUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelNombreProducto5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelNombreProducto6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNombreProducto7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelUsuariosLayout.createSequentialGroup()
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelNombreProducto11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNombreProducto4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(botonAplicarCambios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rSButtonHover4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rSButtonHover3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
         panelInferior.add(panelUsuarios, "card4");
@@ -619,6 +884,14 @@ public class Frame_Principal extends javax.swing.JFrame {
         OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), imagen , Integer.valueOf(fieldStock.getText()));
     }//GEN-LAST:event_botonAplicarCambiosActionPerformed
 
+    private void botonAplicarCambios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarCambios1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAplicarCambios1ActionPerformed
+
+    private void botonAplicarCambios2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarCambios2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAplicarCambios2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -657,10 +930,16 @@ public class Frame_Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPanel;
     private rojerusan.RSButtonHover botonAplicarCambios;
+    private rojerusan.RSButtonHover botonAplicarCambios1;
+    private rojerusan.RSButtonHover botonAplicarCambios2;
     private rojeru_san.RSButtonRiple botonVerPedidos;
     private rojeru_san.RSButtonRiple botonVerProductos;
     private rojeru_san.RSButtonRiple botonVerUsuarios;
     private rojerusan.RSMetroTextFullPlaceHolder fieldDesc;
+    private rojerusan.RSMetroTextFullPlaceHolder fieldEmail;
+    private rojerusan.RSMetroTextFullPlaceHolder fieldEmail1;
+    private rojerusan.RSMetroTextFullPlaceHolder fieldEmail2;
+    private rojerusan.RSMetroTextFullPlaceHolder fieldNomUsuario;
     private rojerusan.RSMetroTextFullPlaceHolder fieldNombre;
     private rojerusan.RSMetroTextFullPlaceHolder fieldPrecio;
     private javax.swing.JTextField fieldStock;
@@ -669,9 +948,29 @@ public class Frame_Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelNombreProducto;
     private javax.swing.JLabel labelNombreProducto1;
+    private javax.swing.JLabel labelNombreProducto10;
+    private javax.swing.JLabel labelNombreProducto11;
+    private javax.swing.JLabel labelNombreProducto12;
+    private javax.swing.JLabel labelNombreProducto14;
+    private javax.swing.JLabel labelNombreProducto15;
+    private javax.swing.JLabel labelNombreProducto17;
+    private javax.swing.JLabel labelNombreProducto18;
     private javax.swing.JLabel labelNombreProducto2;
     private javax.swing.JLabel labelNombreProducto3;
+    private javax.swing.JLabel labelNombreProducto4;
+    private javax.swing.JLabel labelNombreProducto5;
+    private javax.swing.JLabel labelNombreProducto6;
+    private javax.swing.JLabel labelNombreProducto7;
+    private javax.swing.JLabel labelNombreProducto8;
+    private javax.swing.JLabel labelNombreProducto9;
     private javax.swing.JLabel labelReloj;
+    private rojeru_san.RSMPassView lblContra;
+    private rojeru_san.RSMPassView lblDNI;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblPago;
+    private javax.swing.JLabel lblPrecio;
+    private javax.swing.JLabel lblRepartidor;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel panelBotones;
     private rojerusan.RSPanelsSlider panelInferior;
     private javax.swing.JPanel panelInformacion;
@@ -684,6 +983,9 @@ public class Frame_Principal extends javax.swing.JFrame {
     private javax.swing.JPanel panelUsuarios;
     private rojerusan.RSButtonHover rSButtonHover1;
     private rojerusan.RSButtonHover rSButtonHover2;
+    private rojerusan.RSButtonHover rSButtonHover3;
+    private rojerusan.RSButtonHover rSButtonHover4;
+    private rojerusan.RSButtonHover rSButtonHover5;
     private rojerusan.RSButtonMetro rSButtonMetro1;
     private rojerusan.RSButtonMetro rSButtonMetro2;
     private rojerusan.RSButtonMetro rSButtonMetro3;

@@ -351,12 +351,6 @@ public class OperacionesBDD {
                     + "  PRIMARY KEY (`direccion_id`))\n"
                     + "ENGINE = InnoDB;");
 
-            st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`TIPO_USUARIO` (\n"
-                    + "  `tipoUsuario_id` INT AUTO_INCREMENT,\n"
-                    + "  `tipoUsuario_tipo` VARCHAR(45) NOT NULL,\n"
-                    + "  PRIMARY KEY (`tipoUsuario_id`))\n"
-                    + "ENGINE = InnoDB;");
-
             st.executeUpdate("INSERT INTO `OrderTracker`.`TIPO_USUARIO`"
                     + "VALUES (null,'ADMIN')");
             st.executeUpdate("INSERT INTO `OrderTracker`.`TIPO_USUARIO`"

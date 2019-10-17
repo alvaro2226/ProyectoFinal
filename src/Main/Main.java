@@ -66,7 +66,7 @@ public class Main {
             //OperacionesBDD.crearBDD();
             //OperacionesBDD.añadirEmpresa("nombre", "fm", "cif", "email", "paypal", "calle", "localidad", "prov", "cp", "pais", "tele");
             //OperacionesBDD.añadirAdmin("askmk", "asdsddddddd");
-            new Frame_Bienvenida().setVisible(true);
+            //new Frame_Bienvenida().setVisible(true);
         } else {
             //Se tiene que mostrar el frame de iniciar sesión
             //new Frame_Login().setVisible(true);

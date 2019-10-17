@@ -17,9 +17,11 @@
 package log;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.time.LocalDate;
 import java.util.logging.*;
 
 /**
@@ -30,15 +32,29 @@ public class MyLogger {
 
     private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
     private static FileHandler fh = null;
+    private static File logdir = new File("resources" + File.separator + "logs");
+    private static File logFile;
 
     public static void init() {
-        try {
-            File resources = new File("resources");
-            //Comprueba si existe la carpeta "resources"
-            if(!resources.exists()){
-                resources.mkdir();
+
+        //Comprueba si existe la carpeta "resources"
+        if (!logdir.exists()) {
+            logdir.mkdirs();
+        }
+        
+        logFile = new File(logdir.getPath() + File.separator + "log_" + LocalDate.now() + ".txt");
+
+        if (!logFile.exists()) {
+            try {
+                logFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Logger.getLogger(MyLogger.class.getName()).log(Level.SEVERE, null, e);
             }
-            fh = new FileHandler("resources/log.log", false);
+        }
+
+        try {
+            fh = new FileHandler(logFile.getPath(), false);
         } catch (SecurityException | IOException e) {
             e.printStackTrace();
         }
@@ -46,7 +62,7 @@ public class MyLogger {
         fh.setFormatter(new SimpleFormatter());
         l.addHandler(fh);
         l.setLevel(Level.CONFIG);
-        
+
         logger.info("OrderTracker iniciado...");
     }
 
@@ -63,6 +79,33 @@ public class MyLogger {
         PrintWriter pWriter = new PrintWriter(sWriter);
         e.printStackTrace(pWriter);
         return sWriter.toString();
+    }
+
+    /**
+     * Borra el archivo .lck que se genera con el log. Borra los .lck de días
+     * anteriores. Este método se debe ejecutar cada vez que se crea el log
+     */
+    private static void borrarLck() {
+
+        FilenameFilter filtro = new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".lck");
+            }
+        };
+
+        File[] archivos = logdir.listFiles(filtro);
+        File aux = null;
+
+        aux = new File(logdir.getPath() + File.separator + "log_" + LocalDate.now() + ".txt.lck");
+
+        for (File file : archivos) {
+
+            //Si el nombre no es igual al lck de hoy, lo borra
+            if (!file.getName().equals(aux.getName())) {
+                file.delete();
+            }
+
+        }
     }
 
 }
