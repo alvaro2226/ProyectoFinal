@@ -173,7 +173,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="panelInferior" alignment="1" pref="0" max="32767" attributes="0"/>
                           <Component id="panelSuperior" alignment="1" max="32767" attributes="0"/>
-                          <Component id="labelReloj" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="labelReloj" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -183,7 +188,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="labelReloj" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="labelReloj" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="panelSuperior" min="-2" pref="366" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -650,12 +658,12 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
-                                              <Component id="rSButtonHover1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="botonAñadirProducto" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="botonAplicarCambios" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="rSButtonHover2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="botonEliminarProducto" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -706,8 +714,8 @@
                               <EmptySpace pref="42" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="botonAplicarCambios" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rSButtonHover1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rSButtonHover2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="botonAñadirProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="botonEliminarProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
@@ -852,18 +860,24 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="rojerusan.RSButtonHover" name="rSButtonHover1">
+                    <Component class="rojerusan.RSButtonHover" name="botonA&#xf1;adirProducto">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonA&#xf1;adirProductoActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="rojerusan.RSButtonHover" name="rSButtonHover2">
+                    <Component class="rojerusan.RSButtonHover" name="botonEliminarProducto">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="40" green="56" red="eb" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Eliminar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEliminarProductoActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="rojerusan.RSButtonHover" name="botonAplicarCambios">
                       <Properties>
@@ -1164,6 +1178,14 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="XX:XX:XX"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="actualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -38,7 +38,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        new Frame_Principal().setVisible(true);
+        //new Frame_Principal().setVisible(true);
         //--------------------------
         //Inicia el logger
         MyLogger.init();
@@ -62,14 +62,16 @@ public class Main {
         if (properties.getProperty("app.firstTime").equals("true")) {
             //Es la primera vez, por tanto se tiene que mostrar el frame
             // de bienvenida
-            //
-            //OperacionesBDD.crearBDD();
+            
+            OperacionesBDD.crearBDD();
             //OperacionesBDD.añadirEmpresa("nombre", "fm", "cif", "email", "paypal", "calle", "localidad", "prov", "cp", "pais", "tele");
             //OperacionesBDD.añadirAdmin("askmk", "asdsddddddd");
-            //new Frame_Bienvenida().setVisible(true);
+            new Frame_Bienvenida().setVisible(true);
+
         } else {
             //Se tiene que mostrar el frame de iniciar sesión
             //new Frame_Login().setVisible(true);
+            new Frame_Principal().setVisible(true);
         }
 
     }

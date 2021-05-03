@@ -18,6 +18,7 @@ package ui.principal;
 
 import java.awt.CardLayout;
 import java.io.File;
+import static java.lang.Thread.sleep;
 import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.util.logging.Level;
@@ -30,6 +31,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.NumberFormatter;
@@ -75,6 +77,21 @@ public class Frame_Principal extends javax.swing.JFrame {
             Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        this.añadirListenersTablas();
+
+    }
+
+    private void actualizarTablas() {
+        DefaultTableModel dtm1 = (DefaultTableModel) this.tablaInfo.getModel();
+
+        dtm1.setRowCount(0);
+
+        tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getProductos()));
+
+    }
+
+    private void añadirListenersTablas() {
+
         //AL PULSAR UN PEDIDO EN LA TABLA SE MUESTRA SUS LINEAS EN LA OTRA TABLA
         this.tablaInfo.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
@@ -95,16 +112,20 @@ public class Frame_Principal extends javax.swing.JFrame {
                     producto.setPrecio(Float.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 3).toString()));
                     producto.setDescripcion((tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 2).toString()));
                     producto.setStock(Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 4).toString()));
-                    
+
                     fieldNombre.setText(producto.getNombre());
                     fieldDesc.setText(producto.getDescripcion());
-                    fieldPrecio.setText(producto.getPrecio()+"");
-                    fieldStock.setText(producto.getStock()+"");
+                    fieldPrecio.setText(producto.getPrecio() + "");
+                    fieldStock.setText(producto.getStock() + "");
                 }
             }
         });
     }
 
+    private void eliminarListenersTablas() {
+        this.tablaInfo.getSelectionModel().removeListSelectionListener(tablaInfo);
+        this.tablaLineas2.getSelectionModel().removeListSelectionListener(tablaLineas2);
+    }
     Producto producto = new Producto();
 
     /**
@@ -160,8 +181,8 @@ public class Frame_Principal extends javax.swing.JFrame {
         rSButtonMetro3 = new rojerusan.RSButtonMetro();
         rSButtonMetro4 = new rojerusan.RSButtonMetro();
         fieldStock = new javax.swing.JTextField();
-        rSButtonHover1 = new rojerusan.RSButtonHover();
-        rSButtonHover2 = new rojerusan.RSButtonHover();
+        botonAñadirProducto = new rojerusan.RSButtonHover();
+        botonEliminarProducto = new rojerusan.RSButtonHover();
         botonAplicarCambios = new rojerusan.RSButtonHover();
         panelUsuarios = new javax.swing.JPanel();
         labelNombreProducto4 = new javax.swing.JLabel();
@@ -182,6 +203,7 @@ public class Frame_Principal extends javax.swing.JFrame {
         rSButtonHover4 = new rojerusan.RSButtonHover();
         botonAplicarCambios1 = new rojerusan.RSButtonHover();
         labelReloj = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -521,10 +543,20 @@ public class Frame_Principal extends javax.swing.JFrame {
         fieldStock.setText("0");
         fieldStock.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 112, 192), 1, true));
 
-        rSButtonHover1.setText("Añadir");
+        botonAñadirProducto.setText("Añadir");
+        botonAñadirProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAñadirProductoActionPerformed(evt);
+            }
+        });
 
-        rSButtonHover2.setBackground(new java.awt.Color(235, 86, 64));
-        rSButtonHover2.setText("Eliminar");
+        botonEliminarProducto.setBackground(new java.awt.Color(235, 86, 64));
+        botonEliminarProducto.setText("Eliminar");
+        botonEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarProductoActionPerformed(evt);
+            }
+        });
 
         botonAplicarCambios.setBackground(new java.awt.Color(55, 147, 114));
         botonAplicarCambios.setText("Aplicar cambios");
@@ -575,10 +607,10 @@ public class Frame_Principal extends javax.swing.JFrame {
                         .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelProductosLayout.createSequentialGroup()
                                 .addGap(231, 231, 231)
-                                .addComponent(rSButtonHover1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(botonAñadirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(botonAplicarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rSButtonHover2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))))
         );
         panelProductosLayout.setVerticalGroup(
@@ -615,8 +647,8 @@ public class Frame_Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAplicarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSButtonHover1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSButtonHover2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonAñadirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
 
@@ -778,6 +810,13 @@ public class Frame_Principal extends javax.swing.JFrame {
         labelReloj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelReloj.setText("XX:XX:XX");
 
+        jButton1.setText("actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelInformacionLayout = new javax.swing.GroupLayout(panelInformacion);
         panelInformacion.setLayout(panelInformacionLayout);
         panelInformacionLayout.setHorizontalGroup(
@@ -785,16 +824,22 @@ public class Frame_Principal extends javax.swing.JFrame {
             .addGroup(panelInformacionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelInferior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(panelInferior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(panelSuperior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelReloj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelInformacionLayout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelReloj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelInformacionLayout.setVerticalGroup(
             panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInformacionLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(labelReloj)
+                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelReloj)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(panelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -881,7 +926,8 @@ public class Frame_Principal extends javax.swing.JFrame {
     private void botonAplicarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarCambiosActionPerformed
         // TODO add your handling code here:
         File imagen = null;
-        OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), imagen , Integer.valueOf(fieldStock.getText()));
+        OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), imagen, Integer.valueOf(fieldStock.getText()));
+        this.actualizarTablas();
     }//GEN-LAST:event_botonAplicarCambiosActionPerformed
 
     private void botonAplicarCambios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarCambios1ActionPerformed
@@ -891,6 +937,25 @@ public class Frame_Principal extends javax.swing.JFrame {
     private void botonAplicarCambios2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarCambios2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonAplicarCambios2ActionPerformed
+
+    private void botonAñadirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirProductoActionPerformed
+        // TODO add your handling code here:
+        File imagen = null;
+        OperacionesBDD.añadirProducto(fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), imagen, Integer.valueOf(fieldStock.getText()));
+
+        this.actualizarTablas();
+    }//GEN-LAST:event_botonAñadirProductoActionPerformed
+
+    private void botonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarProductoActionPerformed
+        // TODO add your handling code here:
+        OperacionesBDD.eliminarProducto(producto.getId());
+        this.actualizarTablas();
+    }//GEN-LAST:event_botonEliminarProductoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.actualizarTablas();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -932,6 +997,8 @@ public class Frame_Principal extends javax.swing.JFrame {
     private rojerusan.RSButtonHover botonAplicarCambios;
     private rojerusan.RSButtonHover botonAplicarCambios1;
     private rojerusan.RSButtonHover botonAplicarCambios2;
+    private rojerusan.RSButtonHover botonAñadirProducto;
+    private rojerusan.RSButtonHover botonEliminarProducto;
     private rojeru_san.RSButtonRiple botonVerPedidos;
     private rojeru_san.RSButtonRiple botonVerProductos;
     private rojeru_san.RSButtonRiple botonVerUsuarios;
@@ -944,6 +1011,7 @@ public class Frame_Principal extends javax.swing.JFrame {
     private rojerusan.RSMetroTextFullPlaceHolder fieldPrecio;
     private javax.swing.JTextField fieldStock;
     private rojerusan.RSLabelImage imagenProducto;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelNombreProducto;
@@ -981,8 +1049,6 @@ public class Frame_Principal extends javax.swing.JFrame {
     private javax.swing.JPanel panelProductos;
     private rojerusan.RSPanelsSlider panelSuperior;
     private javax.swing.JPanel panelUsuarios;
-    private rojerusan.RSButtonHover rSButtonHover1;
-    private rojerusan.RSButtonHover rSButtonHover2;
     private rojerusan.RSButtonHover rSButtonHover3;
     private rojerusan.RSButtonHover rSButtonHover4;
     private rojerusan.RSButtonHover rSButtonHover5;

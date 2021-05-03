@@ -622,6 +622,14 @@ public class OperacionesBDD {
         return pedidos;
     }
 
+    /**
+     * 
+     * @param nombre
+     * @param desc
+     * @param precio
+     * @param imagen
+     * @param stock 
+     */
     public static void añadirProducto(String nombre, String desc, float precio, File imagen, int stock) {
         try {
             PreparedStatement preparedStatement;
@@ -638,7 +646,7 @@ public class OperacionesBDD {
                 FileInputStream input = new FileInputStream(imagen);
                 preparedStatement.setBinaryStream(4, input);
             }
-            preparedStatement.setString(5, nombre);
+            preparedStatement.setInt(5, stock);
 
             preparedStatement.executeUpdate();
             conexion.commit();
@@ -658,11 +666,20 @@ public class OperacionesBDD {
      * @param stock 
      */
     public static void modificarProducto(int id, String nombre, String desc, float precio, File imagen, int stock) {
-        try {
-            PreparedStatement preparedStatement;
-            String query = "UPDATE ordertracker.producto SET (null,?,?,?,?,?) WHERE producto_id = ?";
 
+        PreparedStatement preparedStatement;
+        String query = "UPDATE ordertracker.producto SET"
+                + " producto_nombre = ?,"
+                + " producto_descripcion = ?,"
+                + " producto_precio = ?,"
+                + " producto_imagen = ?,"
+                + " producto_stock = ? "
+                + " WHERE producto_id = ?;";
+
+        try {
+            
             preparedStatement = conexion.clientPrepareStatement(query);
+            
             preparedStatement.setString(1, nombre);
             preparedStatement.setString(2, desc);
             preparedStatement.setFloat(3, precio);
@@ -673,7 +690,6 @@ public class OperacionesBDD {
                 FileInputStream input = new FileInputStream(imagen);
                 preparedStatement.setBinaryStream(4, input);
             }
-            preparedStatement.setString(5, nombre);
             preparedStatement.setInt(5, stock);
             preparedStatement.setInt(6, id);
 
@@ -683,8 +699,34 @@ public class OperacionesBDD {
         } catch (SQLException | FileNotFoundException ex) {
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
 
+    }
+    
+    /**
+     * 
+     * @param id 
+     */
+    public static void eliminarProducto(int id) {
+        
+        PreparedStatement preparedStatement;
+        String query = "DELETE FROM ordertracker.producto WHERE producto_id = ?";
+
+        try {
+            
+            preparedStatement = conexion.clientPrepareStatement(query);
+            
+            preparedStatement.setInt(1, id);
+
+            preparedStatement.executeUpdate();
+            
+            conexion.commit();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     /**
      * Lineas para insertar datos de prueba ********************************
      *
