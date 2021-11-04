@@ -27,7 +27,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="backgroundPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="backgroundPanel" alignment="0" pref="1423" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -63,31 +63,56 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="botonVerUsuarios" alignment="0" pref="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="rSLabelImage1" min="-2" pref="158" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="rSLabelImage1" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="botonVerPedidos" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="botonVerUsuarios" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="botonVerProductos" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
+                  <Component id="lblAutor2" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="botonVerPedidos" min="-2" pref="220" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="lblAutor1" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="botonVerProductos" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Component id="rSLabelImage1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="botonVerProductos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="botonVerPedidos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="botonVerUsuarios" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="351" max="32767" attributes="0"/>
+                      <Component id="lblAutor1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblAutor2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -96,7 +121,7 @@
             <Component class="rojerusan.RSLabelImage" name="rSLabelImage1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/ui/images/logo/logo_transparent.png"/>
+                  <Image iconType="3" name="/ui/images/logo/logo2.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -106,11 +131,13 @@
                   <Color blue="c6" green="86" red="4f" type="rgb"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver productos"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto Bold" size="18" style="1"/>
+                  <Font name="Source Sans Pro Semibold" size="18" style="1"/>
                 </Property>
               </Properties>
               <Events>
@@ -123,11 +150,13 @@
                   <Color blue="c6" green="86" red="4f" type="rgb"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver usuarios"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto Bold" size="18" style="1"/>
+                  <Font name="Source Sans Pro Semibold" size="18" style="1"/>
                 </Property>
               </Properties>
               <Events>
@@ -140,16 +169,46 @@
                   <Color blue="c6" green="86" red="4f" type="rgb"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver pedidos"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto Bold" size="18" style="1"/>
+                  <Font name="Source Sans Pro Semibold" size="18" style="1"/>
                 </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonVerPedidosActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblAutor2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Light" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="   &#xc1;lvaro Morcillo Barbero"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblAutor1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Light" size="14" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Creado por:"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -169,18 +228,23 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelInferior" alignment="1" pref="0" max="32767" attributes="0"/>
                           <Component id="panelSuperior" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="lblLog" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="labelReloj" max="32767" attributes="0"/>
+                              <Component id="lblUsuarioLogeado" min="-2" pref="175" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblUsuarioLogeadoRol" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="labelReloj" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="panelInferior" alignment="1" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -188,11 +252,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelReloj" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblLog" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblUsuarioLogeado" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="lblUsuarioLogeadoRol" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="labelReloj" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="panelSuperior" min="-2" pref="366" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="panelInferior" max="32767" attributes="0"/>
@@ -221,17 +287,33 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" pref="1176" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="530" max="-2" attributes="0"/>
+                              <Component id="lblTituloTabla" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="561" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" pref="366" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblTituloTabla" min="-2" pref="23" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="351" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                      <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="null"/>
+                        </Property>
+                      </Properties>
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
@@ -241,7 +323,7 @@
                         <Component class="rojerusan.RSTableMetro" name="tablaInfo">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="4">
+                              <Table columnCount="4" rowCount="19">
                                 <Column editable="true" title="Title 1" type="java.lang.Object"/>
                                 <Column editable="true" title="Title 2" type="java.lang.Object"/>
                                 <Column editable="true" title="Title 3" type="java.lang.Object"/>
@@ -251,10 +333,67 @@
                             <Property name="colorFilasBackgound2" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="e5" green="e5" red="e7" type="rgb"/>
                             </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Source Sans Pro Light" size="14" style="1"/>
+                            </Property>
+                            <Property name="fuenteFilas" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Source Sans Pro Light" size="14" style="1"/>
+                            </Property>
+                            <Property name="fuenteFilasSelect" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Source Sans Pro Light" size="16" style="1"/>
+                            </Property>
+                            <Property name="fuenteHead" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Source Serif Pro Light" size="18" style="1"/>
+                            </Property>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[2, 304]"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[60, 300]"/>
+                            </Property>
+                            <Property name="showGrid" type="boolean" value="false"/>
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JLabel" name="lblTituloTabla">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Source Serif Pro Light" size="24" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Pedidos"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -288,15 +427,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="panelLineas_izq2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="panelLineas_der" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelLineas_izq2" max="32767" attributes="0"/>
                           <Component id="panelLineas_der" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelLineas_izq2" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -311,15 +450,15 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="1" pref="575" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane4" min="-2" pref="581" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane4" min="-2" pref="298" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jScrollPane4" alignment="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -333,8 +472,9 @@
                           <SubComponents>
                             <Component class="rojerusan.RSTableMetro" name="tablaLineas2">
                               <Properties>
+                                <Property name="autoCreateColumnsFromModel" type="boolean" value="false"/>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="4" rowCount="4">
+                                  <Table columnCount="4" rowCount="17">
                                     <Column editable="true" title="Title 1" type="java.lang.Object"/>
                                     <Column editable="true" title="Title 2" type="java.lang.Object"/>
                                     <Column editable="true" title="Title 3" type="java.lang.Object"/>
@@ -368,6 +508,19 @@
                                     </Column>
                                   </TableColumnModel>
                                 </Property>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Source Sans Pro Light" size="14" style="1"/>
+                                </Property>
+                                <Property name="fuenteFilas" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Source Sans Pro Light" size="14" style="1"/>
+                                </Property>
+                                <Property name="fuenteFilasSelect" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Source Sans Pro Light" size="16" style="1"/>
+                                </Property>
+                                <Property name="fuenteHead" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Source Serif Pro Light" size="18" style="1"/>
+                                </Property>
+                                <Property name="showGrid" type="boolean" value="false"/>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                 </Property>
@@ -390,7 +543,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="rSButtonHover5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="botonCancelarPedido" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="labelNombreProducto15" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -407,7 +560,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="48" max="32767" attributes="0"/>
+                                  <EmptySpace pref="44" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="labelNombreProducto18" min="-2" max="-2" attributes="0"/>
@@ -451,7 +604,7 @@
                                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="botonAplicarCambios2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="rSButtonHover5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="botonCancelarPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -519,19 +672,38 @@
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="72" green="93" red="37" type="rgb"/>
                             </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                                <BevelBorder/>
+                              </Border>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Ver factura"/>
+                            <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="88" green="c6" red="46" type="rgb"/>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAplicarCambios2ActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="rojerusan.RSButtonHover" name="rSButtonHover5">
+                        <Component class="rojerusan.RSButtonHover" name="botonCancelarPedido">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="40" green="56" red="eb" type="rgb"/>
                             </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                                <BevelBorder/>
+                              </Border>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Cancelar pedido"/>
+                            <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="99" green="99" red="ff" type="rgb"/>
+                            </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCancelarPedidoActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblPago">
                           <Properties>
@@ -600,11 +772,6 @@
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                        <MatteColorBorder bottom="2" left="2" right="2" top="2"/>
-                      </Border>
-                    </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -620,37 +787,46 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="labelNombreProducto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labelNombreProducto1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="fieldNombre" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldDesc" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="46" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelNombreProducto2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labelNombreProducto3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="rSButtonMetro4" min="-2" pref="38" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="rSButtonMetro3" min="-2" pref="38" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="labelNombreProducto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="labelNombreProducto1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="fieldNombre" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="fieldDesc" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace pref="55" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="labelNombreProducto2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="labelNombreProducto3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="fieldStock" min="-2" pref="63" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="rSButtonMetro2" min="-2" pref="38" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="rSButtonMetro1" min="-2" pref="38" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="rSButtonMetro4" min="-2" pref="38" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="rSButtonMetro3" min="-2" pref="38" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="fieldStock" min="-2" pref="63" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="rSButtonMetro2" min="-2" pref="38" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="rSButtonMetro1" min="-2" pref="38" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="fieldPrecio" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <Component id="fieldPrecio" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="lblConsola" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                       <Component id="rSMaterialButtonRound1" min="-2" pref="50" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="5" max="32767" attributes="0"/>
                                       <Component id="imagenProducto" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                                   </Group>
@@ -711,11 +887,12 @@
                                       <Component id="rSMaterialButtonRound1" min="-2" pref="33" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="42" max="32767" attributes="0"/>
+                              <EmptySpace pref="38" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="botonAplicarCambios" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="botonAñadirProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="botonEliminarProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblConsola" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
@@ -729,7 +906,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="24" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;Nombre:&lt;/html&gt;"/>
                       </Properties>
@@ -738,6 +915,9 @@
                       <Properties>
                         <Property name="placeholder" type="java.lang.String" value=""/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldNombreActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="fieldDesc">
                       <Properties>
@@ -750,7 +930,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="24" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Descripcion:"/>
                       </Properties>
@@ -766,7 +946,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="24" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Precio:"/>
                       </Properties>
@@ -777,7 +957,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="24" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Stock:"/>
                       </Properties>
@@ -796,6 +976,11 @@
                     </Component>
                     <Component class="rojerusan.RSMaterialButtonRound" name="rSMaterialButtonRound1">
                       <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="..."/>
                       </Properties>
                       <Events>
@@ -806,6 +991,11 @@
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="72" green="93" red="37" type="rgb"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
                         </Property>
                         <Property name="text" type="java.lang.String" value="++"/>
                       </Properties>
@@ -818,6 +1008,11 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="72" green="93" red="37" type="rgb"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="+"/>
                       </Properties>
                       <Events>
@@ -828,6 +1023,11 @@
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="40" green="56" red="eb" type="rgb"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
                         </Property>
                         <Property name="text" type="java.lang.String" value="-"/>
                       </Properties>
@@ -840,6 +1040,11 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="40" green="56" red="eb" type="rgb"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="--"/>
                       </Properties>
                       <Events>
@@ -848,7 +1053,6 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="fieldStock">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="horizontalAlignment" type="int" value="0"/>
                         <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -862,6 +1066,11 @@
                     </Component>
                     <Component class="rojerusan.RSButtonHover" name="botonA&#xf1;adirProducto">
                       <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
                       </Properties>
                       <Events>
@@ -873,7 +1082,15 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="40" green="56" red="eb" type="rgb"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Eliminar"/>
+                        <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="99" red="ff" type="rgb"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEliminarProductoActionPerformed"/>
@@ -884,11 +1101,33 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="72" green="93" red="37" type="rgb"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Aplicar cambios"/>
+                        <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="88" green="c6" red="46" type="rgb"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAplicarCambiosActionPerformed"/>
                       </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblConsola">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Courier New" size="14" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Compruebe que no hay campos vacios"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -904,116 +1143,8 @@
                     </Constraint>
                   </Constraints>
 
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="labelNombreProducto9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="labelNombreProducto8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelNombreProducto7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labelNombreProducto10" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="labelNombreProducto5" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="labelNombreProducto6" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="fieldNomUsuario" pref="354" max="32767" attributes="0"/>
-                                  <Component id="fieldEmail" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="fieldEmail1" max="32767" attributes="0"/>
-                                  <Component id="fieldEmail2" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="rSButtonHover3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="rSButtonHover4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="botonAplicarCambios1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="labelNombreProducto11" max="32767" attributes="0"/>
-                                          <Component id="labelNombreProducto4" min="-2" pref="114" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblContra" min="-2" pref="262" max="-2" attributes="0"/>
-                                          <Component id="lblDNI" min="-2" pref="262" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="114" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="labelNombreProducto9" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Component id="labelNombreProducto8" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="labelNombreProducto10" min="-2" pref="42" max="-2" attributes="0"/>
-                                          <Component id="fieldNomUsuario" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="labelNombreProducto5" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="fieldEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="fieldEmail1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labelNombreProducto6" min="-2" pref="42" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelNombreProducto7" min="-2" pref="42" max="-2" attributes="0"/>
-                                          <Component id="fieldEmail2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="labelNombreProducto11" min="-2" pref="42" max="-2" attributes="0"/>
-                                          <Component id="lblContra" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelNombreProducto4" min="-2" pref="42" max="-2" attributes="0"/>
-                                          <Component id="lblDNI" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="botonAplicarCambios1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="rSButtonHover4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rSButtonHover3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                    <Property name="useNullLayout" type="boolean" value="false"/>
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="labelNombreProducto4">
@@ -1022,15 +1153,25 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="24" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="DNI"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="750" y="80" width="49" height="42"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="fieldNomUsuario">
                       <Properties>
                         <Property name="placeholder" type="java.lang.String" value=""/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="260" y="80" width="346" height="-1"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelNombreProducto5">
                       <Properties>
@@ -1038,15 +1179,25 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="24" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Email"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="180" y="130" width="60" height="42"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="fieldEmail">
                       <Properties>
                         <Property name="placeholder" type="java.lang.String" value=""/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="260" y="130" width="346" height="-1"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelNombreProducto6">
                       <Properties>
@@ -1054,15 +1205,25 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="24" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Nombre"/>
+                        <Property name="text" type="java.lang.String" value="Nombre completo"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="50" y="180" width="-1" height="42"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
-                    <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="fieldEmail1">
+                    <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="fieldNom">
                       <Properties>
                         <Property name="placeholder" type="java.lang.String" value=""/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="260" y="180" width="346" height="-1"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelNombreProducto7">
                       <Properties>
@@ -1070,29 +1231,44 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="24" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Telefono"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="150" y="230" width="-1" height="42"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
-                    <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="fieldEmail2">
+                    <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="fieldTelefono">
                       <Properties>
                         <Property name="placeholder" type="java.lang.String" value=""/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="260" y="230" width="346" height="-1"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="labelNombreProducto8">
+                    <Component class="javax.swing.JLabel" name="labelRolUsuario">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="22" style="1"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="33" green="33" red="ff" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="admin"/>
+                        <Property name="text" type="java.lang.String" value="ADMIN"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="203" y="12" width="151" height="42"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelNombreProducto9">
                       <Properties>
@@ -1100,10 +1276,15 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="24" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Tipo de usuario"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="20" y="11" width="-1" height="42"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelNombreProducto10">
                       <Properties>
@@ -1111,57 +1292,116 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
+                          <Font name="Segoe UI Light" size="24" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Usuario"/>
+                        <Property name="text" type="java.lang.String" value="Nombre usuario"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="70" y="80" width="-1" height="42"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
-                    <Component class="rojeru_san.RSMPassView" name="lblContra">
+                    <Component class="rojeru_san.RSMPassView" name="fieldDni">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="placeholder" type="java.lang.String" value=""/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="810" y="80" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="labelNombreProducto11">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI Light" size="24" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
-                      </Properties>
-                    </Component>
-                    <Component class="rojeru_san.RSMPassView" name="lblDNI">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="placeholder" type="java.lang.String" value=""/>
-                      </Properties>
-                    </Component>
-                    <Component class="rojerusan.RSButtonHover" name="rSButtonHover3">
+                    <Component class="rojerusan.RSButtonHover" name="botonEliminarUsuario">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="40" green="56" red="eb" type="rgb"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Eliminar"/>
+                        <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="99" red="ff" type="rgb"/>
+                        </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEliminarUsuarioActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="930" y="170" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
-                    <Component class="rojerusan.RSButtonHover" name="rSButtonHover4">
+                    <Component class="rojerusan.RSButtonHover" name="botonA&#xf1;adirUsuario">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="A&#xf1;adir usuario"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonA&#xf1;adirUsuarioActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="930" y="220" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
-                    <Component class="rojerusan.RSButtonHover" name="botonAplicarCambios1">
+                    <Component class="rojerusan.RSButtonHover" name="botonAplicarUsuario">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="72" green="93" red="37" type="rgb"/>
                         </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Aplicar cambios"/>
+                        <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="88" green="c6" red="46" type="rgb"/>
+                        </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAplicarCambios1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAplicarUsuarioActionPerformed"/>
                       </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="710" y="170" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="rojerusan.RSButtonHover" name="botonCambiarContrase&#xf1;a">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="15" green="a0" red="dd" type="rgb"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Cambiar contrase&#xf1;a"/>
+                        <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="3b" green="ce" red="f3" type="rgb"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCambiarContrase&#xf1;aActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="710" y="220" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1169,23 +1409,60 @@
             </Container>
             <Component class="javax.swing.JLabel" name="labelReloj">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Trebuchet MS" size="22" style="1"/>
+                  <Font name="Arial" size="22" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="XX:XX:XX"/>
+                <Property name="text" type="java.lang.String" value="XX:XX"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JLabel" name="lblLog">
               <Properties>
-                <Property name="text" type="java.lang.String" value="actualizar"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Source Sans Pro Light" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Sesi&#xf3;n iniciada como:"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUsuarioLogeadoRol">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Source Sans Pro Light" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="(Admin)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUsuarioLogeado">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Source Sans Pro Light" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Carlos"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

@@ -16,6 +16,7 @@
  */
 package Main;
 
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -23,6 +24,7 @@ import java.util.logging.Logger;
 import log.MyLogger;
 import ui.bienvenida.Frame_Login;
 import ui.bienvenida.Frame_Bienvenida;
+import ui.dialogs.Dialog_Confirmar;
 import ui.principal.Frame_Principal;
 import util.OperacionesBDD;
 import util.PropertiesUtil;
@@ -70,8 +72,8 @@ public class Main {
 
         } else {
             //Se tiene que mostrar el frame de iniciar sesión
-            //new Frame_Login().setVisible(true);
-            new Frame_Principal().setVisible(true);
+            new Frame_Login().setVisible(true);
+            //new Frame_Principal().setVisible(true);
         }
 
     }

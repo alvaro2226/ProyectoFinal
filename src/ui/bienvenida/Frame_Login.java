@@ -25,6 +25,7 @@ import log.MyLogger;
 import threads.ProgressDialogLogin;
 import ui.principal.Frame_Principal;
 import util.OperacionesBDD;
+import util.Util;
 
 /**
  *
@@ -39,6 +40,7 @@ public class Frame_Login extends javax.swing.JFrame {
      */
     public Frame_Login() {
         initComponents();
+        this.setIconImage(Util.getImagenIcono());
         this.setLocationRelativeTo(null);
         this.lblConsola.setVisible(false);
         this.rSProgressCircleAnimated1.setVisible(false);
@@ -83,7 +85,7 @@ public class Frame_Login extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Inicio de sesión");
 
-        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/ui/images/logo/logo_transparent.png"))); // NOI18N
+        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/ui/images/logo/logo2.png"))); // NOI18N
 
         javax.swing.GroupLayout rSPanelImage2Layout = new javax.swing.GroupLayout(rSPanelImage2);
         rSPanelImage2.setLayout(rSPanelImage2Layout);
@@ -93,7 +95,7 @@ public class Frame_Login extends javax.swing.JFrame {
         );
         rSPanelImage2Layout.setVerticalGroup(
             rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 76, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelSuperiorLayout = new javax.swing.GroupLayout(panelSuperior);
@@ -101,32 +103,43 @@ public class Frame_Login extends javax.swing.JFrame {
         panelSuperiorLayout.setHorizontalGroup(
             panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addComponent(rSPanelImage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel19)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         panelSuperiorLayout.setVerticalGroup(
             panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-            .addComponent(rSPanelImage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rSPanelImage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        backgroundPanel.add(panelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, -1));
+        backgroundPanel.add(panelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 100));
 
         rSLabelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/user_40px.png"))); // NOI18N
         backgroundPanel.add(rSLabelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 166, 40, 40));
 
         lblUsuario.setPlaceholder("Nombre de usuario");
-        backgroundPanel.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 156, 262, 50));
+        lblUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblUsuarioActionPerformed(evt);
+            }
+        });
+        backgroundPanel.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 156, 230, 50));
 
         rSLabelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/lock_40px.png"))); // NOI18N
         rSLabelImage2.setPreferredSize(new java.awt.Dimension(40, 40));
         backgroundPanel.add(rSLabelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 263, -1, -1));
 
         lblContra.setPlaceholder("Contraseña");
-        backgroundPanel.add(lblContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 263, 262, -1));
+        backgroundPanel.add(lblContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 263, 230, -1));
 
+        rSButtonHover1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         rSButtonHover1.setText("Iniciar sesión");
         rSButtonHover1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +164,10 @@ public class Frame_Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static String usuarioLogeado;
+    public static String usuarioLogeadoContra;
+    public static int usuarioLogeadoRol;
+   
     private void rSButtonHover1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonHover1ActionPerformed
 
         //this.rSProgressCircleAnimated1.setVisible(true);
@@ -171,6 +188,8 @@ public class Frame_Login extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Frame_Login.class.getName()).log(Level.SEVERE, null, ex);
             }
+            usuarioLogeado = lblUsuario.getText();
+            usuarioLogeadoContra = lblContra.getText();
             new Frame_Principal().setVisible(true);
 
 
@@ -180,6 +199,10 @@ public class Frame_Login extends javax.swing.JFrame {
         }
         //this.rSProgressCircleAnimated1.setVisible(false);
     }//GEN-LAST:event_rSButtonHover1ActionPerformed
+
+    private void lblUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

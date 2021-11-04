@@ -50,7 +50,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="410" height="-1"/>
+              <AbsoluteConstraints x="0" y="0" width="410" height="100"/>
             </Constraint>
           </Constraints>
 
@@ -58,17 +58,24 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="rSPanelImage2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="51" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel19" alignment="0" pref="80" max="32767" attributes="0"/>
-                  <Component id="rSPanelImage2" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="rSPanelImage2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel19" min="-2" pref="70" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -90,7 +97,7 @@
             <Container class="rojerusan.RSPanelImage" name="rSPanelImage2">
               <Properties>
                 <Property name="imagen" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/ui/images/logo/logo_transparent.png"/>
+                  <Image iconType="3" name="/ui/images/logo/logo2.png"/>
                 </Property>
               </Properties>
 
@@ -102,7 +109,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="76" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -125,9 +132,12 @@
           <Properties>
             <Property name="placeholder" type="java.lang.String" value="Nombre de usuario"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblUsuarioActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="106" y="156" width="262" height="50"/>
+              <AbsoluteConstraints x="106" y="156" width="230" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -152,12 +162,17 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="106" y="263" width="262" height="-1"/>
+              <AbsoluteConstraints x="106" y="263" width="230" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="rojerusan.RSButtonHover" name="rSButtonHover1">
           <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
             <Property name="text" type="java.lang.String" value="Iniciar sesi&#xf3;n"/>
           </Properties>
           <Events>

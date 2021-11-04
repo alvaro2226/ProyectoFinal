@@ -17,6 +17,8 @@
 package util;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -26,6 +28,7 @@ import javax.swing.text.JTextComponent;
  * @author Álvaro Morcillo Barbero
  */
 public class Util {
+
     
     /**
      * Comprueba si el email introducido es válido
@@ -110,5 +113,14 @@ public class Util {
         
         
         return camposVacios;
+    }
+    
+    public static Image getImagenIcono(){
+        
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Image icono = kit.createImage("src/ui/images/icono.png");
+        
+        return icono;
+        
     }
 }

@@ -46,7 +46,7 @@ public class Reloj extends Thread {
                 minutes = cal.get(Calendar.MINUTE);
                 seconds = cal.get(Calendar.SECOND);
 
-                SimpleDateFormat formatter = new SimpleDateFormat("H:m");
+                SimpleDateFormat formatter = new SimpleDateFormat("H:mm");
                 Date date = cal.getTime();
                 timeString = formatter.format(date);
 

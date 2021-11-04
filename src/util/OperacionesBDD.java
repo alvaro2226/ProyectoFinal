@@ -129,7 +129,7 @@ public class OperacionesBDD {
             inicioCorrecto = false;
         }
 
-        cerrarConexion();
+        //cerrarConexion();
         return inicioCorrecto;
     }
 
@@ -265,6 +265,66 @@ public class OperacionesBDD {
 
     }
 
+    public static void cancelarPedido(int idPedido) throws SQLException {
+
+        String query1 = "DELETE FROM ordertracker.linea_pedido WHERE linea_pedido_pedido_id = ?";
+        String query2 = "DELETE FROM ordertracker.pedido WHERE pedido_id = ?";
+
+        PreparedStatement pst1 = conexion.clientPrepareStatement(query1);
+        PreparedStatement pst2 = conexion.clientPrepareStatement(query2);
+
+        pst1.setInt(1, idPedido);
+        pst2.setInt(1, idPedido);
+
+        pst1.executeUpdate();
+        pst2.executeUpdate();
+
+        conexion.commit();
+
+    }
+
+    public static boolean comprobarContraseña(String nombreUsuario, String contraseña) {
+
+        boolean existe = false;
+        try {
+            System.out.println("COMPROBANDO CONTRASEÑA -->");
+            System.out.println(nombreUsuario + " " + contraseña);
+
+            Statement st = conexion.createStatement();
+            String query = "SELECT * FROM ordertracker.usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'" + " AND usuario_contraseña = '" + contraseña + "'";
+
+            ResultSet rs = st.executeQuery(query);
+
+            if (rs.first()) {
+                existe = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return existe;
+    }
+
+    /**
+     *
+     * @param nombreUsuario
+     * @param contraseña
+     * @throws SQLException
+     */
+    public static void cambiarContraseña(String nombreUsuario, String contraseña) throws SQLException {
+
+        PreparedStatement pst = null;
+        String query = "UPDATE ordertracker.usuario SET usuario_contraseña = ? WHERE usuario_nombreUsuario = ?";
+
+        pst = conexion.prepareStatement(query);
+
+        pst.setString(1, contraseña);
+        pst.setString(2, nombreUsuario);
+        pst.executeUpdate();
+
+        conexion.commit();
+    }
+
     public static void añadirAdmin(String user, String password) {
 
         PreparedStatement pst = null;
@@ -285,8 +345,8 @@ public class OperacionesBDD {
 
             iniciarConexion();
             String query = "INSERT INTO `OrderTracker`.`USUARIO`"
-                    + "(usuario_nombreUsuario,usuario_contraseña,usuario_tipoUsuario_id,usuario_fechaCreacion) "
-                    + "VALUES(?,?,?,?);";
+                    + "(usuario_nombreUsuario,usuario_contraseña,usuario_tipoUsuario_id,usuario_fechaCreacion,usuario_direccion_id) "
+                    + "VALUES(?,?,?,?,?);";
             pst = conexion.prepareStatement(query);
 
             pst.setString(1, user);
@@ -295,6 +355,7 @@ public class OperacionesBDD {
 
             Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
             pst.setTimestamp(4, ts);
+            pst.setInt(5, 1);
 
             pst.executeUpdate();
 
@@ -480,24 +541,17 @@ public class OperacionesBDD {
                     + "    REFERENCES `OrderTracker`.`PEDIDO` (`pedido_id`)\n"
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION)\n"
-                    + "ENGINE = InnoDB;");
-            st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`DATOS_EMPRESA` (\n"
-                    + "  `datos_empresa_id` INT NOT NULL AUTO_INCREMENT,\n"
-                    + "  `datos_empresa_nombre` VARCHAR(25) NOT NULL,\n"
-                    + "  `datos_empresa_formaJuridica` VARCHAR(5) NOT NULL,\n"
-                    + "  `datos_empresa_cif` VARCHAR(15) NOT NULL,\n"
-                    + "  `datos_empresa_direccion` INT NOT NULL,\n"
-                    + "  `datos_empresa_email` VARCHAR(100) NOT NULL,\n"
-                    + "  `datos_empresa_paypal` VARCHAR(100) NOT NULL,\n"
-                    + "  `datos_empresa_telefono` VARCHAR(12) NULL,\n"
-                    + "  PRIMARY KEY (`datos_empresa_id`),\n"
-                    + "  INDEX `fk_DATOS_EMPRESA_DIRECCION1_idx` (`datos_empresa_direccion` ASC) VISIBLE,\n"
-                    + "  CONSTRAINT `fk_DATOS_EMPRESA_DIRECCION1`\n"
-                    + "    FOREIGN KEY (`datos_empresa_direccion`)\n"
-                    + "    REFERENCES `OrderTracker`.`DIRECCION` (`direccion_id`)\n"
-                    + "    ON DELETE NO ACTION\n"
-                    + "    ON UPDATE NO ACTION)\n"
-                    + "ENGINE = InnoDB;");
+                    + " ENGINE = InnoDB;");
+
+            st.execute("CREATE TABLE IF NOT EXISTS OrderTracker.DATOS_EMPRESA (\n"
+                    + "                     datos_empresa_id INT PRIMARY KEY AUTO_INCREMENT,\n"
+                    + "                      datos_empresa_nombre VARCHAR(25) NOT NULL,\n"
+                    + "                    datos_empresa_formaJuridica VARCHAR(5) NOT NULL,\n"
+                    + "                    datos_empresa_cif VARCHAR(15) NOT NULL,\n"
+                    + "                   datos_empresa_direccion INT NOT NULL,\n"
+                    + "                   datos_empresa_email VARCHAR(100) NOT NULL,\n"
+                    + "				datos_empresa_telefono VARCHAR(12) NULL)\n"
+                    + "                     ENGINE = InnoDB;");
 
             conexion.commit();
             logger.info("Se ha creado la base de datos correctamente");
@@ -530,23 +584,51 @@ public class OperacionesBDD {
 
     }
 
+    /**
+     *
+     * @param nombreUsuario
+     * @return Devuelve un int que indica el rol del usuario (1 = admin, 2 =
+     * empleado, 3 = cliente)
+     */
+    public static int getRolUsuario(String nombreUsuario) {
+        int rol = 4;
+
+        ResultSet rs = null;
+        String query = "SELECT usuario_tipoUsuario_id FROM ordertracker.usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'";
+        Statement st;
+        try {
+
+            st = conexion.createStatement();
+            //pst.setString(1, nombreUsuario);
+            rs = st.executeQuery(query);
+
+            rs.next();
+            rol = rs.getInt("usuario_tipoUsuario_id");
+            System.out.println("rol de: " + nombreUsuario + "  " + rol);
+        } catch (SQLException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rol;
+    }
+
     public static ResultSet getPedidos() {
         ResultSet pedidos = null;
         String query = "SELECT pedido_id AS ID ,\n"
-                + "                	pedido_usuario_id AS ID_USUARIO,\n"
-                + "			pedido_costesEnvio AS COSTE_ENVIO,\n"
-                + "                	pedido_fechaEnvioEstimada AS LLEGADA_EST,\n"
-                + "                	pedido_fechaEnvioRealizado AS LLEGADA,\n"
-                + "                	estado_pedido_estado AS ESTADO,\n"
-                + "                	metodo_pago_nombre AS METODO_PAGO, \n"
-                + "                	pedido_pagado AS PAGADO,\n"
-                + "                    usuario_nombre + usuario_Apellidos REPARTIDOR\n"
-                + "                FROM ordertracker.pedido,ordertracker.estado_pedido,ordertracker.metodo_pago,ordertracker.usuario\n"
-                + "                WHERE pedido_estadoPedido = estado_pedido_id AND\n"
-                + "					  pedido_metodoPago = metodo_pago_id AND\n"
-                + "                      pedido_empleadoAsignado = usuario_id AND\n"
-                + "                      pedido_usuario_id = usuario_id\n"
-                + "                ORDER BY pedido_fechaCreacion";
+                + "                            	pedido_usuario_id AS ID_USUARIO,\n"
+                + "                		pedido_costesEnvio AS COSTE_ENVIO,\n"
+                + "                               	pedido_fechaEnvioEstimada AS LLEGADA_EST,\n"
+                + "                               	pedido_fechaEnvioRealizado AS LLEGADA,\n"
+                + "                               	estado_pedido_estado AS ESTADO,\n"
+                + "                             	metodo_pago_nombre AS METODO_PAGO,\n"
+                + "                           	pedido_pagado AS PAGADO,\n"
+                + "                                   concat(usuario_nombre,usuario_Apellidos) REPARTIDOR\n"
+                + "                               FROM ordertracker.pedido,ordertracker.estado_pedido,ordertracker.metodo_pago,ordertracker.usuario\n"
+                + "                               WHERE pedido_estadoPedido = estado_pedido_id AND\n"
+                + "                				  pedido_metodoPago = metodo_pago_id AND\n"
+                + "                                    pedido_empleadoAsignado = usuario_id AND\n"
+                + "                                     pedido_usuario_id = usuario_id\n"
+                + "                                ORDER BY pedido_fechaCreacion;";
         Statement st;
         try {
 
@@ -581,15 +663,28 @@ public class OperacionesBDD {
 
     public static ResultSet getUsuarios() {
         ResultSet pedidos = null;
+        /*
         String query = "SELECT usuario_nombreUsuario AS USUARIO,\n"
                 + "usuario_email AS EMAIL,\n"
                 + "usuario_nombre + usuario_Apellidos AS NOMBRE,\n"
                 + "usuario_telefono AS TELEFONO,\n"
-                + "tipoUsuario_tipo AS TIPO_USUARIO,\n"
+                + "tipoUsuario_tipo AS ROL_USUARIO,\n"
                 + "direccion_calle AS DIRECCION,\n"
                 + "usuario_dni AS DNI\n"
                 + " FROM ordertracker.usuario, ordertracker.tipo_usuario, ordertracker.direccion\n"
                 + " WHERE usuario_tipoUsuario_id = tipoUsuario_id";
+         */
+
+        String query = "SELECT usuario_nombreUsuario AS USUARIO,\n"
+                + "               usuario_email AS EMAIL,\n"
+                + "               concat(usuario_nombre,\" \",usuario_Apellidos) AS NOMBRE,\n"
+                + "                usuario_telefono AS TELEFONO,\n"
+                + "                tipoUsuario_tipo AS ROL_USUARIO,\n"
+                + "				concat(direccion_calle, \", \", direccion_localidad, \"(\", direccion_provincia,\")\")   AS DIRECCION,\n"
+                + "                 usuario_dni AS DNI\n"
+                + "                  FROM ordertracker.usuario, ordertracker.tipo_usuario, ordertracker.direccion\n"
+                + "                 WHERE usuario_tipoUsuario_id = tipoUsuario_id AND"
+                + "                 direccion_id = usuario_direccion_id";
         Statement st;
         try {
 
@@ -601,6 +696,32 @@ public class OperacionesBDD {
         }
 
         return pedidos;
+    }
+
+    /**
+     *
+     * @param nombreUsuario el usuario que se va a eliminar. Se elimina tambien
+     * su dirección
+     */
+    public static void eliminarUsuario(String nombreUsuario) {
+
+        String query1 = "DELETE FROM Ordertracker.direccion WHERE direccion_id = (SELECT usuario_direccion_id FROM Ordertracker.usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "')";
+        String query2 = "DELETE FROM ordertracker.usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'";
+
+        try {
+            Statement statement = conexion.createStatement();
+
+            //statement.executeUpdate(query1);
+            statement.executeUpdate(query2);
+
+            conexion.commit();
+
+            System.out.println("Usuario " + nombreUsuario + " eliminado correctamente.");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public static ResultSet getLineas(int idPedido) {
@@ -623,12 +744,12 @@ public class OperacionesBDD {
     }
 
     /**
-     * 
+     *
      * @param nombre
      * @param desc
      * @param precio
      * @param imagen
-     * @param stock 
+     * @param stock
      */
     public static void añadirProducto(String nombre, String desc, float precio, File imagen, int stock) {
         try {
@@ -656,14 +777,113 @@ public class OperacionesBDD {
         }
     }
 
+    public static boolean comprobarUsuarioExiste(String nombreUsuario) {
+
+        boolean existe = true;
+        try {
+
+            Statement st = null;
+            String query = "SELECT * FROM ordertracker.usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'";
+
+            st = conexion.createStatement();
+            existe = st.execute(query);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return existe;
+    }
+
     /**
-     * 
+     *
+     * @param nombreUsuario
+     * @param email
+     * @param contraseña
+     * @param nombre
+     * @param apellidos
+     * @param Apellidos
+     * @param telefono
+     * @param DNI
+     */
+    public static void añadirUsuario(String nombreUsuario, String email,
+            String contraseña, String nombre, String apellidos, String telefono,
+            String DNI) throws SQLException {
+
+        PreparedStatement pst = null;
+        String query = "INSERT INTO ordertracker.usuario VALUES (null,?,?,?,?,?,?,?,?,1,?)";
+
+        pst = conexion.prepareStatement(query);
+
+        pst.setString(1, nombreUsuario);
+        pst.setString(2, email);
+        pst.setString(3, contraseña);
+        pst.setString(4, nombre);
+        pst.setString(5, apellidos);
+        pst.setString(6, telefono);
+
+        Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
+
+        pst.setTimestamp(7, timestamp);
+        pst.setInt(8, TIPO_EMPLEADO);
+
+        pst.setString(9, DNI);
+
+        pst.executeUpdate();
+        conexion.commit();
+
+    }
+
+    /**
+     *
+     * @param nombreUsuario
+     * @param nombreUsuarioNuevo
+     * @param email
+     * @param nombre
+     * @param apellidos
+     * @param telefono
+     * @param dni
+     */
+    public static void modificarUsuario(String nombreUsuario, String nombreUsuarioNuevo, String email, String nombre, String apellidos, String telefono, String dni) {
+
+        PreparedStatement preparedStatement;
+        String query = "UPDATE ordertracker.usuario SET"
+                + "             usuario_nombreUsuario = ?,"
+                + "		usuario_email = ?,"
+                + "             usuario_nombre = ?,"
+                + "             usuario_Apellidos = ?,"
+                + "             usuario_telefono = ?,"
+                + "             usuario_dni = ?"
+                + "             WHERE usuario_nombreUsuario = ?";
+
+        try {
+
+            preparedStatement = conexion.clientPrepareStatement(query);
+
+            preparedStatement.setString(1, nombreUsuarioNuevo);
+            preparedStatement.setString(2, email);
+            preparedStatement.setString(3, nombre);
+            preparedStatement.setString(4, apellidos);
+            preparedStatement.setString(5, telefono);
+            preparedStatement.setString(6, dni);
+            preparedStatement.setString(7, nombreUsuario);
+
+            preparedStatement.executeUpdate();
+            conexion.commit();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     *
      * @param id
      * @param nombre
      * @param desc
      * @param precio
      * @param imagen
-     * @param stock 
+     * @param stock
      */
     public static void modificarProducto(int id, String nombre, String desc, float precio, File imagen, int stock) {
 
@@ -677,9 +897,9 @@ public class OperacionesBDD {
                 + " WHERE producto_id = ?;";
 
         try {
-            
+
             preparedStatement = conexion.clientPrepareStatement(query);
-            
+
             preparedStatement.setString(1, nombre);
             preparedStatement.setString(2, desc);
             preparedStatement.setFloat(3, precio);
@@ -701,24 +921,24 @@ public class OperacionesBDD {
         }
 
     }
-    
+
     /**
-     * 
-     * @param id 
+     *
+     * @param id
      */
     public static void eliminarProducto(int id) {
-        
+
         PreparedStatement preparedStatement;
         String query = "DELETE FROM ordertracker.producto WHERE producto_id = ?";
 
         try {
-            
+
             preparedStatement = conexion.clientPrepareStatement(query);
-            
+
             preparedStatement.setInt(1, id);
 
             preparedStatement.executeUpdate();
-            
+
             conexion.commit();
 
         } catch (SQLException ex) {
@@ -726,7 +946,7 @@ public class OperacionesBDD {
         }
 
     }
-    
+
     /**
      * Lineas para insertar datos de prueba ********************************
      *
@@ -744,7 +964,7 @@ public class OperacionesBDD {
      * Inserta varias lineas para el pedido INSERT INTO
      * `ordertracker`.`linea_pedido` (`linea_pedido_id`,
      * `linea_pedido_producto_id`, `linea_pedido_cantidad`,
-     * `linea_pedido_pedido_id`, `linea_pedido_total`) VALUES (null, 1, 10, 1,
+     * `linea_pedido_pedido_id`, `linea_pedido_total`) VALUES (null, 1, 1, 2,
      * 2);
      *
      *

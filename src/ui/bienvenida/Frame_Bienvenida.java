@@ -52,6 +52,7 @@ public class Frame_Bienvenida extends JFrame {
     public Frame_Bienvenida() {
 
         initComponents();
+        this.setIconImage(Util.getImagenIcono());
 
         cardLayout = (CardLayout) panelSlider.getLayout();
         setLocationRelativeTo(null);
@@ -250,7 +251,7 @@ public class Frame_Bienvenida extends JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("¡Bienvenido!");
 
-        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/ui/images/logo/logo_transparent.png"))); // NOI18N
+        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/ui/images/logo/logo2.png"))); // NOI18N
 
         javax.swing.GroupLayout rSPanelImage2Layout = new javax.swing.GroupLayout(rSPanelImage2);
         rSPanelImage2.setLayout(rSPanelImage2Layout);
@@ -268,8 +269,9 @@ public class Frame_Bienvenida extends JFrame {
         panelSuperiorLayout.setHorizontalGroup(
             panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(rSPanelImage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addComponent(jLabel19)
                 .addGap(211, 211, 211))
         );
@@ -277,8 +279,8 @@ public class Frame_Bienvenida extends JFrame {
             panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelSuperiorLayout.createSequentialGroup()
                 .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(rSPanelImage2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(rSPanelImage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -286,7 +288,7 @@ public class Frame_Bienvenida extends JFrame {
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
-        jLabel11.setText("<html>No te preocupes, solo tendrás<br/>que configurar algunos <br/>parámetros y podrás empezar<br>a utilizar la aplicación</br></html>");
+        jLabel11.setText("<html>No te preocupes, solo tendrás<br/>que configurar algunas <br/>cosas y podrás empezar<br>a utilizar la aplicación</br></html>");
         panelBienvenida.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 340, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/logo/logo_transparent_1.png"))); // NOI18N
@@ -590,7 +592,7 @@ public class Frame_Bienvenida extends JFrame {
                 .addComponent(rSPanelImage4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel24)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         panelSuperior2Layout.setVerticalGroup(
             panelSuperior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

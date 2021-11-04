@@ -396,12 +396,11 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
         } catch (IOException ex) {
             Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         frameBienvenida.dispose();
         new Frame_Login().setVisible(true);
 
         doClose(RET_OK);
-
 
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
@@ -446,7 +445,6 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
 
         // CAMBIAR EN EL FICHERO DE CONFIGURACION LA BDD SI HICIESE FALTA
         OperacionesBDD.crearBDD();
-        OperacionesBDD.añadirAdmin(adminUser.getUsername(), adminUser.getPassword());
         OperacionesBDD.añadirEmpresa(
                 empresa.getNombre(),
                 empresa.getFormaJuridica(),
@@ -459,6 +457,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
                 empresa.getCodigoPostal(),
                 empresa.getPais(),
                 empresa.getTelefono());
+        OperacionesBDD.añadirAdmin(adminUser.getUsername(), adminUser.getPassword());
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
