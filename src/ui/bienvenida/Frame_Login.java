@@ -17,14 +17,19 @@
 package ui.bienvenida;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import log.MyLogger;
+import pojos.AdminUser;
+import pojos.Database;
+import pojos.Empresa;
 import threads.ProgressDialogLogin;
 import ui.principal.Frame_Principal;
 import util.OperacionesBDD;
+import util.PropertiesUtil;
 import util.Util;
 
 /**
@@ -34,11 +39,12 @@ import util.Util;
 public class Frame_Login extends javax.swing.JFrame {
 
     private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
+    private Database database = null;
 
     /**
      * Creates new form FrameLogin
      */
-    public Frame_Login() {
+    public Frame_Login(Database database) {
         initComponents();
         this.setIconImage(Util.getImagenIcono());
         this.setLocationRelativeTo(null);
@@ -48,6 +54,9 @@ public class Frame_Login extends javax.swing.JFrame {
         this.lblUsuario.setNextFocusableComponent(lblContra);
         this.rSButtonHover1.setMnemonic(KeyEvent.VK_ACCEPT);
         this.getRootPane().setDefaultButton(rSButtonHover1);
+        
+        this.database = database;
+                
     }
 
     /**
@@ -167,7 +176,7 @@ public class Frame_Login extends javax.swing.JFrame {
     public static String usuarioLogeado;
     public static String usuarioLogeadoContra;
     public static int usuarioLogeadoRol;
-   
+
     private void rSButtonHover1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonHover1ActionPerformed
 
         //this.rSProgressCircleAnimated1.setVisible(true);
@@ -190,8 +199,20 @@ public class Frame_Login extends javax.swing.JFrame {
             }
             usuarioLogeado = lblUsuario.getText();
             usuarioLogeadoContra = lblContra.getText();
-            new Frame_Principal().setVisible(true);
 
+            if(database != null){
+                try {
+                PropertiesUtil.añadirBDD(database.getURL(),
+                        database.getUser(),
+                        database.getPassword(),
+                        "false");
+            } catch (IOException ex) {
+                Logger.getLogger(Dialog_ConfirmarInstalacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            }
+            
+            new Frame_Principal().setVisible(true);
 
         } else {
             //this.lblConsola.setVisible(true);
@@ -235,7 +256,7 @@ public class Frame_Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frame_Login().setVisible(true);
+                new Frame_Login(null).setVisible(true);
             }
         });
     }

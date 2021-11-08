@@ -23,6 +23,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Level;
@@ -115,13 +116,20 @@ public class PropertiesUtil {
 
         if (existe() && propertiesFile != null) {
 
+            /*
+            propertiesFile.remove("app.firstTime");
+            propertiesFile.remove("database.URL");
+            propertiesFile.remove("database.USER");
+            propertiesFile.remove("database.PASSWORD");
+            propertiesFile.store(output, PROPERTIES_PATH);          
+            */
             propertiesFile.setProperty("app.firstTime", firstTime);
             propertiesFile.setProperty("database.URL", URL);
             propertiesFile.setProperty("database.USER", USER);
             propertiesFile.setProperty("database.PASSWORD", PASSWORD);
             propertiesFile.store(output, PROPERTIES_PATH);
         } else {
-            logger.severe("Error los datos de la base de datos al fichero de configuracion");
+            logger.severe("Error al añadir los datos de la base de datos al fichero de configuracion");
         }
     }
 

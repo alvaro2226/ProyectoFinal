@@ -72,7 +72,7 @@ public class Main {
 
         } else {
             //Se tiene que mostrar el frame de iniciar sesión
-            new Frame_Login().setVisible(true);
+            new Frame_Login(null).setVisible(true);
             //new Frame_Principal().setVisible(true);
         }
 

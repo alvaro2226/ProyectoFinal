@@ -53,7 +53,7 @@ import pojos.Usuario;
 import rojeru_san.RSButtonRiple;
 import rojerusan.RSButtonHover;
 import threads.Reloj;
-import ui.bienvenida.Dialog_ConfirmarDatos;
+import ui.bienvenida.Dialog_ConfirmarInstalacion;
 import ui.bienvenida.Frame_Login;
 import ui.dialogs.Dialog_Confirmar;
 import ui.dialogs.Dialog_cambiarContraseña;

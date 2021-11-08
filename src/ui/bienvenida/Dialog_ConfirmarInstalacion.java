@@ -35,7 +35,7 @@ import util.PropertiesUtil;
  *
  * @author alvaro2226
  */
-public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
+public class Dialog_ConfirmarInstalacion extends javax.swing.JDialog {
 
     /**
      * A return status code - returned if Cancel button has been pressed
@@ -62,7 +62,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
      * @param database
      * @param adminUser
      */
-    public Dialog_ConfirmarDatos(java.awt.Frame parent, boolean modal,
+    public Dialog_ConfirmarInstalacion(java.awt.Frame parent, boolean modal,
             Empresa empresa, Database database, AdminUser adminUser) {
         super(parent, modal);
 
@@ -391,7 +391,7 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
                     database.getPassword(),
                     "true");
         } catch (IOException ex) {
-            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Dialog_ConfirmarInstalacion.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         persistirDatos();
@@ -405,11 +405,11 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
                     database.getPassword(),
                     "false");
         } catch (IOException ex) {
-            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Dialog_ConfirmarInstalacion.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         frameBienvenida.dispose();
-        new Frame_Login().setVisible(true);
+        new Frame_Login(database).setVisible(true);
 
         doClose(RET_OK);
 

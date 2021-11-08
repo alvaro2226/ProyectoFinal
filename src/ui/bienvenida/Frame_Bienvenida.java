@@ -17,13 +17,16 @@
 package ui.bienvenida;
 
 import java.awt.CardLayout;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.text.JTextComponent;
 import pojos.*;
 import rojeru_san.RSPanelsSlider;
 import util.OperacionesBDD;
+import util.PropertiesUtil;
 import util.Util;
 
 /**
@@ -32,12 +35,11 @@ import util.Util;
  */
 public class Frame_Bienvenida extends JFrame {
 
-        
     //-------------------------------------------
     //TRUE para omitir todos las comprobaciones
-    private final boolean omitirComprobaciones = false;  
+    private final boolean omitirComprobaciones = false;
     //-------------------------------------------
-    
+
     private final CardLayout cardLayout;
     private final static Logger logger = Logger.getLogger(Frame_Bienvenida.class.getName());
     private final OperacionesBDD operacionesBDD;
@@ -172,7 +174,7 @@ public class Frame_Bienvenida extends JFrame {
         panelSuperior2 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         rSPanelImage4 = new rojerusan.RSPanelImage();
-        rSButton1 = new rojeru_san.RSButton();
+        botonOmitirInstalacion = new rojeru_san.RSButton();
         lblConsola2 = new javax.swing.JLabel();
         panelEmpresa1 = new javax.swing.JPanel();
         textField_NombreEmpresa = new javax.swing.JTextField();
@@ -617,8 +619,13 @@ public class Frame_Bienvenida extends JFrame {
 
         panelBaseDatos1.add(panelSuperior2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 80));
 
-        rSButton1.setText("...");
-        panelBaseDatos1.add(rSButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 60, 40));
+        botonOmitirInstalacion.setText("...");
+        botonOmitirInstalacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonOmitirInstalacionActionPerformed(evt);
+            }
+        });
+        panelBaseDatos1.add(botonOmitirInstalacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 60, 40));
 
         lblConsola2.setBackground(new java.awt.Color(255, 255, 255));
         lblConsola2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
@@ -1072,11 +1079,11 @@ public class Frame_Bienvenida extends JFrame {
             todoCorrecto = true;
         }
 
-        if(conexionEstablecida != true && camposVacios == false){
+        if (conexionEstablecida != true && camposVacios == false) {
             Util.mensajeConsola(lblConsola, "Tienes que comprobar la conexión primero", false);
         }
 
-        if (todoCorrecto  && conexionEstablecida || omitirComprobaciones ) {
+        if (todoCorrecto && conexionEstablecida || omitirComprobaciones) {
             panelSlider.siguiente(RSPanelsSlider.DIRECT.LEFT);
 
             database.setURL(lblURL.getText().trim());
@@ -1134,32 +1141,31 @@ public class Frame_Bienvenida extends JFrame {
             todoCorrecto = false;
             Util.mensajeConsola(lblConsola3, "Hay algún campo vacío", false);
         } else {
-            
+
             //Comprueba que los emails son válidos
             todoCorrecto = true;
-            
+
             //EMAIL
-            if(!Util.validarEmail(this.textField_Email.getText().trim())){
+            if (!Util.validarEmail(this.textField_Email.getText().trim())) {
                 Util.mensajeConsola(lblConsola3, "Campo incorrecto", false);
                 this.cancelar_Email1.setVisible(true);
                 todoCorrecto = false;
-            }else{
+            } else {
                 this.cancelar_Email1.setVisible(false);
             }
-            
+
             //PAYPAL
-            if(!Util.validarEmail(this.textField_paypal.getText().trim())){
+            if (!Util.validarEmail(this.textField_paypal.getText().trim())) {
                 Util.mensajeConsola(lblConsola3, "Campo incorrecto", false);
                 this.cancelar_Email.setVisible(true);
                 todoCorrecto = false;
-            }else{
+            } else {
                 this.cancelar_Email.setVisible(false);
             }
-            
-            
+
         }
 
-        if (todoCorrecto || omitirComprobaciones ) {
+        if (todoCorrecto || omitirComprobaciones) {
 
             empresa.setNombre(this.textField_NombreEmpresa.getText().trim());
             empresa.setFormaJuridica(this.textField_FM.getText().trim());
@@ -1192,18 +1198,18 @@ public class Frame_Bienvenida extends JFrame {
 
         }
 
-        if (todoCorrecto || omitirComprobaciones ) {
+        if (todoCorrecto || omitirComprobaciones) {
             empresa.setCalle(this.textField_calle.getText().trim());
             empresa.setLocalidad(this.textField_localidad.getText().trim());
             empresa.setProvincia(this.textField_provincia.getText().trim());
             empresa.setPais(this.textField_pais.getText().trim());
             empresa.setCodigoPostal(this.textField_CP.getText().trim());
-            new Dialog_ConfirmarDatos(this, true, empresa, database, adminUser).setVisible(true);
+            new Dialog_ConfirmarInstalacion(this, true, empresa, database, adminUser).setVisible(true);
         }
 
     }//GEN-LAST:event_botonSiguiente5ActionPerformed
 
-    public void cerrarFrame(){
+    public void cerrarFrame() {
         dispose();
     }
     private void textField_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_telefonoActionPerformed
@@ -1221,6 +1227,22 @@ public class Frame_Bienvenida extends JFrame {
     private void textField_paisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_paisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textField_paisActionPerformed
+
+    private void botonOmitirInstalacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOmitirInstalacionActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+            PropertiesUtil.añadirBDD(database.getURL(),
+                    database.getUser(),
+                    database.getPassword(),
+                    "true");
+        } catch (IOException ex) {
+            Logger.getLogger(Dialog_ConfirmarInstalacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        dispose();
+        new Frame_Login(database).setVisible(true);
+    }//GEN-LAST:event_botonOmitirInstalacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1258,8 +1280,7 @@ public class Frame_Bienvenida extends JFrame {
                 public void windowClosing(java.awt.event.WindowEvent e) {
                     logger.info("Se ha cerrado la el frame de bienvenida.");
                     System.exit(0);
-                    
-                    
+
                 }
             });
             dialog.setVisible(true);
@@ -1269,6 +1290,7 @@ public class Frame_Bienvenida extends JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPanel;
     private java.awt.Button botonComprobarConexion;
+    private rojeru_san.RSButton botonOmitirInstalacion;
     private rojerusan.RSButtonMetro botonSiguiente;
     private rojerusan.RSButtonMetro botonSiguiente2;
     private rojerusan.RSButtonMetro botonSiguiente3;
@@ -1368,7 +1390,6 @@ public class Frame_Bienvenida extends JFrame {
     private javax.swing.JPanel panelSuperior3;
     private javax.swing.JPanel panelSuperior4;
     private rojerusan.RSProgressCircleAnimated progressCircle;
-    private rojeru_san.RSButton rSButton1;
     private rojerusan.RSPanelImage rSPanelImage2;
     private rojerusan.RSPanelImage rSPanelImage3;
     private rojerusan.RSPanelImage rSPanelImage4;
