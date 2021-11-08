@@ -19,6 +19,7 @@ package ui.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,8 +56,10 @@ public class Dialog_cambiarContraseña extends javax.swing.JDialog {
 
         this.nombreUsuario = nombreUsuario;
        
-        setLocationRelativeTo(null);
         initComponents();
+        
+        pack();
+        this.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - getWidth()/2, (Toolkit.getDefaultToolkit().getScreenSize().height)/2 - getHeight()/2);
 
          this.lblConsola.setVisible(false);
     }

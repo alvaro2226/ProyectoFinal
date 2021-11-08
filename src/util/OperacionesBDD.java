@@ -46,9 +46,9 @@ import log.MyLogger;
  */
 public class OperacionesBDD {
 
-    public static String URL = "jdbc:mysql://localhost:3306";
-    public static String USER = "root";
-    public static String PASSWORD = "root";
+    public static String URL = "";//"jdbc:mysql://153.92.220.151/u544052383_ordertracker";
+    public static String USER = "";//"u544052383_alvaromb";
+    public static String PASSWORD = "";//"OrderTracker2021";
     private static Connection conexion;
     private final static Logger logger = Logger.getLogger(MyLogger.class.getName());
     private static final Properties properties = PropertiesUtil.getProperties();
@@ -79,7 +79,11 @@ public class OperacionesBDD {
             Class.forName("com.mysql.jdbc.Driver");
 
             //Recibe los parametros del fichero de configuracion
-            conexion = (Connection) DriverManager.getConnection(p.getProperty("database.URL") + "?zeroDateTimeBehavior=convertToNull",
+            System.out.println("Conectando a " + p.getProperty("database.URL"));
+            System.out.println("Usuario " + p.getProperty("database.USER"));
+            System.out.println("Contraseña " + p.getProperty("database.PASSWORD"));
+            
+            conexion = (Connection) DriverManager.getConnection(p.getProperty("database.URL"),
                     p.getProperty("database.USER"),
                     p.getProperty("database.PASSWORD"));
 
@@ -116,7 +120,7 @@ public class OperacionesBDD {
 
         iniciarConexion();
         boolean inicioCorrecto = true;
-        String query = "SELECT * FROM ordertracker.usuario WHERE usuario_contraseña=? AND usuario_nombreUsuario=?";
+        String query = "SELECT * FROM usuario WHERE usuario_contraseña=? AND usuario_nombreUsuario=?";
         logger.info("Intento de inicio de sesión: \n "
                 + "Usuario: " + user + "\n" + " Contraseña: " + password);
 
@@ -174,8 +178,8 @@ public class OperacionesBDD {
 
     /**
      * Inserta en la base de datos un nuevo registro con los datos de la empresa
-     * que se introducen mediante parametros. Primero comprueba que no exista
-     * otra empresa.
+     * que se introducen mediante parametros.Primero comprueba que no exista
+ otra empresa.
      *
      * @param nombre
      * @param formaJuridica
@@ -187,6 +191,7 @@ public class OperacionesBDD {
      * @param provincia
      * @param codigoPostal
      * @param pais
+     * @param telefono
      */
     public static void añadirEmpresa(String nombre, String formaJuridica, String CIF,
             String email, String emailPaypal, String calle, String localidad,
@@ -200,7 +205,7 @@ public class OperacionesBDD {
 
             //Comprueba que no exista otra empresa
             st = conexion.createStatement();
-            rs = st.executeQuery("SELECT * FROM OrderTracker.datos_empresa");
+            rs = st.executeQuery("SELECT * FROM datos_empresa");
 
             if (rs.next()) {
                 //Ya existe una empresa, por tanto no se hace nada
@@ -209,7 +214,7 @@ public class OperacionesBDD {
                 //No existe ninguna empresa, por tanto se procede a introducir una
                 logger.info("Se procede a introducir los datos de la nueva empresa");
                 //Solo hay una empresa, por tanto la primary key es "1" para ambos registros
-                String queryDireccion = "INSERT INTO OrderTracker.direccion VALUES (null,?, ?, ?, ?, ?);";
+                String queryDireccion = "INSERT INTO direccion VALUES (null,?, ?, ?, ?, ?);";
                 PreparedStatement psDireccion = conexion.prepareStatement(queryDireccion);
 
                 psDireccion.setString(1, calle);
@@ -222,9 +227,9 @@ public class OperacionesBDD {
 
                 conexion.commit();
 
-                String queryEmpresa = "INSERT INTO OrderTracker.datos_empresa VALUES (null, ?, ?, ?,"
-                        + " (SELECT direccion_id FROM OrderTracker.direccion WHERE direccion_calle = ? AND direccion_codigoPostal = ? )"
-                        + ", ?, ?, ?);";
+                String queryEmpresa = "INSERT INTO datos_empresa VALUES (null, ?, ?, ?,"
+                        + " (SELECT direccion_id FROM direccion WHERE direccion_calle = ? AND direccion_codigoPostal = ? )"
+                        + ", ?, ?);";
                 PreparedStatement psEmpresa = conexion.clientPrepareStatement(queryEmpresa);
 
                 psEmpresa.setString(1, nombre);
@@ -233,8 +238,8 @@ public class OperacionesBDD {
                 psEmpresa.setString(4, calle);
                 psEmpresa.setString(5, codigoPostal);
                 psEmpresa.setString(6, email);
-                psEmpresa.setString(7, emailPaypal);
-                psEmpresa.setString(8, telefono);
+                psEmpresa.setString(7, telefono);
+                //psEmpresa.setString(8, paypal);
                 psEmpresa.executeUpdate();
 
                 conexion.commit();
@@ -267,8 +272,8 @@ public class OperacionesBDD {
 
     public static void cancelarPedido(int idPedido) throws SQLException {
 
-        String query1 = "DELETE FROM ordertracker.linea_pedido WHERE linea_pedido_pedido_id = ?";
-        String query2 = "DELETE FROM ordertracker.pedido WHERE pedido_id = ?";
+        String query1 = "DELETE FROM linea_pedido WHERE linea_pedido_pedido_id = ?";
+        String query2 = "DELETE FROM pedido WHERE pedido_id = ?";
 
         PreparedStatement pst1 = conexion.clientPrepareStatement(query1);
         PreparedStatement pst2 = conexion.clientPrepareStatement(query2);
@@ -291,7 +296,7 @@ public class OperacionesBDD {
             System.out.println(nombreUsuario + " " + contraseña);
 
             Statement st = conexion.createStatement();
-            String query = "SELECT * FROM ordertracker.usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'" + " AND usuario_contraseña = '" + contraseña + "'";
+            String query = "SELECT * FROM usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'" + " AND usuario_contraseña = '" + contraseña + "'";
 
             ResultSet rs = st.executeQuery(query);
 
@@ -314,7 +319,7 @@ public class OperacionesBDD {
     public static void cambiarContraseña(String nombreUsuario, String contraseña) throws SQLException {
 
         PreparedStatement pst = null;
-        String query = "UPDATE ordertracker.usuario SET usuario_contraseña = ? WHERE usuario_nombreUsuario = ?";
+        String query = "UPDATE usuario SET usuario_contraseña = ? WHERE usuario_nombreUsuario = ?";
 
         pst = conexion.prepareStatement(query);
 
@@ -344,7 +349,7 @@ public class OperacionesBDD {
              */
 
             iniciarConexion();
-            String query = "INSERT INTO `OrderTracker`.`USUARIO`"
+            String query = "INSERT INTO usuario"
                     + "(usuario_nombreUsuario,usuario_contraseña,usuario_tipoUsuario_id,usuario_fechaCreacion,usuario_direccion_id) "
                     + "VALUES(?,?,?,?,?);";
             pst = conexion.prepareStatement(query);
@@ -394,15 +399,15 @@ public class OperacionesBDD {
             st = conexion.createStatement();
 
             //st.execute("DROP SCHEMA `OrderTracker` ;");
-            st.execute("CREATE SCHEMA IF NOT EXISTS `OrderTracker` DEFAULT CHARACTER SET utf8 ;");
+            //st.execute("CREATE SCHEMA IF NOT EXISTS `OrderTracker` DEFAULT CHARACTER SET utf8 ;");
 
-            st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`TIPO_USUARIO` (\n"
+            st.execute("CREATE TABLE IF NOT EXISTS tipo_usuario (\n"
                     + "  `tipoUsuario_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `tipoUsuario_tipo` VARCHAR(45) NOT NULL,\n"
                     + "  PRIMARY KEY (`tipoUsuario_id`))\n"
                     + "ENGINE = InnoDB;");
 
-            st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`DIRECCION` (\n"
+            st.execute("CREATE TABLE IF NOT EXISTS direccion (\n"
                     + "  `direccion_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `direccion_calle` VARCHAR(45) NOT NULL,\n"
                     + "  `direccion_localidad` VARCHAR(45) NOT NULL,\n"
@@ -412,14 +417,14 @@ public class OperacionesBDD {
                     + "  PRIMARY KEY (`direccion_id`))\n"
                     + "ENGINE = InnoDB;");
 
-            st.executeUpdate("INSERT INTO `OrderTracker`.`TIPO_USUARIO`"
-                    + "VALUES (null,'ADMIN')");
-            st.executeUpdate("INSERT INTO `OrderTracker`.`TIPO_USUARIO`"
-                    + "VALUES (null,'EMPLEADO')");
-            st.executeUpdate("INSERT INTO `OrderTracker`.`TIPO_USUARIO`"
-                    + "VALUES (null,'CLIENTE')");
+            st.executeUpdate("INSERT INTO tipo_usuario"
+                    + " VALUES (null,'ADMIN')");
+            st.executeUpdate("INSERT INTO tipo_usuario"
+                    + " VALUES (null,'EMPLEADO')");
+            st.executeUpdate("INSERT INTO tipo_usuario"
+                    + " VALUES (null,'CLIENTE')");
 
-            st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`USUARIO` (\n"
+            st.execute("CREATE TABLE IF NOT EXISTS usuario (\n"
                     + "  `usuario_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `usuario_nombreUsuario` VARCHAR(15) NOT NULL UNIQUE,\n"
                     + "  `usuario_email` VARCHAR(100) NULL,\n"
@@ -436,17 +441,17 @@ public class OperacionesBDD {
                     + "  INDEX `fk_USUARIO_DIRECCION1_idx` (`usuario_direccion_id` ASC) VISIBLE,\n"
                     + "  CONSTRAINT `fk_usuario_TipoUsuario`\n"
                     + "    FOREIGN KEY (`usuario_tipoUsuario_id`)\n"
-                    + "    REFERENCES `OrderTracker`.`TIPO_USUARIO` (`tipoUsuario_id`)\n"
+                    + "    REFERENCES tipo_usuario (`tipoUsuario_id`)\n"
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION,\n"
                     + "  CONSTRAINT `fk_USUARIO_DIRECCION1`\n"
                     + "    FOREIGN KEY (`usuario_direccion_id`)\n"
-                    + "    REFERENCES `OrderTracker`.`DIRECCION` (`direccion_id`)\n"
+                    + "    REFERENCES direccion (`direccion_id`)\n"
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION)\n"
                     + "ENGINE = InnoDB;");
 
-            st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`PRODUCTO` (\n"
+            st.execute("CREATE TABLE IF NOT EXISTS producto (\n"
                     + "  `producto_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `producto_nombre` VARCHAR(45) NOT NULL,\n"
                     + "  `producto_descripcion` VARCHAR(255) NULL,\n"
@@ -456,35 +461,35 @@ public class OperacionesBDD {
                     + "  PRIMARY KEY (`producto_id`))\n"
                     + "ENGINE = InnoDB;");
 
-            st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`ESTADO_PEDIDO` (\n"
+            st.execute("CREATE TABLE IF NOT EXISTS estado_pedido (\n"
                     + "  `estado_pedido_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `estado_pedido_estado` VARCHAR(45) NOT NULL,\n"
                     + "  PRIMARY KEY (`estado_pedido_id`))\n"
                     + "ENGINE = InnoDB;");
 
-            st.executeUpdate("INSERT INTO `OrderTracker`.`ESTADO_PEDIDO`"
-                    + "VALUES (null,'DE_CAMINO')");
-            st.executeUpdate("INSERT INTO `OrderTracker`.`ESTADO_PEDIDO`"
-                    + "VALUES (null,'PREPARADO')");
-            st.executeUpdate("INSERT INTO `OrderTracker`.`ESTADO_PEDIDO`"
-                    + "VALUES (null,'FINALIZADO')");
-            st.executeUpdate("INSERT INTO `OrderTracker`.`ESTADO_PEDIDO`"
-                    + "VALUES (null,'CANCELADO')");
+            st.executeUpdate("INSERT INTO estado_pedido"
+                    + " VALUES (null,'DE_CAMINO')");
+            st.executeUpdate("INSERT INTO estado_pedido"
+                    + " VALUES (null,'PREPARADO')");
+            st.executeUpdate("INSERT INTO estado_pedido"
+                    + " VALUES (null,'FINALIZADO')");
+            st.executeUpdate("INSERT INTO estado_pedido"
+                    + " VALUES (null,'CANCELADO')");
 
-            st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`METODO_PAGO` (\n"
+            st.execute("CREATE TABLE IF NOT EXISTS metodo_pago (\n"
                     + "  `metodo_pago_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `metodo_pago_nombre` VARCHAR(45) NOT NULL,\n"
                     + "  PRIMARY KEY (`metodo_pago_id`))\n"
                     + "ENGINE = InnoDB;");
 
-            st.executeUpdate("INSERT INTO `OrderTracker`.`METODO_PAGO`"
-                    + "VALUES (null,'ONLINE')");
-            st.executeUpdate("INSERT INTO `OrderTracker`.`METODO_PAGO`"
-                    + "VALUES (null,'CONTRAREEMBOLSO')");
-            st.executeUpdate("INSERT INTO `OrderTracker`.`METODO_PAGO`"
-                    + "VALUES (null,'TIENDA')");
+            st.executeUpdate("INSERT INTO metodo_pago"
+                    + " VALUES (null,'ONLINE')");
+            st.executeUpdate("INSERT INTO metodo_pago"
+                    + " VALUES (null,'CONTRAREEMBOLSO')");
+            st.executeUpdate("INSERT INTO metodo_pago"
+                    + " VALUES (null,'TIENDA')");
 
-            st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`PEDIDO` (\n"
+            st.execute("CREATE TABLE IF NOT EXISTS pedido (\n"
                     + "  `pedido_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `pedido_fechaCreacion` TIMESTAMP NOT NULL,\n"
                     + "  `pedido_usuario_id` INT NOT NULL,\n"
@@ -502,27 +507,27 @@ public class OperacionesBDD {
                     + "  INDEX `fk_pedido_empleadoAsignado_idx` (`pedido_empleadoAsignado` ASC) VISIBLE,\n"
                     + "  CONSTRAINT `fk_pedido_usuario`\n"
                     + "    FOREIGN KEY (`pedido_usuario_id`)\n"
-                    + "    REFERENCES `OrderTracker`.`USUARIO` (`usuario_id`)\n"
+                    + "    REFERENCES usuario (`usuario_id`)\n"
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION,\n"
                     + "  CONSTRAINT `fk_PEDIDO_ESTADO_PEDIDO1`\n"
                     + "    FOREIGN KEY (`pedido_estadoPedido`)\n"
-                    + "    REFERENCES `OrderTracker`.`ESTADO_PEDIDO` (`estado_pedido_id`)\n"
+                    + "    REFERENCES estado_pedido (`estado_pedido_id`)\n"
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION,\n"
                     + "  CONSTRAINT `fk_PEDIDO_METODO_PAGO1`\n"
                     + "    FOREIGN KEY (`pedido_metodoPago`)\n"
-                    + "    REFERENCES `OrderTracker`.`METODO_PAGO` (`metodo_pago_id`)\n"
+                    + "    REFERENCES metodo_pago (`metodo_pago_id`)\n"
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION,\n"
                     + "  CONSTRAINT `fk_PEDIDO_empleadoAsignado`\n"
                     + "    FOREIGN KEY (`pedido_empleadoAsignado`)\n"
-                    + "    REFERENCES `OrderTracker`.`USUARIO` (`usuario_id`)\n"
+                    + "    REFERENCES usuario (`usuario_id`)\n"
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION)\n"
                     + "ENGINE = InnoDB;");
 
-            st.execute("CREATE TABLE IF NOT EXISTS `OrderTracker`.`LINEA_PEDIDO` (\n"
+            st.execute("CREATE TABLE IF NOT EXISTS linea_pedido (\n"
                     + "  `linea_pedido_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `linea_pedido_producto_id` INT NOT NULL,\n"
                     + "  `linea_pedido_cantidad` INT NOT NULL,\n"
@@ -533,17 +538,17 @@ public class OperacionesBDD {
                     + "  INDEX `fk_LINEA_PEDIDO_PEDIDO1_idx` (`linea_pedido_pedido_id` ASC) VISIBLE,\n"
                     + "  CONSTRAINT `fk_LINEA_PEDIDO_PRODUCTO1`\n"
                     + "    FOREIGN KEY (`linea_pedido_producto_id`)\n"
-                    + "    REFERENCES `OrderTracker`.`PRODUCTO` (`producto_id`)\n"
+                    + "    REFERENCES producto (`producto_id`)\n"
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION,\n"
                     + "  CONSTRAINT `fk_LINEA_PEDIDO_PEDIDO1`\n"
                     + "    FOREIGN KEY (`linea_pedido_pedido_id`)\n"
-                    + "    REFERENCES `OrderTracker`.`PEDIDO` (`pedido_id`)\n"
+                    + "    REFERENCES pedido (`pedido_id`)\n"
                     + "    ON DELETE NO ACTION\n"
                     + "    ON UPDATE NO ACTION)\n"
                     + " ENGINE = InnoDB;");
 
-            st.execute("CREATE TABLE IF NOT EXISTS OrderTracker.DATOS_EMPRESA (\n"
+            st.execute("CREATE TABLE IF NOT EXISTS datos_empresa (\n"
                     + "                     datos_empresa_id INT PRIMARY KEY AUTO_INCREMENT,\n"
                     + "                      datos_empresa_nombre VARCHAR(25) NOT NULL,\n"
                     + "                    datos_empresa_formaJuridica VARCHAR(5) NOT NULL,\n"
@@ -594,7 +599,7 @@ public class OperacionesBDD {
         int rol = 4;
 
         ResultSet rs = null;
-        String query = "SELECT usuario_tipoUsuario_id FROM ordertracker.usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'";
+        String query = "SELECT usuario_tipoUsuario_id FROM usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'";
         Statement st;
         try {
 
@@ -623,7 +628,7 @@ public class OperacionesBDD {
                 + "                             	metodo_pago_nombre AS METODO_PAGO,\n"
                 + "                           	pedido_pagado AS PAGADO,\n"
                 + "                                   concat(usuario_nombre,usuario_Apellidos) REPARTIDOR\n"
-                + "                               FROM ordertracker.pedido,ordertracker.estado_pedido,ordertracker.metodo_pago,ordertracker.usuario\n"
+                + "                               FROM pedido,estado_pedido,metodo_pago,usuario\n"
                 + "                               WHERE pedido_estadoPedido = estado_pedido_id AND\n"
                 + "                				  pedido_metodoPago = metodo_pago_id AND\n"
                 + "                                    pedido_empleadoAsignado = usuario_id AND\n"
@@ -647,7 +652,7 @@ public class OperacionesBDD {
         String query = "SELECT producto_id AS ID,producto_nombre AS NOMBRE,"
                 + "producto_descripcion AS DESCRIPCION,"
                 + "producto_precio AS PRECIO,"
-                + "producto_stock AS STOCK FROM OrderTracker.producto";
+                + "producto_stock AS STOCK FROM producto";
         Statement st;
         try {
 
@@ -682,7 +687,7 @@ public class OperacionesBDD {
                 + "                tipoUsuario_tipo AS ROL_USUARIO,\n"
                 + "				concat(direccion_calle, \", \", direccion_localidad, \"(\", direccion_provincia,\")\")   AS DIRECCION,\n"
                 + "                 usuario_dni AS DNI\n"
-                + "                  FROM ordertracker.usuario, ordertracker.tipo_usuario, ordertracker.direccion\n"
+                + "                  FROM usuario, tipo_usuario, direccion\n"
                 + "                 WHERE usuario_tipoUsuario_id = tipoUsuario_id AND"
                 + "                 direccion_id = usuario_direccion_id";
         Statement st;
@@ -705,8 +710,8 @@ public class OperacionesBDD {
      */
     public static void eliminarUsuario(String nombreUsuario) {
 
-        String query1 = "DELETE FROM Ordertracker.direccion WHERE direccion_id = (SELECT usuario_direccion_id FROM Ordertracker.usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "')";
-        String query2 = "DELETE FROM ordertracker.usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'";
+        String query1 = "DELETE FROM direccion WHERE direccion_id = (SELECT usuario_direccion_id FROM usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "')";
+        String query2 = "DELETE FROM usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'";
 
         try {
             Statement statement = conexion.createStatement();
@@ -729,7 +734,7 @@ public class OperacionesBDD {
         String query = "SELECT producto_nombre AS PRODUCTO,\n"
                 + "linea_pedido_cantidad AS CANTIDAD,\n"
                 + "linea_pedido_total AS TOTAL\n"
-                + " FROM ordertracker.linea_pedido,ordertracker.producto, ordertracker.pedido\n"
+                + " FROM linea_pedido,producto, pedido\n"
                 + " WHERE linea_pedido_pedido_id = pedido_id AND linea_pedido_producto_id = producto_id AND pedido_id=" + idPedido;
 
         try {
@@ -754,7 +759,7 @@ public class OperacionesBDD {
     public static void añadirProducto(String nombre, String desc, float precio, File imagen, int stock) {
         try {
             PreparedStatement preparedStatement;
-            String query = "INSERT INTO ordertracker.producto VALUES (null,?,?,?,?,?);";
+            String query = "INSERT INTO producto VALUES (null,?,?,?,?,?);";
 
             preparedStatement = conexion.clientPrepareStatement(query);
             preparedStatement.setString(1, nombre);
@@ -783,7 +788,7 @@ public class OperacionesBDD {
         try {
 
             Statement st = null;
-            String query = "SELECT * FROM ordertracker.usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'";
+            String query = "SELECT * FROM usuario WHERE usuario_nombreUsuario = '" + nombreUsuario + "'";
 
             st = conexion.createStatement();
             existe = st.execute(query);
@@ -811,7 +816,7 @@ public class OperacionesBDD {
             String DNI) throws SQLException {
 
         PreparedStatement pst = null;
-        String query = "INSERT INTO ordertracker.usuario VALUES (null,?,?,?,?,?,?,?,?,1,?)";
+        String query = "INSERT INTO usuario VALUES (null,?,?,?,?,?,?,?,?,1,?)";
 
         pst = conexion.prepareStatement(query);
 
@@ -847,7 +852,7 @@ public class OperacionesBDD {
     public static void modificarUsuario(String nombreUsuario, String nombreUsuarioNuevo, String email, String nombre, String apellidos, String telefono, String dni) {
 
         PreparedStatement preparedStatement;
-        String query = "UPDATE ordertracker.usuario SET"
+        String query = "UPDATE usuario SET"
                 + "             usuario_nombreUsuario = ?,"
                 + "		usuario_email = ?,"
                 + "             usuario_nombre = ?,"
@@ -888,7 +893,7 @@ public class OperacionesBDD {
     public static void modificarProducto(int id, String nombre, String desc, float precio, File imagen, int stock) {
 
         PreparedStatement preparedStatement;
-        String query = "UPDATE ordertracker.producto SET"
+        String query = "UPDATE producto SET"
                 + " producto_nombre = ?,"
                 + " producto_descripcion = ?,"
                 + " producto_precio = ?,"
@@ -929,7 +934,7 @@ public class OperacionesBDD {
     public static void eliminarProducto(int id) {
 
         PreparedStatement preparedStatement;
-        String query = "DELETE FROM ordertracker.producto WHERE producto_id = ?";
+        String query = "DELETE FROM producto WHERE producto_id = ?";
 
         try {
 

@@ -349,8 +349,13 @@ public class Frame_Bienvenida extends JFrame {
         panelBaseDatos.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 380, 10));
 
         lblURL.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
-        lblURL.setText("jdbc:mysql://localhost:3306");
+        lblURL.setText("jdbc:mysql://153.92.220.151/u544052383_ordertracker");
         lblURL.setBorder(null);
+        lblURL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblURLActionPerformed(evt);
+            }
+        });
         panelBaseDatos.add(lblURL, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 368, 25));
 
         jSeparator16.setBackground(new java.awt.Color(55, 147, 114));
@@ -366,6 +371,7 @@ public class Frame_Bienvenida extends JFrame {
         panelBaseDatos.add(cancelarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, -1, -1));
 
         lblPassword.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        lblPassword.setText("OrderTracker2021");
         lblPassword.setBorder(null);
         lblPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,7 +402,13 @@ public class Frame_Bienvenida extends JFrame {
         panelBaseDatos.add(lblConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 410, -1));
 
         lblUser.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
+        lblUser.setText("u544052383_alvaromb");
         lblUser.setBorder(null);
+        lblUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblUserActionPerformed(evt);
+            }
+        });
         panelBaseDatos.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 368, 25));
 
         jSeparator17.setBackground(new java.awt.Color(55, 147, 114));
@@ -525,7 +537,7 @@ public class Frame_Bienvenida extends JFrame {
 
         jLabel41.setBackground(new java.awt.Color(255, 255, 255));
         jLabel41.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jLabel41.setText("usuarios de más bajo nivel que el tuyo, como empleados.");
+        jLabel41.setText("usuarios menor rol.");
         panelBaseDatos1.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 440, 20));
 
         jSeparator20.setBackground(new java.awt.Color(55, 147, 114));
@@ -620,82 +632,88 @@ public class Frame_Bienvenida extends JFrame {
         panelEmpresa1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textField_NombreEmpresa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_NombreEmpresa.setText("Empresa");
         textField_NombreEmpresa.setBorder(null);
-        panelEmpresa1.add(textField_NombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 218, 234, -1));
+        panelEmpresa1.add(textField_NombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 234, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Nombre");
-        panelEmpresa1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 195, -1, -1));
+        panelEmpresa1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         textField_CIF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_CIF.setText("112222111sAS");
         textField_CIF.setBorder(null);
-        panelEmpresa1.add(textField_CIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 234, 20));
+        panelEmpresa1.add(textField_CIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 234, 20));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("CIF");
-        panelEmpresa1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 258, -1, -1));
+        panelEmpresa1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         textField_Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_Email.setText("empresa@empresa.com");
         textField_Email.setBorder(null);
-        panelEmpresa1.add(textField_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 346, 234, -1));
+        panelEmpresa1.add(textField_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 234, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Email");
-        panelEmpresa1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 322, -1, -1));
+        panelEmpresa1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         textField_FM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_FM.setText("S.A");
         textField_FM.setBorder(null);
-        panelEmpresa1.add(textField_FM, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 234, -1));
+        panelEmpresa1.add(textField_FM, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 234, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Forma Jurídica");
-        panelEmpresa1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 189, -1, -1));
+        panelEmpresa1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
 
         textField_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_telefono.setText("111222");
         textField_telefono.setBorder(null);
         textField_telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textField_telefonoActionPerformed(evt);
             }
         });
-        panelEmpresa1.add(textField_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 234, -1));
+        panelEmpresa1.add(textField_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 234, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Teléfono");
-        panelEmpresa1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 264, -1, -1));
+        panelEmpresa1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
 
         textField_paypal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_paypal.setText("empresa@paypal.com");
         textField_paypal.setBorder(null);
-        panelEmpresa1.add(textField_paypal, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 346, 234, -1));
+        panelEmpresa1.add(textField_paypal, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 234, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("<html> <b> Paypal </b> (opcional) <html>");
-        panelEmpresa1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 322, 234, -1));
+        panelEmpresa1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 234, -1));
 
         jLabel45.setBackground(new java.awt.Color(255, 255, 255));
         jLabel45.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel45.setText("4/5");
-        panelEmpresa1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 40, 40));
+        panelEmpresa1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 40, 40));
 
         cancelar_NombreEmpresa.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         cancelar_NombreEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(cancelar_NombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 215, -1, -1));
+        panelEmpresa1.add(cancelar_NombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
 
         cancelar_FormaJuridica.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         cancelar_FormaJuridica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(cancelar_FormaJuridica, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 215, -1, -1));
+        panelEmpresa1.add(cancelar_FormaJuridica, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, -1, -1));
 
         cancelar_CIF.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         cancelar_CIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(cancelar_CIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 284, -1, -1));
+        panelEmpresa1.add(cancelar_CIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
 
         cancelar_Telefono.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         cancelar_Telefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(cancelar_Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 284, -1, -1));
+        panelEmpresa1.add(cancelar_Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, -1, -1));
 
         cancelar_Email.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         cancelar_Email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(cancelar_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, -1, -1));
+        panelEmpresa1.add(cancelar_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, -1, -1));
 
         botonSiguiente4.setBackground(new java.awt.Color(79, 134, 198));
         botonSiguiente4.setText("Siguiente");
@@ -704,7 +722,7 @@ public class Frame_Bienvenida extends JFrame {
                 botonSiguiente4ActionPerformed(evt);
             }
         });
-        panelEmpresa1.add(botonSiguiente4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 120, 40));
+        panelEmpresa1.add(botonSiguiente4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 120, 40));
 
         panelSuperior3.setBackground(new java.awt.Color(79, 134, 198));
 
@@ -755,31 +773,31 @@ public class Frame_Bienvenida extends JFrame {
 
         jSeparator13.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator13.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 234, 10));
+        panelEmpresa1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 234, 10));
 
         jSeparator14.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator14.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 234, 10));
+        panelEmpresa1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 234, 10));
 
         jSeparator21.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator21.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 234, 10));
+        panelEmpresa1.add(jSeparator21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 234, 10));
 
         jSeparator22.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator22.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 234, 10));
+        panelEmpresa1.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 234, 10));
 
         jSeparator23.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator23.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 234, 10));
+        panelEmpresa1.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 234, 10));
 
         jSeparator24.setBackground(new java.awt.Color(55, 147, 114));
         jSeparator24.setForeground(new java.awt.Color(55, 147, 114));
-        panelEmpresa1.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 234, 10));
+        panelEmpresa1.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 234, 10));
 
         cancelar_Email1.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         cancelar_Email1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/icons8_cancel_26px_1.png"))); // NOI18N
-        panelEmpresa1.add(cancelar_Email1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 348, -1, -1));
+        panelEmpresa1.add(cancelar_Email1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
 
         panelSlider.add(panelEmpresa1, "card2");
 
@@ -787,6 +805,7 @@ public class Frame_Bienvenida extends JFrame {
         panelEmpresa2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textField_calle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_calle.setText("Calle");
         textField_calle.setBorder(null);
         panelEmpresa2.add(textField_calle, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 157, 234, -1));
 
@@ -795,6 +814,7 @@ public class Frame_Bienvenida extends JFrame {
         panelEmpresa2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 180, 234, 10));
 
         textField_localidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_localidad.setText("Localidad");
         textField_localidad.setBorder(null);
         panelEmpresa2.add(textField_localidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 157, 234, -1));
 
@@ -807,6 +827,7 @@ public class Frame_Bienvenida extends JFrame {
         panelEmpresa2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 180, 234, 10));
 
         textField_provincia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_provincia.setText("Provincia");
         textField_provincia.setBorder(null);
         panelEmpresa2.add(textField_provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 220, 234, -1));
 
@@ -824,6 +845,11 @@ public class Frame_Bienvenida extends JFrame {
 
         textField_pais.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textField_pais.setBorder(null);
+        textField_pais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField_paisActionPerformed(evt);
+            }
+        });
         panelEmpresa2.add(textField_pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 289, 234, -1));
 
         jSeparator11.setBackground(new java.awt.Color(55, 147, 114));
@@ -831,6 +857,7 @@ public class Frame_Bienvenida extends JFrame {
         panelEmpresa2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 312, 234, 10));
 
         textField_CP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_CP.setText("CP");
         textField_CP.setBorder(null);
         panelEmpresa2.add(textField_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 226, 234, -1));
 
@@ -1182,6 +1209,18 @@ public class Frame_Bienvenida extends JFrame {
     private void textField_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_telefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textField_telefonoActionPerformed
+
+    private void lblURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblURLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblURLActionPerformed
+
+    private void lblUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblUserActionPerformed
+
+    private void textField_paisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_paisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField_paisActionPerformed
 
     /**
      * @param args the command line arguments

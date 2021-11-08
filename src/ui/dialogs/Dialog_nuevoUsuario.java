@@ -19,6 +19,7 @@ package ui.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -53,9 +54,10 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
     public Dialog_nuevoUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
 
-        setLocationRelativeTo(parent);
         initComponents();
 
+        pack();
+        this.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - getWidth()/2, (Toolkit.getDefaultToolkit().getScreenSize().height)/2 - getHeight()/2);
         //Para comprobar si estan vacios mas tarde
         componentes.add(this.fieldApellidos);
         componentes.add(this.fieldDNI);
@@ -150,7 +152,6 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
         labelNombreProducto11.setText("Contraseña ");
         panelFondo.add(labelNombreProducto11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 402, 140, 40));
 
-        lblContraActual.setText("123");
         lblContraActual.setPlaceholder("");
         lblContraActual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +165,7 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
         labelNombreProducto10.setText("Nombre de usuario");
         panelFondo.add(labelNombreProducto10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 82, 220, 40));
 
-        fieldNom.setText("dummy");
+        fieldNom.setText("Álvaro");
         fieldNom.setPlaceholder("");
         panelFondo.add(fieldNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
 
@@ -173,7 +174,7 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
         labelNombreProducto5.setText("Email");
         panelFondo.add(labelNombreProducto5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 132, 70, 40));
 
-        fieldEmail.setText("dummy@dummy.com");
+        fieldEmail.setText("alvaro.morcillo@hotmail.com");
         fieldEmail.setPlaceholder("");
         fieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,7 +188,7 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
         labelNombreProducto6.setText("Nombre");
         panelFondo.add(labelNombreProducto6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 90, 40));
 
-        fieldTelefono.setText("1231233");
+        fieldTelefono.setText("658700542");
         fieldTelefono.setPlaceholder("");
         panelFondo.add(fieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
 
@@ -196,8 +197,13 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
         labelNombreProducto7.setText("Teléfono");
         panelFondo.add(labelNombreProducto7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 100, 40));
 
-        fieldDNI.setText("123sadas");
+        fieldDNI.setText("dniejemplo");
         fieldDNI.setPlaceholder("");
+        fieldDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldDNIActionPerformed(evt);
+            }
+        });
         panelFondo.add(fieldDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, -1));
 
         labelNombreProducto4.setBackground(new java.awt.Color(255, 255, 255));
@@ -218,7 +224,7 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
         });
         panelFondo.add(comboRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 250, -1));
 
-        fieldNomUsuario1.setText("dummy");
+        fieldNomUsuario1.setText("alvaromb");
         fieldNomUsuario1.setPlaceholder("");
         panelFondo.add(fieldNomUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 250, -1));
 
@@ -227,7 +233,7 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
         labelNombreProducto8.setText("Apellidos");
         panelFondo.add(labelNombreProducto8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 100, 40));
 
-        fieldApellidos.setText("is dummy");
+        fieldApellidos.setText("Morcillo Barbero");
         fieldApellidos.setPlaceholder("");
         panelFondo.add(fieldApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
 
@@ -322,6 +328,10 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
     private void fieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldEmailActionPerformed
+
+    private void fieldDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldDNIActionPerformed
 
     private void doClose(int retStatus) {
         returnStatus = retStatus;

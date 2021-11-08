@@ -383,11 +383,22 @@ public class Dialog_ConfirmarDatos extends javax.swing.JDialog {
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
 
+        PropertiesUtil.init();
+        
+        try {
+            PropertiesUtil.añadirBDD(database.getURL(),
+                    database.getUser(),
+                    database.getPassword(),
+                    "true");
+        } catch (IOException ex) {
+            Logger.getLogger(Dialog_ConfirmarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         persistirDatos();
         //Si los datos se guardan correctamente, se debe cambiar el valor a la
         //variable "app.firstTime" a "false" indicando de esta manera que ya
         //no es la primera vez que ejecutamos la aplicación
-        PropertiesUtil.init();
+
         try {
             PropertiesUtil.añadirBDD(database.getURL(),
                     database.getUser(),

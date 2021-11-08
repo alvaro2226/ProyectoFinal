@@ -18,6 +18,7 @@ package ui.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Toolkit;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -47,8 +48,10 @@ public class Dialog_Confirmar extends javax.swing.JDialog {
         super(parent, modal);
 
         this.accion = accion;
-        setLocationRelativeTo(parent);
         initComponents();
+        
+        pack();
+        this.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - getWidth()/2, (Toolkit.getDefaultToolkit().getScreenSize().height)/2 - getHeight()/2);
 
     }
 
