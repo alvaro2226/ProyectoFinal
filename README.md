@@ -20,6 +20,7 @@ Para instalar el programa necesitas:
 - Datos de una empresa como por ejemplo: CIF, teléfono, dirección, etc.
 
 Una vez conectado a la base de datos y creado lo anterior, se añadirán estos datos la misma base de datos y podremos acceder al programa con el usuario que hemos creado.
+**Importante:** Si quieres volver a iniciar el instalador despues de la primera vez, tienes que eliminar el archivo `OrderTracker\resources\configuracion.properties`
 	
 ## Ventana de inicio de sesión
 Aqui simplemente se comprobará si el usuario existe en la base de datos y tiene permisos para acceder a ella. Si los tiene podrá acceder.
