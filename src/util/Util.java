@@ -19,42 +19,51 @@ package util;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.text.JTextComponent;
+
 /**
  *
  * @author Álvaro Morcillo Barbero
  */
 public class Util {
 
-    
     /**
      * Comprueba si el email introducido es válido
+     *
      * @param email
      * @return Devuelve "true" si el email es válido
      */
     public static boolean validarEmail(String email) {
-      String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-      return email.matches(regex);
-   }
-    
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return email.matches(regex);
+    }
+
     /**
      * Comprueba si las contraseñas coinciden
+     *
      * @param contraseña1
-     * @param contraseña2 
-     * @return  Devuelve "true" si las contraseñas coinciden
+     * @param contraseña2
+     * @return Devuelve "true" si las contraseñas coinciden
      */
-    public static boolean comprobarContraseñas(JPasswordField contraseña1, JPasswordField contraseña2){
-        
+    public static boolean comprobarContraseñas(JPasswordField contraseña1, JPasswordField contraseña2) {
+
         String contra1 = String.valueOf(contraseña1.getPassword());
         String contra2 = String.valueOf(contraseña2.getPassword());
-        
+
         return contra1.equals(contra2);
     }
-    
-    
+
     /**
      * Este método recibe un label, el cual cambiará el color y el texto según
      * los parámetros introducidos. ATENCION hace visible al label
@@ -79,48 +88,60 @@ public class Util {
     /**
      * Comprueba que el texto de los textComponent que se pasan por parámetros
      * no estén vacíos.
+     *
      * @param componentes Un list con los componentes de texto
      * @return Devuelve "true" si los campos están vacíos.
      */
-    public static boolean comprobarCamposVacíos(List <JTextComponent> componentes){
-        
+    public static boolean comprobarCamposVacíos(List<JTextComponent> componentes) {
+
         boolean camposVacios = false;
-        
-        for (int i=0 ; i < componentes.size() ; i++){
-            
-            if (componentes.get(i).getText().equals("")){
+
+        for (int i = 0; i < componentes.size(); i++) {
+
+            if (componentes.get(i).getText().equals("")) {
                 camposVacios = true;
             }
         }
-        
+
         return camposVacios;
     }
-    
-    
+
     /**
      * Comprueba que el texto de los textComponent que se pasan por parámetros
      * no estén vacíos.
+     *
      * @param componente El componentes de texto
      * @return Devuelve "true" si el campo está vacío.
      */
-    public static boolean comprobarCamposVacíos(JTextComponent componente){
-        
+    public static boolean comprobarCamposVacíos(JTextComponent componente) {
+
         boolean camposVacios = false;
 
-            if (componente.getText().equals("")){
-                camposVacios = true;
-            }
-        
-        
+        if (componente.getText().equals("")) {
+            camposVacios = true;
+        }
+
         return camposVacios;
     }
-    
-    public static Image getImagenIcono(){
-        
+
+    public static Image getImagenIcono() {
+
         Toolkit kit = Toolkit.getDefaultToolkit();
         Image icono = kit.createImage("src/ui/images/icono.png");
-        
+
         return icono;
-        
+
     }
+    
+    /*
+    public static String getSufijoArchivo(File archivo) {
+        
+        String nombreInicial = archivo.getName();
+        String nombreFinal = Timestamp.valueOf(LocalDateTime.now()) + nombreInicial;
+
+        System.out.println(nombreFinal);
+        
+        return nombreFinal;
+    }
+     */
 }

@@ -17,9 +17,6 @@
 package util;
 
 import com.mysql.jdbc.Connection;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,8 +25,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,8 +77,8 @@ public class OperacionesBDD {
             System.out.println("Conectando a " + p.getProperty("database.URL"));
             System.out.println("Usuario " + p.getProperty("database.USER"));
             System.out.println("Contraseña " + p.getProperty("database.PASSWORD"));
-            
-            conexion = (Connection) DriverManager.getConnection(p.getProperty("database.URL"),
+
+            conexion = (Connection) DriverManager.getConnection(p.getProperty("database.URL") /*+ "?testOnBorrow=true&validationQuery='SELECT 1'&validationInterval=1000&autoReconnect=true" */,
                     p.getProperty("database.USER"),
                     p.getProperty("database.PASSWORD"));
 
@@ -118,7 +113,7 @@ public class OperacionesBDD {
      */
     public static boolean iniciarSesion(String user, String password) throws ClassNotFoundException, SQLException {
 
-        iniciarConexion();
+        //iniciarConexion();
         boolean inicioCorrecto = true;
         String query = "SELECT * FROM usuario WHERE usuario_contraseña=? AND usuario_nombreUsuario=?";
         logger.info("Intento de inicio de sesión: \n "
@@ -161,7 +156,7 @@ public class OperacionesBDD {
 
             conexionEstablecida = true;
             conexionPrueba.close();
-            logger.info("Conexion existosa");
+            logger.info("Conectado con éxito");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -176,10 +171,31 @@ public class OperacionesBDD {
         return conexionEstablecida;
     }
 
+    public static String getRutaImagenProductoSeleccionado(int id) throws SQLException {
+
+        String ruta = null;
+
+        ResultSet rs = null;
+        String query = "SELECT producto_imagen FROM producto WHERE producto_id=" + id + "";
+        Statement st;
+
+        st = conexion.createStatement();
+
+        rs = st.executeQuery(query);
+
+        rs.next();
+
+        ruta = rs.getString(1);
+
+        System.out.println("rutaImagenProductoSeleccionado -> " + ruta);
+
+        return ruta;
+    }
+
     /**
      * Inserta en la base de datos un nuevo registro con los datos de la empresa
      * que se introducen mediante parametros.Primero comprueba que no exista
- otra empresa.
+     * otra empresa.
      *
      * @param nombre
      * @param formaJuridica
@@ -201,8 +217,7 @@ public class OperacionesBDD {
         ResultSet rs = null;
         try {
 
-            iniciarConexion();
-
+            //iniciarConexion();
             //Comprueba que no exista otra empresa
             st = conexion.createStatement();
             rs = st.executeQuery("SELECT * FROM datos_empresa");
@@ -247,8 +262,6 @@ public class OperacionesBDD {
                         + "a la base de datos");
 
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             try {
                 conexion.rollback();
@@ -257,14 +270,6 @@ public class OperacionesBDD {
                 Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex1) {
                 Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex1);
-            }
-        } finally {
-            try {
-                cerrarConexion();
-                st.close();
-                rs.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -348,7 +353,7 @@ public class OperacionesBDD {
             + "  `usuario_dni` VARCHAR(9) NULL,\n"
              */
 
-            iniciarConexion();
+            //iniciarConexion();
             String query = "INSERT INTO usuario"
                     + "(usuario_nombreUsuario,usuario_contraseña,usuario_tipoUsuario_id,usuario_fechaCreacion,usuario_direccion_id) "
                     + "VALUES(?,?,?,?,?);";
@@ -367,7 +372,7 @@ public class OperacionesBDD {
             conexion.commit();
 
             logger.info("Admin \"" + user + " / " + password + "\" añadido");
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             logger.warning("No se ha podido añadir el admin.");
             try {
                 conexion.rollback();
@@ -375,13 +380,6 @@ public class OperacionesBDD {
                 Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex1);
             }
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                cerrarConexion();
-                pst.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
 
     }
@@ -395,12 +393,11 @@ public class OperacionesBDD {
         Statement st = null;
 
         try {
-            iniciarConexion();
+            //iniciarConexion();
             st = conexion.createStatement();
 
             //st.execute("DROP SCHEMA `OrderTracker` ;");
             //st.execute("CREATE SCHEMA IF NOT EXISTS `OrderTracker` DEFAULT CHARACTER SET utf8 ;");
-
             st.execute("CREATE TABLE IF NOT EXISTS tipo_usuario (\n"
                     + "  `tipoUsuario_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `tipoUsuario_tipo` VARCHAR(45) NOT NULL,\n"
@@ -456,7 +453,7 @@ public class OperacionesBDD {
                     + "  `producto_nombre` VARCHAR(45) NOT NULL,\n"
                     + "  `producto_descripcion` VARCHAR(255) NULL,\n"
                     + "  `producto_precio` FLOAT NOT NULL,\n"
-                    + "  `producto_imagen` BLOB,\n"
+                    + "  `producto_imagen` VARCHAR(300),\n"
                     + "  `producto_stock` INT NOT NULL,\n"
                     + "  PRIMARY KEY (`producto_id`))\n"
                     + "ENGINE = InnoDB;");
@@ -561,7 +558,7 @@ public class OperacionesBDD {
             conexion.commit();
             logger.info("Se ha creado la base de datos correctamente");
 
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             logger.severe("No se ha podido crear la base de datos");
 
             try {
@@ -574,19 +571,7 @@ public class OperacionesBDD {
                 Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex1);
             }
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-
-            try {
-                cerrarConexion();
-                if (st != null) {
-                    st.close();
-                }
-
-            } catch (SQLException ex) {
-                Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
-
     }
 
     /**
@@ -756,30 +741,22 @@ public class OperacionesBDD {
      * @param imagen
      * @param stock
      */
-    public static void añadirProducto(String nombre, String desc, float precio, File imagen, int stock) {
-        try {
-            PreparedStatement preparedStatement;
-            String query = "INSERT INTO producto VALUES (null,?,?,?,?,?);";
+    public static void añadirProducto(String nombre, String desc, float precio, String rutaImagen, int stock) throws SQLException {
 
-            preparedStatement = conexion.clientPrepareStatement(query);
-            preparedStatement.setString(1, nombre);
-            preparedStatement.setString(2, desc);
-            preparedStatement.setFloat(3, precio);
+        PreparedStatement preparedStatement;
+        String query = "INSERT INTO producto VALUES (null,?,?,?,?,?);";
 
-            if (imagen == null) {
-                preparedStatement.setBinaryStream(4, null);
-            } else {
-                FileInputStream input = new FileInputStream(imagen);
-                preparedStatement.setBinaryStream(4, input);
-            }
-            preparedStatement.setInt(5, stock);
+        preparedStatement = conexion.clientPrepareStatement(query);
+        preparedStatement.setString(1, nombre);
+        preparedStatement.setString(2, desc);
+        preparedStatement.setFloat(3, precio);
+        preparedStatement.setString(4, rutaImagen);
 
-            preparedStatement.executeUpdate();
-            conexion.commit();
+        preparedStatement.setInt(5, stock);
 
-        } catch (SQLException | FileNotFoundException ex) {
-            Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        preparedStatement.executeUpdate();
+        conexion.commit();
+
     }
 
     public static boolean comprobarUsuarioExiste(String nombreUsuario) {
@@ -890,7 +867,7 @@ public class OperacionesBDD {
      * @param imagen
      * @param stock
      */
-    public static void modificarProducto(int id, String nombre, String desc, float precio, File imagen, int stock) {
+    public static void modificarProducto(int id, String nombre, String desc, float precio, String rutaImagen, int stock) {
 
         PreparedStatement preparedStatement;
         String query = "UPDATE producto SET"
@@ -908,20 +885,14 @@ public class OperacionesBDD {
             preparedStatement.setString(1, nombre);
             preparedStatement.setString(2, desc);
             preparedStatement.setFloat(3, precio);
-
-            if (imagen == null) {
-                preparedStatement.setBinaryStream(4, null);
-            } else {
-                FileInputStream input = new FileInputStream(imagen);
-                preparedStatement.setBinaryStream(4, input);
-            }
+            preparedStatement.setString(4, rutaImagen);
             preparedStatement.setInt(5, stock);
             preparedStatement.setInt(6, id);
 
             preparedStatement.executeUpdate();
             conexion.commit();
 
-        } catch (SQLException | FileNotFoundException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
 

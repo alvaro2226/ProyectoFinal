@@ -234,7 +234,7 @@
         </Component>
         <Component class="rojerusan.RSMetroTextFullPlaceHolder" name="fieldDNI">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dniejemplo"/>
+            <Property name="text" type="java.lang.String" value="dniej21"/>
             <Property name="placeholder" type="java.lang.String" value=""/>
           </Properties>
           <Events>

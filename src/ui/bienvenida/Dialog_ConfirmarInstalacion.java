@@ -19,6 +19,7 @@ package ui.bienvenida;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -454,6 +455,12 @@ public class Dialog_ConfirmarInstalacion extends javax.swing.JDialog {
 
     private void persistirDatos() {
 
+        try {
+            OperacionesBDD.iniciarConexion();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Dialog_ConfirmarInstalacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         // CAMBIAR EN EL FICHERO DE CONFIGURACION LA BDD SI HICIESE FALTA
         OperacionesBDD.crearBDD();
         OperacionesBDD.añadirEmpresa(
@@ -469,7 +476,12 @@ public class Dialog_ConfirmarInstalacion extends javax.swing.JDialog {
                 empresa.getPais(),
                 empresa.getTelefono());
         OperacionesBDD.añadirAdmin(adminUser.getUsername(), adminUser.getPassword());
-
+        
+        try {
+            OperacionesBDD.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Dialog_ConfirmarInstalacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojerusan.RSButtonRound botonCancelar;

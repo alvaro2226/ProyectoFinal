@@ -197,7 +197,7 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
         labelNombreProducto7.setText("Teléfono");
         panelFondo.add(labelNombreProducto7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 100, 40));
 
-        fieldDNI.setText("dniejemplo");
+        fieldDNI.setText("dniej21");
         fieldDNI.setPlaceholder("");
         fieldDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

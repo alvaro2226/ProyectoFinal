@@ -183,7 +183,9 @@ public class Frame_Login extends javax.swing.JFrame {
         new ProgressDialogLogin(rSProgressCircleAnimated1, lblConsola).start();
         boolean inicioCorrecto = false;
         try {
+            OperacionesBDD.iniciarConexion();
             inicioCorrecto = OperacionesBDD.iniciarSesion(lblUsuario.getText(), this.lblContra.getText());
+            OperacionesBDD.cerrarConexion();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Frame_Login.class.getName()).log(Level.SEVERE, null, ex);
         }

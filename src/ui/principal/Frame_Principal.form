@@ -824,11 +824,11 @@
                                               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                      <Component id="rSMaterialButtonRound1" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Component id="botonCambiarImagen" min="-2" pref="50" max="-2" attributes="0"/>
                                       <EmptySpace pref="5" max="32767" attributes="0"/>
                                       <Component id="imagenProducto" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -881,13 +881,18 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="imagenProducto" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                      <Component id="rSMaterialButtonRound1" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="imagenProducto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                              <Component id="botonCambiarImagen" min="-2" pref="33" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="38" max="32767" attributes="0"/>
+                              <EmptySpace pref="33" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="botonAplicarCambios" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="botonAñadirProducto" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -965,8 +970,8 @@
                     <Component class="rojerusan.RSLabelImage" name="imagenProducto">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                            <EmptyBorder/>
+                          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                            <EtchetBorder/>
                           </Border>
                         </Property>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -974,7 +979,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="rojerusan.RSMaterialButtonRound" name="rSMaterialButtonRound1">
+                    <Component class="rojerusan.RSMaterialButtonRound" name="botonCambiarImagen">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -984,7 +989,7 @@
                         <Property name="text" type="java.lang.String" value="..."/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rSMaterialButtonRound1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCambiarImagenActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="rojerusan.RSButtonMetro" name="rSButtonMetro1">

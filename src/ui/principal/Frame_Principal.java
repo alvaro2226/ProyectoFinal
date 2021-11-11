@@ -16,48 +16,36 @@
  */
 package ui.principal;
 
-import com.mysql.jdbc.StringUtils;
-import java.awt.Button;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
-import static java.lang.Thread.sleep;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.SQLException;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.DocumentFilter;
 import javax.swing.text.JTextComponent;
-import javax.swing.text.NumberFormatter;
 import necesario.RSFileChooser;
 import net.proteanit.sql.DbUtils;
 import pojos.Producto;
 import pojos.Usuario;
-import rojeru_san.RSButtonRiple;
-import rojerusan.RSButtonHover;
 import threads.Reloj;
-import ui.bienvenida.Dialog_ConfirmarInstalacion;
 import ui.bienvenida.Frame_Login;
 import ui.dialogs.Dialog_Confirmar;
 import ui.dialogs.Dialog_cambiarContraseña;
 import ui.dialogs.Dialog_nuevoUsuario;
+import util.FTP_Client;
 import util.OperacionesBDD;
 import util.Util;
 
@@ -78,6 +66,7 @@ public class Frame_Principal extends javax.swing.JFrame {
         iniciarComponentes();
 
     }
+    FTP_Client ftp;
 
     private void iniciarComponentes() {
 
@@ -90,6 +79,10 @@ public class Frame_Principal extends javax.swing.JFrame {
         new Reloj(labelReloj).start();
 
         try {
+
+            ftp = new FTP_Client();
+            ftp.iniciarConexion();
+
             OperacionesBDD.iniciarConexion();
 
             usuarioLogeadoRol = OperacionesBDD.getRolUsuario(Frame_Login.usuarioLogeado);
@@ -106,6 +99,8 @@ public class Frame_Principal extends javax.swing.JFrame {
             tablaSeleccionada = "pedidos";
 
         } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -184,7 +179,30 @@ public class Frame_Principal extends javax.swing.JFrame {
                     fieldPrecio.setText(producto.getPrecio() + "");
                     fieldStock.setText(producto.getStock() + "");
 
+                    try {
+                        String ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
+
+                        if (ruta != null) {
+                            String rutaFinal = "https://programaloalvaro.es/archivos/ordertracker/imagenes/" + ruta;
+
+                            if (rutaFinal != null) {
+                                rutaFinal = rutaFinal.trim();
+                                rutaFinal = rutaFinal.replaceAll("\\s", "%20");
+                            }
+                            
+                            BufferedImage img = ImageIO.read(new URL(rutaFinal));
+
+                            imagenProducto.setIcon(new ImageIcon(img));
+                        } else {
+                            imagenProducto.setIcon(new ImageIcon("src\\ui\\images\\logo\\logo_transparent.png"));
+                        }
+
+                    } catch (SQLException | IOException ex) {
+                        Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                     actualizando = false;
+
                 }
             }
         });
@@ -369,7 +387,7 @@ public class Frame_Principal extends javax.swing.JFrame {
         labelNombreProducto2 = new javax.swing.JLabel();
         labelNombreProducto3 = new javax.swing.JLabel();
         imagenProducto = new rojerusan.RSLabelImage();
-        rSMaterialButtonRound1 = new rojerusan.RSMaterialButtonRound();
+        botonCambiarImagen = new rojerusan.RSMaterialButtonRound();
         rSButtonMetro1 = new rojerusan.RSButtonMetro();
         rSButtonMetro2 = new rojerusan.RSButtonMetro();
         rSButtonMetro3 = new rojerusan.RSButtonMetro();
@@ -789,14 +807,14 @@ public class Frame_Principal extends javax.swing.JFrame {
         labelNombreProducto3.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         labelNombreProducto3.setText("Stock:");
 
-        imagenProducto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        imagenProducto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         imagenProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/logo/logo_transparent.png"))); // NOI18N
 
-        rSMaterialButtonRound1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        rSMaterialButtonRound1.setText("...");
-        rSMaterialButtonRound1.addActionListener(new java.awt.event.ActionListener() {
+        botonCambiarImagen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonCambiarImagen.setText("...");
+        botonCambiarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSMaterialButtonRound1ActionPerformed(evt);
+                botonCambiarImagenActionPerformed(evt);
             }
         });
 
@@ -911,11 +929,11 @@ public class Frame_Principal extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(lblConsola)
                                 .addGap(7, 7, 7)))
-                        .addGap(57, 57, 57)
-                        .addComponent(rSMaterialButtonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(botonCambiarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
                         .addComponent(imagenProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))
+                        .addGap(68, 68, 68))
                     .addGroup(panelProductosLayout.createSequentialGroup()
                         .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelProductosLayout.createSequentialGroup()
@@ -953,11 +971,14 @@ public class Frame_Principal extends javax.swing.JFrame {
                             .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(labelNombreProducto1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(fieldDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(imagenProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelProductosLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(rSMaterialButtonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGap(5, 5, 5)
+                        .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelProductosLayout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(botonCambiarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAplicarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAñadirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1162,6 +1183,7 @@ public class Frame_Principal extends javax.swing.JFrame {
     private void botonVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerProductosActionPerformed
         // TODO add your handling code here:
         this.actualizarTablas();
+        this.imagenProducto.setIcon(new ImageIcon("src\\ui\\images\\logo\\logo_transparent.png"));
         actualizando = false;
 
         this.tablaInfo.setVisible(true);
@@ -1265,7 +1287,16 @@ public class Frame_Principal extends javax.swing.JFrame {
 
             if (dialog.getReturnStatus() == 1) {
                 System.out.println("Producto " + fieldNombre.getText() + " modificado.");
-                OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), imagen, Integer.valueOf(fieldStock.getText()));
+                try {
+                    ftp.borrarArchivo(OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId()));
+                    OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), rutaImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
+                    ftp.subirArchivo(imagenSeleccionada, rutaImagenSeleccionada);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 this.actualizarTablas();
             }
         } else {
@@ -1286,7 +1317,17 @@ public class Frame_Principal extends javax.swing.JFrame {
 
         if (dialog.getReturnStatus() == 1) {
             System.out.println("Borrando " + producto.getNombre());
-            OperacionesBDD.eliminarProducto(producto.getId());
+            try {
+                String ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
+                ftp.borrarArchivo(ruta);
+                OperacionesBDD.eliminarProducto(producto.getId());
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             this.actualizarTablas();
             this.lblConsola.setVisible(false);
         }
@@ -1296,8 +1337,6 @@ public class Frame_Principal extends javax.swing.JFrame {
 
     private void botonAñadirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirProductoActionPerformed
         // TODO add your handling code here:
-
-        File imagen = null;
 
         ArrayList<JTextComponent> componentes = new ArrayList<>();
 
@@ -1312,10 +1351,25 @@ public class Frame_Principal extends javax.swing.JFrame {
             dialog.setVisible(true);
 
             if (dialog.getReturnStatus() == 1) {
-                System.out.println("Producto " + fieldNombre.getText() + " añadido.");
-                OperacionesBDD.añadirProducto(fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), imagen, Integer.valueOf(fieldStock.getText()));
-                this.actualizarTablas();
-                this.lblConsola.setVisible(false);
+                try {
+                    OperacionesBDD.añadirProducto(fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), rutaImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
+                    if (imagenSeleccionada != null) {
+                        try {
+                            System.out.println("Subiendo el archivo " + imagenSeleccionada + " a " + rutaImagenSeleccionada);
+                            ftp.subirArchivo(imagenSeleccionada, rutaImagenSeleccionada);
+
+                        } catch (IOException ex) {
+                            Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    System.out.println("Producto " + fieldNombre.getText() + " añadido.");
+                    this.actualizarTablas();
+                    this.lblConsola.setVisible(false);
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
         } else {
 
@@ -1345,7 +1399,9 @@ public class Frame_Principal extends javax.swing.JFrame {
         fieldStock.setText(Integer.valueOf(fieldStock.getText()) + 10 + "");
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
-    private void rSMaterialButtonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRound1ActionPerformed
+    File imagenSeleccionada = null;
+    String rutaImagenSeleccionada = null;
+    private void botonCambiarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarImagenActionPerformed
         // TODO add your handling code here:
         RSFileChooser fileChooser = new RSFileChooser();
 
@@ -1354,9 +1410,13 @@ public class Frame_Principal extends javax.swing.JFrame {
 
         fileChooser.setFileFilter(imageFilter);
         fileChooser.showOpenDialog(this);
-        File imagenSeleccionada = fileChooser.getSelectedFile();
+        imagenSeleccionada = fileChooser.getSelectedFile();
+
+        rutaImagenSeleccionada = imagenSeleccionada.getName();
+        System.out.println("ruta de la imagen seleccionada: " + rutaImagenSeleccionada);
+
         this.imagenProducto.setIcon(new ImageIcon(imagenSeleccionada.getAbsolutePath()));
-    }//GEN-LAST:event_rSMaterialButtonRound1ActionPerformed
+    }//GEN-LAST:event_botonCambiarImagenActionPerformed
 
     private void fieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNombreActionPerformed
         // TODO add your handling code here:
@@ -1446,6 +1506,7 @@ public class Frame_Principal extends javax.swing.JFrame {
     private rojerusan.RSButtonHover botonAñadirProducto;
     private rojerusan.RSButtonHover botonAñadirUsuario;
     private rojerusan.RSButtonHover botonCambiarContraseña;
+    private rojerusan.RSMaterialButtonRound botonCambiarImagen;
     private rojerusan.RSButtonHover botonCancelarPedido;
     private rojerusan.RSButtonHover botonEliminarProducto;
     private rojerusan.RSButtonHover botonEliminarUsuario;
@@ -1508,7 +1569,6 @@ public class Frame_Principal extends javax.swing.JFrame {
     private rojerusan.RSButtonMetro rSButtonMetro3;
     private rojerusan.RSButtonMetro rSButtonMetro4;
     private rojerusan.RSLabelImage rSLabelImage1;
-    private rojerusan.RSMaterialButtonRound rSMaterialButtonRound1;
     private rojerusan.RSTableMetro tablaInfo;
     private rojerusan.RSTableMetro tablaLineas2;
     // End of variables declaration//GEN-END:variables

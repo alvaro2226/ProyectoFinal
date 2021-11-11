@@ -16,7 +16,6 @@
  */
 package Main;
 
-import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -24,9 +23,6 @@ import java.util.logging.Logger;
 import log.MyLogger;
 import ui.bienvenida.Frame_Login;
 import ui.bienvenida.Frame_Bienvenida;
-import ui.dialogs.Dialog_Confirmar;
-import ui.principal.Frame_Principal;
-import util.OperacionesBDD;
 import util.PropertiesUtil;
 
 /**
@@ -62,13 +58,21 @@ public class Main {
         properties = PropertiesUtil.getProperties();;
         //Comprueba si es la primera vez que se inicia la aplicación
         if (properties.getProperty("app.firstTime").equals("true")) {
-            //Es la primera vez, por tanto se tiene que mostrar el frame
-            // de bienvenida
-            
-            OperacionesBDD.crearBDD();
-            //OperacionesBDD.añadirEmpresa("nombre", "fm", "cif", "email", "paypal", "calle", "localidad", "prov", "cp", "pais", "tele");
-            //OperacionesBDD.añadirAdmin("askmk", "asdsddddddd");
-            new Frame_Bienvenida().setVisible(true);
+            //try {
+                //Es la primera vez, por tanto se tiene que mostrar el frame
+                // de bienvenida
+                /*
+                OperacionesBDD.iniciarConexion();
+                OperacionesBDD.crearBDD();
+                OperacionesBDD.cerrarConexion();
+                */
+                //OperacionesBDD.añadirEmpresa("nombre", "fm", "cif", "email", "paypal", "calle", "localidad", "prov", "cp", "pais", "tele");
+                //OperacionesBDD.añadirAdmin("askmk", "asdsddddddd");
+                new Frame_Bienvenida().setVisible(true);
+              /*  
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
 
         } else {
             //Se tiene que mostrar el frame de iniciar sesión
