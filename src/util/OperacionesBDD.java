@@ -74,9 +74,9 @@ public class OperacionesBDD {
             Class.forName("com.mysql.jdbc.Driver");
 
             //Recibe los parametros del fichero de configuracion
-            System.out.println("Conectando a " + p.getProperty("database.URL"));
-            System.out.println("Usuario " + p.getProperty("database.USER"));
-            System.out.println("Contraseña " + p.getProperty("database.PASSWORD"));
+            //System.out.println("Conectando a " + p.getProperty("database.URL"));
+            //System.out.println("Usuario " + p.getProperty("database.USER"));
+            //System.out.println("Contraseña " + p.getProperty("database.PASSWORD"));
 
             conexion = (Connection) DriverManager.getConnection(p.getProperty("database.URL") /*+ "?testOnBorrow=true&validationQuery='SELECT 1'&validationInterval=1000&autoReconnect=true" */,
                     p.getProperty("database.USER"),

@@ -1339,13 +1339,20 @@ public class Frame_Principal extends javax.swing.JFrame {
             dialog.setVisible(true);
 
             if (dialog.getReturnStatus() == 1) {
-                System.out.println("Producto " + fieldNombre.getText() + " modificado.");
+                System.out.println("Modificando " + fieldNombre.getText());
                 try {
                     OperacionesBDD.iniciarConexion();
-                    ftp.borrarArchivo(OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId()));
+                    String ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
+
+                    if (ruta != null) {
+                        ftp.borrarArchivo(ruta);
+
+                    }
+
                     OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), rutaImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
-                    ftp.subirArchivo(imagenSeleccionada, rutaImagenSeleccionada);
                     OperacionesBDD.cerrarConexion();
+                    ftp.subirArchivo(imagenSeleccionada, rutaImagenSeleccionada);
+                    this.actualizarTablas();
                 } catch (SQLException ex) {
                     Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
@@ -1354,7 +1361,6 @@ public class Frame_Principal extends javax.swing.JFrame {
                     Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                this.actualizarTablas();
             }
         } else {
 
@@ -1478,7 +1484,7 @@ public class Frame_Principal extends javax.swing.JFrame {
         imagenSeleccionada = fileChooser.getSelectedFile();
 
         rutaImagenSeleccionada = imagenSeleccionada.getName();
-        System.out.println("ruta de la imagen seleccionada: " + rutaImagenSeleccionada);
+        System.out.println("nombre de la imagen seleccionada: " + rutaImagenSeleccionada);
 
         this.imagenProducto.setIcon(new ImageIcon(imagenSeleccionada.getAbsolutePath()));
     }//GEN-LAST:event_botonCambiarImagenActionPerformed
