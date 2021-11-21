@@ -82,7 +82,11 @@ public class FTP_Client {
     }
     
     public void subirArchivo(File file, String path) throws IOException {
-        ftp.storeFile(path, new FileInputStream(file));
+        
+        if (file != null){
+           ftp.storeFile(path, new FileInputStream(file)); 
+        }
+        
     }
     
     public void borrarArchivo(String ruta) throws IOException {

@@ -633,7 +633,7 @@ public class OperacionesBDD {
     }
 
     public static ResultSet getProductos() {
-        ResultSet pedidos = null;
+        ResultSet productos = null;
         String query = "SELECT producto_id AS ID,producto_nombre AS NOMBRE,"
                 + "producto_descripcion AS DESCRIPCION,"
                 + "producto_precio AS PRECIO,"
@@ -642,13 +642,13 @@ public class OperacionesBDD {
         try {
 
             st = conexion.createStatement();
-            pedidos = st.executeQuery(query);
+            productos = st.executeQuery(query);
 
         } catch (SQLException ex) {
             Logger.getLogger(OperacionesBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return pedidos;
+        return productos;
     }
 
     public static ResultSet getUsuarios() {
