@@ -271,43 +271,53 @@ public class Dialog_nuevoUsuario extends javax.swing.JDialog {
         usuario.setApellidos(fieldApellidos.getText());
         usuario.setContra(lblContraActual.getText());
 
+        
         //Comprueba si  hay campos vacios
         if (!Util.comprobarCamposVacíos(componentes)) {
 
-            //Comprueba si el email es correcto
-            if (Util.validarEmail(usuario.getEmail())) {
-                //Comprueba si el usuario ya existe
-                if (OperacionesBDD.comprobarUsuarioExiste(usuario.getNombreUsuario())) {
-
-                    try {
-                        Dialog_Confirmar dialog = new Dialog_Confirmar((Frame) SwingUtilities.getWindowAncestor(this), true, 0000);
-
-                        dialog.setVisible(true);
-
-                        if (dialog.getReturnStatus() == 1) {
-                            //Cambiar contraseña en la db
-                            OperacionesBDD.añadirUsuario(usuario.getNombreUsuario(), usuario.getEmail(), usuario.getContra(),
-                                    usuario.getNombre(), usuario.getApellidos(), usuario.getTelefono(), usuario.getDni());
-                            System.out.println("Usuario añadido correctamente");
-                            doClose(RET_OK);
+            try {
+                //Comprueba si el email es correcto
+                if (Util.validarEmail(usuario.getEmail())) {
+                    //Comprueba si el usuario ya existe
+                    OperacionesBDD.iniciarConexion();
+                    
+                    if (OperacionesBDD.comprobarUsuarioExiste(usuario.getNombreUsuario())) {
+                        
+                        try {
+                            Dialog_Confirmar dialog = new Dialog_Confirmar((Frame) SwingUtilities.getWindowAncestor(this), true, 0000);
+                            
+                            dialog.setVisible(true);
+                            
+                            if (dialog.getReturnStatus() == 1) {
+                                //Cambiar contraseña en la db
+                                OperacionesBDD.añadirUsuario(usuario.getNombreUsuario(), usuario.getEmail(), usuario.getContra(),
+                                        usuario.getNombre(), usuario.getApellidos(), usuario.getTelefono(), usuario.getDni());
+                                System.out.println("Usuario añadido correctamente");
+                                doClose(RET_OK);
+                            }
+                            
+                        } catch (SQLException ex) {
+                            System.out.println("Error al añadir usuario");
+                            Logger.getLogger(Dialog_nuevoUsuario.class.getName()).log(Level.SEVERE, null, ex);
                         }
-
-                    } catch (SQLException ex) {
-                        System.out.println("Error al añadir usuario");
-                        Logger.getLogger(Dialog_nuevoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                        //todo bien
+                        
+                    } else {
+                        
+                        lblConsola.setVisible(true);
+                        lblConsola.setText("El usuario ya existe");
+                        
+                        System.out.println("El usuario ya existe");
                     }
-                    //todo bien
-
                 } else {
-
                     lblConsola.setVisible(true);
-                    lblConsola.setText("El usuario ya existe");
-
-                    System.out.println("El usuario ya existe");
+                    lblConsola.setText("El email instroducido no es correcto");
                 }
-            } else {
-                lblConsola.setVisible(true);
-                lblConsola.setText("El email instroducido no es correcto");
+                OperacionesBDD.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(Dialog_nuevoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Dialog_nuevoUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             lblConsola.setVisible(true);

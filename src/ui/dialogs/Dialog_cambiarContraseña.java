@@ -55,13 +55,13 @@ public class Dialog_cambiarContraseña extends javax.swing.JDialog {
         super(parent, modal);
 
         this.nombreUsuario = nombreUsuario;
-       
-        initComponents();
-        
-        pack();
-        this.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - getWidth()/2, (Toolkit.getDefaultToolkit().getScreenSize().height)/2 - getHeight()/2);
 
-         this.lblConsola.setVisible(false);
+        initComponents();
+
+        pack();
+        this.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width) / 2 - getWidth() / 2, (Toolkit.getDefaultToolkit().getScreenSize().height) / 2 - getHeight() / 2);
+
+        this.lblConsola.setVisible(false);
     }
 
     /**
@@ -190,42 +190,50 @@ public class Dialog_cambiarContraseña extends javax.swing.JDialog {
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
-        // TODO add your handling code here:
-        
-        boolean contraCorrecta = OperacionesBDD.comprobarContraseña(nombreUsuario, lblContraActual.getText());
-        
-        if(contraCorrecta){
-            System.out.println("La contraseña es correcta");
-        }else{
-            System.out.println("La contraseña es incorrecta");
-            this.lblConsola.setVisible(true);
-            this.lblConsola.setText("Contraseña incorrecta");
-        }
-                
-        if (this.lblContraNueva.getText().equals(this.lblContraNuevaRepetida.getText()) && contraCorrecta) {
-            try {
+        try {
+            // TODO add your handling code here:
 
-                System.out.println(lblContraActual.getText() + " -> " + lblContraNueva.getText() + "   " + lblContraNuevaRepetida.getText());
-                Dialog_Confirmar dialog = new Dialog_Confirmar((Frame) SwingUtilities.getWindowAncestor(this), true, 0000);
+            OperacionesBDD.iniciarConexion();
+            boolean contraCorrecta = OperacionesBDD.comprobarContraseña(nombreUsuario, lblContraActual.getText());
 
-                dialog.setVisible(true);
+            if (contraCorrecta) {
+                System.out.println("La contraseña es correcta");
+            } else {
+                System.out.println("La contraseña es incorrecta");
+                this.lblConsola.setVisible(true);
+                this.lblConsola.setText("Contraseña incorrecta");
+            }
 
-                if (dialog.getReturnStatus() == 1) {
-                    //Cambiar contraseña en la db
-                    OperacionesBDD.cambiarContraseña(nombreUsuario, lblContraNueva.getText());
-                    doClose(RET_OK);
+            if (this.lblContraNueva.getText().equals(this.lblContraNuevaRepetida.getText()) && contraCorrecta) {
+                try {
+
+                    System.out.println(lblContraActual.getText() + " -> " + lblContraNueva.getText() + "   " + lblContraNuevaRepetida.getText());
+                    Dialog_Confirmar dialog = new Dialog_Confirmar((Frame) SwingUtilities.getWindowAncestor(this), true, 0000);
+
+                    dialog.setVisible(true);
+
+                    if (dialog.getReturnStatus() == 1) {
+                        //Cambiar contraseña en la db
+                        OperacionesBDD.cambiarContraseña(nombreUsuario, lblContraNueva.getText());
+                        doClose(RET_OK);
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Dialog_cambiarContraseña.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-            } catch (SQLException ex) {
-                Logger.getLogger(Dialog_cambiarContraseña.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } else {
+                this.lblConsola.setVisible(true);
 
-        }else{
-            this.lblConsola.setVisible(true);
-            
-            if(contraCorrecta){
-                this.lblConsola.setText("Las contraseñas no coinciden");
+                if (contraCorrecta) {
+                    this.lblConsola.setText("Las contraseñas no coinciden");
+                }
             }
+            OperacionesBDD.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Dialog_cambiarContraseña.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Dialog_cambiarContraseña.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_botonConfirmarActionPerformed

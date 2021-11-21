@@ -1,14 +1,171 @@
-nov 21, 2021 12:57:43 P. M. log.MyLogger init
+nov 21, 2021 4:01:11 P. M. log.MyLogger init
 INFO: OrderTracker iniciado...
-nov 21, 2021 12:57:50 P. M. util.OperacionesBDD iniciarConexion
+nov 21, 2021 4:01:16 P. M. util.OperacionesBDD iniciarConexion
 INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 12:57:50 P. M. util.OperacionesBDD iniciarSesion
+nov 21, 2021 4:01:16 P. M. util.OperacionesBDD iniciarSesion
 INFO: Intento de inicio de sesión: 
  Usuario: admin
  Contraseña: admin
-nov 21, 2021 12:57:50 P. M. util.OperacionesBDD cerrarConexion
+nov 21, 2021 4:01:16 P. M. util.OperacionesBDD cerrarConexion
 INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 12:57:50 P. M. ui.bienvenida.Frame_Login rSButtonHover1ActionPerformed
+nov 21, 2021 4:01:16 P. M. ui.bienvenida.Frame_Login rSButtonHover1ActionPerformed
 INFO: Se ha iniciado sesión
-nov 21, 2021 12:57:54 P. M. util.OperacionesBDD iniciarConexion
+nov 21, 2021 4:01:20 P. M. util.OperacionesBDD iniciarConexion
 INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:01:20 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:01:23 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:01:23 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:01:27 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:01:27 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:01:28 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:01:28 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:01:42 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:01:42 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:01:43 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:01:43 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:01:53 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:01:53 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:01:54 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:01:54 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:06 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:06 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:07 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:07 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:11 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:12 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:12 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:13 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:16 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:16 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:18 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:18 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:34 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:36 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:36 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:36 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:38 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:38 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:39 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:39 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:57 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:58 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:02:58 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:02:58 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:05:17 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:05:17 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:05:26 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:05:26 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:05:28 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:05:28 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:05:32 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:05:33 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:05:33 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:05:33 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:05:45 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:05:45 P. M. ui.principal.Frame_Principal botonAplicarCambiosActionPerformed
+SEVERE: null
+org.apache.commons.net.ftp.FTPConnectionClosedException: FTP response 421 received.  Server closed connection.
+	at org.apache.commons.net.ftp.FTP.getReply(FTP.java:378)
+	at org.apache.commons.net.ftp.FTP.getReply(FTP.java:719)
+	at org.apache.commons.net.ftp.FTP.sendCommand(FTP.java:514)
+	at org.apache.commons.net.ftp.FTP.sendCommand(FTP.java:635)
+	at org.apache.commons.net.ftp.FTP.dele(FTP.java:1480)
+	at org.apache.commons.net.ftp.FTPClient.deleteFile(FTPClient.java:1444)
+	at util.FTP_Client.borrarArchivo(FTP_Client.java:93)
+	at ui.principal.Frame_Principal.botonAplicarCambiosActionPerformed(Frame_Principal.java:1345)
+	at ui.principal.Frame_Principal.access$3000(Frame_Principal.java:56)
+	at ui.principal.Frame_Principal$17.actionPerformed(Frame_Principal.java:921)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2313)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:405)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:279)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6626)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3389)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6391)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5001)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4833)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4575)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4833)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:722)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:716)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:97)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:746)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:744)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:743)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+nov 21, 2021 4:05:45 P. M. util.OperacionesBDD iniciarConexion
+WARNING: Se ha intentado establecer una conexion con la base de datos cuando ya se estaba conectado
+nov 21, 2021 4:05:45 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 21, 2021 4:07:43 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 21, 2021 4:07:43 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente

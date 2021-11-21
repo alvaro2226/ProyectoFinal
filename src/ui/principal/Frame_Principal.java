@@ -98,6 +98,7 @@ public class Frame_Principal extends javax.swing.JFrame {
             tablaLineas2.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getLineas(idPedido)));
             tablaSeleccionada = "pedidos";
 
+            OperacionesBDD.cerrarConexion();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -119,30 +120,38 @@ public class Frame_Principal extends javax.swing.JFrame {
 
     private void actualizarTablas() {
 
-        actualizando = true;
-        DefaultTableModel dtm1 = (DefaultTableModel) this.tablaInfo.getModel();
+        try {
+            OperacionesBDD.iniciarConexion();
+            actualizando = true;
+            DefaultTableModel dtm1 = (DefaultTableModel) this.tablaInfo.getModel();
 
-        int rowCount = dtm1.getRowCount();
+            int rowCount = dtm1.getRowCount();
 
-        //System.out.println("Num filas " + rowCount);
-        for (int i = 0; i < rowCount; i++) {
-            dtm1.removeRow(0);
-            //System.out.println(i);
+            //System.out.println("Num filas " + rowCount);
+            for (int i = 0; i < rowCount; i++) {
+                dtm1.removeRow(0);
+                //System.out.println(i);
+            }
+
+            if (tablaSeleccionada.equals("usuarios")) {
+                tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getUsuarios()));
+            }
+
+            if (tablaSeleccionada.equals("productos")) {
+                tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getProductos()));
+            }
+
+            if (tablaSeleccionada.equals("pedidos")) {
+                tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getPedidos()));
+            }
+
+            actualizando = false;
+            OperacionesBDD.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        if (tablaSeleccionada.equals("usuarios")) {
-            tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getUsuarios()));
-        }
-
-        if (tablaSeleccionada.equals("productos")) {
-            tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getProductos()));
-        }
-
-        if (tablaSeleccionada.equals("pedidos")) {
-            tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getPedidos()));
-        }
-
-        actualizando = false;
     }
 
     boolean actualizando = false;
@@ -154,11 +163,19 @@ public class Frame_Principal extends javax.swing.JFrame {
             public void valueChanged(ListSelectionEvent event) {
                 if (tablaSeleccionada.equals("pedidos") && !actualizando) {
 
-                    System.out.println("Mostrando pedidos...");
-                    idPedido = Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString());
-                    System.out.println("idPedido = " + idPedido);
-                    tablaLineas2.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getLineas(idPedido)));
-                    actualizando = false;
+                    try {
+                        OperacionesBDD.iniciarConexion();
+                        System.out.println("Mostrando pedidos...");
+                        idPedido = Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString());
+                        System.out.println("idPedido = " + idPedido);
+                        tablaLineas2.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getLineas(idPedido)));
+                        actualizando = false;
+                        OperacionesBDD.cerrarConexion();
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                 }
             }
@@ -167,41 +184,50 @@ public class Frame_Principal extends javax.swing.JFrame {
         this.tablaInfo.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
                 if (tablaSeleccionada.equals("productos") && !actualizando) {
-
-                    producto.setId(Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString()));
-                    producto.setNombre((tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 1).toString()));
-                    producto.setPrecio(Float.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 3).toString()));
-                    producto.setDescripcion((tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 2).toString()));
-                    producto.setStock(Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 4).toString()));
-
-                    fieldNombre.setText(producto.getNombre());
-                    fieldDesc.setText(producto.getDescripcion());
-                    fieldPrecio.setText(producto.getPrecio() + "");
-                    fieldStock.setText(producto.getStock() + "");
-
                     try {
-                        String ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
+                        OperacionesBDD.iniciarConexion();
 
-                        if (ruta != null) {
-                            String rutaFinal = "https://programaloalvaro.es/archivos/ordertracker/imagenes/" + ruta;
+                        producto.setId(Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString()));
+                        producto.setNombre((tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 1).toString()));
+                        producto.setPrecio(Float.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 3).toString()));
+                        producto.setDescripcion((tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 2).toString()));
+                        producto.setStock(Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 4).toString()));
 
-                            if (rutaFinal != null) {
-                                rutaFinal = rutaFinal.trim();
-                                rutaFinal = rutaFinal.replaceAll("\\s", "%20");
+                        fieldNombre.setText(producto.getNombre());
+                        fieldDesc.setText(producto.getDescripcion());
+                        fieldPrecio.setText(producto.getPrecio() + "");
+                        fieldStock.setText(producto.getStock() + "");
+
+                        try {
+                            String ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
+
+                            if (ruta != null) {
+                                String rutaFinal = "https://programaloalvaro.es/archivos/ordertracker/imagenes/" + ruta;
+
+                                if (rutaFinal != null) {
+                                    rutaFinal = rutaFinal.trim();
+                                    rutaFinal = rutaFinal.replaceAll("\\s", "%20");
+                                }
+
+                                BufferedImage img = ImageIO.read(new URL(rutaFinal));
+
+                                imagenProducto.setIcon(new ImageIcon(img));
+                            } else {
+                                imagenProducto.setIcon(new ImageIcon("src\\ui\\images\\logo\\logo_transparent.png"));
                             }
-                            
-                            BufferedImage img = ImageIO.read(new URL(rutaFinal));
 
-                            imagenProducto.setIcon(new ImageIcon(img));
-                        } else {
-                            imagenProducto.setIcon(new ImageIcon("src\\ui\\images\\logo\\logo_transparent.png"));
+                        } catch (SQLException | IOException ex) {
+                            Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
-                    } catch (SQLException | IOException ex) {
+                        actualizando = false;
+                        OperacionesBDD.cerrarConexion();
+
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
                         Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
-                    actualizando = false;
 
                 }
             }
@@ -211,85 +237,95 @@ public class Frame_Principal extends javax.swing.JFrame {
             public void valueChanged(ListSelectionEvent event) {
                 if (tablaSeleccionada.equals("usuarios") && !actualizando) {
 
-                    if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString() == null) {
-                        usuario.setNombreUsuario("");
-                    } else {
-                        usuario.setNombreUsuario(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString());
-                    }
+                    try {
+                        OperacionesBDD.iniciarConexion();
 
-                    if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 1) == null) {
-                        usuario.setEmail("");
-                    } else {
-                        usuario.setEmail(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 1).toString());
-                    }
+                        if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString() == null) {
+                            usuario.setNombreUsuario("");
+                        } else {
+                            usuario.setNombreUsuario(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString());
+                        }
 
-                    if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 2) == null) {
-                        usuario.setNombre("");
-                    } else {
-                        usuario.setNombre(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 2).toString());
-                    }
+                        if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 1) == null) {
+                            usuario.setEmail("");
+                        } else {
+                            usuario.setEmail(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 1).toString());
+                        }
 
-                    if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 3) == null) {
-                        usuario.setTelefono("");
-                    } else {
+                        if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 2) == null) {
+                            usuario.setNombre("");
+                        } else {
+                            usuario.setNombre(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 2).toString());
+                        }
 
-                        usuario.setTelefono(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 3).toString());
-                    }
+                        if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 3) == null) {
+                            usuario.setTelefono("");
+                        } else {
 
-                    usuario.setRol(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 4).toString());
-                    if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 4) == null) {
-                        usuario.setContra("");
-                    } else {
-                        usuario.setContra(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 4).toString());
-                    }
+                            usuario.setTelefono(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 3).toString());
+                        }
 
-                    if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 6) == null) {
-                        usuario.setDni("");
-                    } else {
-                        usuario.setDni(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 6).toString());
-                    }
+                        usuario.setRol(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 4).toString());
+                        if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 4) == null) {
+                            usuario.setContra("");
+                        } else {
+                            usuario.setContra(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 4).toString());
+                        }
 
-                    fieldNomUsuario.setText(Objects.toString(usuario.getNombreUsuario(), ""));
-                    fieldEmail.setText(Objects.toString(usuario.getEmail(), ""));
-                    fieldNom.setText(Objects.toString(usuario.getNombre(), ""));
-                    fieldTelefono.setText(Objects.toString(usuario.getTelefono(), ""));
-                    //fieldContra.setText(Objects.toString(usuario.getContra(), ""));
-                    fieldDni.setText(Objects.toString(usuario.getDni(), ""));
+                        if (tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 6) == null) {
+                            usuario.setDni("");
+                        } else {
+                            usuario.setDni(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 6).toString());
+                        }
 
-                    labelRolUsuario.setText(usuario.getRol());
+                        fieldNomUsuario.setText(Objects.toString(usuario.getNombreUsuario(), ""));
+                        fieldEmail.setText(Objects.toString(usuario.getEmail(), ""));
+                        fieldNom.setText(Objects.toString(usuario.getNombre(), ""));
+                        fieldTelefono.setText(Objects.toString(usuario.getTelefono(), ""));
+                        //fieldContra.setText(Objects.toString(usuario.getContra(), ""));
+                        fieldDni.setText(Objects.toString(usuario.getDni(), ""));
 
-                    actualizando = false;
+                        labelRolUsuario.setText(usuario.getRol());
 
-                    //Si el usuario seleccionado es el mismo que el que ha iniciado sesión
-                    boolean esElMismo = false;
-                    if (Frame_Login.usuarioLogeado.equals(usuario.getNombreUsuario())) {
-                        //Puedes editar
-                        botonCambiarContraseña.setEnabled(true);
-                        botonCambiarContraseña.setVisible(true);
-                        fieldDni.setEnabled(true);
-                        fieldDni.setEditable(true);
-                        fieldNom.setEditable(true);
-                        esElMismo = true;
+                        actualizando = false;
 
-                    } else {
-                        //No puedes editar
-                        botonCambiarContraseña.setEnabled(false);
-                        botonCambiarContraseña.setVisible(false);
-                        fieldDni.setEnabled(false);
-                        fieldDni.setEditable(false);
-                        fieldNom.setEditable(false);
-                    }
+                        //Si el usuario seleccionado es el mismo que el que ha iniciado sesión
+                        boolean esElMismo = false;
+                        if (Frame_Login.usuarioLogeado.equals(usuario.getNombreUsuario())) {
+                            //Puedes editar
+                            botonCambiarContraseña.setEnabled(true);
+                            botonCambiarContraseña.setVisible(true);
+                            fieldDni.setEnabled(true);
+                            fieldDni.setEditable(true);
+                            fieldNom.setEditable(true);
+                            esElMismo = true;
 
-                    //Si rol es mayor que el del usuario que ha seleccionado puede editarlo   
-                    usuarioSeleccionadoRol = OperacionesBDD.getRolUsuario(usuario.getNombreUsuario());
+                        } else {
+                            //No puedes editar
+                            botonCambiarContraseña.setEnabled(false);
+                            botonCambiarContraseña.setVisible(false);
+                            fieldDni.setEnabled(false);
+                            fieldDni.setEditable(false);
+                            fieldNom.setEditable(false);
+                        }
 
-                    System.out.println("usuario logueado -> " + usuarioLogeadoRol + " usuario seleccionado -> " + usuarioSeleccionadoRol);
+                        //Si rol es mayor que el del usuario que ha seleccionado puede editarlo
+                        usuarioSeleccionadoRol = OperacionesBDD.getRolUsuario(usuario.getNombreUsuario());
 
-                    if (usuarioLogeadoRol < usuarioSeleccionadoRol || esElMismo) {
+                        System.out.println("usuario logueado -> " + usuarioLogeadoRol + " usuario seleccionado -> " + usuarioSeleccionadoRol);
 
-                        puedeEditarUsuarios(true);
-                    } else {
-                        puedeEditarUsuarios(false);
+                        if (usuarioLogeadoRol < usuarioSeleccionadoRol || esElMismo) {
+
+                            puedeEditarUsuarios(true);
+                        } else {
+                            puedeEditarUsuarios(false);
+                        }
+
+                        OperacionesBDD.cerrarConexion();
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
                 }
@@ -1167,11 +1203,12 @@ public class Frame_Principal extends javax.swing.JFrame {
     private void botonVerPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerPedidosActionPerformed
         // TODO add your handling code here:
 
+        tablaSeleccionada = "pedidos";
         this.actualizarTablas();
         actualizando = false;
         this.tablaInfo.setVisible(true);
-        tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getPedidos()));
-        tablaSeleccionada = "pedidos";
+        //tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getPedidos()));
+        //tablaSeleccionada = "pedidos";
         CardLayout cl = (CardLayout) (panelInferior.getLayout());
         cl.show(panelInferior, "card2");
 
@@ -1182,13 +1219,14 @@ public class Frame_Principal extends javax.swing.JFrame {
 
     private void botonVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerProductosActionPerformed
         // TODO add your handling code here:
+        tablaSeleccionada = "productos";
         this.actualizarTablas();
         this.imagenProducto.setIcon(new ImageIcon("src\\ui\\images\\logo\\logo_transparent.png"));
         actualizando = false;
 
         this.tablaInfo.setVisible(true);
-        tablaSeleccionada = "productos";
-        tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getProductos()));
+        //tablaSeleccionada = "productos";
+        //tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getProductos()));
         CardLayout cl = (CardLayout) (panelInferior.getLayout());
         cl.show(panelInferior, "card3");
 
@@ -1199,12 +1237,13 @@ public class Frame_Principal extends javax.swing.JFrame {
 
 
     private void botonVerUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerUsuariosActionPerformed
+        tablaSeleccionada = "usuarios";
         this.actualizarTablas();
         actualizando = false;
 
         this.tablaInfo.setVisible(true);
-        tablaSeleccionada = "usuarios";
-        tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getUsuarios()));
+        //tablaSeleccionada = "usuarios";
+        //tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getUsuarios()));
         CardLayout cl = (CardLayout) (panelInferior.getLayout());
         cl.show(panelInferior, "card4");
 
@@ -1228,8 +1267,14 @@ public class Frame_Principal extends javax.swing.JFrame {
         dialog.setVisible(true);
 
         if (dialog.getReturnStatus() == 1) {
-            OperacionesBDD.modificarUsuario(usuario.getNombreUsuario(), fieldNomUsuario.getText(), fieldEmail.getText(), nombre, apellidos, fieldTelefono.getText(), fieldDni.getText());
-            this.actualizarTablas();
+            try {
+                OperacionesBDD.iniciarConexion();
+                OperacionesBDD.modificarUsuario(usuario.getNombreUsuario(), fieldNomUsuario.getText(), fieldEmail.getText(), nombre, apellidos, fieldTelefono.getText(), fieldDni.getText());
+                OperacionesBDD.cerrarConexion();
+                this.actualizarTablas();
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
 
@@ -1243,10 +1288,10 @@ public class Frame_Principal extends javax.swing.JFrame {
         dialog.setVisible(true);
 
         if (dialog.getReturnStatus() == 1) {
-
+            this.actualizarTablas();
         }
 
-        this.actualizarTablas();
+
     }//GEN-LAST:event_botonAñadirUsuarioActionPerformed
 
     private void botonEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarUsuarioActionPerformed
@@ -1258,9 +1303,17 @@ public class Frame_Principal extends javax.swing.JFrame {
             dialog.setVisible(true);
 
             if (dialog.getReturnStatus() == 1) {
-                System.out.println("Borrando " + usuario.getNombre());
-                OperacionesBDD.eliminarUsuario(usuario.getNombreUsuario());
-                this.actualizarTablas();
+                try {
+                    OperacionesBDD.iniciarConexion();
+                    System.out.println("Borrando " + usuario.getNombre());
+                    OperacionesBDD.eliminarUsuario(usuario.getNombreUsuario());
+                    OperacionesBDD.cerrarConexion();
+                    this.actualizarTablas();
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
         } else {
@@ -1288,12 +1341,16 @@ public class Frame_Principal extends javax.swing.JFrame {
             if (dialog.getReturnStatus() == 1) {
                 System.out.println("Producto " + fieldNombre.getText() + " modificado.");
                 try {
+                    OperacionesBDD.iniciarConexion();
                     ftp.borrarArchivo(OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId()));
                     OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), rutaImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
                     ftp.subirArchivo(imagenSeleccionada, rutaImagenSeleccionada);
+                    OperacionesBDD.cerrarConexion();
                 } catch (SQLException ex) {
                     Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
+                    Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
                     Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
@@ -1318,13 +1375,17 @@ public class Frame_Principal extends javax.swing.JFrame {
         if (dialog.getReturnStatus() == 1) {
             System.out.println("Borrando " + producto.getNombre());
             try {
+                OperacionesBDD.iniciarConexion();
                 String ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
                 ftp.borrarArchivo(ruta);
                 OperacionesBDD.eliminarProducto(producto.getId());
+                OperacionesBDD.cerrarConexion();
 
             } catch (SQLException ex) {
                 Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
+                Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
 
@@ -1352,6 +1413,7 @@ public class Frame_Principal extends javax.swing.JFrame {
 
             if (dialog.getReturnStatus() == 1) {
                 try {
+                    OperacionesBDD.iniciarConexion();
                     OperacionesBDD.añadirProducto(fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), rutaImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
                     if (imagenSeleccionada != null) {
                         try {
@@ -1363,10 +1425,13 @@ public class Frame_Principal extends javax.swing.JFrame {
                         }
                     }
                     System.out.println("Producto " + fieldNombre.getText() + " añadido.");
+                    OperacionesBDD.cerrarConexion();
                     this.actualizarTablas();
                     this.lblConsola.setVisible(false);
 
                 } catch (SQLException ex) {
+                    Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
                     Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
@@ -1435,8 +1500,12 @@ public class Frame_Principal extends javax.swing.JFrame {
         if (dialog.getReturnStatus() == 1) {
             System.out.println("Cancelando el pedido...");
             try {
+                OperacionesBDD.iniciarConexion();
                 OperacionesBDD.cancelarPedido(idPedido);
+                OperacionesBDD.cerrarConexion();
             } catch (SQLException ex) {
+                Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
