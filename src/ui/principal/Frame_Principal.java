@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -73,6 +74,11 @@ public class Frame_Principal extends javax.swing.JFrame {
         this.setIconImage(Util.getImagenIcono());
         this.lblUsuarioLogeado.setText(Frame_Login.usuarioLogeado);
 
+        this.lblEstado.setVisible(false);
+        this.lblPrecio.setVisible(false);
+        this.lblUsuario.setVisible(false);
+        lblPago.setVisible(false);
+
         setLocationRelativeTo(null);
         tablaInfo.setDefaultEditor(Object.class, null);
         tablaLineas2.setDefaultEditor(Object.class, null);
@@ -118,13 +124,14 @@ public class Frame_Principal extends javax.swing.JFrame {
 
     }
 
+    ResultSet pedidos = null;
+
     private void actualizarTablas() {
 
         try {
             OperacionesBDD.iniciarConexion();
             actualizando = true;
             DefaultTableModel dtm1 = (DefaultTableModel) this.tablaInfo.getModel();
-
             int rowCount = dtm1.getRowCount();
 
             //System.out.println("Num filas " + rowCount);
@@ -133,6 +140,9 @@ public class Frame_Principal extends javax.swing.JFrame {
                 //System.out.println(i);
             }
 
+            DefaultTableModel tablaLineas = (DefaultTableModel) this.tablaLineas2.getModel();
+            tablaLineas.setRowCount(0);
+            
             if (tablaSeleccionada.equals("usuarios")) {
                 tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getUsuarios()));
             }
@@ -142,7 +152,14 @@ public class Frame_Principal extends javax.swing.JFrame {
             }
 
             if (tablaSeleccionada.equals("pedidos")) {
-                tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getPedidos()));
+                pedidos = OperacionesBDD.getPedidos();
+                tablaInfo.setModel(DbUtils.resultSetToTableModel(pedidos));
+
+                this.lblEstado.setVisible(false);
+                this.lblPrecio.setVisible(false);
+                this.lblUsuario.setVisible(false);
+                lblPago.setVisible(false);
+
             }
 
             actualizando = false;
@@ -168,9 +185,28 @@ public class Frame_Principal extends javax.swing.JFrame {
                         System.out.println("Mostrando pedidos...");
                         idPedido = Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString());
                         System.out.println("idPedido = " + idPedido);
-                        
-                        tablaLineas2.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getLineas(idPedido)));
+
+                        ResultSet lineas = OperacionesBDD.getLineas(idPedido);
+                        tablaLineas2.setModel(DbUtils.resultSetToTableModel(lineas));
+
                         actualizando = false;
+
+                        //Muestra la informacion del pedido 
+                        lblEstado.setText(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 5).toString());
+
+                        lineas.beforeFirst();
+                        float total = 0f;
+                        while (lineas.next()) {
+                            total = total + lineas.getFloat(3);
+                        }
+                        lblPrecio.setText(total + "?");
+
+                        lblUsuario.setText(Util.capitalizeString(OperacionesBDD.getNombreUsuarioPedido(idPedido)));
+
+                        lblEstado.setVisible(true);
+                        lblPrecio.setVisible(true);
+                        lblUsuario.setVisible(true);
+                        lblPago.setVisible(true);
                         OperacionesBDD.cerrarConexion();
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -405,7 +441,6 @@ public class Frame_Principal extends javax.swing.JFrame {
         panelLineas_der = new javax.swing.JPanel();
         labelNombreProducto12 = new javax.swing.JLabel();
         lblEstado = new javax.swing.JLabel();
-        labelNombreProducto14 = new javax.swing.JLabel();
         labelNombreProducto17 = new javax.swing.JLabel();
         labelNombreProducto18 = new javax.swing.JLabel();
         botonAplicarCambios2 = new rojerusan.RSButtonHover();
@@ -413,7 +448,6 @@ public class Frame_Principal extends javax.swing.JFrame {
         lblPago = new javax.swing.JLabel();
         labelNombreProducto15 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
-        lblRepartidor = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
         panelProductos = new javax.swing.JPanel();
         labelNombreProducto = new javax.swing.JLabel();
@@ -682,16 +716,12 @@ public class Frame_Principal extends javax.swing.JFrame {
         labelNombreProducto12.setText("Precio total");
 
         lblEstado.setBackground(new java.awt.Color(255, 255, 255));
-        lblEstado.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblEstado.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         lblEstado.setText("estado");
-
-        labelNombreProducto14.setBackground(new java.awt.Color(255, 255, 255));
-        labelNombreProducto14.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
-        labelNombreProducto14.setText("Repartidor");
 
         labelNombreProducto17.setBackground(new java.awt.Color(255, 255, 255));
         labelNombreProducto17.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
-        labelNombreProducto17.setText("Usuario");
+        labelNombreProducto17.setText("Cliente");
 
         labelNombreProducto18.setBackground(new java.awt.Color(255, 255, 255));
         labelNombreProducto18.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
@@ -727,15 +757,11 @@ public class Frame_Principal extends javax.swing.JFrame {
         labelNombreProducto15.setText("Estado del pedido");
 
         lblUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        lblUsuario.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblUsuario.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         lblUsuario.setText("estado");
 
-        lblRepartidor.setBackground(new java.awt.Color(255, 255, 255));
-        lblRepartidor.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        lblRepartidor.setText("estado");
-
         lblPrecio.setBackground(new java.awt.Color(255, 255, 255));
-        lblPrecio.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblPrecio.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         lblPrecio.setText("estado");
 
         javax.swing.GroupLayout panelLineas_derLayout = new javax.swing.GroupLayout(panelLineas_der);
@@ -743,39 +769,32 @@ public class Frame_Principal extends javax.swing.JFrame {
         panelLineas_derLayout.setHorizontalGroup(
             panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLineas_derLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLineas_derLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNombreProducto15)
-                            .addComponent(labelNombreProducto14)
                             .addComponent(labelNombreProducto17)
-                            .addComponent(labelNombreProducto12))
-                        .addGap(18, 18, 18)
+                            .addComponent(labelNombreProducto12)
+                            .addComponent(labelNombreProducto15)
+                            .addComponent(labelNombreProducto18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPago)
                             .addComponent(lblEstado)
                             .addComponent(lblUsuario)
-                            .addComponent(lblRepartidor)
-                            .addComponent(lblPrecio))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLineas_derLayout.createSequentialGroup()
-                        .addComponent(labelNombreProducto18)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPago)
-                        .addGap(74, 74, 74))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLineas_derLayout.createSequentialGroup()
-                        .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))))
+                            .addComponent(lblPrecio)))
+                    .addGroup(panelLineas_derLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                        .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27))
         );
         panelLineas_derLayout.setVerticalGroup(
             panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLineas_derLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLineas_derLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNombreProducto18, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPago, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelNombreProducto15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -786,15 +805,18 @@ public class Frame_Principal extends javax.swing.JFrame {
                 .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNombreProducto17, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNombreProducto14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRepartidor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLineas_derLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(labelNombreProducto18, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelLineas_derLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPago, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout panelPedidos4Layout = new javax.swing.GroupLayout(panelPedidos4);
@@ -1344,14 +1366,14 @@ public class Frame_Principal extends javax.swing.JFrame {
                     OperacionesBDD.iniciarConexion();
                     String ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
 
-                    if (ruta != null) {
+                    if (nombreImagenSeleccionada != null) {
                         ftp.borrarArchivo(ruta);
 
                     }
 
-                    OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), rutaImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
+                    OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), nombreImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
                     OperacionesBDD.cerrarConexion();
-                    ftp.subirArchivo(imagenSeleccionada, rutaImagenSeleccionada);
+                    ftp.subirArchivo(imagenSeleccionada, nombreImagenSeleccionada);
                     this.actualizarTablas();
                 } catch (SQLException ex) {
                     Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -1420,11 +1442,11 @@ public class Frame_Principal extends javax.swing.JFrame {
             if (dialog.getReturnStatus() == 1) {
                 try {
                     OperacionesBDD.iniciarConexion();
-                    OperacionesBDD.añadirProducto(fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), rutaImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
+                    OperacionesBDD.añadirProducto(fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), nombreImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
                     if (imagenSeleccionada != null) {
                         try {
-                            System.out.println("Subiendo el archivo " + imagenSeleccionada + " a " + rutaImagenSeleccionada);
-                            ftp.subirArchivo(imagenSeleccionada, rutaImagenSeleccionada);
+                            System.out.println("Subiendo el archivo " + imagenSeleccionada + " a " + nombreImagenSeleccionada);
+                            ftp.subirArchivo(imagenSeleccionada, nombreImagenSeleccionada);
 
                         } catch (IOException ex) {
                             Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -1471,7 +1493,7 @@ public class Frame_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     File imagenSeleccionada = null;
-    String rutaImagenSeleccionada = null;
+    String nombreImagenSeleccionada = null;
     private void botonCambiarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarImagenActionPerformed
         // TODO add your handling code here:
         RSFileChooser fileChooser = new RSFileChooser();
@@ -1483,8 +1505,8 @@ public class Frame_Principal extends javax.swing.JFrame {
         fileChooser.showOpenDialog(this);
         imagenSeleccionada = fileChooser.getSelectedFile();
 
-        rutaImagenSeleccionada = imagenSeleccionada.getName();
-        System.out.println("nombre de la imagen seleccionada: " + rutaImagenSeleccionada);
+        nombreImagenSeleccionada = imagenSeleccionada.getName();
+        System.out.println("nombre de la imagen seleccionada: " + nombreImagenSeleccionada);
 
         this.imagenProducto.setIcon(new ImageIcon(imagenSeleccionada.getAbsolutePath()));
     }//GEN-LAST:event_botonCambiarImagenActionPerformed
@@ -1493,9 +1515,17 @@ public class Frame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldNombreActionPerformed
 
-    private void botonAplicarCambios2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarCambios2ActionPerformed
+    private void botonCambiarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarContraseñaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonAplicarCambios2ActionPerformed
+
+        Dialog_cambiarContraseña dialog = new Dialog_cambiarContraseña(this, true, Frame_Login.usuarioLogeado);
+
+        dialog.setVisible(true);
+
+        if (dialog.getReturnStatus() == 1) {
+
+        }
+    }//GEN-LAST:event_botonCambiarContraseñaActionPerformed
 
     private void botonCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarPedidoActionPerformed
         // TODO add your handling code here:
@@ -1509,26 +1539,18 @@ public class Frame_Principal extends javax.swing.JFrame {
                 OperacionesBDD.iniciarConexion();
                 OperacionesBDD.cancelarPedido(idPedido);
                 OperacionesBDD.cerrarConexion();
+                this.actualizarTablas();
             } catch (SQLException ex) {
                 Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
     }//GEN-LAST:event_botonCancelarPedidoActionPerformed
 
-    private void botonCambiarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarContraseñaActionPerformed
+    private void botonAplicarCambios2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarCambios2ActionPerformed
         // TODO add your handling code here:
-
-        Dialog_cambiarContraseña dialog = new Dialog_cambiarContraseña(this, true, Frame_Login.usuarioLogeado);
-
-        dialog.setVisible(true);
-
-        if (dialog.getReturnStatus() == 1) {
-
-        }
-    }//GEN-LAST:event_botonCambiarContraseñaActionPerformed
+    }//GEN-LAST:event_botonAplicarCambios2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1604,7 +1626,6 @@ public class Frame_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel labelNombreProducto1;
     private javax.swing.JLabel labelNombreProducto10;
     private javax.swing.JLabel labelNombreProducto12;
-    private javax.swing.JLabel labelNombreProducto14;
     private javax.swing.JLabel labelNombreProducto15;
     private javax.swing.JLabel labelNombreProducto17;
     private javax.swing.JLabel labelNombreProducto18;
@@ -1624,7 +1645,6 @@ public class Frame_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblLog;
     private javax.swing.JLabel lblPago;
     private javax.swing.JLabel lblPrecio;
-    private javax.swing.JLabel lblRepartidor;
     private javax.swing.JLabel lblTituloTabla;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblUsuarioLogeado;

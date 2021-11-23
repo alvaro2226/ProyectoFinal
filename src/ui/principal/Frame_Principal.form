@@ -540,52 +540,43 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="botonCancelarPedido" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="labelNombreProducto15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="labelNombreProducto14" min="-2" max="-2" attributes="0"/>
                                               <Component id="labelNombreProducto17" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="labelNombreProducto12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labelNombreProducto15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labelNombreProducto18" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblPago" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblRepartidor" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblPrecio" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                  </Group>
-                                  <EmptySpace pref="38" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="labelNombreProducto18" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="lblPago" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                          <Component id="botonCancelarPedido" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="118" max="32767" attributes="0"/>
                                           <Component id="botonAplicarCambios2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="labelNombreProducto18" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="lblPago" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="labelNombreProducto15" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="lblEstado" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="labelNombreProducto12" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="lblPrecio" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
@@ -595,17 +586,22 @@
                                       <Component id="labelNombreProducto17" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="lblUsuario" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                          <Component id="labelNombreProducto18" min="-2" pref="42" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="lblPago" min="-2" pref="42" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="botonCancelarPedido" min="-2" max="-2" attributes="0"/>
+                                      <Component id="botonAplicarCambios2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="labelNombreProducto14" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="lblRepartidor" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="botonAplicarCambios2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="botonCancelarPedido" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -628,20 +624,9 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI Light" size="24" style="0"/>
+                              <Font name="Segoe UI Light" size="20" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="estado"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="labelNombreProducto14">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI Light" size="24" style="1"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Repartidor"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="labelNombreProducto17">
@@ -652,7 +637,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI Light" size="24" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Usuario"/>
+                            <Property name="text" type="java.lang.String" value="Cliente"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="labelNombreProducto18">
@@ -735,18 +720,7 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI Light" size="24" style="0"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="estado"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblRepartidor">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI Light" size="24" style="0"/>
+                              <Font name="Segoe UI Light" size="20" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="estado"/>
                           </Properties>
@@ -757,7 +731,7 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI Light" size="24" style="0"/>
+                              <Font name="Segoe UI Light" size="20" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="estado"/>
                           </Properties>

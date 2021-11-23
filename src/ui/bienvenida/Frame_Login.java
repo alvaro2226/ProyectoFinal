@@ -158,11 +158,11 @@ public class Frame_Login extends javax.swing.JFrame {
         backgroundPanel.add(rSButtonHover1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
 
         lblConsola.setBackground(new java.awt.Color(255, 255, 255));
-        lblConsola.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        lblConsola.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
         lblConsola.setForeground(new java.awt.Color(255, 0, 0));
         lblConsola.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblConsola.setText("Compruebe de nuevo el usuario y la contraseña");
-        backgroundPanel.add(lblConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 364, -1));
+        backgroundPanel.add(lblConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 400, -1));
 
         rSProgressCircleAnimated1.setString("");
         rSProgressCircleAnimated1.setVelocidad(20);

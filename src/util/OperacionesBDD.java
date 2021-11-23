@@ -171,6 +171,18 @@ public class OperacionesBDD {
         return conexionEstablecida;
     }
 
+    public static String getNombreUsuarioPedido(int idPedidoSeleccionado) throws SQLException{
+        String nombre = null;
+        Statement st = conexion.createStatement();
+        ResultSet rs;
+        rs = st.executeQuery("SELECT concat(usuario_nombre,usuario_apellidos) "
+                + "FROM pedido, usuario WHERE pedido_usuario_id = usuario_id AND pedido_id = " + idPedidoSeleccionado);
+        
+        rs.next();
+        nombre = rs.getString(1);
+        
+        return nombre;
+    }
     public static String getRutaImagenProductoSeleccionado(int id) throws SQLException {
 
         String ruta = null;

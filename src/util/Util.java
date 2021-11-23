@@ -54,7 +54,7 @@ public class Util {
         return email.matches(regex);
     }
 
-    public static void resultSetToTableModel(ResultSet rs, JTable table) throws SQLException{
+    public static void resultSetToTableModel(ResultSet rs, JTable table) throws SQLException {
         //Create new table model
         DefaultTableModel tableModel = new DefaultTableModel();
 
@@ -65,7 +65,7 @@ public class Util {
         int columnCount = metaData.getColumnCount();
 
         //Get all column names from meta data and add columns to table model
-        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++){
+        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
             tableModel.addColumn(metaData.getColumnLabel(columnIndex));
         }
 
@@ -73,10 +73,10 @@ public class Util {
         Object[] row = new Object[columnCount];
 
         //Scroll through result set
-        while (rs.next()){
+        while (rs.next()) {
             //Get object from column with specific index of result set to array of objects
-            for (int i = 0; i < columnCount; i++){
-                row[i] = rs.getObject(i+1);
+            for (int i = 0; i < columnCount; i++) {
+                row[i] = rs.getObject(i + 1);
             }
             //Now add row to table model with that array of objects as an argument
             tableModel.addRow(row);
@@ -85,6 +85,7 @@ public class Util {
         //Now add that table model to your table and you are done :D
         table.setModel(tableModel);
     }
+
     /**
      * Comprueba si las contraseñas coinciden
      *
@@ -168,16 +169,19 @@ public class Util {
         return icono;
 
     }
-    
-    /*
-    public static String getSufijoArchivo(File archivo) {
-        
-        String nombreInicial = archivo.getName();
-        String nombreFinal = Timestamp.valueOf(LocalDateTime.now()) + nombreInicial;
 
-        System.out.println(nombreFinal);
-        
-        return nombreFinal;
+    //Pone en mayusculas la primera letra un string, despues de los espacios en blanco
+    public static String capitalizeString(String string) {
+        char[] chars = string.toLowerCase().toCharArray();
+        boolean found = false;
+        for (int i = 0; i < chars.length; i++) {
+            if (!found && Character.isLetter(chars[i])) {
+                chars[i] = Character.toUpperCase(chars[i]);
+                found = true;
+            } else if (Character.isWhitespace(chars[i]) || chars[i] == '.' || chars[i] == '\'') { // You can add other chars here
+                found = false;
+            }
+        }
+        return String.valueOf(chars);
     }
-     */
 }
