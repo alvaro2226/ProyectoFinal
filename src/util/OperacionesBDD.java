@@ -604,21 +604,16 @@ public class OperacionesBDD {
 
     public static ResultSet getPedidos() {
         ResultSet pedidos = null;
-        String query = "SELECT pedido_id AS ID ,\n"
-                + "                            	pedido_usuario_id AS ID_USUARIO,\n"
-                + "                		pedido_costesEnvio AS COSTE_ENVIO,\n"
-                + "                               	pedido_fechaEnvioEstimada AS LLEGADA_EST,\n"
-                + "                               	pedido_fechaEnvioRealizado AS LLEGADA,\n"
-                + "                               	estado_pedido_estado AS ESTADO,\n"
-                + "                             	metodo_pago_nombre AS METODO_PAGO,\n"
-                + "                           	pedido_pagado AS PAGADO,\n"
-                + "                                   concat(usuario_nombre,usuario_Apellidos) REPARTIDOR\n"
-                + "                               FROM pedido,estado_pedido,metodo_pago,usuario\n"
-                + "                               WHERE pedido_estadoPedido = estado_pedido_id AND\n"
-                + "                				  pedido_metodoPago = metodo_pago_id AND\n"
-                + "                                    pedido_empleadoAsignado = usuario_id AND\n"
-                + "                                     pedido_usuario_id = usuario_id\n"
-                + "                                ORDER BY pedido_fechaCreacion;";
+        String query = "SELECT pedido_id AS ID ,\n" +
+"                pedido_usuario_id AS ID_USUARIO,\n" +
+"               pedido_costesEnvio AS COSTE_ENVIO,\n" +
+"                pedido_fechaEnvioEstimada AS LLEGADA_EST,\n" +
+"                pedido_fechaEnvioRealizado AS LLEGADA,\n" +
+"                estado_pedido_estado AS ESTADO,\n" +
+"                metodo_pago_nombre AS METODO_PAGO,\n" +
+"                pedido_pagado AS PAGADO FROM pedido,estado_pedido,metodo_pago\n" +
+"                                               WHERE pedido_estadoPedido = estado_pedido_id AND\n" +
+"                                				  pedido_metodoPago = metodo_pago_id";
         Statement st;
         try {
 

@@ -168,6 +168,7 @@ public class Frame_Principal extends javax.swing.JFrame {
                         System.out.println("Mostrando pedidos...");
                         idPedido = Integer.valueOf(tablaInfo.getValueAt(tablaInfo.getSelectedRow(), 0).toString());
                         System.out.println("idPedido = " + idPedido);
+                        
                         tablaLineas2.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getLineas(idPedido)));
                         actualizando = false;
                         OperacionesBDD.cerrarConexion();
@@ -604,11 +605,11 @@ public class Frame_Principal extends javax.swing.JFrame {
         panelPedidos.setLayout(panelPedidosLayout);
         panelPedidosLayout.setHorizontalGroup(
             panelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(panelPedidosLayout.createSequentialGroup()
                 .addGap(530, 530, 530)
                 .addComponent(lblTituloTabla)
-                .addContainerGap(561, Short.MAX_VALUE))
+                .addContainerGap(557, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         panelPedidosLayout.setVerticalGroup(
             panelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,7 +617,7 @@ public class Frame_Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblTituloTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -629,7 +630,6 @@ public class Frame_Principal extends javax.swing.JFrame {
 
         panelLineas_izq2.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablaLineas2.setAutoCreateColumnsFromModel(false);
         tablaLineas2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -758,7 +758,7 @@ public class Frame_Principal extends javax.swing.JFrame {
                             .addComponent(lblUsuario)
                             .addComponent(lblRepartidor)
                             .addComponent(lblPrecio))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLineas_derLayout.createSequentialGroup()
                         .addComponent(labelNombreProducto18)

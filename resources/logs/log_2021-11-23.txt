@@ -1,0 +1,24 @@
+nov 23, 2021 1:52:45 A. M. log.MyLogger init
+INFO: OrderTracker iniciado...
+nov 23, 2021 1:52:51 A. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 23, 2021 1:52:51 A. M. util.OperacionesBDD iniciarSesion
+INFO: Intento de inicio de sesión: 
+ Usuario: admin
+ Contraseña: admin
+nov 23, 2021 1:52:51 A. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 23, 2021 1:52:51 A. M. ui.bienvenida.Frame_Login rSButtonHover1ActionPerformed
+INFO: Se ha iniciado sesión
+nov 23, 2021 1:52:59 A. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 23, 2021 1:53:00 A. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 23, 2021 1:53:06 A. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 23, 2021 1:53:07 A. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 23, 2021 1:53:10 A. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 23, 2021 1:53:11 A. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente

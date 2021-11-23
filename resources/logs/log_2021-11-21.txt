@@ -1,88 +1,32 @@
-nov 21, 2021 4:47:55 P. M. log.MyLogger init
+nov 21, 2021 11:58:52 P. M. log.MyLogger init
 INFO: OrderTracker iniciado...
-nov 21, 2021 4:48:02 P. M. util.OperacionesBDD iniciarConexion
+nov 21, 2021 11:59:04 P. M. util.OperacionesBDD iniciarConexion
 INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:48:02 P. M. util.OperacionesBDD iniciarSesion
+nov 21, 2021 11:59:04 P. M. util.OperacionesBDD iniciarSesion
 INFO: Intento de inicio de sesión: 
  Usuario: admin
  Contraseña: admin
-nov 21, 2021 4:48:02 P. M. util.OperacionesBDD cerrarConexion
+nov 21, 2021 11:59:06 P. M. util.OperacionesBDD cerrarConexion
 INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:48:02 P. M. ui.bienvenida.Frame_Login rSButtonHover1ActionPerformed
+nov 21, 2021 11:59:06 P. M. ui.bienvenida.Frame_Login rSButtonHover1ActionPerformed
 INFO: Se ha iniciado sesión
-nov 21, 2021 4:48:06 P. M. util.OperacionesBDD iniciarConexion
+nov 21, 2021 11:59:14 P. M. util.OperacionesBDD iniciarConexion
 INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:48:06 P. M. util.OperacionesBDD cerrarConexion
+nov 21, 2021 11:59:15 P. M. util.OperacionesBDD cerrarConexion
 INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:48:09 P. M. util.OperacionesBDD iniciarConexion
+nov 21, 2021 11:59:21 P. M. util.OperacionesBDD iniciarConexion
 INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:48:09 P. M. util.OperacionesBDD cerrarConexion
+nov 21, 2021 11:59:21 P. M. util.OperacionesBDD cerrarConexion
 INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:48:19 P. M. util.OperacionesBDD iniciarConexion
+nov 21, 2021 11:59:28 P. M. util.OperacionesBDD iniciarConexion
 INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:48:20 P. M. util.OperacionesBDD cerrarConexion
+nov 21, 2021 11:59:32 P. M. util.OperacionesBDD cerrarConexion
 INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:48:30 P. M. util.OperacionesBDD iniciarConexion
+nov 21, 2021 11:59:35 P. M. util.OperacionesBDD iniciarConexion
 INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:48:30 P. M. util.OperacionesBDD cerrarConexion
+nov 21, 2021 11:59:37 P. M. util.OperacionesBDD cerrarConexion
 INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:48:31 P. M. util.OperacionesBDD iniciarConexion
+nov 21, 2021 11:59:54 P. M. util.OperacionesBDD iniciarConexion
 INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:48:31 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:48:46 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:48:47 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:48:48 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:48:48 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:48:53 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:48:53 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:48:54 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:48:54 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:49:12 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:49:13 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:49:13 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:49:14 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:49:16 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:49:17 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:49:18 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:49:18 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:49:20 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:49:20 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:49:21 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:49:21 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:49:25 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:49:25 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:49:26 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:49:26 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:49:36 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:49:36 P. M. util.OperacionesBDD cerrarConexion
-INFO: Se ha finalizado la conexion con la base de datos correctamente
-nov 21, 2021 4:49:37 P. M. util.OperacionesBDD iniciarConexion
-INFO: Se ha establecido una conexion con la base de datos.
-nov 21, 2021 4:49:37 P. M. util.OperacionesBDD cerrarConexion
+nov 21, 2021 11:59:56 P. M. util.OperacionesBDD cerrarConexion
 INFO: Se ha finalizado la conexion con la base de datos correctamente
