@@ -199,7 +199,7 @@ public class Frame_Principal extends javax.swing.JFrame {
                         while (lineas.next()) {
                             total = total + lineas.getFloat(3);
                         }
-                        lblPrecio.setText(total + "?");
+                        lblPrecio.setText(total + "\u20ac");
 
                         lblUsuario.setText(Util.capitalizeString(OperacionesBDD.getNombreUsuarioPedido(idPedido)));
 
