@@ -142,7 +142,7 @@ public class Frame_Principal extends javax.swing.JFrame {
 
             DefaultTableModel tablaLineas = (DefaultTableModel) this.tablaLineas2.getModel();
             tablaLineas.setRowCount(0);
-            
+
             if (tablaSeleccionada.equals("usuarios")) {
                 tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getUsuarios()));
             }
@@ -769,26 +769,30 @@ public class Frame_Principal extends javax.swing.JFrame {
         panelLineas_derLayout.setHorizontalGroup(
             panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLineas_derLayout.createSequentialGroup()
-                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(44, 44, 44)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLineas_derLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNombreProducto17)
-                            .addComponent(labelNombreProducto12)
-                            .addComponent(labelNombreProducto15)
-                            .addComponent(labelNombreProducto18))
+                        .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelLineas_derLayout.createSequentialGroup()
+                                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelNombreProducto17)
+                                    .addComponent(labelNombreProducto12)
+                                    .addComponent(labelNombreProducto15))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblEstado)
+                                    .addComponent(lblUsuario)
+                                    .addComponent(lblPrecio)))
+                            .addGroup(panelLineas_derLayout.createSequentialGroup()
+                                .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                                .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(27, 27, 27))
+                    .addGroup(panelLineas_derLayout.createSequentialGroup()
+                        .addComponent(labelNombreProducto18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPago)
-                            .addComponent(lblEstado)
-                            .addComponent(lblUsuario)
-                            .addComponent(lblPrecio)))
-                    .addGroup(panelLineas_derLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                        .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27))
+                        .addComponent(lblPago)
+                        .addGap(174, 174, 174))))
         );
         panelLineas_derLayout.setVerticalGroup(
             panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -805,14 +809,11 @@ public class Frame_Principal extends javax.swing.JFrame {
                 .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNombreProducto17, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLineas_derLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(labelNombreProducto18, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLineas_derLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPago, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
+                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreProducto18, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPago, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1364,17 +1365,26 @@ public class Frame_Principal extends javax.swing.JFrame {
                 System.out.println("Modificando " + fieldNombre.getText());
                 try {
                     OperacionesBDD.iniciarConexion();
+
                     String ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
+                    System.out.println("Ruta = " + ruta);
+                    System.out.println("nombreImagenSeleccionada " + nombreImagenSeleccionada );
 
                     if (nombreImagenSeleccionada != null) {
+                        
                         ftp.borrarArchivo(ruta);
+                        OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), nombreImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
+                        ftp.subirArchivo(imagenSeleccionada, nombreImagenSeleccionada);
+                        
+                    } else {
+                        OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), ruta, Integer.valueOf(fieldStock.getText()));
 
                     }
 
-                    OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), nombreImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
                     OperacionesBDD.cerrarConexion();
-                    ftp.subirArchivo(imagenSeleccionada, nombreImagenSeleccionada);
                     this.actualizarTablas();
+                    
+                    nombreImagenSeleccionada = null;
                 } catch (SQLException ex) {
                     Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
@@ -1454,6 +1464,8 @@ public class Frame_Principal extends javax.swing.JFrame {
                     }
                     System.out.println("Producto " + fieldNombre.getText() + " añadido.");
                     OperacionesBDD.cerrarConexion();
+                    nombreImagenSeleccionada = null;
+                    imagenSeleccionada = null;
                     this.actualizarTablas();
                     this.lblConsola.setVisible(false);
 
