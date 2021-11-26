@@ -90,6 +90,11 @@ public class FTP_Client {
     }
     
     public void borrarArchivo(String ruta) throws IOException {
-        ftp.deleteFile(ruta);
+        
+        if(ruta !=null){
+            ftp.deleteFile(ruta);
+        }
+        
+        
     }
 }

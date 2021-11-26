@@ -1,0 +1,40 @@
+nov 26, 2021 8:04:38 P. M. log.MyLogger init
+INFO: OrderTracker iniciado...
+nov 26, 2021 8:04:46 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 26, 2021 8:04:46 P. M. util.OperacionesBDD iniciarSesion
+INFO: Intento de inicio de sesión: 
+ Usuario: admin
+ Contraseña: admin
+nov 26, 2021 8:04:46 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 26, 2021 8:04:46 P. M. ui.bienvenida.Frame_Login rSButtonHover1ActionPerformed
+INFO: Se ha iniciado sesión
+nov 26, 2021 8:04:56 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 26, 2021 8:04:56 P. M. util.OperacionesBDD iniciarConexion
+WARNING: Se ha intentado establecer una conexion con la base de datos cuando ya se estaba conectado
+nov 26, 2021 8:04:56 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 26, 2021 8:04:56 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 26, 2021 8:05:05 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 26, 2021 8:05:06 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 26, 2021 8:05:08 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 26, 2021 8:05:09 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 26, 2021 8:05:16 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 26, 2021 8:05:16 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 26, 2021 8:05:22 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 26, 2021 8:05:23 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente
+nov 26, 2021 8:05:23 P. M. util.OperacionesBDD iniciarConexion
+INFO: Se ha establecido una conexion con la base de datos.
+nov 26, 2021 8:05:24 P. M. util.OperacionesBDD cerrarConexion
+INFO: Se ha finalizado la conexion con la base de datos correctamente

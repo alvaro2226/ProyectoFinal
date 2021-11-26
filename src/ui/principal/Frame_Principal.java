@@ -39,6 +39,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import necesario.RSFileChooser;
 import net.proteanit.sql.DbUtils;
+import org.apache.commons.net.ftp.FTPConnectionClosedException;
 import pojos.Producto;
 import pojos.Usuario;
 import threads.Reloj;
@@ -99,10 +100,16 @@ public class Frame_Principal extends javax.swing.JFrame {
                 this.lblUsuarioLogeadoRol.setText("(Empleado)");
             }
 
-            //MUESTRA LA TABLA PEDIDOS Y LINEAS 
-            tablaInfo.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getPedidos()));
-            tablaLineas2.setModel(DbUtils.resultSetToTableModel(OperacionesBDD.getLineas(idPedido)));
-            tablaSeleccionada = "pedidos";
+            //MUESTRA LA TABLA PRODUCTOS 
+            tablaSeleccionada = "productos";
+            this.imagenProducto.setIcon(new ImageIcon("src\\ui\\images\\logo\\logo_transparent.png"));
+            this.tablaInfo.setVisible(true);
+            CardLayout cl = (CardLayout) (panelInferior.getLayout());
+            cl.show(panelInferior, "card3");
+
+            this.lblTituloTabla.setText("Productos");
+            this.lblConsola.setVisible(false);
+            this.actualizarTablas();
 
             OperacionesBDD.cerrarConexion();
         } catch (ClassNotFoundException | SQLException ex) {
@@ -443,7 +450,6 @@ public class Frame_Principal extends javax.swing.JFrame {
         lblEstado = new javax.swing.JLabel();
         labelNombreProducto17 = new javax.swing.JLabel();
         labelNombreProducto18 = new javax.swing.JLabel();
-        botonAplicarCambios2 = new rojerusan.RSButtonHover();
         botonCancelarPedido = new rojerusan.RSButtonHover();
         lblPago = new javax.swing.JLabel();
         labelNombreProducto15 = new javax.swing.JLabel();
@@ -727,19 +733,9 @@ public class Frame_Principal extends javax.swing.JFrame {
         labelNombreProducto18.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         labelNombreProducto18.setText("Pagado:");
 
-        botonAplicarCambios2.setBackground(new java.awt.Color(55, 147, 114));
-        botonAplicarCambios2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonAplicarCambios2.setText("Ver factura");
-        botonAplicarCambios2.setColorHover(new java.awt.Color(70, 198, 136));
-        botonAplicarCambios2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAplicarCambios2ActionPerformed(evt);
-            }
-        });
-
         botonCancelarPedido.setBackground(new java.awt.Color(235, 86, 64));
         botonCancelarPedido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonCancelarPedido.setText("Cancelar pedido");
+        botonCancelarPedido.setText("Cerrar pedido");
         botonCancelarPedido.setColorHover(new java.awt.Color(255, 153, 153));
         botonCancelarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -772,26 +768,26 @@ public class Frame_Principal extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLineas_derLayout.createSequentialGroup()
+                        .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNombreProducto17)
+                            .addComponent(labelNombreProducto12)
+                            .addComponent(labelNombreProducto15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEstado)
+                            .addComponent(lblUsuario)
+                            .addComponent(lblPrecio))
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLineas_derLayout.createSequentialGroup()
                         .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(panelLineas_derLayout.createSequentialGroup()
-                                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelNombreProducto17)
-                                    .addComponent(labelNombreProducto12)
-                                    .addComponent(labelNombreProducto15))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblEstado)
-                                    .addComponent(lblUsuario)
-                                    .addComponent(lblPrecio)))
+                                .addGap(0, 171, Short.MAX_VALUE)
+                                .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelLineas_derLayout.createSequentialGroup()
-                                .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                                .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(27, 27, 27))
-                    .addGroup(panelLineas_derLayout.createSequentialGroup()
-                        .addComponent(labelNombreProducto18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblPago)
+                                .addComponent(labelNombreProducto18)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblPago)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(174, 174, 174))))
         );
         panelLineas_derLayout.setVerticalGroup(
@@ -805,18 +801,16 @@ public class Frame_Principal extends javax.swing.JFrame {
                 .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNombreProducto12, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNombreProducto17, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNombreProducto18, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPago, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panelLineas_derLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonAplicarCambios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(botonCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1037,7 +1031,7 @@ public class Frame_Principal extends javax.swing.JFrame {
                             .addGroup(panelProductosLayout.createSequentialGroup()
                                 .addGap(56, 56, 56)
                                 .addComponent(botonCambiarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAplicarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAñadirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1350,7 +1344,7 @@ public class Frame_Principal extends javax.swing.JFrame {
         File imagen = null;
 
         ArrayList<JTextComponent> componentes = new ArrayList<>();
-
+        String ruta = null;
         componentes.add(this.fieldNombre);
         componentes.add(this.fieldDesc);
         componentes.add(this.fieldPrecio);
@@ -1366,16 +1360,16 @@ public class Frame_Principal extends javax.swing.JFrame {
                 try {
                     OperacionesBDD.iniciarConexion();
 
-                    String ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
+                    ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
                     System.out.println("Ruta = " + ruta);
-                    System.out.println("nombreImagenSeleccionada " + nombreImagenSeleccionada );
+                    System.out.println("nombreImagenSeleccionada " + nombreImagenSeleccionada);
 
                     if (nombreImagenSeleccionada != null) {
-                        
+
                         ftp.borrarArchivo(ruta);
                         OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), nombreImagenSeleccionada, Integer.valueOf(fieldStock.getText()));
                         ftp.subirArchivo(imagenSeleccionada, nombreImagenSeleccionada);
-                        
+
                     } else {
                         OperacionesBDD.modificarProducto(producto.getId(), fieldNombre.getText(), fieldDesc.getText(), Float.valueOf(fieldPrecio.getText()), ruta, Integer.valueOf(fieldStock.getText()));
 
@@ -1383,13 +1377,35 @@ public class Frame_Principal extends javax.swing.JFrame {
 
                     OperacionesBDD.cerrarConexion();
                     this.actualizarTablas();
-                    
+
                     nombreImagenSeleccionada = null;
+
                 } catch (SQLException ex) {
                     Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (FTPConnectionClosedException ex) {
+
+                    if (nombreImagenSeleccionada != null) {
+                        try {
+
+                            ftp.cerrarConexion();
+                            ftp.iniciarConexion();
+                            ftp.borrarArchivo(ruta);
+                            ftp.subirArchivo(imagenSeleccionada, nombreImagenSeleccionada);
+
+                        } catch (IOException ex1) {
+                            Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex1);
+                        }
+
+                    }
+
+                    try {
+                        ftp.subirArchivo(imagenSeleccionada, nombreImagenSeleccionada);
+                    } catch (IOException ex1) {
+                        Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
                 } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
                     Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
@@ -1409,18 +1425,26 @@ public class Frame_Principal extends javax.swing.JFrame {
         Dialog_Confirmar dialog = new Dialog_Confirmar(this, true, 0000);
 
         dialog.setVisible(true);
-
+        String ruta = null;
         if (dialog.getReturnStatus() == 1) {
             System.out.println("Borrando " + producto.getNombre());
             try {
                 OperacionesBDD.iniciarConexion();
-                String ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
+                ruta = OperacionesBDD.getRutaImagenProductoSeleccionado(producto.getId());
                 ftp.borrarArchivo(ruta);
                 OperacionesBDD.eliminarProducto(producto.getId());
                 OperacionesBDD.cerrarConexion();
 
             } catch (SQLException ex) {
                 Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (FTPConnectionClosedException ex) {
+                try {
+                    ftp.cerrarConexion();
+                    ftp.iniciarConexion();
+                    ftp.borrarArchivo(ruta);
+                } catch (IOException ex1) {
+                    Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex1);
+                }
             } catch (IOException ex) {
                 Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -1458,6 +1482,14 @@ public class Frame_Principal extends javax.swing.JFrame {
                             System.out.println("Subiendo el archivo " + imagenSeleccionada + " a " + nombreImagenSeleccionada);
                             ftp.subirArchivo(imagenSeleccionada, nombreImagenSeleccionada);
 
+                        } catch (FTPConnectionClosedException ex) {
+                            try {
+                                ftp.cerrarConexion();
+                                ftp.iniciarConexion();
+                                ftp.subirArchivo(imagenSeleccionada, nombreImagenSeleccionada);
+                            } catch (IOException ex1) {
+                                Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex1);
+                            }
                         } catch (IOException ex) {
                             Logger.getLogger(Frame_Principal.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -1560,10 +1592,6 @@ public class Frame_Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonCancelarPedidoActionPerformed
 
-    private void botonAplicarCambios2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarCambios2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonAplicarCambios2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1610,7 +1638,6 @@ public class Frame_Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPanel;
     private rojerusan.RSButtonHover botonAplicarCambios;
-    private rojerusan.RSButtonHover botonAplicarCambios2;
     private rojerusan.RSButtonHover botonAplicarUsuario;
     private rojerusan.RSButtonHover botonAñadirProducto;
     private rojerusan.RSButtonHover botonAñadirUsuario;

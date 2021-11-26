@@ -78,7 +78,7 @@ public class OperacionesBDD {
             //System.out.println("Usuario " + p.getProperty("database.USER"));
             //System.out.println("Contraseña " + p.getProperty("database.PASSWORD"));
 
-            conexion = (Connection) DriverManager.getConnection(p.getProperty("database.URL") /*+ "?testOnBorrow=true&validationQuery='SELECT 1'&validationInterval=1000&autoReconnect=true" */,
+            conexion = (Connection) DriverManager.getConnection(p.getProperty("database.URL") + "?testOnBorrow=true&validationQuery='SELECT 1'&validationInterval=1000&autoReconnect=true" ,
                     p.getProperty("database.USER"),
                     p.getProperty("database.PASSWORD"));
 
@@ -175,7 +175,7 @@ public class OperacionesBDD {
         String nombre = null;
         Statement st = conexion.createStatement();
         ResultSet rs;
-        rs = st.executeQuery("SELECT concat(usuario_nombre,usuario_apellidos) "
+        rs = st.executeQuery("SELECT concat(usuario_nombre,' ',usuario_apellidos) "
                 + "FROM pedido, usuario WHERE pedido_usuario_id = usuario_id AND pedido_id = " + idPedidoSeleccionado);
         
         rs.next();
@@ -199,7 +199,7 @@ public class OperacionesBDD {
 
         ruta = rs.getString(1);
 
-        System.out.println("rutaImagenProductoSeleccionado -> " + ruta);
+        //System.out.println("rutaImagenProductoSeleccionado -> " + ruta);
 
         return ruta;
     }
@@ -463,7 +463,7 @@ public class OperacionesBDD {
             st.execute("CREATE TABLE IF NOT EXISTS producto (\n"
                     + "  `producto_id` INT NOT NULL AUTO_INCREMENT,\n"
                     + "  `producto_nombre` VARCHAR(45) NOT NULL,\n"
-                    + "  `producto_descripcion` VARCHAR(255) NULL,\n"
+                    + "  `producto_descripcion` VARCHAR(20000) NULL,\n"
                     + "  `producto_precio` FLOAT NOT NULL,\n"
                     + "  `producto_imagen` VARCHAR(300),\n"
                     + "  `producto_stock` INT NOT NULL,\n"
